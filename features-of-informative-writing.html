@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unlock Your Knowledge: Features of Informative Writing!</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            /* New gradient background for informative writing theme */
+            background: linear-gradient(to bottom right, #e6f7ff, #d0eaff); /* Light Blue to Medium Light Blue */
+            color: #333;
+        }
+        h1, h2, h3 {
+            font-family: 'Fredoka One', cursive;
+        }
+        /* Custom Colours for Informative Writing theme */
+        .bg-header-blue { background-color: #004d99; } /* Dark Blue */
+        .text-header-blue { color: #004d99; }
+        .bg-section-green { background-color: #007acc; } /* Medium Blue */
+        .text-section-green { color: #007acc; }
+        .bg-element-yellow { background-color: #66ccff; } /* Light Sky Blue */
+        .text-element-yellow { color: #66ccff; }
+        .text-header-title-yellow { color: #ffe066; } /* Light Gold */
+        .bg-process-purple { background-color: #3399ff; } /* Bright Blue */
+        .text-process-purple { color: #3399ff; }
+        .bg-tip-red { background-color: #002b80; } /* Very Dark Blue */
+        .text-tip-red { color: #002b80; }
+        .bg-white-card { background-color: #FFFFFF; }
+        .text-dark-gray { color: #333333; }
+
+        .shadow-lg-custom {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        .interactive-card {
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+        }
+        .interactive-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 25px -5px rgba(0,0,0,0.15);
+        }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out; /* Slower transition for content */
+        }
+        .accordion-content.active {
+            max-height: 500px; /* Sufficient height for content, adjust if needed */
+            transition: max-height 0.5s ease-in;
+        }
+        .reveal-button {
+            background-color: #004d99; /* Dark Blue */
+            color: white;
+            padding: 8px 15px;
+            border-radius: 9999px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+        .reveal-button:hover {
+            background-color: #003366; /* Even Darker Blue */
+        }
+
+        /* Styles for the interactive tips (reused for features) */
+        .tip-card-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-in-out; /* Smooth transition for tips */
+        }
+        .tip-card-content.active {
+            max-height: 150px; /* Adjust based on tip content length */
+            padding-top: 8px;
+            border-top: 1px solid #E5E7EB;
+        }
+        .tip-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem; /* Consistent padding */
+        }
+        .tip-card-header span {
+            transition: transform 0.3s ease;
+        }
+        .tip-card-header span.rotate-180 {
+            transform: rotate(180deg);
+        }
+
+        /* Styles for LLM features */
+        .llm-input-area {
+            background-color: #f0f8ff; /* Very light blue background */
+            padding: 1.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .llm-output-area {
+            background-color: #e0f2ff; /* Lighter blue output */
+            padding: 1rem;
+            border-radius: 0.75rem;
+            min-height: 80px;
+            border: 1px solid #93c5fd;
+            text-align: left;
+            white-space: pre-wrap; /* Preserve whitespace and wrap text */
+            word-wrap: break-word; /* Break long words */
+        }
+        .llm-button {
+            background-color: #007acc; /* Medium Blue button */
+            color: white;
+            padding: 10px 20px;
+            border-radius: 9999px;
+            font-weight: bold;
+            transition: all 0.2s ease-in-out;
+        }
+        .llm-button:hover {
+            background-color: #005f99; /* Darker Medium Blue */
+            transform: translateY(-2px);
+        }
+        .loading-spinner {
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-top: 4px solid #fff;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            animation: spin 1s linear infinite;
+            display: inline-block;
+            vertical-align: middle;
+            margin-left: 8px;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Skills section specific styles */
+        .skills-list ul {
+            list-style: none; /* Remove default bullet points */
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+        }
+        .skills-list li {
+            background-color: #a3e6ff; /* A lighter blue */
+            border: 2px solid #007acc;
+            border-radius: 0.75rem;
+            padding: 0.75rem 1.25rem;
+            font-weight: bold;
+            color: #003366;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        /* Sample Informative Writing Specific Styles */
+        .sample-informative-container {
+            background-color: #fff;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            text-align: left;
+        }
+        .sample-informative-container h3 {
+            font-family: 'Fredoka One', cursive;
+            color: #004d99; /* Dark Blue for title */
+            font-size: 2.25rem; /* text-4xl */
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+        .sample-informative-container p {
+            margin-bottom: 1rem;
+            color: #4B5563; /* Gray-700 */
+        }
+        .sample-informative-container strong {
+            color: #007acc; /* Medium Blue for emphasis */
+        }
+    </style>
+</head>
+<body class="text-dark-gray">
+
+    <div class="container mx-auto p-4 md:p-8 max-w-4xl">
+
+        <!-- Header -->
+        <header class="text-center p-6 bg-header-blue text-white rounded-2xl shadow-lg-custom mb-10">
+            <h1 class="text-4xl md:text-5xl text-header-title-yellow">Unlock Your Knowledge! 💡</h1>
+            <p class="text-lg md:text-xl mt-2 text-gray-100">Mastering the Features of Informative Writing</p>
+            <p class="text-md mt-1 text-gray-200">Teacher: Ndudi Rita Enemuwe</p>
+        </header>
+
+        <!-- Introduction: What is Informative Writing? -->
+        <section class="mb-10 p-6 bg-white-card rounded-2xl shadow-lg-custom text-center">
+            <h2 class="text-3xl mb-4 text-header-blue">What is Informative Writing? 📚</h2>
+            <p class="text-lg text-gray-800 mb-4">
+                Informative writing is a type of writing that includes information that <strong>educates and informs readers</strong> about a certain event, person, or idea. Its main goal is to share facts and knowledge clearly and accurately.
+            </p>
+            <p class="text-md text-gray-700 italic">
+                It's like being a detective and sharing what you've discovered!
+            </p>
+        </section>
+
+        <!-- Learning Objectives Section -->
+        <section class="mb-10 p-6 bg-element-yellow rounded-2xl shadow-lg-custom">
+            <h2 class="text-3xl mb-4 text-tip-red text-center">Learning Goals for Today! 🎯</h2>
+            <ul class="list-disc pl-6 text-tip-red">
+                <li>Understand what informative writing is.</li>
+                <li>Identify key skills needed for informative writing.</li>
+                <li>Learn the main features of informative writing using the "INFORM" guide.</li>
+                <li>Use AI tools to help generate ideas and find facts for informative pieces.</li>
+            </ul>
+        </section>
+
+        <!-- Skills Needed Section -->
+        <section class="mb-10 p-6 bg-process-purple text-white rounded-2xl shadow-lg-custom">
+            <h2 class="text-3xl text-center mb-6 text-header-title-yellow">Skills You Need to Write a Good Informative Piece ✍️</h2>
+            <p class="text-lg text-gray-100 mb-6 text-center">These are the building blocks of great writing!</p>
+            <div class="skills-list text-center">
+                <ul>
+                    <li>Paragraph</li>
+                    <li>Capitalisation</li>
+                    <li>Vocabulary</li>
+                    <li>Punctuation</li>
+                    <li>Sentence Formation</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Features of Informative Writing (INFORM Acronym) -->
+        <section class="mb-10 p-6 bg-section-green text-white rounded-2xl shadow-lg-custom" id="inform-features-section">
+            <h2 class="text-3xl text-center mb-6 text-header-title-yellow">The "INFORM" Guide to Informative Writing! ✨</h2>
+            <p class="text-lg text-gray-100 mb-6 text-center">Click on each letter to reveal a key feature!</p>
+
+            <div class="space-y-4">
+                <!-- I: Include an opening paragraph -->
+                <div class="bg-white-card text-dark-gray rounded-xl shadow-md interactive-card">
+                    <div class="p-4 cursor-pointer flex justify-between items-center">
+                        <h3 class="text-2xl font-bold text-process-purple">I - Include an Opening Paragraph 📖</h3>
+                        <span class="text-xl transform transition-transform duration-300 rotate-0">▼</span>
+                    </div>
+                    <div class="accordion-content px-4 pb-4">
+                        <p class="pt-2 border-t border-gray-200">
+                            Start with a clear introduction that tells your readers what your topic is about. It should grab their attention and make them want to learn more!
+                        </p>
+                    </div>
+                </div>
+                <!-- N: Name facts in the body -->
+                <div class="bg-white-card text-dark-gray rounded-xl shadow-md interactive-card">
+                    <div class="p-4 cursor-pointer flex justify-between items-center">
+                        <h3 class="text-2xl font-bold text-process-purple">N - Name Facts in the Body of the Text 📊</h3>
+                        <span class="text-xl transform transition-transform duration-300 rotate-0">▼</span>
+                    </div>
+                    <div class="accordion-content px-4 pb-4">
+                        <p class="pt-2 border-t border-gray-200">
+                            The main part of your writing should be filled with accurate facts and information about your topic. Think of yourself as a reporter!
+                        </p>
+                    </div>
+                </div>
+                <!-- F: Follow the facts with supporting details -->
+                <div class="bg-white-card text-dark-gray rounded-xl shadow-md interactive-card">
+                    <div class="p-4 cursor-pointer flex justify-between items-center">
+                        <h3 class="text-2xl font-bold text-process-purple">F - Follow Facts with Supporting Details 🔍</h3>
+                        <span class="text-xl transform transition-transform duration-300 rotate-0">▼</span>
+                    </div>
+                    <div class="accordion-content px-4 pb-4">
+                        <p class="pt-2 border-t border-gray-200">
+                            Don't just list facts! Explain them, give examples, or add more information to help your reader truly understand each point.
+                        </p>
+                    </div>
+                </div>
+                <!-- O: Organise your writing with transition words -->
+                <div class="bg-white-card text-dark-gray rounded-xl shadow-md interactive-card">
+                    <div class="p-4 cursor-pointer flex justify-between items-center">
+                        <h3 class="text-2xl font-bold text-process-purple">O - Organise Your Writing with Transition Words 🔗</h3>
+                        <span class="text-xl transform transition-transform duration-300 rotate-0">▼</span>
+                    </div>
+                    <div class="accordion-content px-4 pb-4">
+                        <p class="pt-2 border-t border-gray-200">
+                            Use words like "first", "next", "also", "however", or "finally" to connect your ideas smoothly. This makes your writing easy to follow.
+                        </p>
+                    </div>
+                </div>
+                <!-- R: Refer to the topic and include key vocabulary -->
+                <div class="bg-white-card text-dark-gray rounded-xl shadow-md interactive-card">
+                    <div class="p-4 cursor-pointer flex justify-between items-center">
+                        <h3 class="text-2xl font-bold text-process-purple">R - Refer to the Topic and Include Key Vocabulary 🔑</h3>
+                        <span class="text-xl transform transition-transform duration-300 rotate-0">▼</span>
+                    </div>
+                    <div class="accordion-content px-4 pb-4">
+                        <p class="pt-2 border-t border-gray-200">
+                            Always link your ideas back to your main topic. Use important words related to your subject to show you understand it well.
+                        </p>
+                    </div>
+                </div>
+                <!-- M: Make a closing paragraph -->
+                <div class="bg-white-card text-dark-gray rounded-xl shadow-md interactive-card">
+                    <div class="p-4 cursor-pointer flex justify-between items-center">
+                        <h3 class="text-2xl font-bold text-process-purple">M - Make a Closing Paragraph 🏁</h3>
+                        <span class="text-xl transform transition-transform duration-300 rotate-0">▼</span>
+                    </div>
+                    <div class="accordion-content px-4 pb-4">
+                        <p class="pt-2 border-t border-gray-200">
+                            End your informative piece with a strong conclusion that summarises your main points and leaves the reader with a final thought about the topic.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sample Informative Writing Section -->
+        <section class="mb-10 p-6 bg-white-card rounded-2xl shadow-lg-custom text-center">
+            <h2 class="text-3xl mb-6 text-header-blue">Sample Informative Writing: The Amazing World of Bees! 🐝</h2>
+            <div class="sample-informative-container">
+                <h3>The Amazing World of Bees</h3>
+                <p>
+                    Have you ever seen a busy bee buzzing around flowers? Bees are much more than just insects that can sting. They are incredibly important creatures that help our planet in many wonderful ways!
+                </p>
+                <p>
+                    Bees live in large groups called <strong>colonies</strong>, often in a hive. Inside the hive, each bee has a special job. The <strong>queen bee</strong> lays all the eggs, while the <strong>worker bees</strong> collect nectar and pollen from flowers. They turn the nectar into delicious honey, which they store in the hive.
+                </p>
+                <p>
+                    One of the most important jobs bees do is called <strong>pollination</strong>. When a bee visits a flower to collect nectar, tiny grains of pollen stick to its body. As the bee flies to another flower, it carries this pollen, helping the plants make seeds and fruits. This means that without bees, we wouldn't have many of the fruits, vegetables, and nuts we love to eat!
+                </p>
+                <p>
+                    So, the next time you see a bee, remember how hard they work. They are tiny heroes making a huge difference to our food and our world. Let's do our part to protect these amazing insects!
+                </p>
+            </div>
+        </section>
+
+        <!-- Informative Idea Sparker -->
+        <section class="mb-10 p-6 bg-tip-red rounded-2xl shadow-lg-custom text-center">
+            <h2 class="text-3xl mb-4 text-white">Informative Idea Sparker! 🔥</h2>
+            <button id="sparkIdeaBtn" class="reveal-button text-lg px-8 py-3 mb-4">Generate Informative Topic!</button>
+            <p id="topicIdeaDisplay" class="text-xl font-semibold text-white mt-4 italic">Click the button to get started!</p>
+        </section>
+
+        <!-- Fact & Detail Suggester (LLM Feature) -->
+        <section class="mb-10 p-6 bg-element-yellow rounded-2xl shadow-lg-custom text-center">
+            <h2 class="text-3xl mb-4 text-tip-red">💡 Fact & Detail Suggester 💡</h2>
+            <p class="text-lg text-gray-800 mb-4">Enter a topic, and I'll suggest facts or details for your informative writing!</p>
+            <div class="llm-input-area mb-4">
+                <textarea id="factSuggesterInput" class="w-full p-3 rounded-lg border border-gray-300 mb-2 min-h-[80px] text-gray-800" placeholder="e.g., The life cycle of a butterfly"></textarea>
+                <button id="suggestFactsBtn" class="llm-button">Suggest Facts <span id="factSpinner" class="hidden loading-spinner"></span></button>
+            </div>
+            <div id="factSuggesterOutput" class="llm-output-area text-gray-800"></div>
+        </section>
+
+        <!-- Vocabulary Helper (LLM Feature) -->
+        <section class="mb-10 p-6 bg-section-green rounded-2xl shadow-lg-custom text-center">
+            <h2 class="text-3xl mb-4 text-header-title-yellow">🔠 Vocabulary Helper 🔠</h2>
+            <p class="text-lg text-gray-100 mb-4">Enter a word, and I'll explain it simply or suggest synonyms!</p>
+            <div class="llm-input-area mb-4">
+                <input type="text" id="vocabularyInput" class="w-full p-3 rounded-lg border border-gray-300 mb-2 text-gray-800" placeholder="e.g., 'ancient' or 'explain'">
+                <button id="explainVocabularyBtn" class="llm-button">Get Help <span id="vocabularySpinner" class="hidden loading-spinner"></span></button>
+            </div>
+            <div id="vocabularyOutput" class="llm-output-area text-gray-800"></div>
+        </section>
+
+        <!-- Conclusion -->
+        <section class="mb-10 p-6 bg-header-blue text-white rounded-2xl shadow-lg-custom text-center">
+            <h2 class="text-3xl mb-4 text-header-title-yellow">You're Ready to INFORM! 🎉</h2>
+            <p class="text-lg text-gray-100">
+                With these features and skills, you're all set to write amazing informative pieces that will educate and engage your readers! Keep exploring and sharing knowledge!
+            </p>
+        </section>
+
+        <!-- Footer -->
+        <footer class="mt-10 p-6 bg-tip-red text-white rounded-2xl shadow-lg-custom text-center">
+            <p class="text-md text-gray-300">Knowledge is Power! 🧠</p>
+        </footer>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Function to handle accordion-style interactive cards
+            function setupAccordion(sectionId) {
+                const section = document.getElementById(sectionId);
+                if (!section) return; // Exit if section not found
+
+                section.querySelectorAll('.interactive-card').forEach(card => {
+                    const trigger = card.querySelector('.cursor-pointer, .tip-card-header'); // Select both types of triggers
+                    const content = card.querySelector('.accordion-content') || card.querySelector('.tip-card-content');
+                    const icon = card.querySelector('span');
+
+                    if (trigger && content && icon) {
+                        trigger.addEventListener('click', () => {
+                            // Close other open accordions in the same section
+                            section.querySelectorAll('.accordion-content.active, .tip-card-content.active').forEach(openContent => {
+                                if (openContent !== content) {
+                                    openContent.classList.remove('active');
+                                    const otherIcon = openContent.closest('.interactive-card').querySelector('span');
+                                    if (otherIcon) {
+                                        otherIcon.classList.remove('rotate-180');
+                                    }
+                                }
+                            });
+
+                            // Toggle the clicked accordion
+                            content.classList.toggle('active');
+                            icon.classList.toggle('rotate-180');
+                        });
+                    }
+                });
+            }
+
+            // Setup accordions for specific sections
+            setupAccordion('inform-features-section');
+
+            // Informative Idea Sparker
+            const informativeTopics = [
+                "How Bees Make Honey",
+                "The Life Cycle of a Butterfly",
+                "Why the Sky is Blue",
+                "The History of Chocolate",
+                "How Volcanoes Erupt",
+                "The Importance of Recycling",
+                "Different Types of Dinosaurs",
+                "How Plants Grow",
+                "The Wonders of the Ocean",
+                "How Computers Work (Simply Explained)",
+                "The Story of the Internet",
+                "Why We Have Different Seasons",
+                "The Journey of a River",
+                "How Birds Learn to Fly",
+                "The Great Wall of China: A Historical Marvel"
+            ];
+            const sparkIdeaBtn = document.getElementById('sparkIdeaBtn');
+            const topicIdeaDisplay = document.getElementById('topicIdeaDisplay');
+
+            sparkIdeaBtn.addEventListener('click', () => {
+                const randomIndex = Math.floor(Math.random() * informativeTopics.length);
+                topicIdeaDisplay.textContent = informativeTopics[randomIndex];
+            });
+
+            // Gemini API Integration for Fact & Detail Suggester
+            const factSuggesterInput = document.getElementById('factSuggesterInput');
+            const suggestFactsBtn = document.getElementById('suggestFactsBtn');
+            const factSuggesterOutput = document.getElementById('factSuggesterOutput');
+            const factSpinner = document.getElementById('factSpinner');
+
+            suggestFactsBtn.addEventListener('click', async () => {
+                const topic = factSuggesterInput.value.trim();
+                if (!topic) {
+                    factSuggesterOutput.textContent = "Please enter a topic to get facts and details.";
+                    factSuggesterOutput.style.color = '#DC2626'; // Red
+                    return;
+                }
+
+                factSuggesterOutput.textContent = ''; // Clear previous output
+                factSuggesterOutput.style.color = '#333'; // Reset color
+                factSpinner.classList.remove('hidden');
+                suggestFactsBtn.disabled = true;
+
+                try {
+                    const prompt = `Provide 3-5 simple facts or supporting details about the topic "${topic}" suitable for a primary school informative writing piece. Present these as a numbered list.`;
+                    let chatHistory = [];
+                    chatHistory.push({ role: "user", parts: [{ text: prompt }] });
+                    const payload = {
+                        contents: chatHistory,
+                        generationConfig: {
+                            responseMimeType: "application/json",
+                            responseSchema: {
+                                type: "ARRAY",
+                                items: { "type": "STRING" }
+                            }
+                        }
+                    };
+                    const apiKey = ""; // Canvas will provide this at runtime
+                    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+
+                    const result = await response.json();
+                    if (result.candidates && result.candidates.length > 0 &&
+                        result.candidates[0].content && result.candidates[0].content.parts &&
+                        result.candidates[0].content.parts.length > 0) {
+                        const jsonText = result.candidates[0].content.parts[0].text;
+                        const facts = JSON.parse(jsonText);
+                        
+                        if (Array.isArray(facts) && facts.length > 0) {
+                            factSuggesterOutput.innerHTML = '<strong class="text-header-blue">Suggested Facts:</strong><ol class="list-decimal list-inside mt-2">';
+                            facts.forEach(f => {
+                                factSuggesterOutput.innerHTML += `<li>${f}</li>`;
+                            });
+                            factSuggesterOutput.innerHTML += '</ol>';
+                        } else {
+                            factSuggesterOutput.textContent = "Could not suggest facts for this topic. Please try a different one.";
+                            factSuggesterOutput.style.color = '#DC2626';
+                        }
+                    } else {
+                        factSuggesterOutput.textContent = "Failed to get a response from the AI. Please try again.";
+                        factSuggesterOutput.style.color = '#DC2626';
+                    }
+                } catch (error) {
+                    console.error("Error suggesting facts:", error);
+                    factSuggesterOutput.textContent = "An error occurred while suggesting facts. Please try again.";
+                    factSuggesterOutput.style.color = '#DC2626';
+                } finally {
+                    factSpinner.classList.add('hidden');
+                    suggestFactsBtn.disabled = false;
+                }
+            });
+
+            // Gemini API Integration for Vocabulary Helper
+            const vocabularyInput = document.getElementById('vocabularyInput');
+            const explainVocabularyBtn = document.getElementById('explainVocabularyBtn');
+            const vocabularyOutput = document.getElementById('vocabularyOutput');
+            const vocabularySpinner = document.getElementById('vocabularySpinner');
+
+            explainVocabularyBtn.addEventListener('click', async () => {
+                const word = vocabularyInput.value.trim();
+                if (!word) {
+                    vocabularyOutput.textContent = "Please enter a word to get help with its vocabulary.";
+                    vocabularyOutput.style.color = '#DC2626'; // Red
+                    return;
+                }
+
+                vocabularyOutput.textContent = ''; // Clear previous output
+                vocabularyOutput.style.color = '#333'; // Reset color
+                vocabularySpinner.classList.remove('hidden');
+                explainVocabularyBtn.disabled = true;
+
+                try {
+                    const prompt = `Explain the word "${word}" simply for a primary school pupil, and provide one or two simple synonyms if possible.
+                    
+                    Provide the response as a JSON object with two keys: "explanation" and "synonyms" (which should be a string like "e.g., big, large" or "None" if no simple synonyms).`;
+                    
+                    let chatHistory = [];
+                    chatHistory.push({ role: "user", parts: [{ text: prompt }] });
+                    const payload = {
+                        contents: chatHistory,
+                        generationConfig: {
+                            responseMimeType: "application/json",
+                            responseSchema: {
+                                type: "OBJECT",
+                                properties: {
+                                    "explanation": { "type": "STRING" },
+                                    "synonyms": { "type": "STRING" }
+                                },
+                                propertyOrdering: ["explanation", "synonyms"]
+                            }
+                        }
+                    };
+                    const apiKey = ""; // Canvas will provide this at runtime
+                    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+
+                    const result = await response.json();
+                    if (result.candidates && result.candidates.length > 0 &&
+                        result.candidates[0].content && result.candidates[0].content.parts &&
+                        result.candidates[0].content.parts.length > 0) {
+                        const jsonText = result.candidates[0].content.parts[0].text;
+                        const parsedResult = JSON.parse(jsonText);
+                        
+                        if (parsedResult.explanation) {
+                            vocabularyOutput.innerHTML = `
+                                <p><strong class="text-section-green">Explanation:</strong> ${parsedResult.explanation}</p>
+                                ${parsedResult.synonyms && parsedResult.synonyms !== "None" ? `<p class="mt-2"><strong class="text-section-green">Synonyms:</strong> ${parsedResult.synonyms}</p>` : ''}
+                            `;
+                        } else {
+                            vocabularyOutput.textContent = "Could not explain that word. Please try a different one.";
+                            vocabularyOutput.style.color = '#DC2626';
+                        }
+                    } else {
+                        vocabularyOutput.textContent = "Failed to get a response from the AI. Please try again.";
+                        vocabularyOutput.style.color = '#DC2626';
+                    }
+                } catch (error) {
+                    console.error("Error explaining vocabulary:", error);
+                    vocabularyOutput.textContent = "An error occurred while explaining vocabulary. Please try again.";
+                    vocabularyOutput.style.color = '#DC2626';
+                } finally {
+                    vocabularySpinner.classList.add('hidden');
+                    explainVocabularyBtn.disabled = false;
+                }
+            });
+        });
+    </script>
+</body>
+</html>

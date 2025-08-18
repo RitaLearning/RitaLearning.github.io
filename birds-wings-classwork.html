@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birds' Wings Comprehension Classwork</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(to bottom right, #f8f8f8, #e0f0f8); /* Light grey to light blue */
+            color: #333;
+        }
+        h1, h2, h3 {
+            font-family: 'Fredoka One', cursive;
+        }
+        .bg-header-green { background-color: #4CAF50; } /* Green from the image */
+        .text-header-green { color: #4CAF50; }
+        .text-dark-gray { color: #333333; }
+        .shadow-lg-custom {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .question-card {
+            background-color: #FFFFFF;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .question-number {
+            font-family: 'Fredoka One', cursive;
+            font-size: 2.5rem; /* Large number */
+            color: #EF4444; /* Red from the image */
+            display: inline-block;
+            margin-right: 0.75rem;
+            vertical-align: middle;
+        }
+        .question-text {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #333333;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #D1D5DB;
+            border-radius: 0.5rem;
+            margin-top: 1rem;
+            min-height: 80px;
+            resize: vertical;
+            font-size: 1rem;
+            color: #333;
+        }
+        .button-group {
+            display: flex;
+            gap: 0.75rem;
+            margin-top: 1rem;
+            justify-content: flex-end; /* Align buttons to the right */
+        }
+        .action-button {
+            background-color: #4CAF50; /* Green */
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 9999px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+        .action-button:hover {
+            background-color: #388E3C; /* Darker green */
+        }
+        .hint-button {
+            background-color: #2196F3; /* Blue */
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 9999px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+        .hint-button:hover {
+            background-color: #1976D2; /* Darker blue */
+        }
+        .feedback-area {
+            margin-top: 1rem;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            min-height: 40px;
+            font-size: 0.95rem;
+            text-align: left;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        .feedback-area.correct { background-color: #D4EDDA; color: #155724; border: 1px solid #C3E6CB; }
+        .feedback-area.incorrect { background-color: #F8D7DA; color: #721C24; border: 1px solid #F5C6CB; }
+        .feedback-area.hint { background-color: #CCE5FF; color: #004085; border: 1px solid #B8DAFF; }
+        .loading-spinner {
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-top: 4px solid #fff;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            animation: spin 1s linear infinite;
+            display: inline-block;
+            vertical-align: middle;
+            margin-left: 8px;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="text-dark-gray">
+
+    <div class="container mx-auto p-4 md:p-8 max-w-4xl">
+
+        <!-- Header -->
+        <header class="text-center p-6 bg-header-green text-white rounded-2xl shadow-lg-custom mb-10">
+            <h1 class="text-4xl md:text-5xl">Comprehension Classwork 📚</h1>
+            <p class="text-lg md:text-xl mt-2 text-gray-100">Birds' Wings: Discuss and Answer!</p>
+        </header>
+
+        <!-- Instructions -->
+        <section class="mb-8 p-6 bg-white-card rounded-2xl shadow-lg-custom">
+            <div class="flex items-center mb-4">
+                <span class="question-number text-red-500">A</span>
+                <p class="text-lg font-bold text-dark-gray">Discuss the answers to these questions.</p>
+            </div>
+            <p class="text-md text-gray-700">
+                Read the questions carefully and type your answers in the boxes below. Use the "Check My Answer" button to see if you're on the right track, or "Get Hint" if you need a little help!
+            </p>
+        </section>
+
+        <!-- Question 1 -->
+        <div class="question-card">
+            <div class="flex items-start">
+                <span class="question-number">1</span>
+                <p class="question-text flex-grow">Which book gives information about the structure of birds' bodies?</p>
+            </div>
+            <textarea id="q1-answer" class="answer-input" placeholder="Type your answer here..."></textarea>
+            <div class="button-group">
+                <button class="hint-button" data-question="1">Get Hint <span id="q1-hint-spinner" class="hidden loading-spinner"></span></button>
+                <button class="action-button" data-question="1">Check My Answer <span id="q1-check-spinner" class="hidden loading-spinner"></span></button>
+            </div>
+            <div id="q1-feedback" class="feedback-area"></div>
+        </div>
+
+        <!-- Question 2 -->
+        <div class="question-card">
+            <div class="flex items-start">
+                <span class="question-number">2</span>
+                <p class="question-text flex-grow">Which book gives information about different types of birds' wings?</p>
+            </div>
+            <textarea id="q2-answer" class="answer-input" placeholder="Type your answer here..."></textarea>
+            <div class="button-group">
+                <button class="hint-button" data-question="2">Get Hint <span id="q2-hint-spinner" class="hidden loading-spinner"></span></button>
+                <button class="action-button" data-question="2">Check My Answer <span id="q2-check-spinner" class="hidden loading-spinner"></span></button>
+            </div>
+            <div id="q2-feedback" class="feedback-area"></div>
+        </div>
+
+        <!-- Question 3 -->
+        <div class="question-card">
+            <div class="flex items-start">
+                <span class="question-number">3</span>
+                <p class="question-text flex-grow">Which book gives information about birds' feathers?</p>
+            </div>
+            <textarea id="q3-answer" class="answer-input" placeholder="Type your answer here..."></textarea>
+            <div class="button-group">
+                <button class="hint-button" data-question="3">Get Hint <span id="q3-hint-spinner" class="hidden loading-spinner"></span></button>
+                <button class="action-button" data-question="3">Check My Answer <span id="q3-check-spinner" class="hidden loading-spinner"></span></button>
+            </div>
+            <div id="q3-feedback" class="feedback-area"></div>
+        </div>
+
+        <!-- Question 4 -->
+        <div class="question-card">
+            <div class="flex items-start">
+                <span class="question-number">4</span>
+                <p class="question-text flex-grow">Give an example of a bird that:</p>
+            </div>
+            <div class="ml-12 mt-4">
+                <p class="text-lg font-semibold mb-2">a flies very fast</p>
+                <textarea id="q4a-answer" class="answer-input" placeholder="Type your answer here..."></textarea>
+                <div class="button-group">
+                    <button class="hint-button" data-question="4a">Get Hint <span id="q4a-hint-spinner" class="hidden loading-spinner"></span></button>
+                    <button class="action-button" data-question="4a">Check My Answer <span id="q4a-check-spinner" class="hidden loading-spinner"></span></button>
+                </div>
+                <div id="q4a-feedback" class="feedback-area"></div>
+            </div>
+            <div class="ml-12 mt-4">
+                <p class="text-lg font-semibold mb-2">b glides</p>
+                <textarea id="q4b-answer" class="answer-input" placeholder="Type your answer here..."></textarea>
+                <div class="button-group">
+                    <button class="hint-button" data-question="4b">Get Hint <span id="q4b-hint-spinner" class="hidden loading-spinner"></span></button>
+                    <button class="action-button" data-question="4b">Check My Answer <span id="q4b-check-spinner" class="hidden loading-spinner"></span></button>
+                </div>
+                <div id="q4b-feedback" class="feedback-area"></div>
+            </div>
+            <div class="ml-12 mt-4">
+                <p class="text-lg font-semibold mb-2">c twist and turns</p>
+                <textarea id="q4c-answer" class="answer-input" placeholder="Type your answer here..."></textarea>
+                <div class="button-group">
+                    <button class="hint-button" data-question="4c">Get Hint <span id="q4c-hint-spinner" class="hidden loading-spinner"></span></button>
+                    <button class="action-button" data-question="4c">Check My Answer <span id="q4c-check-spinner" class="hidden loading-spinner"></span></button>
+                </div>
+                <div id="q4c-feedback" class="feedback-area"></div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="mt-10 p-6 bg-header-green text-white rounded-2xl shadow-lg-custom text-center">
+            <p class="text-md text-gray-300">Keep up the great work! ✨</p>
+        </footer>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Function to handle AI interaction for checking answers and getting hints
+            async function handleAIInteraction(type, questionId, answerText = '') {
+                const feedbackElement = document.getElementById(`${questionId}-feedback`);
+                const spinnerElement = document.getElementById(`${questionId}-${type}-spinner`);
+                const actionButton = document.querySelector(`button[data-question="${questionId.replace(/[a-c]/, '')}"][class*="action-button"]`);
+                const hintButton = document.querySelector(`button[data-question="${questionId.replace(/[a-c]/, '')}"][class*="hint-button"]`);
+                
+                // Disable buttons and show spinner
+                if (actionButton) actionButton.disabled = true;
+                if (hintButton) hintButton.disabled = true;
+                if (spinnerElement) spinnerElement.classList.remove('hidden');
+                feedbackElement.textContent = ''; // Clear previous feedback
+
+                let prompt = '';
+                let expectedAnswer = ''; // This would ideally come from a structured data source
+
+                // Define expected answers and prompts based on questionId
+                switch (questionId) {
+                    case 'q1':
+                        prompt = `The question is "Which book gives information about the structure of birds' bodies?". The correct answer is "How Birds Fly". Evaluate the user's answer: "${answerText}". Is it correct? If not, provide a polite correction. If correct, give positive reinforcement.`;
+                        expectedAnswer = "How Birds Fly";
+                        break;
+                    case 'q2':
+                        prompt = `The question is "Which book gives information about different types of birds' wings?". The correct answer is "A Bird Watcher's Guide". Evaluate the user's answer: "${answerText}". Is it correct? If not, provide a polite correction. If correct, give positive reinforcement.`;
+                        expectedAnswer = "A Bird Watcher's Guide";
+                        break;
+                    case 'q3':
+                        prompt = `The question is "Which book gives information about birds' feathers?". The correct answer is "How Birds Fly". Evaluate the user's answer: "${answerText}". Is it correct? If not, provide a polite correction. If correct, give positive reinforcement.`;
+                        expectedAnswer = "How Birds Fly";
+                        break;
+                    case 'q4a':
+                        prompt = `The question is "Give an example of a bird that flies very fast?". The correct answer is "peregrine falcon". Evaluate the user's answer: "${answerText}". Is it correct? If not, provide a polite correction. If correct, give positive reinforcement.`;
+                        expectedAnswer = "peregrine falcon";
+                        break;
+                    case 'q4b':
+                        prompt = `The question is "Give an example of a bird that glides?". The correct answers include "gulls" or "albatross". Evaluate the user's answer: "${answerText}". Is it correct? If not, provide a polite correction. If correct, give positive reinforcement.`;
+                        expectedAnswer = ["gulls", "albatross"]; // Multiple possible answers
+                        break;
+                    case 'q4c':
+                        prompt = `The question is "Give an example of a bird that twist and turns?". The correct answers include "sparrows", "starlings", or "kingfisher". Evaluate the user's answer: "${answerText}". Is it correct? If not, provide a polite correction. If correct, give positive reinforcement.`;
+                        expectedAnswer = ["sparrows", "starlings", "kingfisher"]; // Multiple possible answers
+                        break;
+                    default:
+                        feedbackElement.textContent = "Error: Question not found.";
+                        feedbackElement.className = 'feedback-area incorrect';
+                        if (spinnerElement) spinnerElement.classList.add('hidden');
+                        if (actionButton) actionButton.disabled = false;
+                        if (hintButton) hintButton.disabled = false;
+                        return;
+                }
+
+                if (type === 'hint') {
+                    prompt = `For the question "${questionId.toUpperCase().replace('Q', 'Question ')}: ${document.querySelector(`#${questionId}-answer`).previousElementSibling.textContent.trim()}", provide a helpful hint for a primary school pupil without giving the direct answer.`;
+                }
+
+                try {
+                    let chatHistory = [];
+                    chatHistory.push({ role: "user", parts: [{ text: prompt }] });
+                    const payload = { contents: chatHistory };
+                    const apiKey = ""; // Canvas will provide this at runtime
+                    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+
+                    const result = await response.json();
+                    if (result.candidates && result.candidates.length > 0 &&
+                        result.candidates[0].content && result.candidates[0].content.parts &&
+                        result.candidates[0].content.parts.length > 0) {
+                        const aiResponse = result.candidates[0].content.parts[0].text;
+
+                        if (type === 'check') {
+                            // Simple keyword check for correctness (can be improved with more robust NLP)
+                            let isCorrect = false;
+                            const lowerCaseAnswer = answerText.toLowerCase();
+                            if (Array.isArray(expectedAnswer)) {
+                                isCorrect = expectedAnswer.some(ans => lowerCaseAnswer.includes(ans.toLowerCase()));
+                            } else {
+                                isCorrect = lowerCaseAnswer.includes(expectedAnswer.toLowerCase());
+                            }
+
+                            if (isCorrect) {
+                                feedbackElement.textContent = "Great job! That's correct! 🎉";
+                                feedbackElement.className = 'feedback-area correct';
+                            } else {
+                                feedbackElement.textContent = aiResponse; // Use AI's correction
+                                feedbackElement.className = 'feedback-area incorrect';
+                            }
+                        } else if (type === 'hint') {
+                            feedbackElement.textContent = `Hint: ${aiResponse}`;
+                            feedbackElement.className = 'feedback-area hint';
+                        }
+                    } else {
+                        feedbackElement.textContent = "Sorry, I couldn't process that. Please try again.";
+                        feedbackElement.className = 'feedback-area incorrect';
+                    }
+                } catch (error) {
+                    console.error(`Error during AI ${type} for ${questionId}:`, error);
+                    feedbackElement.textContent = `An error occurred. Please try again.`;
+                    feedbackElement.className = 'feedback-area incorrect';
+                } finally {
+                    // Re-enable buttons and hide spinner
+                    if (spinnerElement) spinnerElement.classList.add('hidden');
+                    if (actionButton) actionButton.disabled = false;
+                    if (hintButton) hintButton.disabled = false;
+                }
+            }
+
+            // Event Listeners for Check My Answer buttons
+            document.querySelectorAll('.action-button').forEach(button => {
+                button.addEventListener('click', (event) => {
+                    const questionId = event.target.dataset.question;
+                    const answerInput = document.getElementById(`${questionId}-answer`);
+                    if (answerInput) {
+                        handleAIInteraction('check', questionId, answerInput.value);
+                    }
+                });
+            });
+
+            // Event Listeners for Get Hint buttons
+            document.querySelectorAll('.hint-button').forEach(button => {
+                button.addEventListener('click', (event) => {
+                    const questionId = event.target.dataset.question;
+                    handleAIInteraction('hint', questionId);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

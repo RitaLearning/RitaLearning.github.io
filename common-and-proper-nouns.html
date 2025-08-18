@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nouns Navigator: Common vs. Proper!</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.6;
+            background-color: #f8fafc; /* Light blue-gray background */
+            color: #333;
+        }
+        h1, h2, h3 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+        }
+        .header-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); /* Purple-blue gradient */
+        }
+        .section-common-bg {
+            background-color: #e0f2fe; /* Light blue */
+        }
+        .section-proper-bg {
+            background-color: #ede9fe; /* Light purple */
+        }
+        .accent-text-dark {
+            color: #4c51bf; /* Darker indigo */
+        }
+        .accent-text-light {
+            color: #8b5cf6; /* Medium purple */
+        }
+        .card-shadow {
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .interactive-input {
+            border: 2px solid #a78bfa; /* Light purple border */
+            border-radius: 0.5rem;
+            padding: 0.75rem;
+            width: 100%;
+            font-size: 1rem;
+            color: #333;
+        }
+        .interactive-button {
+            background-color: #8b5cf6; /* Medium purple */
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+        .interactive-button:hover {
+            background-color: #7c3aed; /* Darker purple */
+        }
+        .loading-spinner {
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-top: 4px solid #fff;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            animation: spin 1s linear infinite;
+            display: inline-block;
+            vertical-align: middle;
+            margin-left: 8px;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .output-box {
+            background-color: #f0f9ff; /* Very light blue */
+            border: 1px solid #bfdbfe; /* Light blue border */
+            border-radius: 0.5rem;
+            padding: 1rem;
+            min-height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #1e3a8a; /* Dark blue text */
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <div class="container mx-auto p-4 md:p-8 max-w-4xl">
+
+        <!-- Header -->
+        <header class="text-center p-8 rounded-2xl shadow-lg header-bg text-white mb-10">
+            <h1 class="text-4xl md:text-5xl mb-2">Nouns Navigator 🧭</h1>
+            <p class="text-xl md:text-2xl font-light">Common vs. Proper: A Guide</p>
+        </header>
+
+        <!-- Introduction -->
+        <section class="mb-10 p-6 bg-white rounded-xl card-shadow text-center">
+            <h2 class="text-3xl mb-4 accent-text-dark">What are Nouns? 🤔</h2>
+            <p class="text-lg text-gray-700">
+                Nouns are words that name a <strong>person</strong>, <strong>place</strong>, <strong>thing</strong>, or <strong>idea</strong>. They are the building blocks of sentences! But did you know there are different types? Let's explore two main kinds: Common and Proper Nouns!
+            </p>
+        </section>
+
+        <!-- Common Nouns Section -->
+        <section class="mb-10 p-6 rounded-xl card-shadow section-common-bg">
+            <h2 class="text-3xl text-center mb-6 accent-text-light">Common Nouns 🌍</h2>
+            <p class="text-lg text-gray-700 mb-4">
+                A <strong>common noun</strong> names any general person, place, thing, or idea. They are not capitalized unless they start a sentence. Think of them as general categories!
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-center">
+                <div class="p-4 bg-white rounded-lg card-shadow">
+                    <span class="text-5xl mb-2 block">👩‍🏫</span>
+                    <p class="text-xl font-semibold accent-text-dark">teacher</p>
+                </div>
+                <div class="p-4 bg-white rounded-lg card-shadow">
+                    <span class="text-5xl mb-2 block">🏫</span>
+                    <p class="text-xl font-semibold accent-text-dark">school</p>
+                </div>
+                <div class="p-4 bg-white rounded-lg card-shadow">
+                    <span class="text-5xl mb-2 block">🐶</span>
+                    <p class="text-xl font-semibold accent-text-dark">dog</p>
+                </div>
+                <div class="p-4 bg-white rounded-lg card-shadow">
+                    <span class="text-5xl mb-2 block">📚</span>
+                    <p class="text-xl font-semibold accent-text-dark">book</p>
+                </div>
+                <div class="p-4 bg-white rounded-lg card-shadow">
+                    <span class="text-5xl mb-2 block">🏞️</span>
+                    <p class="text-xl font-semibold accent-text-dark">park</p>
+                </div>
+                <div class="p-4 bg-white rounded-lg card-shadow">
+                    <span class="text-5xl mb-2 block">💡</span>
+                    <p class="text-xl font-semibold accent-text-dark">idea</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Proper Nouns Section -->
+        <section class="mb-10 p-6 rounded-xl card-shadow section-proper-bg">
+            <h2 class="text-3xl text-center mb-6 accent-text-light">Proper Nouns 🌟</h2>
+            <p class="text-lg text-gray-700 mb-4">
+                A <strong>proper noun</strong> names a specific person, place, thing, or idea. They are <strong>always capitalized</strong>, no matter where they appear in a sentence!
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-center">
+                <div class="p-4 bg-white rounded-lg card-shadow">
+                    <span class="text-5xl mb-2 block">👩‍🎤</span>
+                    <p class="text-xl font-semibold accent-text-dark">Ms. Smith</p>
+                </div>
+                <div class="p-4 bg-white rounded-lg card-shadow">
+                    <span class="text-5xl mb-2 block">🏛️</span>
+                    <p class="text-xl font-semibold accent-text-dark">Google Headquarters</p>
+                </div>
+                <div class="p-4 bg-white rounded-lg card-shadow">
+                    <span class="text-5xl mb-2 block">🐶</span>
+                    <p class="text-xl font-semibold accent-text-dark">Fido</p>
+                </div>
+                <div class="p-4 bg-white rounded-lg card-shadow">
+                    <span class="text-5xl mb-2 block">📖</span>
+                    <p class="text-xl font-semibold accent-text-dark">The Great Gatsby</p>
+                </div>
+                <div class="p-4 bg-white rounded-lg card-shadow">
+                    <span class="text-5xl mb-2 block">🌳</span>
+                    <p class="text-xl font-semibold accent-text-dark">Central Park</p>
+                </div>
+                <div class="p-4 bg-white rounded-lg card-shadow">
+                    <span class="text-5xl mb-2 block">🎉</span>
+                    <p class="text-xl font-semibold accent-text-dark">Christmas</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Key Differences Section -->
+        <section class="mb-10 p-6 bg-white rounded-xl card-shadow">
+            <h2 class="text-3xl text-center mb-6 accent-text-dark">Key Differences 🔑</h2>
+            <div class="overflow-x-auto">
+                <table class="min-w-full bg-white border border-gray-200 rounded-lg">
+                    <thead>
+                        <tr class="bg-gray-100">
+                            <th class="py-3 px-4 border-b text-left text-lg font-semibold text-gray-700">Feature</th>
+                            <th class="py-3 px-4 border-b text-left text-lg font-semibold text-gray-700">Common Noun</th>
+                            <th class="py-3 px-4 border-b text-left text-lg font-semibold text-gray-700">Proper Noun</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="py-3 px-4 border-b"><strong>What it names</strong></td>
+                            <td class="py-3 px-4 border-b">General person, place, thing, or idea</td>
+                            <td class="py-3 px-4 border-b">Specific person, place, thing, or idea</td>
+                        </tr>
+                        <tr>
+                            <td class="py-3 px-4 border-b"><strong>Capitalization</strong></td>
+                            <td class="py-3 px-4 border-b">Not capitalized (unless at start of sentence)</td>
+                            <td class="py-3 px-4 border-b">Always capitalized</td>
+                        </tr>
+                        <tr>
+                            <td class="py-3 px-4"><strong>Examples</strong></td>
+                            <td class="py-3 px-4">city, girl, holiday, car</td>
+                            <td class="py-3 px-4">London, Sarah, Christmas, Toyota</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Interactive Noun Classifier (LLM Feature) -->
+        <section class="mb-10 p-6 rounded-xl card-shadow header-bg text-white text-center">
+            <h2 class="text-3xl mb-4 text-yellow-300">Noun Detective! 🕵️‍♀️</h2>
+            <p class="text-lg text-gray-100 mb-4">Type a noun below and I'll tell you if it's common or proper!</p>
+            <div class="flex flex-col md:flex-row items-center justify-center gap-4 mb-4">
+                <input type="text" id="nounInput" class="interactive-input text-gray-800" placeholder="e.g., cat, Paris, teacher">
+                <button id="classifyNounBtn" class="interactive-button flex items-center justify-center">
+                    Classify Noun <span id="nounSpinner" class="hidden loading-spinner"></span>
+                </button>
+            </div>
+            <div id="nounOutput" class="output-box">
+                Your noun classification will appear here!
+            </div>
+        </section>
+
+        <!-- Conclusion -->
+        <section class="mb-10 p-6 bg-white rounded-xl card-shadow text-center">
+            <h2 class="text-3xl mb-4 accent-text-dark">You're a Noun Expert! 🎉</h2>
+            <p class="text-lg text-gray-700">
+                Great job! You now understand the difference between common and proper nouns. Keep practicing, and you'll be identifying them like a pro in no time!
+            </p>
+        </section>
+
+        <!-- Footer -->
+        <footer class="mt-10 p-6 text-center text-gray-600 text-sm">
+            <p>&copy; 2025 Noun Navigator. All rights reserved.</p>
+        </footer>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const nounInput = document.getElementById('nounInput');
+            const classifyNounBtn = document.getElementById('classifyNounBtn');
+            const nounOutput = document.getElementById('nounOutput');
+            const nounSpinner = document.getElementById('nounSpinner');
+
+            classifyNounBtn.addEventListener('click', async () => {
+                const noun = nounInput.value.trim();
+                if (!noun) {
+                    nounOutput.textContent = "Please enter a noun to classify.";
+                    nounOutput.style.borderColor = '#ef4444'; /* Red border for error */
+                    nounOutput.style.color = '#dc2626'; /* Red text for error */
+                    return;
+                }
+
+                nounOutput.textContent = ''; // Clear previous output
+                nounOutput.style.borderColor = '#bfdbfe'; // Reset border color
+                nounOutput.style.color = '#1e3a8a'; // Reset text color
+                nounSpinner.classList.remove('hidden');
+                classifyNounBtn.disabled = true;
+
+                try {
+                    const prompt = `Classify the following word as either a "Common Noun" or a "Proper Noun". Provide only the classification and a brief, simple explanation. For example, if the word is "dog", respond "Common Noun: Names a general animal.". If the word is "Paris", respond "Proper Noun: Names a specific city.". Please use <strong> HTML tags for any bold text in your response.
+                    Word: "${noun}"`;
+                    
+                    let chatHistory = [];
+                    chatHistory.push({ role: "user", parts: [{ text: prompt }] });
+                    const payload = { contents: chatHistory };
+                    const apiKey = "AIzaSyDqdwlzMf0HXP1cJ19Y5K4-awb_sp177pY"; // Canvas will provide this at runtime
+                    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+
+                    const result = await response.json();
+                    if (result.candidates && result.candidates.length > 0 &&
+                        result.candidates[0].content && result.candidates[0].content.parts &&
+                        result.candidates[0].content.parts.length > 0) {
+                        nounOutput.innerHTML = result.candidates[0].content.parts[0].text; // Use innerHTML to render strong tags
+                    } else {
+                        nounOutput.textContent = "Sorry, I couldn't classify that. Please try again.";
+                        nounOutput.style.borderColor = '#ef4444';
+                        nounOutput.style.color = '#dc2626';
+                    }
+                } catch (error) {
+                    console.error("Error classifying noun:", error);
+                    nounOutput.textContent = "An error occurred while classifying your noun. Please try again.";
+                    nounOutput.style.borderColor = '#ef4444';
+                    nounOutput.style.color = '#dc2626';
+                } finally {
+                    nounSpinner.classList.add('hidden');
+                    classifyNounBtn.disabled = false;
+                }
+            });
+        });
+    </script>
+</body>
+</html>

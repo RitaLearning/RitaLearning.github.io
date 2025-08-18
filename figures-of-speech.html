@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Figures of Speech Fun! 🌈</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chewy&family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(to bottom right, #fefce8, #fffbeb); /* Light yellow gradient */
+            color: #333;
+        }
+        h1, h2, h3 {
+            font-family: 'Chewy', cursive;
+            color: #ef4444; /* Red for headings */
+        }
+        .header-bg {
+            background: linear-gradient(135deg, #f97316 0%, #ea580c 100%); /* Orange gradient */
+            border: 2px solid #fbbf24; /* Amber border */
+        }
+        .section-card {
+            background-color: #ffffff;
+            border-radius: 1.5rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s ease-in-out;
+        }
+        .section-card:hover {
+            transform: translateY(-5px);
+        }
+        .accent-color-1 { color: #f97316; } /* Orange */
+        .accent-color-2 { color: #22c55e; } /* Green */
+        .accent-color-3 { color: #3b82f6; } /* Blue */
+        .accent-color-4 { color: #8b5cf6; } /* Purple */
+        .accent-color-5 { color: #ec4899; } /* Pink */
+
+        .interactive-button {
+            background-color: #f97316; /* Orange */
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .interactive-button:hover {
+            background-color: #ea580c; /* Darker orange */
+            transform: translateY(-1px);
+        }
+        .interactive-input {
+            border: 2px solid #fbbf24; /* Amber border */
+            border-radius: 0.5rem;
+            padding: 0.75rem;
+            width: 100%;
+            font-size: 1rem;
+            color: #333;
+            background-color: #fff;
+        }
+        .loading-spinner {
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-top: 4px solid #fff;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            animation: spin 1s linear infinite;
+            display: inline-block;
+            vertical-align: middle;
+            margin-left: 8px;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .output-box {
+            background-color: #fff7ed; /* Light orange background */
+            border: 1px solid #fed7aa; /* Light orange border */
+            border-radius: 0.5rem;
+            padding: 1rem;
+            min-height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #c2410c; /* Dark orange text */
+            font-weight: 600;
+            margin-top: 1rem;
+            white-space: pre-wrap; /* Preserve whitespace and wrap text */
+            word-wrap: break-word; /* Break long words */
+        }
+
+        /* Mini-activity specific styles */
+        .mini-activity-box {
+            background-color: #fef3c7; /* Light yellow */
+            border-radius: 0.75rem;
+            padding: 1rem;
+            margin-top: 1rem;
+            text-align: center;
+            border: 1px dashed #fbbf24;
+        }
+        .mini-activity-question {
+            font-weight: 600;
+            color: #d97706; /* Orange-600 */
+            margin-bottom: 0.75rem;
+        }
+        .mini-activity-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-in-out;
+            color: #78350f; /* Orange-900 */
+            font-style: italic;
+        }
+        .mini-activity-answer.active {
+            max-height: 100px; /* Adjust as needed */
+            padding-top: 0.5rem;
+            border-top: 1px dashed #fcd34d;
+        }
+
+        /* Quiz specific styles */
+        .quiz-question-card {
+            background-color: #fff;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .quiz-question-card p {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #ef4444; /* Red */
+        }
+        .quiz-options label {
+            display: block;
+            margin-bottom: 0.75rem;
+            cursor: pointer;
+            font-size: 1rem;
+            color: #333;
+            transition: color 0.2s ease;
+        }
+        .quiz-options label:hover {
+            color: #f97316; /* Orange on hover */
+        }
+        .quiz-options input[type="radio"] {
+            margin-right: 0.5rem;
+            accent-color: #f97316; /* Orange accent for radio buttons */
+        }
+        .quiz-feedback {
+            margin-top: 1rem;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            text-align: center;
+            min-height: 40px;
+        }
+        .quiz-feedback.correct {
+            background-color: #d4edda; /* Light green */
+            color: #155724; /* Dark green text */
+            border: 1px solid #c3e6cb;
+        }
+        .quiz-feedback.incorrect {
+            background-color: #f8d7da; /* Light red */
+            color: #721c24; /* Dark red text */
+            border: 1px solid #f5c6cb;
+        }
+        .correct-answer-highlight {
+            background-color: #e6ffed; /* Very light green */
+            border-radius: 0.25rem;
+            padding: 0.25rem 0.5rem;
+        }
+
+        /* Passage/Poem analysis specific styles */
+        .analysis-textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #fbbf24;
+            border-radius: 0.5rem;
+            margin-top: 1rem;
+            min-height: 100px;
+            resize: vertical;
+            font-size: 1rem;
+            color: #333;
+            background-color: #fff;
+        }
+        .analysis-button-group {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 1rem;
+        }
+        .analysis-feedback {
+            background-color: #fff7ed;
+            border: 1px solid #fed7aa;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            min-height: 50px;
+            margin-top: 1rem;
+            text-align: left;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            color: #c2410c;
+            font-weight: 600;
+        }
+        .analysis-feedback.correct {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .analysis-feedback.incorrect {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <div class="container mx-auto p-4 md:p-8 max-w-4xl">
+
+        <!-- Header -->
+        <header class="text-center p-8 rounded-2xl header-bg text-white mb-10">
+            <h1 class="text-4xl md:text-5xl mb-2 text-white">Figures of Speech Fun! 🎉</h1>
+            <p class="text-xl md:text-2xl font-light text-gray-100">Making Language Sparkle!</p>
+            <p class="text-md mt-1 text-gray-200">Teacher: <strong class="text-xl">Ndudi Rita Enemuwe</strong></p>
+        </header>
+
+        <!-- Introduction -->
+        <section class="mb-10 p-6 section-card text-center">
+            <h2 class="text-3xl mb-4 accent-color-1">What are Figures of Speech? 🤔</h2>
+            <p class="text-lg text-gray-700">
+                Figures of Speech are special ways we use words to make our language more interesting, imaginative, and powerful! They help us paint pictures with words and express ourselves creatively. Let's explore some common ones!
+            </p>
+        </section>
+
+        <!-- Learning Objectives Section -->
+        <section class="mb-10 p-6 section-card">
+            <h2 class="text-3xl text-center mb-6 accent-color-2">Learning Objectives 🎯</h2>
+            <ul class="list-disc pl-6 text-gray-700 space-y-2">
+                <li>Define and identify common figures of speech: <strong>Simile</strong>, <strong>Metaphor</strong>, <strong>Personification</strong>, <strong>Alliteration</strong>, <strong>Onomatopoeia</strong>, <strong>Hyperbole</strong>, and <strong>Irony</strong>.</li>
+                <li>Understand how each figure of speech adds meaning and creativity to language.</li>
+                <li>Recognize examples of figures of speech in sentences, passages, and poems.</li>
+                <li>Apply knowledge of figures of speech to answer questions and complete activities.</li>
+                <li>Develop an appreciation for the beauty and power of language.</li>
+            </ul>
+        </section>
+
+        <!-- Simile Section -->
+        <section class="mb-10 p-6 section-card">
+            <h2 class="text-3xl text-center mb-6 accent-color-3">Simile ✨</h2>
+            <p class="text-lg text-gray-700 mb-4">
+                A <strong>Simile</strong> compares two different things using the words <strong>"like"</strong> or <strong>"as"</strong>. It helps us understand something by showing how it's similar to something else.
+            </p>
+            <p class="text-center text-gray-600 italic mb-4">Example: "The cloud was <strong>as fluffy as</strong> cotton candy."</p>
+            <p class="text-center text-gray-600 italic">Example: "He ran <strong>like</strong> a cheetah."</p>
+
+            <div class="mini-activity-box">
+                <p class="mini-activity-question">Can you complete the simile? "The baby cried ____ a siren."</p>
+                <button class="interactive-button mini-activity-reveal-btn">Show Answer</button>
+                <p class="mini-activity-answer">Answer: "The baby cried <strong>like</strong> a siren."</p>
+            </div>
+        </section>
+
+        <!-- Metaphor Section -->
+        <section class="mb-10 p-6 section-card">
+            <h2 class="text-3xl text-center mb-6 accent-color-4">Metaphor 🎭</h2>
+            <p class="text-lg text-gray-700 mb-4">
+                A <strong>Metaphor</strong> directly compares two unlike things by saying one <strong>IS</strong> the other. It does NOT use "like" or "as." It says something *is* something else to create a strong image.
+            </p>
+            <p class="text-center text-gray-600 italic mb-4">Example: "The classroom <strong>was</strong> a zoo."</p>
+            <p class="text-center text-gray-600 italic">Example: "Her smile <strong>is</strong> sunshine."</p>
+
+            <div class="mini-activity-box">
+                <p class="mini-activity-question">Identify the metaphor: "The world is a stage."</p>
+                <button class="interactive-button mini-activity-reveal-btn">Show Answer</button>
+                <p class="mini-activity-answer">Answer: The metaphor is "The world <strong>is</strong> a stage" (comparing the world directly to a stage).</p>
+            </div>
+        </section>
+
+        <!-- Personification Section -->
+        <section class="mb-10 p-6 section-card">
+            <h2 class="text-3xl text-center mb-6 accent-color-5">Personification 🚶‍♀️</h2>
+            <p class="text-lg text-gray-700 mb-4">
+                <strong>Personification</strong> is when you give human qualities or actions to things that are not human, like objects or animals.
+            </p>
+            <p class="text-center text-gray-600 italic mb-4">Example: "The wind <strong>whispered</strong> secrets."</p>
+            <p class="text-center text-gray-600 italic">Example: "The old house <strong>groaned</strong>."</p>
+
+            <div class="mini-activity-box">
+                <p class="mini-activity-question">What human action is given to the flowers? "The flowers danced in the breeze."</p>
+                <button class="interactive-button mini-activity-reveal-btn">Show Answer</button>
+                <p class="mini-activity-answer">Answer: The human action given to the flowers is "<strong>danced</strong>."</p>
+            </div>
+        </section>
+
+        <!-- Alliteration Section -->
+        <section class="mb-10 p-6 section-card">
+            <h2 class="text-3xl text-center mb-6 accent-color-1">Alliteration 🗣️</h2>
+            <p class="text-lg text-gray-700 mb-4">
+                <strong>Alliteration</strong> is when words that are close together start with the same sound. It creates a catchy rhythm!
+            </p>
+            <p class="text-center text-gray-600 italic mb-4">Example: "<strong>P</strong>eter <strong>P</strong>iper <strong>p</strong>icked a <strong>p</strong>eck of <strong>p</strong>ickled <strong>p</strong>eppers."</p>
+            <p class="text-center text-gray-600 italic">Example: "<strong>S</strong>illy <strong>s</strong>nakes <strong>s</strong>lide <strong>s</strong>lowly."</p>
+
+            <div class="mini-activity-box">
+                <p class="mini-activity-question">Find the repeating sound: "Tiny turtles travel to town."</p>
+                <button class="interactive-button mini-activity-reveal-btn">Show Answer</button>
+                <p class="mini-activity-answer">Answer: The repeating sound is the "<strong>T</strong>" sound.</p>
+            </div>
+        </section>
+
+        <!-- Onomatopoeia Section -->
+        <section class="mb-10 p-6 section-card">
+            <h2 class="text-3xl text-center mb-6 accent-color-2">Onomatopoeia 🔊</h2>
+            <p class="text-lg text-gray-700 mb-4">
+                <strong>Onomatopoeia</strong> (say: on-uh-mat-uh-PEE-uh) is a word that imitates the sound it represents. It makes writing sound more real!
+            </p>
+            <p class="text-center text-gray-600 italic mb-4">Example: "The bee <strong>buzzed</strong>."</p>
+            <p class="text-center text-gray-600 italic">Example: "The clock went <strong>tick-tock</strong>."</p>
+
+            <div class="mini-activity-box">
+                <p class="mini-activity-question">What sound does this word make? "Splat!"</p>
+                <button class="interactive-button mini-activity-reveal-btn">Show Answer</button>
+                <p class="mini-activity-answer">Answer: "<strong>Splat!</strong>" makes the sound of something hitting a surface with a soft, wet impact.</p>
+            </div>
+        </section>
+
+        <!-- Hyperbole Section -->
+        <section class="mb-10 p-6 section-card">
+            <h2 class="text-3xl text-center mb-6 accent-color-3">Hyperbole 🤩</h2>
+            <p class="text-lg text-gray-700 mb-4">
+                <strong>Hyperbole</strong> (say: hy-PER-buh-lee) is an extreme exaggeration used to make a point or for emphasis. It's not meant to be taken literally!
+            </p>
+            <p class="text-center text-gray-600 italic mb-4">Example: "I'm so hungry, I could <strong>eat a horse</strong>!"</p>
+            <p class="text-center text-gray-600 italic">Example: "I've told you a <strong>million times</strong>!"</p>
+
+            <div class="mini-activity-box">
+                <p class="mini-activity-question">What is the exaggeration in this sentence? "My backpack weighs a ton!"</p>
+                <button class="interactive-button mini-activity-reveal-btn">Show Answer</button>
+                <p class="mini-activity-answer">Answer: The exaggeration is "<strong>weighs a ton</strong>" (backpacks don't actually weigh a ton).</p>
+            </div>
+        </section>
+
+        <!-- Irony Section -->
+        <section class="mb-10 p-6 section-card">
+            <h2 class="text-3xl text-center mb-6 accent-color-4">Irony 🤫</h2>
+            <p class="text-lg text-gray-700 mb-4">
+                <strong>Irony</strong> is when there's a contrast between what is said and what is actually meant, or between what happens and what is expected to happen. It often creates a surprising or humorous effect.
+            </p>
+            <p class="text-center text-gray-600 italic mb-4">Example: "A fire station <strong>burned down</strong>." (Unexpected outcome)</p>
+            <p class="text-center text-gray-600 italic">Example: Saying "Oh, great!" when you spill your drink. (Meaning the opposite)</p>
+
+            <div class="mini-activity-box">
+                <p class="mini-activity-question">What is ironic about this situation? "The police station was robbed."</p>
+                <button class="interactive-button mini-activity-reveal-btn">Show Answer</button>
+                <p class="mini-activity-answer">Answer: It's ironic because a police station is supposed to protect against robberies, not be robbed itself. It's the <strong>opposite of what you'd expect</strong>.</p>
+            </div>
+        </section>
+
+        <!-- Figure It Out! - Passage -->
+        <section class="mb-10 p-6 section-card">
+            <h2 class="text-3xl text-center mb-6 accent-color-5">Figure It Out! - Passage 🧐</h2>
+            <p class="text-lg text-gray-700 mb-4">Read the passage below. Can you find examples of Simile, Metaphor, Personification, Alliteration, Onomatopoeia, Hyperbole, or Irony?</p>
+            <div class="bg-gray-50 p-4 rounded-lg border border-gray-200 italic text-gray-800 mb-6">
+                <p>The <strong>s</strong>ilent <strong>s</strong>unlight <strong>s</strong>lowly <strong>s</strong>treaked through the leaves of the old oak tree, which stood tall, <strong>like a giant guardian</strong>, watching over the quiet village. Its leaves <strong>whispered secrets</strong> to the gentle breeze. The river nearby <strong>giggled and gurgled</strong> as it flowed swiftly over <strong>smooth stones</strong>. The sun was a <strong>golden orb</strong> in the sky, slowly sinking, painting the clouds <strong>fiery red</strong>. I've told you <strong>a million times</strong>, this village is the quietest place on Earth, yet the church bells suddenly <strong>clanged</strong> loudly at midnight. </p>
+            </div>
+            <p class="text-gray-700 mb-2">Type the figures of speech you find, and explain why. (e.g., "Simile: like a giant guardian - compares the tree to a guardian using 'like')</p>
+            <textarea id="passage-analysis-input" class="analysis-textarea" placeholder="Your answers here..."></textarea>
+            <div class="analysis-button-group">
+                <button class="interactive-button analysis-check-btn" data-type="passage">Check My Answers <span id="passage-spinner" class="hidden loading-spinner"></span></button>
+            </div>
+            <div id="passage-analysis-feedback" class="analysis-feedback"></div>
+        </section>
+
+        <!-- Figure It Out! - Poem -->
+        <section class="mb-10 p-6 section-card">
+            <h2 class="text-3xl text-center mb-6 accent-color-1">Figure It Out! - Poem 📜</h2>
+            <p class="text-lg text-gray-700 mb-4">Read the poem below. Can you find examples of Simile, Metaphor, Personification, Alliteration, Onomatopoeia, Hyperbole, or Irony?</p>
+            <div class="bg-gray-50 p-4 rounded-lg border border-gray-200 italic text-gray-800 mb-6">
+                <p>The <strong>moon is a pearl</strong> in the night,</p>
+                <p>Shining <strong>bright as a diamond</strong> light.</p>
+                <p>Stars <strong>twinkle, tiny, true</strong>,</p>
+                <p>A <strong>whispering wind</strong> passes through.</p>
+                <p>The <strong>ocean roared</strong> a mighty sound,</p>
+                <p>As waves <strong>crashed</strong> on the ground.</p>
+                <p>I waited for you for <strong>ages and ages</strong>, you see,</p>
+                <p>The traffic was moving <strong>at the speed of light</strong> for me!</p>
+            </div>
+            <p class="text-gray-700 mb-2">Type the figures of speech you find, and explain why. (e.g., "Metaphor: moon is a pearl - directly compares the moon to a pearl")</p>
+            <textarea id="poem-analysis-input" class="analysis-textarea" placeholder="Your answers here..."></textarea>
+            <div class="analysis-button-group">
+                <button class="interactive-button analysis-check-btn" data-type="poem">Check My Answers <span id="poem-spinner" class="hidden loading-spinner"></span></button>
+            </div>
+            <div id="poem-analysis-feedback" class="analysis-feedback"></div>
+        </section>
+
+        <!-- Quiz Time! -->
+        <section class="mb-10 p-6 section-card">
+            <h2 class="text-3xl text-center mb-6 accent-color-3">Quiz Time! Test Your Knowledge! 🧠</h2>
+            <div class="space-y-6">
+                <!-- Question 1 -->
+                <div class="quiz-question-card" id="quiz-q1">
+                    <p>1. "My brother is a lion when he's angry." Which figure of speech is this, and why?</p>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q1" value="A"> A. Simile, because it uses 'like'.</label>
+                        <label><input type="radio" name="q1" value="B"> B. Metaphor, because it directly compares without 'like' or 'as'.</label>
+                        <label><input type="radio" name="q1" value="C"> C. Simile, because it compares two different things.</label>
+                        <label><input type="radio" name="q1" value="D"> D. Metaphor, because lions are strong.</label>
+                    </div>
+                    <button class="interactive-button quiz-check-btn" data-question="q1">Check Answer</button>
+                    <div class="quiz-feedback" id="feedback-q1"></div>
+                </div>
+
+                <!-- Question 2 -->
+                <div class="quiz-question-card" id="quiz-q2">
+                    <p>2. Which sentence uses personification?</p>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q2" value="A"> A. The car was as fast as a rocket.</label>
+                        <label><input type="radio" name="q2" value="B"> B. The sun smiled down on the picnic.</label>
+                        <label><input type="radio" name="q2" value="C"> C. The dog barked loudly.</label>
+                        <label><input type="radio" name="q2" value="D"> D. Her eyes were sparkling jewels.</label>
+                    </div>
+                    <button class="interactive-button quiz-check-btn" data-question="q2">Check Answer</button>
+                    <div class="quiz-feedback" id="feedback-q2"></div>
+                </div>
+
+                <!-- Question 3 -->
+                <div class="quiz-question-card" id="quiz-q3">
+                    <p>3. In the phrase "Big bears buy blueberries," what makes it an example of alliteration?</p>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q3" value="A"> A. The words rhyme.</label>
+                        <label><input type="radio" name="q3" value="B"> B. The words all start with the same letter 'B'.</label>
+                        <label><input type="radio" name="q3" value="C"> C. It describes animals.</label>
+                        <label><input type="radio" name="q3" value="D"> D. It uses strong verbs.</label>
+                    </div>
+                    <button class="interactive-button quiz-check-btn" data-question="q3">Check Answer</button>
+                    <div class="quiz-feedback" id="feedback-q3"></div>
+                </div>
+
+                <!-- Question 4 -->
+                <div class="quiz-question-card" id="quiz-q4">
+                    <p>4. When a comic book shows "CRASH!" in a fight scene, what figure of speech is being used, and what does it do?</p>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q4" value="A"> A. Simile, it compares the sound to a crash.</label>
+                        <label><input type="radio" name="q4" value="B"> B. Metaphor, it means the fight is very loud.</label>
+                        <label><input type="radio" name="q4" value="C"> C. Onomatopoeia, it imitates the sound of an impact.</label>
+                        <label><input type="radio" name="q4" value="D"> D. Personification, because the sound is acting.</label>
+                    </div>
+                    <button class="interactive-button quiz-check-btn" data-question="q4">Check Answer</button>
+                    <div class="quiz-feedback" id="feedback-q4"></div>
+                </div>
+
+                <!-- Question 5 -->
+                <div class="quiz-question-card" id="quiz-q5">
+                    <p>5. "The <strong>s</strong>ilent <strong>s</strong>nowflakes <strong>s</strong>lowly <strong>s</strong>ettled, and the <strong>w</strong>ind <strong>w</strong>hispered a sleepy song." This sentence uses which two figures of speech?</p>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q5" value="A"> A. Simile and Metaphor</label>
+                        <label><input type="radio" name="q5" value="B"> B. Onomatopoeia and Personification</label>
+                        <label><input type="radio" name="q5" value="C"> C. Alliteration and Personification</label>
+                        <label><input type="radio" name="q5" value="D"> D. Alliteration and Onomatopoeia</label>
+                    </div>
+                    <button class="interactive-button quiz-check-btn" data-question="q5">Check Answer</button>
+                    <div class="quiz-feedback" id="feedback-q5"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ask the Language Expert (LLM Feature) -->
+        <section class="mb-10 p-6 section-card text-center">
+            <h2 class="text-3xl mb-4 accent-color-4">Ask the Language Expert! 💬</h2>
+            <p class="text-lg text-gray-700 mb-4">Have a question about figures of speech? Ask me anything!</p>
+            <div class="flex flex-col md:flex-row items-center justify-center gap-4 mb-4">
+                <input type="text" id="languageQuestionInput" class="interactive-input" placeholder="e.g., What's the difference between simile and metaphor?">
+                <button id="askLanguageQuestionBtn" class="interactive-button flex items-center justify-center">
+                    Ask Question <span id="languageSpinner" class="hidden loading-spinner"></span>
+                </button>
+            </div>
+            <div id="languageQuestionOutput" class="output-box">
+                Your answer from the Language Expert will appear here!
+            </div>
+        </section>
+
+        <!-- Conclusion -->
+        <section class="mb-10 p-6 section-card text-center">
+            <h2 class="text-3xl mb-4 accent-color-5">You're a Language Artist! 🎨</h2>
+            <p class="text-lg text-gray-700">
+                You've mastered the art of figures of speech! Keep practicing, and you'll be writing and speaking with incredible creativity in no time. Language is your canvas!
+            </p>
+        </section>
+
+        <!-- Footer -->
+        <footer class="mt-10 p-6 text-center text-gray-500 text-sm">
+            <p>&copy; 2025 Figures of Speech Fun. All rights reserved.</p>
+        </footer>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Mini-activity reveal buttons
+            document.querySelectorAll('.mini-activity-reveal-btn').forEach(button => {
+                button.addEventListener('click', () => {
+                    const answer = button.nextElementSibling;
+                    if (answer) {
+                        answer.classList.toggle('active');
+                    }
+                });
+            });
+
+            // Quiz functionality
+            const quizAnswers = {
+                q1: 'B', // Metaphor, because it directly compares without 'like' or 'as'.
+                q2: 'B', // The sun smiled down on the picnic.
+                q3: 'B', // The words all start with the same letter 'B'.
+                q4: 'C', // Onomatopoeia, it imitates the sound of an impact.
+                q5: 'C'  // Alliteration and Personification
+            };
+
+            document.querySelectorAll('.quiz-check-btn').forEach(button => {
+                button.addEventListener('click', (event) => {
+                    const questionId = event.target.dataset.question;
+                    const selectedOption = document.querySelector(`input[name="${questionId}"]:checked`);
+                    const feedbackElement = document.getElementById(`feedback-${questionId}`);
+                    const optionsContainer = document.querySelector(`#quiz-${questionId} .quiz-options`);
+
+                    // Clear previous feedback and highlights
+                    feedbackElement.textContent = '';
+                    feedbackElement.className = 'quiz-feedback';
+                    optionsContainer.querySelectorAll('label').forEach(label => {
+                        label.classList.remove('correct-answer-highlight');
+                    });
+
+                    if (!selectedOption) {
+                        feedbackElement.textContent = "Please select an answer!";
+                        feedbackElement.classList.add('incorrect');
+                        return;
+                    }
+
+                    const correctAnswer = quizAnswers[questionId];
+                    if (selectedOption.value === correctAnswer) {
+                        feedbackElement.textContent = "Correct! Well done! 🎉";
+                        feedbackElement.classList.add('correct');
+                    } else {
+                        feedbackElement.textContent = "Oops! That's not quite right. Review the sections above and try again!";
+                        feedbackElement.classList.add('incorrect');
+                    }
+
+                    // Highlight the correct answer
+                    optionsContainer.querySelectorAll(`input[name="${questionId}"]`).forEach(input => {
+                        if (input.value === correctAnswer) {
+                            input.parentElement.classList.add('correct-answer-highlight');
+                        }
+                    });
+                });
+            });
+
+            // Passage and Poem Analysis Functionality
+            async function handleAnalysis(type) {
+                const inputId = `${type}-analysis-input`;
+                const feedbackId = `${type}-analysis-feedback`;
+                const spinnerId = `${type}-spinner`;
+
+                const inputTextarea = document.getElementById(inputId);
+                const feedbackElement = document.getElementById(feedbackId);
+                const spinnerElement = document.getElementById(spinnerId);
+                const checkButton = document.querySelector(`.analysis-check-btn[data-type="${type}"]`);
+
+                const userInput = inputTextarea.value.trim();
+                let passageText = "";
+                if (type === 'passage') {
+                    passageText = "The silent sunlight slowly streaked through the leaves of the old oak tree, which stood tall, like a giant guardian, watching over the quiet village. Its leaves whispered secrets to the gentle breeze. The river nearby giggled and gurgled as it flowed swiftly over smooth stones. The sun was a golden orb in the sky, slowly sinking, painting the clouds fiery red. I've told you a million times, this village is the quietest place on Earth, yet the church bells suddenly clanged loudly at midnight.";
+                } else if (type === 'poem') {
+                    passageText = `The moon is a pearl in the night,
+Shining bright as a diamond light.
+Stars twinkle, tiny, true,
+A whispering wind passes through.
+The ocean roared a mighty sound,
+As waves crashed on the ground.
+I waited for you for ages and ages, you see,
+The traffic was moving at the speed of light for me!`;
+                }
+
+                if (!userInput) {
+                    feedbackElement.textContent = "Please type your identified figures of speech.";
+                    feedbackElement.className = 'analysis-feedback incorrect';
+                    return;
+                }
+
+                feedbackElement.textContent = ''; // Clear previous output
+                feedbackElement.className = 'analysis-feedback'; // Reset class
+                spinnerElement.classList.remove('hidden');
+                checkButton.disabled = true;
+
+                try {
+                    const prompt = `Identify all similes, metaphors, personifications, alliterations, onomatopoeias, hyperboles, and ironies in the following text:
+                    "${passageText}"
+                    The user identified: "${userInput}"
+                    
+                    Provide feedback on their identification for a primary 5 student.
+                    1. List what they got right.
+                    2. List what they missed.
+                    3. Provide the full list of figures of speech present in the text with examples and brief explanations.
+                    
+                    Please format your response clearly, using <strong> HTML tags for any bold text.`;
+                    
+                    let chatHistory = [];
+                    chatHistory.push({ role: "user", parts: [{ text: prompt }] });
+                    const payload = { contents: chatHistory };
+                    const apiKey = ""; // Canvas will provide this at runtime
+                    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+
+                    const result = await response.json();
+                    if (result.candidates && result.candidates.length > 0 &&
+                        result.candidates[0].content && result.candidates[0].content.parts &&
+                        result.candidates[0].content.parts.length > 0) {
+                        feedbackElement.innerHTML = result.candidates[0].content.parts[0].text; // Use innerHTML
+                        feedbackElement.classList.add('correct'); // Assume correct for now, AI will give nuanced feedback
+                    } else {
+                        feedbackElement.textContent = "Sorry, I couldn't process your answers. Please try again.";
+                        feedbackElement.className = 'analysis-feedback incorrect';
+                    }
+                } catch (error) {
+                    console.error(`Error during ${type} analysis:`, error);
+                    feedbackElement.textContent = `An error occurred. Please try again.`;
+                    feedbackElement.className = 'analysis-feedback incorrect';
+                } finally {
+                    spinnerElement.classList.add('hidden');
+                    checkButton.disabled = false;
+                }
+            }
+
+            document.querySelectorAll('.analysis-check-btn').forEach(button => {
+                button.addEventListener('click', (event) => {
+                    const type = event.target.dataset.type;
+                    handleAnalysis(type);
+                });
+            });
+
+            // Ask the Language Expert (LLM Feature)
+            const languageQuestionInput = document.getElementById('languageQuestionInput');
+            const askLanguageQuestionBtn = document.getElementById('askLanguageQuestionBtn');
+            const languageQuestionOutput = document.getElementById('languageQuestionOutput');
+            const languageSpinner = document.getElementById('languageSpinner');
+
+            askLanguageQuestionBtn.addEventListener('click', async () => {
+                const question = languageQuestionInput.value.trim();
+                if (!question) {
+                    languageQuestionOutput.textContent = "Please ask a question about figures of speech.";
+                    languageQuestionOutput.style.borderColor = '#ef4444'; /* Red border for error */
+                    languageQuestionOutput.style.color = '#dc2626'; /* Red text for error */
+                    return;
+                }
+
+                languageQuestionOutput.textContent = ''; // Clear previous output
+                languageQuestionOutput.style.borderColor = '#fed7aa'; // Reset border color
+                languageQuestionOutput.style.color = '#c2410c'; // Reset text color
+                languageSpinner.classList.remove('hidden');
+                askLanguageQuestionBtn.disabled = true;
+
+                try {
+                    const prompt = `Answer the following question about figures of speech for a primary 5 student. Keep the answer concise, simple, and easy to understand. Please use <strong> HTML tags for any bold text in your response.
+                    Question: "${question}"`;
+                    
+                    let chatHistory = [];
+                    chatHistory.push({ role: "user", parts: [{ text: prompt }] });
+                    const payload = { contents: chatHistory };
+                    const apiKey = ""; // Canvas will provide this at runtime
+                    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+
+                    const result = await response.json();
+                    if (result.candidates && result.candidates.length > 0 &&
+                        result.candidates[0].content && result.candidates[0].content.parts &&
+                        result.candidates[0].content.parts.length > 0) {
+                        languageQuestionOutput.innerHTML = result.candidates[0].content.parts[0].text; // Use innerHTML to render strong tags
+                    } else {
+                        languageQuestionOutput.textContent = "Sorry, I couldn't find an answer to that. Please try another question!";
+                        languageQuestionOutput.style.borderColor = '#ef4444';
+                        languageQuestionOutput.style.color = '#dc2626';
+                    }
+                } catch (error) {
+                    console.error("Error asking language question:", error);
+                    languageQuestionOutput.textContent = "An error occurred while answering your question. Please try again.";
+                    languageQuestionOutput.style.borderColor = '#ef4444';
+                    languageQuestionOutput.style.color = '#dc2626';
+                } finally {
+                    languageSpinner.classList.add('hidden');
+                    askLanguageQuestionBtn.disabled = false;
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unlocking the Power of Words: Your Guide to Writing an Amazing Magazine Article!</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(to bottom right, #fdf6e3, #e8f9fd); /* Soft Cream to Light Blue */
+            color: #333;
+        }
+        h1, h2, h3 {
+            font-family: 'Fredoka One', cursive;
+        }
+        /* Custom Colors inspired by creativity and writing */
+        .bg-header-blue { background-color: #4CAF50; } /* A calming green */
+        .text-header-blue { color: #4CAF50; }
+        .bg-section-purple { background-color: #8D6E63; } /* A warm brown */
+        .text-section-purple { color: #8D6E63; }
+        .bg-element-yellow { background-color: #FFC107; } /* A bright yellow */
+        /* Changed text color for better visibility on green header */
+        .text-header-title-yellow { color: #FFFF00; } /* Pure Yellow for visibility */
+        .bg-process-blue { background-color: #2196F3; } /* A clear blue */
+        .text-process-blue { color: #2196F3; }
+        .bg-tip-orange { background-color: #FF5722; } /* A vibrant orange */
+        .text-tip-orange { color: #FF5722; }
+        .bg-white-card { background-color: #FFFFFF; }
+        .text-dark-gray { color: #333333; }
+
+        .shadow-lg-custom {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        .interactive-card {
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+        }
+        .interactive-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 25px -5px rgba(0,0,0,0.15);
+        }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out; /* Slower transition for content */
+        }
+        .accordion-content.active {
+            max-height: 500px; /* Sufficient height for content, adjust if needed */
+            transition: max-height 0.5s ease-in;
+        }
+        .reveal-button {
+            background-color: #2196F3;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 9999px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+        .reveal-button:hover {
+            background-color: #1976D2;
+        }
+
+        /* Styles for the interactive tips */
+        .tip-card-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-in-out; /* Smooth transition for tips */
+        }
+        .tip-card-content.active {
+            max-height: 150px; /* Adjust based on tip content length */
+            padding-top: 8px;
+            border-top: 1px solid #E5E7EB;
+        }
+        .tip-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem; /* Consistent padding */
+        }
+        .tip-card-header span {
+            transition: transform 0.3s ease;
+        }
+        .tip-card-header span.rotate-180 {
+            transform: rotate(180deg);
+        }
+
+        /* Styles for LLM features */
+        .llm-input-area {
+            background-color: #fefcbf; /* Light yellow background */
+            padding: 1.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .llm-output-area {
+            background-color: #e0f2fe; /* Light blue output */
+            padding: 1rem;
+            border-radius: 0.75rem;
+            min-height: 80px;
+            border: 1px solid #93c5fd;
+            text-align: left;
+            white-space: pre-wrap; /* Preserve whitespace and wrap text */
+            word-wrap: break-word; /* Break long words */
+        }
+        .llm-button {
+            background-color: #8D6E63; /* Brown button */
+            color: white;
+            padding: 10px 20px;
+            border-radius: 9999px;
+            font-weight: bold;
+            transition: all 0.2s ease-in-out;
+        }
+        .llm-button:hover {
+            background-color: #6D4C41; /* Darker brown */
+            transform: translateY(-2px);
+        }
+        .loading-spinner {
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-top: 4px solid #fff;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            animation: spin 1s linear infinite;
+            display: inline-block;
+            vertical-align: middle;
+            margin-left: 8px;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Sample Article Specific Styles */
+        .sample-article-container {
+            background-color: #fff;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            text-align: left;
+        }
+        .sample-article-container h3 {
+            font-family: 'Fredoka One', cursive;
+            color: #FF5722; /* Vibrant Orange for article title */
+            font-size: 2.25rem; /* text-4xl */
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+        .sample-article-container .byline {
+            font-style: italic;
+            color: #6B7280; /* Gray-500 */
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        .sample-article-container p {
+            margin-bottom: 1rem;
+            color: #4B5563; /* Gray-700 */
+        }
+        .sample-article-container strong {
+            color: #2196F3; /* Process Blue for emphasis */
+        }
+
+        /* Pupil's Note Specific Styles */
+        .pupil-note-box {
+            background-color: #E0F2FE; /* Light blue */
+            border: 2px dashed #93C5FD; /* Dashed blue border */
+            border-radius: 1rem;
+            padding: 1.5rem;
+            margin-top: 2rem;
+            text-align: left; /* Left justify the box content */
+        }
+        .pupil-note-box .note-main-heading { /* Style for "Your Article Writing Note!" */
+            font-family: 'Fredoka One', cursive;
+            color: #FF5722; /* Vibrant Orange */
+            font-size: 2.25rem; /* text-4xl */
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+        .pupil-note-box .note-sub-heading { /* Style for "Writing an Article" */
+            font-family: 'Fredoka One', cursive;
+            color: #0B72B9; /* Darker blue */
+            font-size: 2rem; /* text-3xl */
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        .pupil-note-box p {
+            color: #1E3A8A; /* Dark blue for text */
+            font-size: 1.125rem; /* text-lg */
+            font-weight: 600; /* semi-bold */
+            text-align: left; /* Ensure paragraph text is left-aligned */
+        }
+
+        /* Learning Objectives Specific Styles */
+        .learning-objectives-box {
+            background-color: #D1FAE5; /* Light green */
+            border: 2px solid #047857; /* Dark green border */
+            border-radius: 1rem;
+            padding: 1.5rem;
+            margin-top: 2rem;
+            text-align: left;
+        }
+        .learning-objectives-box h2 {
+            font-family: 'Fredoka One', cursive;
+            color: #047857; /* Dark green for heading */
+            font-size: 2.25rem; /* text-4xl */
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        .learning-objectives-box ul {
+            list-style: disc;
+            padding-left: 1.5rem;
+            color: #14532D; /* Even darker green for text */
+            font-size: 1.125rem;
+        }
+        .learning-objectives-box ul li {
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body class="text-dark-gray">
+
+    <div class="container mx-auto p-4 md:p-8 max-w-4xl">
+
+        <!-- Header -->
+        <header class="text-center p-6 bg-header-blue text-white rounded-2xl shadow-lg-custom mb-10">
+            <h1 class="text-4xl md:text-5xl text-header-title-yellow">Unlocking the Power of Words! ✍️</h1>
+            <p class="text-lg md:text-xl mt-2 text-gray-100">Your Interactive Guide to Writing an Amazing Magazine Article!</p>
+            <p class="text-md mt-1 text-gray-200">Teacher: Ndudi Rita Enemuwe</p>
+        </header>
+
+        <!-- Introduction -->
+        <section class="mb-10 p-6 bg-white-card rounded-2xl shadow-lg-custom text-center">
+            <h2 class="text-3xl mb-4 text-process-blue">What is a Magazine Article? 📰</h2>
+            <p class="text-lg text-gray-800 mb-4">
+                A magazine article is a non-fiction piece of writing published in a <strong>magazine</strong>. Its main purpose is to <strong>inform, persuade, or entertain</strong> a specific audience about a particular topic.
+            </p>
+            <p class="text-md text-gray-700 italic">
+                It's your chance to share your voice and expertise with the world!
+            </p>
+        </section>
+
+        <!-- New: Learning Objectives Section (Moved here) -->
+        <section class="mb-10 p-6 learning-objectives-box shadow-lg-custom">
+            <h2>Learning Goals for Today! 🎯</h2>
+            <ul>
+                <li>Explain what a magazine article is.</li>
+                <li>Name the main parts of a magazine article (like the title and ending).</li>
+                <li>Start to write my own magazine article.</li>
+                <li>Get new ideas for what to write about for a magazine.</li>
+            </ul>
+        </section>
+
+        <!-- Pupil's Note Section -->
+        <section class="mb-10 p-6 pupil-note-box shadow-lg-custom">
+            <h2 class="note-main-heading">Your Article Writing Note! 📝</h2> <!-- Main heading, now orange -->
+            <h3 class="note-sub-heading">Writing a Magazine Article</h3> <!-- Sub-heading, now blue -->
+            <p>
+                A <strong>magazine article</strong> is a piece of writing for a magazine.
+                <br>
+                It helps to <strong>inform</strong> (give facts), <strong>persuade</strong> (make people agree), or <strong>entertain</strong> (make people happy) readers of a magazine.
+                <br>
+                Every magazine article needs a <strong>catchy title</strong>, a <strong>clear beginning</strong>, <strong>main parts</strong> with details, and a <strong>strong ending</strong>.
+            </p>
+        </section>
+
+        <!-- Key Elements of an Article (Interactive Accordion) -->
+        <section class="mb-10 p-6 bg-section-purple text-white rounded-2xl shadow-lg-custom" id="key-elements-section">
+            <h2 class="text-3xl text-center mb-6 text-element-yellow">Key Elements of a Great Article ✨</h2>
+            <p class="text-lg text-gray-200 mb-6 text-center">Click on each element to reveal its importance!</p>
+
+            <div class="space-y-4">
+                <!-- Element 1: Headline/Title -->
+                <div class="bg-white-card text-dark-gray rounded-xl shadow-md interactive-card">
+                    <div class="p-4 cursor-pointer flex justify-between items-center">
+                        <h3 class="text-2xl font-bold text-process-blue">1. The Headline / Title 🖋️</h3>
+                        <span class="text-xl transform transition-transform duration-300 rotate-0">▼</span>
+                    </div>
+                    <div class="accordion-content px-4 pb-4">
+                        <p class="pt-2 border-t border-gray-200">
+                            This is your article's first impression! It should be <strong>catchy, concise</strong>, and accurately summarize what your article is about. Aim to grab the reader's attention immediately.
+                        </p>
+                    </div>
+                </div>
+                <!-- Element 2: Byline -->
+                <div class="bg-white-card text-dark-gray rounded-xl shadow-md interactive-card">
+                    <div class="p-4 cursor-pointer flex justify-between items-center">
+                        <h3 class="text-2xl font-bold text-process-blue">2. The Byline 🙋‍♀️</h3>
+                        <span class="text-xl transform transition-transform duration-300 rotate-0">▼</span>
+                    </div>
+                    <div class="accordion-content px-4 pb-4">
+                        <p class="pt-2 border-t border-gray-200">
+                            Simply states who wrote the article. It usually includes the author's name and sometimes their affiliation.
+                        </p>
+                    </div>
+                </div>
+                <!-- Element 3: Lead Paragraph (Lede) -->
+                <div class="bg-white-card text-dark-gray rounded-xl shadow-md interactive-card">
+                    <div class="p-4 cursor-pointer flex justify-between items-center">
+                        <h3 class="text-2xl font-bold text-process-blue">3. The Lead Paragraph (Lede) 💡</h3>
+                        <span class="text-xl transform transition-transform duration-300 rotate-0">▼</span>
+                    </div>
+                    <div class="accordion-content px-4 pb-4">
+                        <p class="pt-2 border-t border-gray-200">
+                            This is the <strong>opening paragraph</strong>. It's crucial for hooking your reader and summarizing the main points of your article (who, what, when, where, why, and sometimes how).
+                        </p>
+                    </div>
+                </div>
+                <!-- Element 4: Body Paragraphs -->
+                <div class="bg-white-card text-dark-gray rounded-xl shadow-md interactive-card">
+                    <div class="p-4 cursor-pointer flex justify-between items-center">
+                        <h3 class="text-2xl font-bold text-process-blue">4. Body Paragraphs 🧩</h3>
+                        <span class="text-xl transform transition-transform duration-300 rotate-0">▼</span>
+                    </div>
+                    <div class="accordion-content px-4 pb-4">
+                        <p class="pt-2 border-t border-gray-200">
+                            These paragraphs <strong>develop your main ideas</strong>. Each paragraph should focus on one main point, supported by evidence, examples, facts, or quotes. They build the core argument or information of your article.
+                        </p>
+                    </div>
+                </div>
+                <!-- Element 5: Conclusion -->
+                <div class="bg-white-card text-dark-gray rounded-xl shadow-md interactive-card">
+                    <div class="p-4 cursor-pointer flex justify-between items-center">
+                        <h3 class="text-2xl font-bold text-process-blue">5. The Conclusion 🎯</h3>
+                        <span class="text-xl transform transition-transform duration-300 rotate-0">▼</span>
+                    </div>
+                    <div class="accordion-content px-4 pb-4">
+                        <p class="pt-2 border-t border-gray-200">
+                            This is your article's <strong>final thought</strong>. It summarizes the main points, reinforces your central message, and can include a call to action or a thought-provoking statement to leave a lasting impression.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- The Writing Process (Interactive Accordion) -->
+        <section class="mb-10 p-6 bg-process-blue text-white rounded-2xl shadow-lg-custom" id="writing-process-section">
+            <h2 class="text-3xl text-center mb-6 text-element-yellow">Your Article Writing Journey 🗺️</h2>
+            <p class="text-lg text-gray-200 mb-6 text-center">Follow these steps to craft your masterpiece!</p>
+
+            <div class="space-y-4">
+                <!-- Step 1: Brainstorm & Select Topic -->
+                <div class="bg-white-card text-dark-gray rounded-xl shadow-md interactive-card">
+                    <div class="p-4 cursor-pointer flex justify-between items-center">
+                        <h3 class="text-2xl font-bold text-section-purple">1. Brainstorm & Select Topic 🧠</h3>
+                        <span class="text-xl transform transition-transform duration-300 rotate-0">▼</span>
+                    </div>
+                    <div class="accordion-content px-4 pb-4">
+                        <p class="pt-2 border-t border-gray-200">
+                            Choose a topic you are passionate about or have expertise in. Consider what your audience would find interesting and relevant.
+                        </p>
+                    </div>
+                </div>
+                <!-- Step 2: Research -->
+                <div class="bg-white-card text-dark-gray rounded-xl shadow-md interactive-card">
+                    <div class="p-4 cursor-pointer flex justify-between items-center">
+                        <h3 class="text-2xl font-bold text-section-purple">2. Research 📚</h3>
+                        <span class="text-xl transform transition-transform duration-300 rotate-0">▼</span>
+                    </div>
+                    <div class="accordion-content px-4 pb-4">
+                        <p class="pt-2 border-t border-gray-200">
+                            Gather all necessary information, facts, statistics, quotes, and examples. Ensure your sources are credible and reliable.
+                        </p>
+                    </div>
+                </div>
+                <!-- Step 3: Outline -->
+                <div class="bg-white-card text-dark-gray rounded-xl shadow-md interactive-card">
+                    <div class="p-4 cursor-pointer flex justify-between items-center">
+                        <h3 class="text-2xl font-bold text-section-purple">3. Outline Your Article 📝</h3>
+                        <span class="text-xl transform transition-transform duration-300 rotate-0">▼</span>
+                    </div>
+                    <div class="accordion-content px-4 pb-4">
+                        <p class="pt-2 border-t border-gray-200">
+                            Create a logical structure for your article. Plan your headline, lede, main points for each body paragraph, and your conclusion. This acts as your roadmap.
+                        </p>
+                    </div>
+                </div>
+                <!-- Step 4: Draft -->
+                <div class="bg-white-card text-dark-gray rounded-xl shadow-md interactive-card">
+                    <div class="p-4 cursor-pointer flex justify-between items-center">
+                        <h3 class="text-2xl font-bold text-section-purple">4. Write Your First Draft ✍️</h3>
+                        <span class="text-xl transform transition-transform duration-300 rotate-0">▼</span>
+                    </div>
+                    <div class="accordion-content px-4 pb-4">
+                        <p class="pt-2 border-t border-gray-200">
+                            Just write! Don't worry too much about perfection at this stage. Get all your ideas down according to your outline.
+                        </p>
+                    </div>
+                </div>
+                <!-- Step 5: Revise & Edit -->
+                <div class="bg-white-card text-dark-gray rounded-xl shadow-md interactive-card">
+                    <div class="p-4 cursor-pointer flex justify-between items-center">
+                        <h3 class="text-2xl font-bold text-section-purple">5. Revise & Edit ✂️</h3>
+                        <span class="text-xl transform transition-transform duration-300 rotate-0">▼</span>
+                    </div>
+                    <div class="accordion-content px-4 pb-4">
+                        <p class="pt-2 border-t border-gray-200">
+                            Review your draft for clarity, coherence, flow, and effectiveness. Check for strong arguments, engaging language, and logical progression of ideas.
+                        </p>
+                    </div>
+                </div>
+                <!-- Step 6: Proofread -->
+                <div class="bg-white-card text-dark-gray rounded-xl shadow-md interactive-card">
+                    <div class="p-4 cursor-pointer flex justify-between items-center">
+                        <h3 class="text-2xl font-bold text-section-purple">6. Proofread 👓</h3>
+                        <span class="text-xl transform transition-transform duration-300 rotate-0">▼</span>
+                    </div>
+                    <div class="accordion-content px-4 pb-4">
+                        <p class="pt-2 border-t border-gray-200">
+                            The final check for grammar, spelling, punctuation, and typos. Reading aloud can help catch errors.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tips for Engaging Articles (Interactive Grid) -->
+        <section class="mb-10 p-6 bg-element-yellow rounded-2xl shadow-lg-custom" id="tips-section">
+            <h2 class="text-3xl text-center mb-6 text-tip-orange">Tips for Engaging Articles! ✨</h2>
+            <p class="text-lg text-gray-800 mb-6 text-center">Click on a tip to learn more!</p>
+
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- Tip 1: Know Your Audience -->
+                <div class="p-0 bg-white-card rounded-xl shadow-md interactive-card">
+                    <div class="tip-card-header cursor-pointer">
+                        <h3 class="text-xl font-bold text-header-blue mb-1">Know Your Audience 🗣️</h3>
+                        <span class="text-xl transform transition-transform duration-300 rotate-0">▼</span>
+                    </div>
+                    <div class="tip-card-content px-4 pb-4">
+                        <p class="pt-2 border-t border-gray-200">Tailor your language, tone, and content to who you're writing for.</p>
+                    </div>
+                </div>
+                <!-- Tip 2: Clear & Concise -->
+                <div class="p-0 bg-white-card rounded-xl shadow-md interactive-card">
+                    <div class="tip-card-header cursor-pointer">
+                        <h3 class="text-xl font-bold text-header-blue mb-1">Be Clear & Concise 💬</h3>
+                        <span class="text-xl transform transition-transform duration-300 rotate-0">▼</span>
+                    </div>
+                    <div class="tip-card-content px-4 pb-4">
+                        <p class="pt-2 border-t border-gray-200">Get straight to the point. Avoid jargon and unnecessary words.</p>
+                    </div>
+                </div>
+                <!-- Tip 3: Vary Sentence Structure -->
+                <div class="p-0 bg-white-card rounded-xl shadow-md interactive-card">
+                    <div class="tip-card-header cursor-pointer">
+                        <h3 class="text-xl font-bold text-header-blue mb-1">Vary Sentence Structure 📏</h3>
+                        <span class="text-xl transform transition-transform duration-300 rotate-0">▼</span>
+                    </div>
+                    <div class="tip-card-content px-4 pb-4">
+                        <p class="pt-2 border-t border-gray-200">Mix short and long sentences to create a more dynamic reading experience.</p>
+                    </div>
+                </div>
+                <!-- Tip 4: Strong Verbs & Adjectives -->
+                <div class="p-0 bg-white-card rounded-xl shadow-md interactive-card">
+                    <div class="tip-card-header cursor-pointer">
+                        <h3 class="text-xl font-bold text-header-blue mb-1">Use Strong Verbs & Vivid Adjectives 💪</h3>
+                        <span class="text-xl transform transition-transform duration-300 rotate-0">▼</span>
+                    </div>
+                    <div class="tip-card-content px-4 pb-4">
+                        <p class="pt-2 border-t border-gray-200">These make your writing more impactful and descriptive.</p>
+                    </div>
+                </div>
+                <!-- Tip 5: Include Evidence -->
+                <div class="p-0 bg-white-card rounded-xl shadow-md interactive-card">
+                    <div class="tip-card-header cursor-pointer">
+                        <h3 class="text-xl font-bold text-header-blue mb-1">Support with Evidence 📊</h3>
+                        <span class="text-xl transform transition-transform duration-300 rotate-0">▼</span>
+                    </div>
+                    <div class="tip-card-content px-4 pb-4">
+                        <p class="pt-2 border-t border-gray-200">Back up your claims with facts, statistics, quotes, or expert opinions.</p>
+                    </div>
+                </div>
+                <!-- Tip 6: Call to Action -->
+                <div class="p-0 bg-white-card rounded-xl shadow-md interactive-card">
+                    <div class="tip-card-header cursor-pointer">
+                        <h3 class="text-xl font-bold text-header-blue mb-1">Consider a Call to Action ➡️</h3>
+                        <span class="text-xl transform transition-transform duration-300 rotate-0">▼</span>
+                    </div>
+                    <div class="tip-card-content px-4 pb-4">
+                        <p class="pt-2 border-t border-gray-200">Encourage readers to do something after reading, if applicable.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sample Article Section -->
+        <section class="mb-10 p-6 bg-white-card rounded-2xl shadow-lg-custom text-center">
+            <h2 class="text-3xl mb-6 text-tip-orange">Read All About It! Our Sample Article 🗞️</h2>
+            <div class="sample-article-container">
+                <h3>The Superpowers of Recycling!</h3>
+                <p class="byline">By Ndudi Rita Enemuwe</p>
+                <p>
+                    Have you ever wondered what happens to your old plastic bottles or empty cereal boxes after you put them in the recycling bin? Well, they go on an amazing adventure to become something new! Recycling is like giving trash superpowers!
+                </p>
+                <p>
+                    When we recycle, we help our planet in many ways. First, it means we don't have to dig up so many new materials from the Earth. This saves energy and protects nature. For example, making a new aluminum can from recycled aluminum uses much less energy than making it from scratch!
+                </p>
+                <p>
+                    Recycling also helps keep our planet clean. When we throw things away, they often end up in big piles called landfills. These landfills take up a lot of space and can make our air and water dirty. By recycling, we send less trash to landfills, keeping our neighborhoods and the Earth healthier.
+                </p>
+                <p>
+                    So, next time you finish a drink or a snack, remember to look for the recycling symbol. Every little bit helps turn our trash into treasure and gives our planet a big, green hug! Be a recycling superhero!
+                </p>
+            </div>
+        </section>
+
+        <!-- Spark Your Idea Generator -->
+        <section class="mb-10 p-6 bg-tip-orange rounded-2xl shadow-lg-custom text-center">
+            <h2 class="text-3xl mb-4 text-white">Writer's Block? Spark Your Idea! 🔥</h2>
+            <button id="sparkIdeaBtn" class="reveal-button text-lg px-8 py-3 mb-4">Generate Topic Idea!</button>
+            <p id="topicIdeaDisplay" class="text-xl font-semibold text-white mt-4 italic">Click the button to get started!</p>
+        </section>
+
+        <!-- New: Headline Creator -->
+        <section class="mb-10 p-6 bg-process-blue rounded-2xl shadow-lg-custom text-center">
+            <h2 class="text-3xl mb-4 text-element-yellow">✨ Headline Creator ✨</h2>
+            <p class="text-lg text-gray-200 mb-4">Describe your article, and I'll suggest some catchy headlines!</p>
+            <div class="llm-input-area mb-4">
+                <textarea id="headlineDescription" class="w-full p-3 rounded-lg border border-gray-300 mb-2 min-h-[80px] text-gray-800" placeholder="e.g., An article about the benefits of daily meditation for stress reduction."></textarea>
+                <button id="generateHeadlinesBtn" class="llm-button">Generate Headlines <span id="headlineSpinner" class="hidden loading-spinner"></span></button>
+            </div>
+            <div id="headlineOutput" class="llm-output-area text-gray-800"></div>
+        </section>
+
+        <!-- New: Topic Expander -->
+        <section class="mb-10 p-6 bg-section-purple rounded-2xl shadow-lg-custom text-center">
+            <h2 class="text-3xl mb-4 text-element-yellow">✨ Topic Expander ✨</h2>
+            <p class="text-lg text-gray-200 mb-4">Enter a general topic, and I'll suggest sub-topics or angles for Primary 5 pupils!</p>
+            <div class="llm-input-area mb-4">
+                <input type="text" id="generalTopicInput" class="w-full p-3 rounded-lg border border-gray-300 mb-2 text-gray-800" placeholder="e.g., Animals">
+                <button id="expandTopicBtn" class="llm-button">Expand Topic <span id="topicSpinner" class="hidden loading-spinner"></span></button>
+            </div>
+            <div id="topicOutput" class="llm-output-area text-gray-800"></div>
+        </section>
+
+
+        <!-- Conclusion -->
+        <section class="mb-10 p-6 bg-header-blue text-white rounded-2xl shadow-lg-custom text-center">
+            <h2 class="text-3xl mb-4 text-element-yellow">Go Forth and Write! 🚀</h2>
+            <p class="text-lg text-gray-100">
+                Writing an article is a rewarding process. With practice and these tips, you'll be crafting compelling stories and insightful pieces in no time! Happy writing!
+            </p>
+        </section>
+
+        <!-- Footer -->
+        <footer class="mt-10 p-6 bg-section-purple text-white rounded-2xl shadow-lg-custom text-center">
+            <p class="text-md text-gray-300">Creativity Unleashed! 💡</p>
+        </footer>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Function to handle accordion-style interactive cards
+            function setupAccordion(sectionId) {
+                const section = document.getElementById(sectionId);
+                if (!section) return; // Exit if section not found
+
+                section.querySelectorAll('.interactive-card').forEach(card => {
+                    const trigger = card.querySelector('.cursor-pointer, .tip-card-header'); // Select both types of triggers
+                    const content = card.querySelector('.accordion-content') || card.querySelector('.tip-card-content');
+                    const icon = card.querySelector('span');
+
+                    if (trigger && content && icon) {
+                        trigger.addEventListener('click', () => {
+                            // Close other open accordions in the same section
+                            section.querySelectorAll('.accordion-content.active, .tip-card-content.active').forEach(openContent => {
+                                if (openContent !== content) {
+                                    openContent.classList.remove('active');
+                                    const otherIcon = openContent.closest('.interactive-card').querySelector('span');
+                                    if (otherIcon) {
+                                        otherIcon.classList.remove('rotate-180');
+                                    }
+                                }
+                            });
+
+                            // Toggle the clicked accordion
+                            content.classList.toggle('active');
+                            icon.classList.toggle('rotate-180');
+                        });
+                    }
+                });
+            }
+
+            // Setup accordions for specific sections
+            setupAccordion('key-elements-section');
+            setupAccordion('writing-process-section');
+            setupAccordion('tips-section'); // This will now correctly use the accordion logic for tips
+
+            // Random Topic Generator
+            const topicIdeas = [
+                "The Benefits of Learning a New Language",
+                "How Technology Has Changed Education",
+                "The Importance of Sleep for Teenagers",
+                "A Day in the Life of a Local Hero",
+                "Exploring the Best Local Eateries in Our Town",
+                "The Future of Renewable Energy",
+                "Tips for Staying Productive While Working Remotely",
+                "The Impact of Social Media on Mental Health",
+                "An Interview with a Community Leader",
+                "Why Reading Fiction is Good for Your Brain",
+                "The History and Evolution of Video Games",
+                "Sustainable Living: Small Changes, Big Impact",
+                "The Joys and Challenges of Pet Ownership",
+                "Hidden Gems: Uncovering Unique Travel Destinations",
+                "The Science Behind Our Favorite Foods"
+            ];
+            const sparkIdeaBtn = document.getElementById('sparkIdeaBtn');
+            const topicIdeaDisplay = document.getElementById('topicIdeaDisplay');
+
+            sparkIdeaBtn.addEventListener('click', () => {
+                const randomIndex = Math.floor(Math.random() * topicIdeas.length);
+                topicIdeaDisplay.textContent = topicIdeas[randomIndex];
+            });
+
+            // Gemini API Integration for Headline Creator
+            const headlineDescriptionInput = document.getElementById('headlineDescription');
+            const generateHeadlinesBtn = document.getElementById('generateHeadlinesBtn');
+            const headlineOutput = document.getElementById('headlineOutput');
+            const headlineSpinner = document.getElementById('headlineSpinner');
+
+            generateHeadlinesBtn.addEventListener('click', async () => {
+                const promptDescription = headlineDescriptionInput.value.trim();
+                if (!promptDescription) {
+                    headlineOutput.textContent = "Please describe your article to generate headlines.";
+                    headlineOutput.style.color = '#DC2626'; // Red
+                    return;
+                }
+
+                headlineOutput.textContent = ''; // Clear previous output
+                headlineOutput.style.color = '#333'; // Reset color
+                headlineSpinner.classList.remove('hidden');
+                generateHeadlinesBtn.disabled = true;
+
+                try {
+                    const prompt = `Generate 3 catchy and concise headlines for an article about: ${promptDescription}. Provide only the headlines as a JSON array of strings.`;
+                    let chatHistory = [];
+                    chatHistory.push({ role: "user", parts: [{ text: prompt }] });
+                    const payload = {
+                        contents: chatHistory,
+                        generationConfig: {
+                            responseMimeType: "application/json",
+                            responseSchema: {
+                                type: "ARRAY",
+                                items: { "type": "STRING" }
+                            }
+                        }
+                    };
+                    const apiKey = ""; // Canvas will provide this at runtime
+                    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+
+                    const result = await response.json();
+                    if (result.candidates && result.candidates.length > 0 &&
+                        result.candidates[0].content && result.candidates[0].content.parts &&
+                        result.candidates[0].content.parts.length > 0) {
+                        const jsonText = result.candidates[0].content.parts[0].text;
+                        const headlines = JSON.parse(jsonText);
+                        
+                        if (Array.isArray(headlines) && headlines.length > 0) {
+                            headlineOutput.innerHTML = '<strong class="text-process-blue">Suggested Headlines:</strong><ul class="list-disc list-inside mt-2">';
+                            headlines.forEach(h => {
+                                headlineOutput.innerHTML += `<li>${h}</li>`;
+                            });
+                            headlineOutput.innerHTML += '</ul>';
+                        } else {
+                            headlineOutput.textContent = "Could not generate headlines. Please try a different description.";
+                            headlineOutput.style.color = '#DC2626';
+                        }
+                    } else {
+                        headlineOutput.textContent = "Failed to get a response from the AI. Please try again.";
+                        headlineOutput.style.color = '#DC2626';
+                    }
+                } catch (error) {
+                    console.error("Error generating headlines:", error);
+                    headlineOutput.textContent = "An error occurred while generating headlines. Please try again.";
+                    headlineOutput.style.color = '#DC2626';
+                } finally {
+                    headlineSpinner.classList.add('hidden');
+                    generateHeadlinesBtn.disabled = false;
+                }
+            });
+
+            // Gemini API Integration for Topic Expander
+            const generalTopicInput = document.getElementById('generalTopicInput');
+            const expandTopicBtn = document.getElementById('expandTopicBtn');
+            const topicOutput = document.getElementById('topicOutput');
+            const topicSpinner = document.getElementById('topicSpinner');
+
+            expandTopicBtn.addEventListener('click', async () => {
+                const topic = generalTopicInput.value.trim();
+                if (!topic) {
+                    topicOutput.textContent = "Please enter a general topic to expand.";
+                    topicOutput.style.color = '#DC2626'; // Red
+                    return;
+                }
+
+                topicOutput.textContent = ''; // Clear previous output
+                topicOutput.style.color = '#333'; // Reset color
+                topicSpinner.classList.remove('hidden');
+                expandTopicBtn.disabled = true;
+
+                try {
+                    const prompt = `Given the general topic '${topic}', suggest 3-5 interesting sub-topics or angles to explore for an article, using simple English suitable for Primary 5 pupils. Provide only the sub-topics as a JSON array of strings.`;
+                    let chatHistory = [];
+                    chatHistory.push({ role: "user", parts: [{ text: prompt }] });
+                    const payload = {
+                        contents: chatHistory,
+                        generationConfig: {
+                            responseMimeType: "application/json",
+                            responseSchema: {
+                                type: "ARRAY",
+                                items: { "type": "STRING" }
+                            }
+                        }
+                    };
+                    const apiKey = ""; // Canvas will provide this at runtime
+                    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+
+                    const result = await response.json();
+                    if (result.candidates && result.candidates.length > 0 &&
+                        result.candidates[0].content && result.candidates[0].content.parts &&
+                        result.candidates[0].content.parts.length > 0) {
+                        const jsonText = result.candidates[0].content.parts[0].text;
+                        const subTopics = JSON.parse(jsonText);
+
+                        if (Array.isArray(subTopics) && subTopics.length > 0) {
+                            topicOutput.innerHTML = '<strong class="text-section-purple">Suggested Sub-Topics/Angles:</strong><ul class="list-disc list-inside mt-2">';
+                            subTopics.forEach(t => {
+                                topicOutput.innerHTML += `<li>${t}</li>`;
+                            });
+                            topicOutput.innerHTML += '</ul>';
+                        } else {
+                            topicOutput.textContent = "Could not generate sub-topics. Please try a different topic.";
+                            topicOutput.style.color = '#DC2626';
+                        }
+                    } else {
+                        topicOutput.textContent = "Failed to get a response from the AI. Please try again.";
+                        topicOutput.style.color = '#DC2626';
+                    }
+                } catch (error) {
+                    console.error("Error expanding topic:", error);
+                    topicOutput.textContent = "An error occurred while expanding the topic. Please try again.";
+                    topicOutput.style.color = '#DC2626';
+                } finally {
+                    topicSpinner.classList.add('hidden');
+                    expandTopicBtn.disabled = false;
+                }
+            });
+        });
+    </script>
+</body>
+</html>

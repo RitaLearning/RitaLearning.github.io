@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Super Team: Division of Labour</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Nunito', sans-serif;
+            background-color: #fef3c7; /* A cheerful yellow */
+            color: #3f3f46;
+        }
+        .card {
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+        .card:hover {
+            transform: translateY(-5px) scale(1.03);
+            box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.1);
+        }
+        .card.active {
+            border-color: #facc15;
+            box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.1);
+        }
+        .content-reveal {
+            animation: slideIn 0.5s ease-out;
+        }
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .quiz-btn {
+            transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
+        }
+        .quiz-btn:hover {
+            transform: scale(1.03);
+        }
+        .expert-btn {
+            background-color: #facc15;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.75rem;
+            font-weight: bold;
+            transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
+        }
+        .expert-btn:hover {
+            background-color: #eab308;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="p-4 md:p-8">
+
+    <div class="container mx-auto max-w-4xl bg-white rounded-3xl shadow-xl p-6 md:p-12">
+
+        <header class="text-center mb-10">
+            <h1 class="text-4xl md:text-6xl font-extrabold text-amber-500 mb-2">The Super Team: Division of Labour 🤝</h1>
+            <p class="text-lg md:text-2xl text-stone-600">Working together to get things done!</p>
+            <p class="text-sm md:text-lg text-stone-500 mt-1">Teacher: Ndudi Rita Enemuwe</p>
+        </header>
+
+        <main>
+            <section class="mb-10 text-center">
+                <h2 class="text-2xl md:text-4xl font-bold text-emerald-600 mb-4">What is Division of Labour?</h2>
+                <p class="text-base md:text-xl text-stone-700 max-w-2xl mx-auto">
+                    Division of labour means breaking down a big job into smaller tasks and giving each task to a different person. This way, everyone does a part of the work, and together, the job gets done faster and better. Let's see how a team makes a delicious pizza! 🍕
+                </p>
+            </section>
+
+            <section id="pizza-team" class="mb-12">
+                <div class="text-center mb-8">
+                    <h2 class="text-2xl md:text-4xl font-bold text-emerald-600 mb-4">Our Pizza Super Team</h2>
+                    <p class="text-base md:text-xl text-stone-600 max-w-2xl mx-auto">Click on each team member to see their special job and why it's so important!</p>
+                </div>
+                
+                <div id="team-cards" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- The cards are now created dynamically by the JavaScript below -->
+                </div>
+
+                <div id="team-info" class="mt-8 bg-sky-100 p-6 rounded-2xl shadow-inner min-h-[150px] flex items-center justify-center">
+                    <p class="text-sky-800 text-center text-lg font-bold">Click a team member above to learn more!</p>
+                </div>
+            </section>
+            
+            <section id="school-team" class="mb-12">
+                 <div class="text-center mb-8">
+                    <h2 class="text-2xl md:text-4xl font-bold text-emerald-600 mb-4">A Day at School 🏫</h2>
+                    <p class="text-base md:text-xl text-stone-600 max-w-2xl mx-auto">Everyone at school has a special job to make it a great place to learn!</p>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-center">
+                    <div class="bg-indigo-100 p-6 rounded-2xl shadow-md">
+                        <div class="text-5xl mb-4">🧑‍🏫</div>
+                        <h3 class="font-bold text-xl text-indigo-800 mb-2">Teacher</h3>
+                        <p class="text-sm text-stone-700">Plans lessons and teaches you new things every day.</p>
+                    </div>
+                    <div class="bg-teal-100 p-6 rounded-2xl shadow-md">
+                        <div class="text-5xl mb-4">📚</div>
+                        <h3 class="font-bold text-xl text-teal-800 mb-2">Librarian</h3>
+                        <p class="text-sm text-stone-700">Organizes books and helps you find the perfect story to read.</p>
+                    </div>
+                    <div class="bg-fuchsia-100 p-6 rounded-2xl shadow-md">
+                        <div class="text-5xl mb-4">🧹</div>
+                        <h3 class="font-bold text-xl text-fuchsia-800 mb-2">Janitor</h3>
+                        <p class="text-sm text-stone-700">Keeps the school clean and tidy for everyone.</p>
+                    </div>
+                    <div class="bg-amber-100 p-6 rounded-2xl shadow-md">
+                        <div class="text-5xl mb-4">👨‍💼</div>
+                        <h3 class="font-bold text-xl text-amber-800 mb-2">Principal</h3>
+                        <p class="text-sm text-stone-700">Manages the whole school and makes sure everything runs smoothly.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="banking-team" class="mb-12">
+                <div class="text-center mb-8">
+                    <h2 class="text-2xl md:text-4xl font-bold text-emerald-600 mb-4">The Super Bank 💰</h2>
+                    <p class="text-base md:text-xl text-stone-600 max-w-2xl mx-auto">Even a bank uses the division of labour to help people with their money!</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+                    <div class="bg-yellow-100 p-6 rounded-2xl shadow-md">
+                        <div class="text-5xl mb-4">👩‍💼</div>
+                        <h3 class="font-bold text-xl text-yellow-800 mb-2">Teller</h3>
+                        <p class="text-sm text-stone-700">Helps you deposit and withdraw money.</p>
+                    </div>
+                    <div class="bg-sky-100 p-6 rounded-2xl shadow-md">
+                        <div class="text-5xl mb-4">📝</div>
+                        <h3 class="font-bold text-xl text-sky-800 mb-2">Loan Officer</h3>
+                        <p class="text-sm text-stone-700">Helps people borrow money for things like a new house or a car.</p>
+                    </div>
+                    <div class="bg-emerald-100 p-6 rounded-2xl shadow-md">
+                        <div class="text-5xl mb-4">👔</div>
+                        <h3 class="font-bold text-xl text-emerald-800 mb-2">Bank Manager</h3>
+                        <p class="text-sm text-stone-700">Supervises the whole bank and helps solve big problems.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="manufacturing-team" class="mb-12">
+                <div class="text-center mb-8">
+                    <h2 class="text-2xl md:text-4xl font-bold text-emerald-600 mb-4">Making a Car 🚗</h2>
+                    <p class="text-base md:text-xl text-stone-600 max-w-2xl mx-auto">Building a car is a huge job, so many people work on different parts!</p>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-center">
+                    <div class="bg-rose-100 p-6 rounded-2xl shadow-md">
+                        <div class="text-5xl mb-4">🎨</div>
+                        <h3 class="font-bold text-xl text-rose-800 mb-2">Designer</h3>
+                        <p class="text-sm text-stone-700">Draws and plans what the new car will look like.</p>
+                    </div>
+                    <div class="bg-violet-100 p-6 rounded-2xl shadow-md">
+                        <div class="text-5xl mb-4">🤖</div>
+                        <h3 class="font-bold text-xl text-violet-800 mb-2">Assembler</h3>
+                        <p class="text-sm text-stone-700">Puts all the different parts of the car together.</p>
+                    </div>
+                    <div class="bg-teal-100 p-6 rounded-2xl shadow-md">
+                        <div class="text-5xl mb-4">🧑‍🎨</div>
+                        <h3 class="font-bold text-xl text-teal-800 mb-2">Painter</h3>
+                        <p class="text-sm text-stone-700">Paints the car with a special machine to give it a nice color.</p>
+                    </div>
+                    <div class="bg-purple-100 p-6 rounded-2xl shadow-md">
+                        <div class="text-5xl mb-4">🧐</div>
+                        <h3 class="font-bold text-xl text-purple-800 mb-2">Quality Checker</h3>
+                        <p class="text-sm text-stone-700">Checks the finished car to make sure it is perfect and safe.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="advantages" class="mb-12">
+                 <div class="text-center mb-8">
+                    <h2 class="text-2xl md:text-4xl font-bold text-emerald-600 mb-4">Advantages of Division of Labour</h2>
+                    <p class="text-base md:text-xl text-stone-600 max-w-2xl mx-auto">When we divide the work, amazing things happen!</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6 text-center">
+                    <div class="bg-violet-100 p-6 rounded-2xl shadow-md">
+                        <div class="text-5xl mb-4">⚡</div>
+                        <h3 class="font-bold text-xl text-violet-800 mb-2">Work is Faster</h3>
+                        <p class="text-sm text-stone-700">The whole pizza is made much quicker than if one person did everything.</p>
+                    </div>
+                    <div class="bg-fuchsia-100 p-6 rounded-2xl shadow-md">
+                        <div class="text-5xl mb-4">✨</div>
+                        <h3 class="font-bold text-xl text-fuchsia-800 mb-2">Better Quality</h3>
+                        <p class="text-sm text-stone-700">Each person becomes an expert at their job, making the pizza taste even better!</p>
+                    </div>
+                    <div class="bg-rose-100 p-6 rounded-2xl shadow-md">
+                        <div class="text-5xl mb-4">🚀</div>
+                        <h3 class="font-bold text-xl text-rose-800 mb-2">More is Made</h3>
+                        <p class="text-sm text-stone-700">The team can make many more pizzas in the same amount of time.</p>
+                    </div>
+                    <div class="bg-blue-100 p-6 rounded-2xl shadow-md">
+                        <div class="text-5xl mb-4">🎓</div>
+                        <h3 class="font-bold text-xl text-blue-800 mb-2">You Become an Expert</h3>
+                        <p class="text-sm text-stone-700">By doing the same job, you get very good and very fast at it!</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="disadvantages" class="mb-12">
+                 <div class="text-center mb-8">
+                    <h2 class="text-2xl md:text-4xl font-bold text-red-600 mb-4">Disadvantages of Division of Labour</h2>
+                    <p class="text-base md:text-xl text-stone-600 max-w-2xl mx-auto">Sometimes, there can be a few small problems with this type of work.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+                    <div class="bg-red-100 p-6 rounded-2xl shadow-md">
+                        <div class="text-5xl mb-4"> बोर </div>
+                        <h3 class="font-bold text-xl text-red-800 mb-2">It Can Be Boring</h3>
+                        <p class="text-sm text-stone-700">Doing the same small job over and over again can get a little boring.</p>
+                    </div>
+                    <div class="bg-orange-100 p-6 rounded-2xl shadow-md">
+                        <div class="text-5xl mb-4">😵‍💫</div>
+                        <h3 class="font-bold text-xl text-orange-800 mb-2">Lack of Skills</h3>
+                        <p class="text-sm text-stone-700">You only learn one part of the job, so you might not know how to make a whole pizza yourself.</p>
+                    </div>
+                    <div class="bg-purple-100 p-6 rounded-2xl shadow-md">
+                        <div class="text-5xl mb-4">🤖</div>
+                        <h3 class="font-bold text-xl text-purple-800 mb-2">Losing Your Job</h3>
+                        <p class="text-sm text-stone-700">If your job is very simple, a machine might be able to do it one day, which could take your job.</p>
+                    </div>
+                </div>
+            </div>
+            </section>
+
+            <section id="where-we-see-labour" class="mb-12">
+                 <div class="text-center mb-8">
+                    <h2 class="text-2xl md:text-4xl font-bold text-emerald-600 mb-4">Where do we see Division of Labour?</h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 text-left max-w-2xl mx-auto">
+                    <div class="bg-indigo-100 p-6 rounded-2xl shadow-md">
+                        <h3 class="font-bold text-xl text-indigo-800 mb-2">At home 🏠</h3>
+                        <p class="text-sm text-stone-700">Cooking, cleaning, shopping.</p>
+                    </div>
+                    <div class="bg-teal-100 p-6 rounded-2xl shadow-md">
+                        <h3 class="font-bold text-xl text-teal-800 mb-2">In schools 🏫</h3>
+                        <p class="text-sm text-stone-700">Teachers, principal, helpers, drivers, security officers, cleaners.</p>
+                    </div>
+                    <div class="bg-fuchsia-100 p-6 rounded-2xl shadow-md">
+                        <h3 class="font-bold text-xl text-fuchsia-800 mb-2">In factories 🏭</h3>
+                        <p class="text-sm text-stone-700">Different workers for different jobs, drivers, security officers, cleaners.</p>
+                    </div>
+                    <div class="bg-amber-100 p-6 rounded-2xl shadow-md">
+                        <h3 class="font-bold text-xl text-amber-800 mb-2">In banks 🏦</h3>
+                        <p class="text-sm text-stone-700">Customer service staff, account officer, manager, loan officer, security officers, cleaners.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="conclusion" class="mb-12 text-center">
+                 <h2 class="text-2xl md:text-4xl font-bold text-emerald-600 mb-4">Conclusion</h2>
+                 <p class="text-base md:text-xl text-stone-700 max-w-2xl mx-auto">Division of labour helps people work together, finish tasks faster, and do a better job!</p>
+            </section>
+
+            <section id="quiz" class="mb-10 text-center">
+                <h2 class="text-2xl md:text-4xl font-bold text-amber-500 mb-6">Quiz Time! 🤔</h2>
+                <div class="bg-amber-100 p-6 rounded-2xl shadow-md max-w-xl mx-auto">
+                    <p id="quiz-progress" class="text-sm text-stone-500 mb-4"></p>
+                    <div id="quiz-content" class="mb-6">
+                        <!-- Quiz content will be loaded dynamically here -->
+                    </div>
+                    <p id="quiz-feedback" class="mt-4 font-bold text-lg min-h-[28px]"></p>
+                </div>
+            </section>
+        </main>
+        
+        <footer class="text-center mt-12">
+            <p class="text-sm text-stone-500">Learning about big ideas, one pizza at a time! 🍕</p>
+        </footer>
+    </div>
+
+    <script>
+        const teamData = [
+            { id: 'dough', name: 'The Dough Maker', icon: '🥣', color: 'bg-yellow-200', text_color: 'text-yellow-800', description: 'They are in charge of mixing all the ingredients and kneading the dough to make it perfect.' },
+            { id: 'sauce', name: 'The Sauce Spreader', icon: '🥫', color: 'bg-red-200', text_color: 'text-red-800', description: 'Their job is to spread the yummy sauce evenly across the dough with special tools.' },
+            { id: 'toppings', name: 'The Topping Master', icon: '🧀', color: 'bg-green-200', text_color: 'text-green-800', description: 'They carefully add the cheese and all the tasty toppings, making sure every bite is perfect.' },
+            { id: 'baker', name: 'The Baker', icon: '🧑‍🍳', color: 'bg-blue-200', text_color: 'text-blue-800', description: 'They use their skills to put the pizza in the hot oven and know exactly when it’s ready to come out.' }
+        ];
+
+        const quizData = [
+            {
+                question: "What is an advantage of dividing the work to make a pizza?",
+                options: [
+                    { name: "It takes longer to make the pizza.", id: "A" },
+                    { name: "The team can make more pizzas in the same amount of time.", id: "B" },
+                    { name: "Everyone learns how to do all the jobs.", id: "C" },
+                    { name: "The pizza is not as good.", id: "D" }
+                ],
+                correctAnswer: "B"
+            },
+            {
+                question: "What is a possible disadvantage of division of labour?",
+                options: [
+                    { name: "The work gets done faster.", id: "A" },
+                    { name: "Each person becomes an expert at their job.", id: "B" },
+                    { name: "Doing the same simple job all day can become boring.", id: "C" },
+                    { name: "The products are of better quality.", id: "D" }
+                ],
+                correctAnswer: "C"
+            },
+            {
+                question: "When one person mixes the dough and another person adds the toppings, they are using...",
+                options: [
+                    { name: "Teamwork", id: "A" },
+                    { name: "Competition", id: "B" },
+                    { name: "Division of Labour", id: "C" },
+                    { name: "Magic", id: "D" }
+                ],
+                correctAnswer: "C"
+            },
+        ];
+
+        let currentQuestionIndex = 0;
+        let score = 0;
+        
+        const teamCardsContainer = document.getElementById('team-cards');
+        const teamInfoDisplay = document.getElementById('team-info');
+        const quizContent = document.getElementById('quiz-content');
+        const quizFeedback = document.getElementById('quiz-feedback');
+        const quizProgress = document.getElementById('quiz-progress');
+
+        // Function to display team member info
+        function displayTeamInfo(memberId) {
+            const member = teamData.find(m => m.id === memberId);
+            if (!member) return;
+
+            teamInfoDisplay.innerHTML = `
+                <div class="content-reveal text-center">
+                    <h3 class="text-2xl font-bold text-sky-800 mb-2">${member.name} ${member.icon}</h3>
+                    <p class="text-lg text-stone-700">${member.description}</p>
+                </div>
+            `;
+            
+            document.querySelectorAll('.card').forEach(card => {
+                card.classList.remove('active');
+                card.style.borderColor = 'transparent';
+                if (card.dataset.id === memberId) {
+                    card.classList.add('active');
+                    card.style.borderColor = '#facc15';
+                }
+            });
+        }
+        
+        // Dynamically create team cards
+        teamData.forEach(member => {
+            const card = document.createElement('div');
+            card.className = `card cursor-pointer p-4 rounded-2xl border-4 border-transparent text-center shadow-lg ${member.color}`;
+            card.dataset.id = member.id;
+            card.innerHTML = `
+                <div class="text-6xl mb-2">${member.icon}</div>
+                <h3 class="font-extrabold text-xl ${member.text_color}">${member.name}</h3>
+            `;
+            card.addEventListener('click', () => displayTeamInfo(member.id));
+            teamCardsContainer.appendChild(card);
+        });
+
+        // Quiz Logic
+        function loadQuestion() {
+            if (currentQuestionIndex >= quizData.length) {
+                endQuiz();
+                return;
+            }
+
+            const question = quizData[currentQuestionIndex];
+            quizContent.innerHTML = `
+                <p id="quiz-question" class="text-lg md:text-xl font-bold text-stone-800 mb-4">${question.question}</p>
+                <div id="quiz-options" class="grid grid-cols-1 sm:grid-cols-2 gap-4"></div>
+            `;
+            const quizOptions = document.getElementById('quiz-options');
+            quizFeedback.textContent = '';
+            quizProgress.textContent = `Question ${currentQuestionIndex + 1} of ${quizData.length}`;
+
+            question.options.forEach(option => {
+                const button = document.createElement('button');
+                button.textContent = option.name;
+                button.dataset.id = option.id;
+                button.className = 'quiz-btn px-4 py-3 rounded-xl font-bold text-white bg-amber-500 hover:bg-amber-600 transition-colors';
+                button.addEventListener('click', checkAnswer);
+                quizOptions.appendChild(button);
+            });
+        }
+        
+        function checkAnswer(event) {
+            const selectedButton = event.target;
+            const selectedAnswer = selectedButton.dataset.id;
+            const correctAnswer = quizData[currentQuestionIndex].correctAnswer;
+            
+            document.querySelectorAll('.quiz-btn').forEach(btn => btn.disabled = true);
+
+            if (selectedAnswer === correctAnswer) {
+                score++;
+                selectedButton.classList.add('bg-green-500', 'hover:bg-green-600');
+                selectedButton.classList.remove('bg-amber-500', 'hover:bg-amber-600');
+                quizFeedback.textContent = 'That’s right! 🎉';
+                quizFeedback.className = 'mt-4 font-bold text-lg text-green-600 min-h-[28px]';
+            } else {
+                selectedButton.classList.add('bg-red-500', 'hover:bg-red-600');
+                selectedButton.classList.remove('bg-amber-500', 'hover:bg-amber-600');
+                quizFeedback.textContent = 'Oops, not quite! The correct answer is...';
+                quizFeedback.className = 'mt-4 font-bold text-lg text-red-600 min-h-[28px]';
+                // Highlight the correct answer
+                const correctButton = Array.from(document.querySelectorAll('.quiz-btn')).find(btn => btn.dataset.id === correctAnswer);
+                if (correctButton) {
+                    correctButton.classList.add('bg-green-500', 'hover:bg-green-600');
+                    correctButton.classList.remove('bg-amber-500', 'hover:bg-amber-600');
+                }
+            }
+
+            setTimeout(() => {
+                currentQuestionIndex++;
+                loadQuestion();
+            }, 2000);
+        }
+
+        function endQuiz() {
+            quizContent.innerHTML = `
+                <h3 class="text-2xl md:text-3xl font-bold text-emerald-600 mb-2">Quiz Complete! 🎉</h3>
+                <p class="text-lg md:text-xl text-stone-700">You scored ${score} out of ${quizData.length}.</p>
+                <button id="try-again-btn" class="mt-6 px-6 py-3 rounded-xl font-bold text-white bg-amber-500 hover:bg-amber-600 shadow-md transition-colors">Try Again</button>
+            `;
+            quizProgress.textContent = '';
+            quizFeedback.textContent = '';
+            
+            document.getElementById('try-again-btn').addEventListener('click', startQuiz);
+        }
+
+        function startQuiz() {
+            currentQuestionIndex = 0;
+            score = 0;
+            loadQuestion();
+        }
+        
+        window.addEventListener('load', () => {
+            startQuiz();
+        });
+    </script>
+</body>
+</html>

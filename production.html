@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Story of Production</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Warm Harmony -->
+    <!-- Application Structure Plan: The SPA is designed with a narrative, top-to-bottom flow to guide a young learner through the concept of production. It starts with a simple definition ('What is Production?'), moves to an interactive exploration of the core concepts ('The Four Factors'), includes a new section on 'Types of Production', a 'Chain of Distribution' section, then moves to new sections on 'Why is Production Important?', 'Key Elements of Production', and a 'Video Section' and finally ends with a 'Conclusion' and a 'Quiz Time' section to test their knowledge. This revised structure breaks down the information into logical and engaging chunks. The core interaction involves clicking on the 'Four Factors' to reveal information, which encourages active participation. The quiz section adds a gamified element to reinforce learning. The final section allows users to switch between different product examples, reinforcing the universality of the production principles. This design was chosen to make an abstract social studies topic feel concrete, interactive, and fun for a 5th-grade student. -->
+    <!-- Visualization & Content Choices:
+        1. Report Info: Definition of Production -> Goal: Inform -> Presentation: Large, friendly text with an icon -> Interaction: None (static intro) -> Justification: A clear, simple start is essential for a young audience.
+        2. Report Info: The Four Factors of Production -> Goal: Organize & Inform -> Presentation: A grid of four interactive cards with icons (HTML/CSS) -> Interaction: User clicks a card to dynamically display its definition and example in a shared content area below (JS) -> Justification: This 'click-to-reveal' mechanic turns a static list into a small game of discovery, improving engagement and focus.
+        3. Report Info: Types of Production -> Goal: Inform -> Presentation: A clear, static list with icons (HTML/CSS) -> Interaction: None -> Justification: This provides a concise, easy-to-read summary of different production types, a logical next step after learning the core factors.
+        4. Report Info: Chain of Distribution -> Goal: Inform -> Presentation: A simple, flow-based diagram using emojis and text (HTML/CSS) -> Interaction: None -> Justification: This visually explains the journey of a product from manufacturer to consumer in a clear, easy-to-follow way.
+        5. Report Info: Why is Production Important? -> Goal: Inform -> Presentation: A list with bullet points -> Interaction: None -> Justification: This section adds context and real-world relevance to the concept.
+        6. Report Info: Key Elements of Production -> Goal: Summarize -> Presentation: A simple flow diagram using arrows -> Interaction: None -> Justification: This distills the core process into a simple, easy-to-remember sequence.
+        7. Report Info: Video Section -> Goal: Visualize -> Presentation: Embedded YouTube video in an iframe with a responsive container. -> Interaction: User can play the video. -> Justification: A video provides a dynamic, real-world example of production, making the abstract concept more concrete and engaging for a young learner.
+        8. Report Info: Quiz Activity -> Goal: Assess & Engage -> Presentation: A dynamic quiz interface with a question and clickable buttons (HTML/CSS/JS) -> Interaction: User clicks a button to answer, receives immediate feedback, and moves to the next question. The quiz ends with a final score -> Justification: A simple, interactive quiz reinforces the key concepts of the four factors in a fun and memorable way, providing a direct learning assessment.
+        9. Report Info: Conclusion -> Goal: Summarize & Reinforce -> Presentation: A static text block -> Interaction: None -> Justification: This provides a final summary of the key takeaways for the user.
+        10. Library/Method: All visuals are created with HTML, Tailwind CSS, and Unicode characters. No Chart.js is needed as the data is qualitative. This adheres to the NO SVG/Mermaid constraint. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Nunito', sans-serif;
+        }
+        .factor-card {
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+        .factor-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        }
+        .factor-card.active {
+            transform: translateY(-5px);
+            border-color: #38bdf8;
+            box-shadow: 0 10px 15px -3px rgb(56 189 248 / 0.2), 0 4px 6px -4px rgb(56 189 248 / 0.2);
+        }
+        .content-fade-in {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .example-btn.active {
+            background-color: #38bdf8;
+            color: white;
+        }
+        .quiz-btn {
+            transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
+        }
+        .quiz-btn:hover {
+            transform: scale(1.03);
+        }
+        .video-container {
+            position: relative;
+            width: 100%;
+            /* 16:9 Aspect Ratio */
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 1rem;
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body class="bg-amber-50 text-stone-800">
+
+    <div class="container mx-auto px-4 py-8 md:py-16 max-w-5xl">
+
+        <header class="text-center mb-12 md:mb-20">
+            <h1 class="text-4xl md:text-6xl font-extrabold text-stone-900 mb-2">The Story of Production 🏭</h1>
+            <p class="text-lg md:text-xl text-stone-600">Let's learn how the things we use every day are made!</p>
+        </header>
+
+        <main>
+            <section id="intro" class="mb-12 md:mb-20 text-center">
+                 <div class="max-w-3xl mx-auto bg-white p-8 rounded-2xl shadow-md">
+                    <h2 class="text-2xl md:text-3xl font-bold text-sky-600 mb-4">What is Production?</h2>
+                    <p class="text-base md:text-lg text-stone-700">
+                        Have you ever wondered how the clothes you wear, the food you eat, or the toys you play with get made? <strong>Production</strong> is the exciting process of making goods and services that people want and need. It's how we turn basic materials into finished products, ready for us to use!
+                    </p>
+                 </div>
+            </section>
+
+            <section id="factors" class="mb-12 md:mb-20">
+                <div class="text-center mb-8">
+                    <h2 class="text-2xl md:text-3xl font-bold text-sky-600 mb-2">The Four Factors of Production</h2>
+                    <p class="text-base md:text-lg text-stone-600 max-w-2xl mx-auto">To produce anything, we need four key ingredients. Think of them as a recipe for making things! Click on each factor to learn more about it.</p>
+                </div>
+
+                <div id="factor-cards" class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mb-6">
+                </div>
+
+                <div id="factor-display" class="bg-white p-6 md:p-8 rounded-2xl shadow-md min-h-[180px] flex items-center justify-center">
+                    <p class="text-stone-500 text-center">Click a card above to see its details here!</p>
+                </div>
+            </section>
+            
+            <section id="types-of-production" class="mb-12 md:mb-20">
+                <div class="text-center mb-8">
+                    <h2 class="text-2xl md:text-3xl font-bold text-sky-600 mb-2">Types of Production</h2>
+                    <p class="text-base md:text-lg text-stone-600 max-w-2xl mx-auto">Production can be divided into three main types, based on what is being made.</p>
+                </div>
+                <div class="bg-white p-6 md:p-8 rounded-2xl shadow-md grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="text-center p-4 bg-emerald-50 rounded-xl">
+                        <div class="text-4xl mb-2">🚜</div>
+                        <h3 class="font-bold text-lg text-emerald-800 mb-1">Primary Production</h3>
+                        <p class="text-sm text-stone-700">Involves taking raw materials directly from nature, like farming, mining, and fishing.</p>
+                    </div>
+                    <div class="text-center p-4 bg-sky-50 rounded-xl">
+                        <div class="text-4xl mb-2">🏗️</div>
+                        <h3 class="font-bold text-lg text-sky-800 mb-1">Secondary Production</h3>
+                        <p class="text-sm text-stone-700">Uses raw materials to make finished goods, like building a car or baking bread.</p>
+                    </div>
+                    <div class="text-center p-4 bg-amber-50 rounded-xl">
+                        <div class="text-4xl mb-2">🛒</div>
+                        <h3 class="font-bold text-lg text-amber-800 mb-1">Tertiary Production</h3>
+                        <p class="text-sm text-stone-700">Includes services that help people and businesses, like transport, banking, teaching. And selling in a store</p>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="key-elements" class="mb-12 md:mb-20">
+                <div class="text-center mb-8">
+                    <h2 class="text-2xl md:text-3xl font-bold text-sky-600 mb-2">Key Elements of Production</h2>
+                    <p class="text-base md:text-lg text-stone-600 max-w-2xl mx-auto">Every product goes through a simple three-step process to be made.</p>
+                    <p class="text-lg md:text-xl font-bold text-sky-800 mt-4">Inputs → Processing → Outputs</p>
+                </div>
+                <div class="max-w-3xl mx-auto bg-white p-8 rounded-2xl shadow-md">
+                    <ul class="list-none space-y-4 text-stone-700">
+                        <li>
+                            <h4 class="font-bold text-lg text-sky-800">1. Inputs ⚙️</h4>
+                            <p class="mb-2">These are all the things you need to start the production process, like raw materials, tools, and labor.</p>
+                            <p class="text-sm bg-stone-100 p-2 rounded-lg"><strong>Example:</strong> For a loaf of bread, the inputs are flour, water, salt, yeast, a baker, and an oven.</p>
+                        </li>
+                        <li>
+                            <h4 class="font-bold text-lg text-sky-800">2. Processing 🔄</h4>
+                            <p class="mb-2">This is the action of turning the inputs into a finished product. It's the work being done.</p>
+                            <p class="text-sm bg-stone-100 p-2 rounded-lg"><strong>Example:</strong> The baker mixes the ingredients, kneads the dough, lets it rise, and bakes it in the oven.</p>
+                        </li>
+                        <li>
+                            <h4 class="font-bold text-lg text-sky-800">3. Outputs 🎉</h4>
+                            <p class="mb-2">This is the final product or service that comes out of the production process, ready to be used or sold.</p>
+                            <p class="text-sm bg-stone-100 p-2 rounded-lg"><strong>Example:</strong> The final output is a delicious, fresh loaf of bread!</p>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="examples" class="mb-12 md:mb-20">
+                <div class="text-center mb-8">
+                    <h2 class="text-2xl md:text-3xl font-bold text-sky-600 mb-2">Let's See It in Action!</h2>
+                    <p class="text-base md:text-lg text-stone-600 max-w-2xl mx-auto">The four factors work together to create almost everything. Let's explore how a few different items are made. Choose an example below to see its production story.</p>
+                </div>
+                
+                <div id="example-buttons" class="flex justify-center gap-2 md:gap-4 mb-8 flex-wrap">
+                </div>
+
+                <div class="bg-white p-6 md:p-8 rounded-2xl shadow-md">
+                    <h3 id="example-title" class="text-2xl font-bold text-center mb-6 text-stone-700"></h3>
+                    <div id="example-flow" class="flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0 md:space-x-4">
+                    </div>
+                </div>
+            </section>
+            
+            <section id="distribution-chain" class="mb-12 md:mb-20">
+                <div class="text-center mb-8">
+                    <h2 class="text-2xl md:text-3xl font-bold text-sky-600 mb-2">The Chain of Distribution 📦</h2>
+                    <p class="text-base md:text-lg text-stone-600 max-w-2xl mx-auto">Once a product is made, it needs to get to the person who will use it. This journey is called the <strong>Chain of Distribution</strong>! It shows how goods move from where they are made to the final buyer.</p>
+                </div>
+                <div class="bg-white p-6 md:p-8 rounded-2xl shadow-md">
+                    <div class="flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0 md:space-x-4">
+                        <div class="flex flex-col items-center text-center">
+                            <div class="text-4xl mb-2">🏭</div>
+                            <h4 class="font-bold text-lg text-stone-800">Manufacturer</h4>
+                            <p class="text-sm text-stone-600">The business that makes the product.</p>
+                        </div>
+                        <div class="text-sky-400 text-3xl font-bold transform rotate-90 md:rotate-0">→</div>
+                        <div class="flex flex-col items-center text-center">
+                            <div class="text-4xl mb-2">📦</div>
+                            <h4 class="font-bold text-lg text-stone-800">Wholesaler</h4>
+                            <p class="text-sm text-stone-600">Buys large amounts of products from the manufacturer.</p>
+                        </div>
+                        <div class="text-sky-400 text-3xl font-bold transform rotate-90 md:rotate-0">→</div>
+                        <div class="flex flex-col items-center text-center">
+                            <div class="text-4xl mb-2">🛒</div>
+                            <h4 class="font-bold text-lg text-stone-800">Retailer</h4>
+                            <p class="text-sm text-stone-600">Sells products to customers in smaller amounts.</p>
+                        </div>
+                        <div class="text-sky-400 text-3xl font-bold transform rotate-90 md:rotate-0">→</div>
+                        <div class="flex flex-col items-center text-center">
+                            <div class="text-4xl mb-2">👨‍👩‍👧‍👦</div>
+                            <h4 class="font-bold text-lg text-stone-800">Consumer</h4>
+                            <p class="text-sm text-stone-600">The person who buys and uses the product.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="daily-life-examples" class="mb-12 md:mb-20">
+                <div class="text-center mb-8">
+                    <h2 class="text-2xl md:text-3xl font-bold text-sky-600 mb-2">Examples of Production in Daily Life</h2>
+                    <p class="text-base md:text-lg text-stone-600 max-w-2xl mx-auto">Production is happening all around us. Here are some examples of goods and services being made every day!</p>
+                </div>
+                <div class="max-w-3xl mx-auto bg-white p-8 rounded-2xl shadow-md">
+                    <div class="mb-6">
+                        <h3 class="font-bold text-lg text-sky-800 mb-2">Goods (Physical Products):</h3>
+                        <ul class="list-disc list-inside text-stone-700 space-y-1">
+                            <li>A farmer growing rice.</li>
+                            <li>A baker making bread.</li>
+                            <li>A tailor stitching clothes.</li>
+                            <li>A carpenter making furniture.</li>
+                            <li>A factory worker assembling cars.</li>
+                            <li>A writer creating books.</li>
+                            <li>A fisherman catching fish.</li>
+                            <li>A shoemaker producing or repairing shoes.</li>
+                            <li>An artist painting or sculpting.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-lg text-sky-800 mb-2">Services (Work done for others):</h3>
+                        <ul class="list-disc list-inside text-stone-700 space-y-1">
+                            <li>A teacher giving lessons.</li>
+                            <li>A doctor treating patients.</li>
+                            <li>A musician performing songs.</li>
+                            <li>A builder constructing houses.</li>
+                            <li>A software developer creating apps or websites.</li>
+                            <li>A hairdresser styling hair.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="importance" class="mb-12 md:mb-20">
+                <div class="text-center mb-8">
+                    <h2 class="text-2xl md:text-3xl font-bold text-sky-600 mb-2">Why is Production Important? 🌍</h2>
+                </div>
+                <div class="max-w-3xl mx-auto bg-white p-8 rounded-2xl shadow-md">
+                    <ul class="list-disc list-inside text-stone-700 space-y-2">
+                        <li>Provides goods and services we use every day.</li>
+                        <li>Creates jobs for people.</li>
+                        <li>Helps the economy grow.</li>
+                    </ul>
+                </div>
+            </section>
+            
+            <section id="video-section" class="mb-12 md:mb-20">
+                <div class="text-center mb-8">
+                    <h2 class="text-2xl md:text-3xl font-bold text-sky-600 mb-2">Watch Production in Action! 📹</h2>
+                    <p class="text-base md:text-lg text-stone-600 max-w-2xl mx-auto">Here is a short video that shows how cars are made in a factory. Pay close attention to the different steps of the production process!</p>
+                </div>
+                <div class="max-w-4xl mx-auto rounded-2xl shadow-lg overflow-hidden">
+                    <div class="video-container">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/TWXAzr-Bhfc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </section>
+
+            <section id="quiz-activity" class="mb-12 md:mb-20">
+                <div class="text-center mb-8">
+                    <h2 class="text-2xl md:text-3xl font-bold text-sky-600 mb-2">Quiz Time! 🧠</h2>
+                    <p class="text-base md:text-lg text-stone-600 max-w-2xl mx-auto">Let's see what you've learned! Read the question and choose the correct answer.</p>
+                </div>
+                <div class="bg-white p-6 md:p-8 rounded-2xl shadow-md text-center">
+                    <p id="quiz-progress" class="text-sm text-stone-500 mb-4"></p>
+                    <div id="quiz-content" class="mb-6">
+                        <!-- Quiz content will be loaded here dynamically -->
+                    </div>
+                    <p id="quiz-feedback" class="text-lg font-bold min-h-[28px]"></p>
+                </div>
+            </section>
+            
+            <section id="conclusion" class="mb-12 md:mb-20 text-center">
+                <div class="max-w-3xl mx-auto bg-white p-8 rounded-2xl shadow-md">
+                    <h2 class="text-2xl md:text-3xl font-bold text-sky-600 mb-4">Conclusion</h2>
+                    <p class="text-base md:text-lg text-stone-700">
+                        Production is a key part of our lives. It starts with raw materials and ends with the products and services we use daily. Understanding production helps us appreciate how things are made and reach us.
+                    </p>
+                </div>
+            </section>
+
+        </main>
+        
+        <footer class="text-center py-10 md:py-16 bg-sky-600 rounded-t-[50px] text-white mt-12">
+            <h2 class="text-2xl md:text-3xl font-extrabold mb-2">The world is full of incredible products!</h2>
+            <p class="text-base md:text-xl font-light max-w-2xl mx-auto px-4">Now you know the story behind how they are made. Keep exploring!</p>
+        </footer>
+    </div>
+
+    <script>
+        const factorsData = [
+            { id: 'land', name: 'Land', icon: '🌳', color: 'bg-emerald-100', text_color: 'text-emerald-800', description: "This isn't just soil! It's all the natural resources used in production, like the space for a factory, minerals, water, and trees.", example: "The farm where a farmer grows wheat." },
+            { id: 'labour', name: 'Labour', icon: '🧑‍🏭', color: 'bg-sky-100', text_color: 'text-sky-800', description: "This refers to the human effort—the physical and mental work—that goes into creating a product. It's the people doing the work!", example: "The farmer who plants the wheat and the baker who bakes the bread." },
+            { id: 'capital', name: 'Capital', icon: '🚜', color: 'bg-amber-100', text_color: 'text-amber-800', description: "These are the tools, machines, and buildings used to make other goods. It's what you use to help produce things more efficiently.", example: "The tractor used by the farmer, or the oven used by the baker." },
+            { id: 'entrepreneurship', name: 'Entrepreneurship', icon: '💡', color: 'bg-violet-100', text_color: 'text-violet-800', description: "It's the person who brings together land, labour and capital to start a business and take risks.", example: "The baker who decides to start a business to sell fresh bread." }
+        ];
+
+        const typesData = {
+            primary: 'Primary Production',
+            secondary: 'Secondary Production',
+            tertiary: 'Tertiary Production'
+        };
+        
+        const distributionData = {
+            manufacturer: 'Manufacturer',
+            wholesaler: 'Wholesaler',
+            retailer: 'Retailer',
+            consumer: 'Consumer'
+        };
+
+        const examplesData = {
+            bread: {
+                title: "A Loaf of Bread �",
+                steps: [
+                    { factor: 'Land', detail: 'A field of wheat grows on a farm.', icon: '🌾' },
+                    { factor: 'Labour', detail: 'A farmer harvests the wheat.', icon: '🧑‍🌾' },
+                    { factor: 'Capital', detail: 'A baker uses an oven and tools.', icon: '🔥' },
+                    { factor: 'Entrepreneurship', detail: 'A bakery is opened to sell the bread.', icon: '🏪' }
+                ]
+            },
+            tshirt: {
+                title: "A Cotton T-Shirt 👕",
+                steps: [
+                    { factor: 'Land', detail: 'Cotton plants are grown in a field.', icon: '🌱' },
+                    { factor: 'Labour', detail: 'Workers pick the cotton and operate machines.', icon: '🧑‍🏭' },
+                    { factor: 'Capital', detail: 'A factory uses sewing machines to make shirts.', icon: '🏭' },
+                    { factor: 'Entrepreneurship', detail: 'A clothing brand designs and sells the t-shirts.', icon: '🏷️' }
+                ]
+            },
+            chair: {
+                title: "A Wooden Chair 🪑",
+                steps: [
+                    { factor: 'Land', detail: 'Trees are grown in a forest.', icon: '🌲' },
+                    { factor: 'Labour', detail: 'A lumberjack cuts the wood and a carpenter builds the chair.', icon: '🪚' },
+                    { factor: 'Capital', detail: 'The carpenter uses saws, hammers, and a workshop.', icon: '🛠️' },
+                    { factor: 'Entrepreneurship', detail: 'A furniture store decides to produce and sell chairs.', icon: '🛋️' }
+                ]
+            }
+        };
+
+        const quizData = [
+            { question: "A factory building is a form of...", correctAnswer: 'capital', options: factorsData },
+            { question: "The person who starts a new business is demonstrating...", correctAnswer: 'entrepreneurship', options: factorsData },
+            { question: "The fish in the ocean are an example of...", correctAnswer: 'land', options: factorsData },
+            { question: "The work of a baker to make bread is...", correctAnswer: 'labour', options: factorsData },
+            { question: "A farmer's tractor is an example of...", correctAnswer: 'capital', options: factorsData },
+            { question: "A company that mines for coal is involved in...", correctAnswer: 'primary', options: Object.entries(typesData).map(([id, name]) => ({ id, name })) },
+            { question: "Making a wooden desk out of timber is a form of...", correctAnswer: 'secondary', options: Object.entries(typesData).map(([id, name]) => ({ id, name })) },
+            { question: "A chef cooking a meal in a restaurant is an example of...", correctAnswer: 'tertiary', options: Object.entries(typesData).map(([id, name]) => ({ id, name })) },
+            { question: "A farmer growing apples to sell is doing...", correctAnswer: 'primary', options: Object.entries(typesData).map(([id, name]) => ({ id, name })) },
+            { question: "A grocery store selling food is an example of...", correctAnswer: 'tertiary', options: Object.entries(typesData).map(([id, name]) => ({ id, name })) },
+            { question: "Who buys products in large amounts from the manufacturer?", correctAnswer: 'wholesaler', options: Object.entries(distributionData).map(([id, name]) => ({ id, name })) },
+            { question: "Who is the person that buys and uses the finished product?", correctAnswer: 'consumer', options: Object.entries(distributionData).map(([id, name]) => ({ id, name })) },
+            { question: "A business that sells a product directly to customers in smaller quantities is a...", correctAnswer: 'retailer', options: Object.entries(distributionData).map(([id, name]) => ({ id, name })) },
+            { question: "The first step in the distribution chain is typically the...", correctAnswer: 'manufacturer', options: Object.entries(distributionData).map(([id, name]) => ({ id, name })) },
+            { question: "Which step in the distribution chain is a grocery store?", correctAnswer: 'retailer', options: Object.entries(distributionData).map(([id, name]) => ({ id, name })) }
+        ];
+
+        let currentQuestionIndex = 0;
+        let score = 0;
+        
+        const quizContent = document.getElementById('quiz-content');
+        const quizFeedback = document.getElementById('quiz-feedback');
+        const quizProgress = document.getElementById('quiz-progress');
+
+        function loadQuestion() {
+            if (currentQuestionIndex >= quizData.length) {
+                endQuiz();
+                return;
+            }
+
+            const question = quizData[currentQuestionIndex];
+            quizContent.innerHTML = `
+                <p id="quiz-question" class="text-xl md:text-2xl font-bold text-stone-900 mb-4">${question.question}</p>
+                <div id="quiz-options" class="grid grid-cols-2 gap-4 max-w-md mx-auto"></div>
+            `;
+            const quizOptions = document.getElementById('quiz-options');
+            quizFeedback.textContent = '';
+            quizProgress.textContent = `Question ${currentQuestionIndex + 1} of ${quizData.length}`;
+
+            question.options.forEach(option => {
+                const button = document.createElement('button');
+                button.textContent = option.name;
+                button.dataset.id = option.id;
+                button.className = 'quiz-btn px-4 py-2 rounded-lg font-bold bg-white text-stone-800 shadow-md border-2 border-stone-200';
+                button.addEventListener('click', checkAnswer);
+                quizOptions.appendChild(button);
+            });
+        }
+
+        function checkAnswer(event) {
+            const selectedAnswer = event.target.dataset.id;
+            const correctAnswer = quizData[currentQuestionIndex].correctAnswer;
+            
+            if (selectedAnswer === correctAnswer) {
+                score++;
+                quizFeedback.textContent = "✅ Correct!";
+                quizFeedback.className = 'text-lg font-bold text-green-600 min-h-[28px]';
+            } else {
+                quizFeedback.textContent = "❌ Incorrect.";
+                quizFeedback.className = 'text-lg font-bold text-red-600 min-h-[28px]';
+            }
+
+            setTimeout(() => {
+                currentQuestionIndex++;
+                loadQuestion();
+            }, 1000);
+        }
+
+        function endQuiz() {
+            quizContent.innerHTML = `
+                <h3 class="text-2xl md:text-3xl font-bold text-sky-600 mb-2">Quiz Complete! 🎉</h3>
+                <p class="text-lg md:text-xl text-stone-700">You scored ${score} out of ${quizData.length}.</p>
+                <button id="try-again-btn" class="mt-6 px-6 py-3 rounded-lg font-bold bg-sky-500 text-white shadow-md">Try Again</button>
+            `;
+            quizProgress.textContent = '';
+            quizFeedback.textContent = '';
+            
+            document.getElementById('try-again-btn').addEventListener('click', startQuiz);
+        }
+
+        function startQuiz() {
+            currentQuestionIndex = 0;
+            score = 0;
+            loadQuestion();
+        }
+
+
+        const factorCardsContainer = document.getElementById('factor-cards');
+        const factorDisplay = document.getElementById('factor-display');
+
+        function displayFactorInfo(factorId) {
+            const factor = factorsData.find(f => f.id === factorId);
+            if (!factor) return;
+
+            factorDisplay.innerHTML = `
+                <div class="content-fade-in text-center">
+                    <h3 class="text-2xl font-bold ${factor.text_color} mb-2">${factor.name} ${factor.icon}</h3>
+                    <p class="text-stone-700 mb-3">${factor.description}</p>
+                    <p class="text-sm text-stone-500 bg-stone-100 p-2 rounded-lg"><em><strong>Example:</strong> ${factor.example}</em></p>
+                </div>
+            `;
+            
+            document.querySelectorAll('.factor-card').forEach(card => {
+                card.classList.remove('active');
+                if (card.dataset.id === factorId) {
+                    card.classList.add('active');
+                }
+            });
+        }
+        
+        factorsData.forEach(factor => {
+            const card = document.createElement('div');
+            card.className = `factor-card cursor-pointer p-4 rounded-xl border-2 border-transparent text-center ${factor.color}`;
+            card.dataset.id = factor.id;
+            card.innerHTML = `
+                <div class="text-4xl mb-2">${factor.icon}</div>
+                <h3 class="font-bold ${factor.text_color}">${factor.name}</h3>
+            `;
+            card.addEventListener('click', () => displayFactorInfo(factor.id));
+            factorCardsContainer.appendChild(card);
+        });
+        
+        const exampleButtonsContainer = document.getElementById('example-buttons');
+        const exampleTitle = document.getElementById('example-title');
+        const exampleFlowContainer = document.getElementById('example-flow');
+
+        function displayExample(exampleKey) {
+            const example = examplesData[exampleKey];
+            if (!example) return;
+
+            exampleTitle.textContent = example.title;
+            exampleFlowContainer.innerHTML = '';
+
+            example.steps.forEach((step, index) => {
+                const stepDiv = document.createElement('div');
+                stepDiv.className = 'flex flex-col items-center text-center w-full md:w-1/4';
+                
+                const factorInfo = factorsData.find(f => f.name === step.factor);
+
+                stepDiv.innerHTML = `
+                    <div class="w-20 h-20 rounded-full ${factorInfo.color} flex items-center justify-center text-4xl mb-2 shadow-inner">${step.icon}</div>
+                    <h4 class="font-bold ${factorInfo.text_color}">${step.factor}</h4>
+                    <p class="text-sm text-stone-600 px-2">${step.detail}</p>
+                `;
+                
+                exampleFlowContainer.appendChild(stepDiv);
+                
+                if (index < example.steps.length - 1) {
+                    const arrow = document.createElement('div');
+                    arrow.className = 'text-sky-400 text-3xl font-bold transform rotate-90 md:rotate-0';
+                    arrow.textContent = '→';
+                    exampleFlowContainer.appendChild(arrow);
+                }
+            });
+
+            document.querySelectorAll('.example-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.dataset.key === exampleKey) {
+                    btn.classList.add('active');
+                }
+            });
+        }
+
+        Object.keys(examplesData).forEach(key => {
+            const button = document.createElement('button');
+            button.className = 'example-btn px-4 py-2 rounded-lg font-bold bg-white shadow-sm transition-colors';
+            button.textContent = examplesData[key].title;
+            button.dataset.key = key;
+            button.addEventListener('click', () => displayExample(key));
+            exampleButtonsContainer.appendChild(button);
+        });
+
+        window.addEventListener('load', () => {
+            displayExample('bread');
+            startQuiz();
+        });
+
+    </script>
+</body>
+</html>
+�

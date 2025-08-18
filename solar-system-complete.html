@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Journey Through Our Solar System! 🚀</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(to bottom, #0a0a2a, #1a1a4a); /* Deep space background */
+            color: #e0e7ff; /* Light bluish-white text */
+        }
+        h1, h2, h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            color: #fcd34d; /* Golden yellow for headings */
+        }
+        .header-bg {
+            background: linear-gradient(135deg, #2a0050 0%, #000033 100%); /* Deep purple to dark blue gradient */
+            border: 2px solid #a78bfa; /* Light purple border */
+        }
+        .section-card {
+            background-color: rgba(26, 26, 74, 0.7); /* Slightly transparent dark blue */
+            border-radius: 1rem;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(5px); /* Subtle blur effect */
+        }
+        .planet-card {
+            background-color: rgba(40, 40, 100, 0.8); /* Darker transparent blue */
+            border-radius: 0.75rem;
+            padding: 1rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            transition: transform 0.2s ease-in-out;
+        }
+        .planet-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+        }
+        .icon-planet {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            display: block;
+            text-align: center;
+        }
+        .interactive-input {
+            background-color: #e0e7ff; /* Light bluish-white */
+            border: 2px solid #a78bfa; /* Light purple border */
+            border-radius: 0.5rem;
+            padding: 0.75rem;
+            width: 100%;
+            font-size: 1rem;
+            color: #1a1a4a; /* Dark blue text */
+        }
+        .interactive-button {
+            background-color: #8b5cf6; /* Medium purple */
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+        .interactive-button:hover {
+            background-color: #7c3aed; /* Darker purple */
+        }
+        .loading-spinner {
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-top: 4px solid #fff;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            animation: spin 1s linear infinite;
+            display: inline-block;
+            vertical-align: middle;
+            margin-left: 8px;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .output-box {
+            background-color: rgba(255, 255, 255, 0.1); /* Very light transparent white */
+            border: 1px solid #c4b5fd; /* Light purple border */
+            border-radius: 0.5rem;
+            padding: 1rem;
+            min-height: 50px;
+            /* Removed flex properties to ensure text flows naturally */
+            text-align: left; /* Align text to left */
+            color: #e0e7ff; /* Light bluish-white text */
+            font-weight: 600;
+            white-space: pre-wrap; /* Preserve whitespace and wrap text */
+            word-wrap: break-word; /* Break long words */
+        }
+        .text-glow {
+            text-shadow: 0 0 8px rgba(252, 211, 77, 0.6);
+        }
+
+        /* Quiz specific styles */
+        .quiz-question {
+            background-color: rgba(40, 40, 100, 0.8);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        .quiz-question p {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #fcd34d; /* Golden yellow */
+        }
+        .quiz-options label {
+            display: block;
+            margin-bottom: 0.75rem;
+            cursor: pointer;
+            font-size: 1rem;
+            color: #e0e7ff;
+            transition: color 0.2s ease;
+        }
+        .quiz-options label:hover {
+            color: #a78bfa; /* Light purple on hover */
+        }
+        .quiz-options input[type="checkbox"] {
+            margin-right: 0.5rem;
+            accent-color: #8b5cf6; /* Purple accent for checkboxes */
+        }
+        .quiz-feedback {
+            margin-top: 1rem;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            text-align: center;
+            min-height: 40px;
+        }
+        .quiz-feedback.correct {
+            background-color: rgba(0, 255, 0, 0.2); /* Light green transparent */
+            color: #a7f3d0; /* Green text */
+            border: 1px solid #34d399;
+        }
+        .quiz-feedback.incorrect {
+            background-color: rgba(255, 0, 0, 0.2); /* Light red transparent */
+            color: #fca5a5; /* Red text */
+            border: 1px solid #ef4444;
+        }
+        .quiz-check-btn {
+            background-color: #4c51bf; /* Darker indigo */
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 9999px;
+            font-weight: 600;
+            margin-top: 1rem;
+            transition: background-color 0.3s ease;
+        }
+        .quiz-check-btn:hover {
+            background-color: #3e45a5; /* Even darker indigo */
+        }
+        .correct-answer-highlight {
+            background-color: rgba(0, 255, 0, 0.1); /* Very light green transparent */
+            border-radius: 0.25rem;
+            padding: 0.25rem 0.5rem;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <div class="container mx-auto p-4 md:p-8 max-w-4xl">
+
+        <!-- Header -->
+        <header class="text-center p-8 rounded-2xl header-bg text-white mb-10">
+            <h1 class="text-4xl md:text-5xl mb-2 text-glow">Journey Through Our Solar System! 🚀</h1>
+            <p class="text-xl md:text-2xl font-light text-gray-200">Exploring Our Cosmic Neighborhood</p>
+            <p class="text-md mt-1 text-gray-200">Teacher: <strong>Ndudi Rita Enemuwe</strong></p>
+        </header>
+
+        <!-- Learning Objectives Section -->
+        <section class="mb-10 p-6 section-card">
+            <h2 class="text-3xl text-center mb-6 text-glow">Learning Objectives 🎯</h2>
+            <ul class="list-disc pl-6 text-gray-200 space-y-2">
+                <li>Identify the main components of our Solar System, including the Sun and planets.</li>
+                <li>Describe basic characteristics of each planet (e.g., size, key features).</li>
+                <li>Understand key concepts like <strong>orbit</strong>, <strong>rotation</strong>, and <strong>gravity</strong>.</li>
+                <li>Recognize other celestial bodies such as dwarf planets, asteroids, and comets.</li>
+                <li>Develop curiosity and appreciation for space exploration.</li>
+            </ul>
+        </section>
+
+        <!-- Key Concepts Section -->
+        <section class="mb-10 p-6 section-card">
+            <h2 class="text-3xl text-center mb-6 text-glow">Key Space Concepts/Vocabulary 🔭</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-center">
+                 <div class="p-4 bg-gray-800 rounded-lg shadow-md">
+                    <span class="icon-planet text-purple-300">🪐</span>
+                    <h3 class="text-xl font-semibold text-yellow-200 mb-1">Planet</h3>
+                    <p class="text-gray-300 text-sm">A large object that orbits a star, like Earth orbits the Sun.</p>
+                </div>
+                <div class="p-4 bg-gray-800 rounded-lg shadow-md">
+                    <span class="icon-planet text-gray-300">🛰️</span>
+                    <h3 class="text-xl font-semibold text-yellow-200 mb-1">Satellite</h3>
+                    <p class="text-gray-300 text-sm">An object that goes around a planet. The Moon is Earth's natural satellite.</p>
+                </div>
+                <div class="p-4 bg-gray-800 rounded-lg shadow-md">
+                    <span class="icon-planet text-purple-300">🔄</span>
+                    <h3 class="text-xl font-semibold text-yellow-200 mb-1">Orbit (Revolution)</h3>
+                    <p class="text-gray-300 text-sm">The path an object takes as it moves around another object in space.</p>
+                </div>
+                <div class="p-4 bg-gray-800 rounded-lg shadow-md">
+                    <span class="icon-planet text-green-300">🌀</span>
+                    <h3 class="text-xl font-semibold text-yellow-200 mb-1">Rotation</h3>
+                    <p class="text-gray-300 text-sm">When a planet spins on its own axis, causing day and night.</p>
+                </div>
+                <div class="p-4 bg-gray-800 rounded-lg shadow-md">
+                    <span class="icon-planet text-red-300">⬇️</span>
+                    <h3 class="text-xl font-semibold text-yellow-200 mb-1">Gravity</h3>
+                    <p class="text-gray-300 text-sm">An invisible force that pulls objects towards each other, holding the Solar System together.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Introduction -->
+        <section class="mb-10 p-6 section-card text-center">
+            <h2 class="text-3xl mb-4 text-glow">What is the Solar System? 🌌</h2>
+            <p class="text-lg text-gray-200 mb-4">
+                Our <strong>Solar System</strong> is like our cosmic home! It's made up of the Sun and everything that travels around it, including planets, dwarf planets, moons, asteroids, and comets. It's all held together by the Sun's powerful gravity!
+            </p>
+            <div class="text-left mt-6 p-4 bg-gray-800 rounded-lg">
+                <h3 class="text-2xl text-center mb-4 text-glow">Meet the Planets</h3>
+                <h4 class="text-xl font-semibold text-yellow-200 mb-2">Inner Planets: Mercury, Venus, Earth, and Mars</h4>
+                <ul class="list-disc pl-6 text-gray-300 space-y-1 mb-4">
+                    <li>These are closest to the Sun</li>
+                    <li>They are small and rocky</li>
+                </ul>
+                <h4 class="text-xl font-semibold text-yellow-200 mb-2">Outer Planets: Jupiter, Saturn, Uranus, and Neptune</h4>
+                 <ul class="list-disc pl-6 text-gray-300 space-y-1">
+                    <li>These are farther from the Sun</li>
+                    <li>They are big and made mostly of gas</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Video Section 1 -->
+        <section class="mb-10 p-6 section-card text-center">
+            <h2 class="text-3xl mb-4 text-glow">Watch and Learn! 📺</h2>
+            <p class="text-lg text-gray-200 mb-6">
+                Let's start our journey with a video that introduces the wonders of our Solar System!
+            </p>
+            <div class="aspect-video w-full max-w-2xl mx-auto rounded-lg overflow-hidden shadow-xl">
+                <iframe
+                    class="w-full h-full"
+                    src="https://www.youtube.com/embed/w36yxLgwUOc"
+                    title="YouTube video player"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </section>
+
+        <!-- Video Section 2 - Exploring the Planets -->
+        <section class="mb-10 p-6 section-card text-center">
+            <h2 class="text-3xl mb-4 text-glow">Exploring the Planets! 🚀</h2>
+            <p class="text-lg text-gray-200 mb-6">
+                Dive deeper into our planetary neighbors with this exciting video!
+            </p>
+            <div class="aspect-video w-full max-w-2xl mx-auto rounded-lg overflow-hidden shadow-xl">
+                <iframe
+                    class="w-full h-full"
+                    src="https://www.youtube.com/embed/mQrlgH97v94"
+                    title="YouTube video player"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </section>
+
+        <!-- The Sun Section -->
+        <section class="mb-10 p-6 section-card text-center">
+            <h2 class="text-3xl mb-4 text-glow">The Mighty Sun: Our Star ☀️</h2>
+            <p class="text-lg text-gray-200 mb-4">
+                The Sun is the <strong>center</strong> of our Solar System and a huge star! It gives us all the light and heat we need to live on Earth. Without the Sun, our planet would be a frozen, dark place!
+            </p>
+            <span class="icon-planet text-yellow-300">🌞</span>
+        </section>
+
+        <!-- The Planets Section -->
+        <section class="mb-10 p-6 section-card">
+            <h2 class="text-3xl text-center mb-6 text-glow">Our Planetary Neighbors 🪐</h2>
+            <p class="text-lg text-gray-200 mb-6 text-center">
+                There are eight amazing planets that orbit our Sun, each with its own unique features. Let's meet them, starting from the closest to the Sun!
+            </p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Mercury -->
+                <div class="planet-card text-center">
+                    <span class="icon-planet text-gray-400">🟠</span>
+                    <h3 class="text-xl font-semibold text-yellow-200 mb-1">Mercury</h3>
+                    <p class="text-gray-300 text-sm">Smallest planet, closest to the Sun. Very hot and cold!</p>
+                </div>
+                <!-- Venus -->
+                <div class="planet-card text-center">
+                    <span class="icon-planet text-orange-400">⚪</span>
+                    <h3 class="text-xl font-semibold text-yellow-200 mb-1">Venus</h3>
+                    <p class="text-gray-300 text-sm">Earth's "twin" in size, but super hot with thick clouds.</p>
+                </div>
+                <!-- Earth -->
+                <div class="planet-card text-center">
+                    <span class="icon-planet text-blue-400">🌎</span>
+                    <h3 class="text-xl font-semibold text-yellow-200 mb-1">Earth</h3>
+                    <p class="text-gray-300 text-sm">Our home! The only known planet with liquid water and life.</p>
+                </div>
+                <!-- Mars -->
+                <div class="planet-card text-center">
+                    <span class="icon-planet text-red-400">🔴</span>
+                    <h3 class="text-xl font-semibold text-yellow-200 mb-1">Mars</h3>
+                    <p class="text-gray-300 text-sm">The "Red Planet." Scientists look for signs of past water here.</p>
+                </div>
+                <!-- Jupiter -->
+                <div class="planet-card text-center">
+                    <span class="icon-planet text-orange-300">🟤</span>
+                    <h3 class="text-xl font-semibold text-yellow-200 mb-1">Jupiter</h3>
+                    <p class="text-gray-300 text-sm">The largest planet! Has a giant storm called the Great Red Spot.</p>
+                </div>
+                <!-- Saturn -->
+                <div class="planet-card text-center">
+                    <span class="icon-planet text-yellow-300">🪐</span>
+                    <h3 class="text-xl font-semibold text-yellow-200 mb-1">Saturn</h3>
+                    <p class="text-gray-300 text-sm">Famous for its beautiful, icy rings.</p>
+                </div>
+                <!-- Uranus -->
+                <div class="planet-card text-center">
+                    <span class="icon-planet text-blue-200">🔵</span>
+                    <h3 class="text-xl font-semibold text-yellow-200 mb-1">Uranus</h3>
+                    <p class="text-gray-300 text-sm">An "ice giant" that spins on its side!</p>
+                </div>
+                <!-- Neptune -->
+                <div class="planet-card text-center">
+                    <span class="icon-planet text-blue-500">⚫</span>
+                    <h3 class="text-xl font-semibold text-yellow-200 mb-1">Neptune</h3>
+                    <p class="text-gray-300 text-sm">The farthest planet from the Sun, very cold and windy.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Other Space Objects Section -->
+        <section class="mb-10 p-6 section-card">
+            <h2 class="text-3xl text-center mb-6 text-glow">Beyond the Planets ✨</h2>
+            <p class="text-lg text-gray-200 mb-4 text-center">
+                Our Solar System is also home to many other fascinating objects:
+            </p>
+            <ul class="list-disc pl-6 text-gray-200 space-y-2">
+                <li><strong>Dwarf Planets:</strong> Like Pluto, Ceres, and Eris. They are round like planets but share their orbits with other objects.</li>
+                <li><strong>Asteroids:</strong> Rocky, airless worlds that orbit the Sun, mostly found in the asteroid belt between Mars and Jupiter.</li>
+                <li><strong>Comets:</strong> Icy bodies that release gas and dust, forming a "tail" as they get close to the Sun.</li>
+                <li><strong>Moons:</strong> Natural satellites that orbit planets (Earth has one, Jupiter has many!).</li>
+            </ul>
+        </section>
+
+        <!-- Why is the Solar System Important? Section -->
+        <section class="mb-10 p-6 section-card">
+            <h2 class="text-3xl text-center mb-6 text-glow">Why is the Solar System Important? ⭐</h2>
+            <ul class="list-disc pl-6 text-gray-200 space-y-3 text-lg">
+                <li>The Solar System helps us understand our place in the universe.</li>
+                <li>The Sun gives us energy for plants, animals, and people.</li>
+                <li>Studying planets and satellites teaches us about weather, seasons, and even helps us with technology like GPS.</li>
+            </ul>
+        </section>
+
+        <!-- Solar System Check Quiz (from PPT) -->
+        <section class="mb-10 p-6 section-card">
+            <h2 class="text-3xl text-center mb-6 text-glow">Solar System Check! ✅</h2>
+            <p class="text-lg text-gray-200 mb-6">Which two statements about our Solar System are correct?</p>
+            <div class="space-y-4">
+                <div class="quiz-question" id="ppt-quiz-q1">
+                    <div class="quiz-options">
+                        <label><input type="checkbox" name="ppt-q1" value="A"> 1. The Sun is a planet that orbits the Earth.</label>
+                        <label><input type="checkbox" name="ppt-q1" value="B"> 2. An orbit is the path an object takes as it moves around another object in space.</label>
+                        <label><input type="checkbox" name="ppt-q1" value="C"> 3. The Moon is an example of a natural satellite.</label>
+                        <label><input type="checkbox" name="ppt-q1" value="D"> 4. Jupiter, Earth, and Mercury are all examples of outer planets.</label>
+                    </div>
+                    <button class="quiz-check-btn" data-question="ppt-q1">Check Answer</button>
+                    <div class="quiz-feedback" id="feedback-ppt-q1"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Space Expert (LLM Feature) -->
+        <section class="mb-10 p-6 section-card text-center">
+            <h2 class="text-3xl mb-4 text-glow">Ask the Space Expert! 🧑‍🚀</h2>
+            <p class="text-lg text-gray-200 mb-4">Have a question about the Solar System? Ask me anything!</p>
+            <div class="flex flex-col md:flex-row items-center justify-center gap-4 mb-4">
+                <input type="text" id="spaceQuestionInput" class="interactive-input text-gray-800" placeholder="e.g., How many moons does Jupiter have?">
+                <button id="askSpaceQuestionBtn" class="interactive-button flex items-center justify-center">
+                    Ask Question <span id="spaceSpinner" class="hidden loading-spinner"></span>
+                </button>
+            </div>
+            <div id="spaceQuestionOutput" class="output-box">
+                Your answer from the Space Expert will appear here!
+            </div>
+        </section>
+
+        <!-- Conclusion -->
+        <section class="mb-10 p-6 section-card text-center">
+            <h2 class="text-3xl mb-4 text-glow">You're a Space Explorer! 🎉</h2>
+            <p class="text-lg text-gray-200">
+                You've taken an incredible journey through our Solar System! Keep looking up at the night sky and marvel at the wonders of space. There's always more to learn!
+            </p>
+        </section>
+
+        <!-- Footer -->
+        <footer class="mt-10 p-6 text-center text-gray-400 text-sm">
+            <p>&copy; 2025 Solar System Insights. All rights reserved.</p>
+        </footer>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Quiz functionality for PPT-based question
+            const quizAnswersPPT = {
+                'ppt-q1': ['B', 'C'] // Correct answers for the PPT quiz question
+            };
+
+            document.querySelectorAll('.quiz-check-btn').forEach(button => {
+                button.addEventListener('click', (event) => {
+                    // Use currentTarget to refer to the element the listener was attached to (the button)
+                    const questionContainer = event.currentTarget.closest('.quiz-question');
+                    // If for some reason the button is not in a .quiz-question container, exit.
+                    if (!questionContainer) {
+                        console.error("Quiz button is not inside a .quiz-question container.");
+                        return;
+                    }
+
+                    const questionId = event.currentTarget.dataset.question;
+                    const feedbackElement = questionContainer.querySelector(`#feedback-${questionId}`);
+                    const optionsContainer = questionContainer.querySelector('.quiz-options');
+
+                    // If the necessary inner elements aren't found, exit.
+                    if (!feedbackElement || !optionsContainer) {
+                        console.error("Could not find feedback or options container for question:", questionId);
+                        return;
+                    }
+
+                    // Clear previous feedback and highlights
+                    feedbackElement.textContent = '';
+                    feedbackElement.className = 'quiz-feedback';
+                    optionsContainer.querySelectorAll('label').forEach(label => {
+                        label.classList.remove('correct-answer-highlight');
+                    });
+
+                    const selectedOptions = Array.from(optionsContainer.querySelectorAll(`input[name="${questionId}"]:checked`)).map(input => input.value);
+                    const correctAnswers = quizAnswersPPT[questionId];
+
+                    if (selectedOptions.length === 0) {
+                        feedbackElement.textContent = "Please select at least one answer!";
+                        feedbackElement.classList.add('incorrect');
+                        return;
+                    }
+
+                    // Check if the selected answers are exactly the correct answers
+                    const isCorrect = correctAnswers.length === selectedOptions.length &&
+                                      correctAnswers.every(ans => selectedOptions.includes(ans));
+
+                    if (isCorrect) {
+                        feedbackElement.textContent = "Correct! Well done! 🎉";
+                        feedbackElement.classList.add('correct');
+                    } else {
+                        feedbackElement.textContent = "Oops! That's not quite right. Remember to select two correct answers. Review the sections above and try again!";
+                        feedbackElement.classList.add('incorrect');
+                    }
+
+                    // Highlight the correct answers regardless of user's choice
+                    optionsContainer.querySelectorAll(`input[name="${questionId}"]`).forEach(input => {
+                        if (correctAnswers.includes(input.value)) {
+                            input.parentElement.classList.add('correct-answer-highlight');
+                        }
+                    });
+                });
+            });
+
+
+            // --- Ask the Space Expert (LLM Feature) ---
+
+            // IMPORTANT: To run this feature on a local webpage (outside of this platform),
+            // you must get your own API key from Google AI Studio (https://aistudio.google.com/app/apikey)
+            // and paste it between the quotes below.
+            const LOCAL_API_KEY = "AIzaSyDqdwlzMf0HXP1cJ19Y5K4-awb_sp177pY"; //
+
+            const spaceQuestionInput = document.getElementById('spaceQuestionInput');
+            const askSpaceQuestionBtn = document.getElementById('askSpaceQuestionBtn');
+            const spaceQuestionOutput = document.getElementById('spaceQuestionOutput');
+            const spaceSpinner = document.getElementById('spaceSpinner');
+
+            askSpaceQuestionBtn.addEventListener('click', async () => {
+                const question = spaceQuestionInput.value.trim();
+                if (!question) {
+                    spaceQuestionOutput.textContent = "Please ask a question about the Solar System.";
+                    spaceQuestionOutput.style.borderColor = '#ef4444';
+                    spaceQuestionOutput.style.color = '#dc2626';
+                    return;
+                }
+
+                // This allows the feature to work in the Canvas environment (which provides a key automatically)
+                // and also work locally if a user provides their own key.
+                const apiKey = LOCAL_API_KEY || "";
+
+                // If running locally without a key, provide a helpful message.
+                const isLocal = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1" || window.location.protocol === "file:";
+                if (isLocal && !apiKey) {
+                    spaceQuestionOutput.innerHTML = `To use this feature on a local webpage, please add your Google AI API key to the <code>LOCAL_API_KEY</code> variable in the HTML file's script. You can get a free key from Google AI Studio.`;
+                    spaceQuestionOutput.style.borderColor = '#fcd34d';
+                    spaceQuestionOutput.style.color = '#fcd34d';
+                    return;
+                }
+
+                spaceQuestionOutput.textContent = '';
+                spaceQuestionOutput.style.borderColor = '#c4b5fd';
+                spaceQuestionOutput.style.color = '#e0e7ff';
+                spaceSpinner.classList.remove('hidden');
+                askSpaceQuestionBtn.disabled = true;
+
+                try {
+                    const prompt = `Answer the following question about the Solar System for a primary 5 student. Keep the answer concise, simple, and easy to understand. Please use <strong> HTML tags for any bold text in your response.
+                    Question: "${question}"`;
+                    
+                    let chatHistory = [];
+                    chatHistory.push({ role: "user", parts: [{ text: prompt }] });
+                    const payload = { contents: chatHistory };
+                    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+
+                    const result = await response.json();
+
+                    if (result.error) {
+                        console.error("API Error:", result.error);
+                        spaceQuestionOutput.innerHTML = `An API error occurred: ${result.error.message}. <br>If running this webpage locally, please ensure your API key in the script is correct and valid.`;
+                        spaceQuestionOutput.style.borderColor = '#ef4444';
+                        spaceQuestionOutput.style.color = '#dc2626';
+                        return;
+                    }
+
+                    if (result.candidates && result.candidates.length > 0 &&
+                        result.candidates[0].content && result.candidates[0].content.parts &&
+                        result.candidates[0].content.parts.length > 0) {
+                        spaceQuestionOutput.innerHTML = result.candidates[0].content.parts[0].text;
+                    } else {
+                        spaceQuestionOutput.textContent = "Sorry, I couldn't find an answer to that. Please try another question!";
+                        spaceQuestionOutput.style.borderColor = '#ef4444';
+                        spaceQuestionOutput.style.color = '#dc2626';
+                    }
+                } catch (error) {
+                    console.error("Error asking space question:", error);
+                    spaceQuestionOutput.textContent = "An error occurred while fetching the answer. Please check the console for details.";
+                    spaceQuestionOutput.style.borderColor = '#ef4444';
+                    spaceQuestionOutput.style.color = '#dc2626';
+                } finally {
+                    spaceSpinner.classList.add('hidden');
+                    askSpaceQuestionBtn.disabled = false;
+                }
+            });
+        });
+    </script>
+</body>
+</html>

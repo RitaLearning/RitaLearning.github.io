@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Long /o/ Sound</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f0f4f8;
+            color: #1f2937;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 800px;
+        }
+        .header-bg {
+            background: linear-gradient(135deg, #60a5fa, #3b82f6);
+            border-radius: 1.5rem;
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+            color: white;
+        }
+        h1, h2, h3 {
+            font-weight: 700;
+        }
+        .card {
+            background-color: #ffffff;
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .example-word {
+            display: inline-block;
+            background-color: #dbeafe;
+            color: #1e40af;
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            margin: 0.25rem;
+            transition: transform 0.2s;
+        }
+        .example-word:hover {
+            transform: translateY(-2px);
+        }
+        .quiz-option {
+            cursor: pointer;
+            border: 2px solid #e5e7eb;
+            border-radius: 0.5rem;
+            padding: 0.75rem;
+            transition: all 0.2s ease-in-out;
+            font-weight: 600;
+        }
+        .quiz-option:hover {
+            background-color: #eff6ff;
+            border-color: #60a5fa;
+        }
+        .quiz-option.selected {
+            background-color: #bfdbfe;
+            border-color: #3b82f6;
+        }
+        .quiz-feedback {
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin-top: 1rem;
+            font-weight: 600;
+            text-align: center;
+        }
+        .quiz-feedback.correct {
+            background-color: #d1fae5;
+            color: #065f46;
+        }
+        .quiz-feedback.incorrect {
+            background-color: #fee2e2;
+            color: #991b1b;
+        }
+        .video-container {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+    </style>
+</head>
+<body class="p-4 md:p-8">
+    <div class="container mx-auto space-y-8">
+        
+        <!-- Header -->
+        <header class="p-8 text-center header-bg">
+            <h1 class="text-4xl md:text-5xl mb-2">Long /o/ Sound</h1>
+            <p class="text-lg opacity-80 mb-2">Different ways to spell the long /o/ sound you hear in "open".</p>
+            <p class="text-md opacity-70">Teacher: Ndudi Rita Enemuwe</p>
+        </header>
+
+        <!-- What is Long /o/ section -->
+        <section class="card text-center">
+            <h2 class="text-3xl mb-4 text-sky-600">What is the Long /o/ Sound? 🤔</h2>
+            <p class="text-lg">
+                The long /o/ sound is the sound you hear in words like r<span class="text-red-500 font-bold">o</span>b<span class="text-red-500 font-bold">o</span>t, g<span class="text-red-500 font-bold">o</span> and c<span class="text-red-500 font-bold">o</span>at.
+                It sounds just like saying the letter "O" itself.
+            </p>
+        </section>
+
+        <!-- Spelling Patterns Section -->
+        <section class="card">
+            <h2 class="text-3xl mb-6 text-sky-600 text-center">Common Spelling Patterns ✍️</h2>
+            <div class="space-y-8">
+                
+                <!-- O-E (Silent E) -->
+                <div class="bg-gray-50 p-6 rounded-lg border-l-4 border-l-orange-400">
+                    <h3 class="text-2xl text-orange-600 mb-2">1. O_E (Magic E) ✨</h3>
+                    <p class="mb-4">
+                        The "magic e" at the end of a word makes the 'o' say its name.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="example-word">h<span class="text-orange-600 font-bold">o</span>m<span class="text-orange-600 font-bold">e</span></span>
+                        <span class="example-word">st<span class="text-orange-600 font-bold">o</span>n<span class="text-orange-600 font-bold">e</span></span>
+                        <span class="example-word">n<span class="text-orange-600 font-bold">o</span>t<span class="text-orange-600 font-bold">e</span></span>
+                        <span class="example-word">r<span class="text-orange-600 font-bold">o</span>s<span class="text-orange-600 font-bold">e</span></span>
+                    </div>
+                </div>
+
+                <!-- OA -->
+                <div class="bg-gray-50 p-6 rounded-lg border-l-4 border-l-teal-400">
+                    <h3 class="text-2xl text-teal-600 mb-2">2. OA (Vowel Team) 🛶</h3>
+                    <p class="mb-4">
+                        When 'o' and 'a' are next to each other, the 'o' does the talking.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="example-word">b<span class="text-teal-600 font-bold">oa</span>t</span>
+                        <span class="example-word">c<span class="text-teal-600 font-bold">oa</span>t</span>
+                        <span class="example-word">r<span class="text-teal-600 font-bold">oa</span>d</span>
+                        <span class="example-word">fl<span class="text-teal-600 font-bold">oa</span>t</span>
+                    </div>
+                </div>
+
+                <!-- OW -->
+                <div class="bg-gray-50 p-6 rounded-lg border-l-4 border-l-purple-400">
+                    <h3 class="text-2xl text-purple-600 mb-2">3. OW (Vowel Team) ❄️</h3>
+                    <p class="mb-4">
+                        This pattern is often found at the end of a syllable or word.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="example-word">sn<span class="text-purple-600 font-bold">ow</span></span>
+                        <span class="example-word">gr<span class="text-purple-600 font-bold">ow</span></span>
+                        <span class="example-word">fl<span class="text-purple-600 font-bold">ow</span></span>
+                        <span class="example-word">b<span class="text-purple-600 font-bold">ow</span></span>
+                    </div>
+                </div>
+
+                <!-- O -->
+                <div class="bg-gray-50 p-6 rounded-lg border-l-4 border-l-blue-400">
+                    <h3 class="text-2xl text-blue-600 mb-2">4. O (Single Vowel) 🏃</h3>
+                    <p class="mb-4">
+                        The letter 'o' can make the long /o/ sound, especially at the end of a word or before "ld" and "st."
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="example-word">g<span class="text-blue-600 font-bold">o</span></span>
+                        <span class="example-word">n<span class="text-blue-600 font-bold">o</span></span>
+                        <span class="example-word">s<span class="text-blue-600 font-bold">o</span></span>
+                        <span class="example-word">c<span class="text-blue-600 font-bold">o</span>ld</span>
+                        <span class="example-word">m<span class="text-blue-600 font-bold">o</span>st</span>
+                    </div>
+                </div>
+
+                <!-- OE -->
+                <div class="bg-gray-50 p-6 rounded-lg border-l-4 border-l-pink-400">
+                    <h3 class="text-2xl text-pink-600 mb-2">5. OE (Vowel Team) 👟</h3>
+                    <p class="mb-4">
+                        This is a less common spelling pattern for the long /o/ sound.
+                    </p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="example-word">t<span class="text-pink-600 font-bold">oe</span></span>
+                        <span class="example-word">f<span class="text-pink-600 font-bold">oe</span></span>
+                        <span class="example-word">g<span class="text-pink-600 font-bold">oe</span>s</span>
+                        <span class="example-word">d<span class="text-pink-600 font-bold">oe</span></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Video Section -->
+        <section class="card">
+            <h2 class="text-3xl mb-4 text-sky-600 text-center">Watch and Learn! 📹</h2>
+            <p class="text-lg text-center mb-4">This video will help you hear and understand the long /o/ sound.</p>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/NZHn2UhrLZM?feature=oembed" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+        </section>
+
+        <!-- Quiz Section (Updated for Class 5) -->
+        <section class="card">
+            <h2 class="text-3xl mb-6 text-sky-600 text-center">Quiz Time! 🧠</h2>
+            <p class="text-lg mb-4 text-center">Select the correctly spelled word.</p>
+            
+            <div class="space-y-4">
+                <div id="quiz-q1-container">
+                    <p class="font-semibold text-lg mb-2">Question 1: Which is the correct spelling for a boat? 🛶</p>
+                    <div class="grid grid-cols-2 gap-4">
+                        <button class="quiz-option" data-answer="boat">b<span class="font-bold">oa</span>t</button>
+                        <button class="quiz-option" data-answer="bote">b<span class="font-bold">o</span>t<span class="font-bold">e</span></button>
+                        <button class="quiz-option" data-answer="bowt">b<span class="font-bold">ow</span>t</button>
+                        <button class="quiz-option" data-answer="bot">b<span class="font-bold">o</span>t</button>
+                    </div>
+                    <div id="quiz-feedback-1" class="quiz-feedback hidden"></div>
+                </div>
+
+                <div id="quiz-q2-container">
+                    <p class="font-semibold text-lg mb-2">Question 2: Which word uses the 'ow' spelling for the long /o/ sound? ❄️</p>
+                    <div class="grid grid-cols-2 gap-4">
+                        <button class="quiz-option" data-answer="snow">sn<span class="font-bold">ow</span></button>
+                        <button class="quiz-option" data-answer="how">h<span class="font-bold">ow</span></button>
+                        <button class="quiz-option" data-answer="cow">c<span class="font-bold">ow</span></button>
+                        <button class="quiz-option" data-answer="now">n<span class="font-bold">ow</span></button>
+                    </div>
+                    <div id="quiz-feedback-2" class="quiz-feedback hidden"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="text-center text-gray-700 text-sm mt-8">
+            <p>Keep practicing and you'll be a spelling pro in no time! ✨</p>
+        </footer>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const quizData = {
+                'quiz-q1-container': 'boat',
+                'quiz-q2-container': 'snow'
+            };
+
+            document.querySelectorAll('[id^="quiz-q"]').forEach(container => {
+                const buttons = container.querySelectorAll('.quiz-option');
+                const feedbackBox = container.querySelector('.quiz-feedback');
+                const correctAnswer = quizData[container.id];
+
+                buttons.forEach(button => {
+                    button.addEventListener('click', () => {
+                        const selectedAnswer = button.dataset.answer;
+
+                        // Reset states
+                        buttons.forEach(btn => {
+                            btn.classList.remove('selected');
+                        });
+                        feedbackBox.classList.add('hidden');
+                        feedbackBox.classList.remove('correct', 'incorrect');
+                        
+                        // Set selected state
+                        button.classList.add('selected');
+
+                        // Provide feedback
+                        feedbackBox.classList.remove('hidden');
+                        if (selectedAnswer === correctAnswer) {
+                            feedbackBox.textContent = "Correct! Well done! 🎉";
+                            feedbackBox.classList.add('correct');
+                        } else {
+                            feedbackBox.textContent = "Oops! Try again. 🤔";
+                            feedbackBox.classList.add('incorrect');
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alphabetical Order Infographic</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8; /* Light gray background */
+            color: #1f2937;
+        }
+        .container {
+            max-width: 1000px;
+        }
+        .header-bg {
+            background: linear-gradient(135deg, #a855f7, #6366f1);
+            color: white;
+            border-radius: 2rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        .header-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            transform: skewY(-5deg);
+            transform-origin: 0;
+        }
+        .sortable-list {
+            min-height: 250px;
+            background-color: #ffffff;
+            border: 2px dashed #d1d5db;
+            border-radius: 1.5rem;
+            padding: 1rem;
+        }
+        .sortable-item {
+            background-color: #eef2ff;
+            color: #4338ca;
+            font-weight: 600;
+            cursor: grab;
+            transition: all 0.2s ease-in-out;
+            border: 2px solid #c7d2fe;
+            user-select: none;
+            position: relative;
+            z-index: 10;
+        }
+        .sortable-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .sortable-item:active {
+            cursor: grabbing;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            transform: scale(1.02);
+            background-color: #d8e1ff;
+        }
+        .sortable-item.dragging {
+            opacity: 0.5;
+        }
+        .sortable-item.correct {
+            background-color: #d1fae5;
+            color: #065f46;
+            border-color: #34d399;
+        }
+        .quiz-option {
+            cursor: pointer;
+            border: 2px solid #e5e7eb;
+            border-radius: 0.5rem;
+            padding: 0.75rem;
+            transition: all 0.2s ease-in-out;
+            font-weight: 600;
+        }
+        .quiz-option:hover {
+            background-color: #eff6ff;
+            border-color: #60a5fa;
+        }
+        .quiz-option.correct {
+            background-color: #d1fae5;
+            border-color: #10b981;
+        }
+        .quiz-option.incorrect {
+            background-color: #fee2e2;
+            border-color: #ef4444;
+        }
+        .quiz-feedback {
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin-top: 1rem;
+            font-weight: 600;
+            text-align: center;
+            display: none;
+        }
+        .quiz-feedback.correct {
+            background-color: #d1fae5;
+            color: #065f46;
+        }
+        .quiz-feedback.incorrect {
+            background-color: #fee2e2;
+            color: #991b1b;
+        }
+        .message-box {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 2rem;
+            border-radius: 1.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            z-index: 100;
+            text-align: center;
+        }
+        .message-box.correct-message {
+            background-color: #ecfdf5;
+            border: 2px solid #34d399;
+            color: #047857;
+        }
+        .message-box.incorrect-message {
+            background-color: #fef2f2;
+            border: 2px solid #f87171;
+            color: #b91c1c;
+        }
+    </style>
+</head>
+<body class="p-4 md:p-8">
+    <div class="container mx-auto space-y-12">
+        
+        <!-- Header Section -->
+        <header class="header-bg p-10 text-center">
+            <div class="relative z-20">
+                <h1 class="text-4xl md:text-5xl font-bold mb-4">Alphabetical Order Adventure 🅰️➡️🇿</h1>
+                <p class="text-lg md:text-xl font-medium opacity-90">
+                    Let's explore how to put words in the right order!
+                </p>
+                <p class="text-md opacity-80 mt-2">Teacher: Ndudi Rita Enemuwe</p>
+            </div>
+        </header>
+
+        <!-- Main Explanation Section -->
+        <section class="bg-white p-8 rounded-3xl shadow-lg">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-4">The A-B-C's of Sorting</h2>
+            <p class="text-gray-700 text-lg mb-6">
+                Alphabetical order is all about following the sequence of the letters in the alphabet, from <strong>A to Z</strong>. It's a simple skill, but super useful for organizing lists, finding words in a dictionary, or sorting names.
+            </p>
+            <div class="bg-gray-100 p-6 rounded-2xl border border-gray-200">
+                <p class="font-bold text-xl text-gray-800">Here's how it works:</p>
+                <ul class="list-disc list-inside mt-4 text-gray-700 space-y-2">
+                    <li>Look at the <strong>first letter</strong> of each word.</li>
+                    <li>Arrange the words based on the order of these letters in the alphabet.</li>
+                    <li>If the first letters are the same, look at the <strong>second letter</strong>.</li>
+                    <li>Keep going until you find a letter that is different.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Drag and Drop Interactive Section -->
+        <section class="bg-white p-8 rounded-3xl shadow-lg">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-6">Drag & Drop Challenge!</h2>
+            <p class="text-gray-700 text-center mb-6 text-lg">
+                Drag the words from the bottom list into the correct alphabetical order in the box above.
+            </p>
+            
+            <!-- Sorting area -->
+            <div id="sortable-list" class="sortable-list flex flex-col items-center justify-center gap-2">
+                <p class="text-gray-400 font-medium text-xl">Drag words here...</p>
+            </div>
+
+            <!-- Words to be sorted -->
+            <div id="unsorted-words" class="mt-8 flex flex-wrap justify-center gap-4">
+                <div class="sortable-item px-6 py-3 rounded-full" draggable="true" data-word="apple">Apple</div>
+                <div class="sortable-item px-6 py-3 rounded-full" draggable="true" data-word="banana">Banana</div>
+                <div class="sortable-item px-6 py-3 rounded-full" draggable="true" data-word="cat">Cat</div>
+                <div class="sortable-item px-6 py-3 rounded-full" draggable="true" data-word="dog">Dog</div>
+                <div class="sortable-item px-6 py-3 rounded-full" draggable="true" data-word="elephant">Elephant</div>
+                <div class="sortable-item px-6 py-3 rounded-full" draggable="true" data-word="fish">Fish</div>
+            </div>
+
+            <!-- Buttons -->
+            <div class="flex justify-center gap-4 mt-8">
+                <button id="check-btn" class="bg-indigo-500 text-white font-bold py-3 px-8 rounded-full shadow-lg hover:bg-indigo-600 transition-colors">
+                    Check My Order
+                </button>
+                <button id="reset-btn" class="bg-gray-300 text-gray-800 font-bold py-3 px-8 rounded-full shadow-lg hover:bg-gray-400 transition-colors">
+                    Reset
+                </button>
+            </div>
+        </section>
+        
+        <!-- Additional Quiz Section -->
+        <section class="bg-white p-8 rounded-3xl shadow-lg mt-8">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-6">More Sorting Challenges!</h2>
+            <div class="space-y-8">
+                <!-- Question 1 (Same first letter) -->
+                <div id="quiz-q3-container">
+                    <p class="font-semibold text-lg mb-2">1. Which order is correct for these words?</p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <button class="quiz-option" data-answer="incorrect">book, ball, bat, box</button>
+                        <button class="quiz-option" data-answer="incorrect">bat, ball, book, box</button>
+                        <button class="quiz-option" data-answer="correct">ball, bat, book, box</button>
+                        <button class="quiz-option" data-answer="incorrect">ball, book, bat, box</button>
+                    </div>
+                    <div id="quiz-feedback-3" class="quiz-feedback"></div>
+                </div>
+
+                <!-- Question 2 (Same first and second letters) -->
+                <div id="quiz-q4-container">
+                    <p class="font-semibold text-lg mb-2">2. What is the correct alphabetical order?</p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <button class="quiz-option" data-answer="incorrect">cat, car, carry, cart</button>
+                        <button class="quiz-option" data-answer="incorrect">carry, cart, car, cat</button>
+                        <button class="quiz-option" data-answer="correct">car, carry, cart, cat</button>
+                        <button class="quiz-option" data-answer="incorrect">car, cart, carry, cat</button>
+                    </div>
+                    <div id="quiz-feedback-4" class="quiz-feedback"></div>
+                </div>
+
+                <!-- Question 3 (Same first, second, and third letters) -->
+                <div id="quiz-q5-container">
+                    <p class="font-semibold text-lg mb-2">3. Put these words in the right order:</p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <button class="quiz-option" data-answer="incorrect">tablet, table, taboo, tackle</button>
+                        <button class="quiz-option" data-answer="correct">table, tablet, taboo, tackle</button>
+                        <button class="quiz-option" data-answer="incorrect">taboo, table, tablet, tackle</button>
+                        <button class="quiz-option" data-answer="incorrect">tackle, table, tablet, taboo</button>
+                    </div>
+                    <div id="quiz-feedback-5" class="quiz-feedback"></div>
+                </div>
+
+                 <!-- Question 4 (Which word is fourth) -->
+                <div id="quiz-q6-container">
+                    <p class="font-semibold text-lg mb-2">4. If the following words were arranged in alphabetical order, which would come fourth?
+                    <p class="mt-1 text-sm text-gray-500">zebra, apple, lion, dog, cat</p>
+                    </p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <button class="quiz-option" data-answer="incorrect">apple</button>
+                        <button class="quiz-option" data-answer="incorrect">cat</button>
+                        <button class="quiz-option" data-answer="incorrect">dog</button>
+                        <button class="quiz-option" data-answer="correct">lion</button>
+                    </div>
+                    <div id="quiz-feedback-6" class="quiz-feedback"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="text-center text-gray-700 text-lg mt-8">
+            <p>You're a sorting superstar! Keep practicing, and you'll be an expert in no time! ✨</p>
+        </footer>
+
+        <!-- Message Box for feedback -->
+        <div id="message-box" class="message-box">
+            <p id="message-text" class="text-2xl font-bold mb-2"></p>
+            <p id="message-subtext"></p>
+        </div>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Get all necessary DOM elements
+            const sortableList = document.getElementById('sortable-list');
+            const unsortedWordsContainer = document.getElementById('unsorted-words');
+            const checkBtn = document.getElementById('check-btn');
+            const resetBtn = document.getElementById('reset-btn');
+            const messageBox = document.getElementById('message-box');
+            const messageText = document.getElementById('message-text');
+            const messageSubtext = document.getElementById('message-subtext');
+
+            let words = ["apple", "banana", "cat", "dog", "elephant", "fish"];
+            let draggingItem = null;
+
+            // Function to initialize the words for the drag and drop game
+            function initializeWords(initialWords) {
+                // Clear existing words
+                unsortedWordsContainer.innerHTML = '';
+                sortableList.innerHTML = '<p class="text-gray-400 font-medium text-xl">Drag words here...</p>';
+                
+                // Shuffle the words and create new sortable items
+                const shuffledWords = [...initialWords].sort(() => Math.random() - 0.5);
+                shuffledWords.forEach(word => {
+                    const item = document.createElement('div');
+                    item.className = 'sortable-item px-6 py-3 rounded-full';
+                    item.setAttribute('draggable', 'true');
+                    item.setAttribute('data-word', word);
+                    item.textContent = word.charAt(0).toUpperCase() + word.slice(1);
+                    unsortedWordsContainer.appendChild(item);
+                });
+                
+                // Add event listeners to the new items
+                addDragAndDropListeners();
+            }
+
+            // Function to add drag and drop event listeners
+            function addDragAndDropListeners() {
+                const sortableItems = document.querySelectorAll('.sortable-item');
+                sortableItems.forEach(item => {
+                    item.addEventListener('dragstart', () => {
+                        draggingItem = item;
+                        setTimeout(() => item.classList.add('dragging'), 0);
+                    });
+                    item.addEventListener('dragend', () => {
+                        draggingItem.classList.remove('dragging');
+                        draggingItem = null;
+                    });
+                });
+            }
+
+            // Event listeners for the drop zone
+            sortableList.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                const afterElement = getDragAfterElement(sortableList, e.clientY);
+                const dragging = document.querySelector('.dragging');
+                if (afterElement == null) {
+                    sortableList.appendChild(dragging);
+                } else {
+                    sortableList.insertBefore(dragging, afterElement);
+                }
+            });
+
+            // Helper function to determine where to drop the element
+            function getDragAfterElement(container, y) {
+                const draggableElements = [...container.querySelectorAll('.sortable-item:not(.dragging)')];
+                return draggableElements.reduce((closest, child) => {
+                    const box = child.getBoundingClientRect();
+                    const offset = y - box.top - box.height / 2;
+                    if (offset < 0 && offset > closest.offset) {
+                        return { offset: offset, element: child };
+                    } else {
+                        return closest;
+                    }
+                }, { offset: Number.NEGATIVE_INFINITY }).element;
+            }
+
+            // Move the dragged item into the sortable list
+            sortableList.addEventListener('drop', (e) => {
+                e.preventDefault();
+                if (sortableList.querySelector('.text-gray-400')) {
+                    sortableList.querySelector('.text-gray-400').remove();
+                }
+                if (draggingItem) {
+                    // This is where the item is appended, handled by dragover
+                }
+            });
+
+            // Check button logic
+            checkBtn.addEventListener('click', () => {
+                const currentOrder = [...sortableList.querySelectorAll('.sortable-item')].map(item => item.dataset.word);
+                const isCorrect = JSON.stringify(currentOrder) === JSON.stringify(words);
+
+                if (isCorrect) {
+                    messageText.textContent = "Awesome Job!";
+                    messageSubtext.textContent = "You've sorted all the words correctly!";
+                    messageBox.classList.remove('incorrect-message');
+                    messageBox.classList.add('correct-message');
+                } else {
+                    messageText.textContent = "Not quite right...";
+                    messageSubtext.textContent = "Some words are still out of order. Keep trying!";
+                    messageBox.classList.remove('correct-message');
+                    messageBox.classList.add('incorrect-message');
+                }
+                
+                messageBox.style.display = 'block';
+                setTimeout(() => {
+                    messageBox.style.display = 'none';
+                }, 3000);
+            });
+
+            // Reset button logic
+            resetBtn.addEventListener('click', () => {
+                initializeWords(words);
+                messageBox.style.display = 'none';
+            });
+            
+            // Initial setup
+            initializeWords(words);
+
+
+            // Quiz Logic for the new questions
+            const newQuizData = {
+                'quiz-q3-container': 'correct',
+                'quiz-q4-container': 'correct',
+                'quiz-q5-container': 'correct',
+                'quiz-q6-container': 'correct'
+            };
+
+            Object.keys(newQuizData).forEach(containerId => {
+                const container = document.getElementById(containerId);
+                const buttons = container.querySelectorAll('.quiz-option');
+                const feedbackBox = container.querySelector('.quiz-feedback');
+                const correctAnswer = newQuizData[containerId];
+
+                buttons.forEach(button => {
+                    button.addEventListener('click', () => {
+                        const selectedAnswer = button.dataset.answer;
+
+                        // Reset states for all buttons in this question
+                        buttons.forEach(btn => {
+                            btn.classList.remove('selected', 'correct', 'incorrect');
+                        });
+
+                        // Provide immediate feedback
+                        feedbackBox.style.display = 'block';
+                        if (selectedAnswer === correctAnswer) {
+                            feedbackBox.textContent = "Correct! �";
+                            feedbackBox.classList.remove('incorrect');
+                            feedbackBox.classList.add('correct');
+                            button.classList.add('correct');
+                        } else {
+                            feedbackBox.textContent = "Oops! That's not quite right. Try again. 🤔";
+                            feedbackBox.classList.remove('correct');
+                            feedbackBox.classList.add('incorrect');
+                            button.classList.add('incorrect');
+                        }
+                    });
+                });
+            });
+
+        });
+    </script>
+</body>
+</html>
+�

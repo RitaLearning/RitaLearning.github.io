@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parts of Speech Review</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            color: #1f2937;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1000px;
+        }
+        .header-bg {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            border-radius: 1.5rem;
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+            color: white;
+        }
+        h1, h2, h3 {
+            font-weight: 700;
+        }
+        .part-of-speech-card {
+            background-color: #ffffff;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid transparent;
+        }
+        .part-of-speech-card:hover {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+            border-color: #8b5cf6;
+        }
+        .part-of-speech-card.active {
+            border-color: #6366f1;
+            background-color: #eef2ff;
+        }
+        .card-icon {
+            font-size: 2.5rem;
+            margin-right: 1rem;
+        }
+        .card-content {
+            display: none;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px dashed #e5e7eb;
+        }
+        .card-content.active {
+            display: block;
+        }
+        .quiz-option {
+            cursor: pointer;
+            border: 2px solid #e5e7eb;
+            border-radius: 0.5rem;
+            padding: 0.75rem;
+            transition: all 0.2s ease-in-out;
+            font-weight: 600;
+        }
+        .quiz-option:hover {
+            background-color: #eff6ff;
+            border-color: #60a5fa;
+        }
+        .quiz-option.selected {
+            background-color: #bfdbfe;
+            border-color: #3b82f6;
+        }
+        .quiz-feedback {
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin-top: 1rem;
+            font-weight: 600;
+            text-align: center;
+            display: none;
+        }
+        .quiz-feedback.correct {
+            background-color: #d1fae5;
+            color: #065f46;
+        }
+        .quiz-feedback.incorrect {
+            background-color: #fee2e2;
+            color: #991b1b;
+        }
+        .quiz-option.correct {
+            background-color: #d1fae5;
+            border-color: #10b981;
+        }
+        .quiz-option.incorrect {
+            background-color: #fee2e2;
+            border-color: #ef4444;
+        }
+    </style>
+</head>
+<body class="p-4 md:p-8">
+    <div class="container mx-auto space-y-8">
+        
+        <!-- Header -->
+        <header class="p-8 text-center header-bg">
+            <h1 class="text-4xl md:text-5xl mb-2">Parts of Speech Review 📝</h1>
+            <p class="text-lg opacity-90">Let's review the building blocks of sentences!</p>
+            <p class="text-md opacity-80 mt-2">Teacher: Ndudi Rita Enemuwe</p>
+        </header>
+
+        <!-- Definition of Parts of Speech -->
+        <section class="card bg-white p-8 rounded-2xl shadow-md">
+            <h2 class="text-3xl text-center text-indigo-600 mb-4">What Are Parts of Speech?</h2>
+            <p class="text-gray-700 text-lg text-center">
+                Parts of speech are categories for words based on their function in a sentence. They are the fundamental building blocks of language, helping us understand how words work together to create meaning.
+            </p>
+        </section>
+
+        <!-- Parts of Speech Cards -->
+        <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <!-- Noun -->
+            <div id="noun-card" class="part-of-speech-card" data-color="#10b981">
+                <div class="flex items-center">
+                    <span class="card-icon text-green-500">🧑‍🤝‍🧑</span>
+                    <h3 class="text-2xl text-green-600">Noun</h3>
+                </div>
+                <div class="card-content">
+                    <p class="text-gray-600">A word that represents a person, place, thing, or idea.</p>
+                    <p class="font-semibold mt-2">Examples:</p>
+                    <ul class="list-disc list-inside text-gray-700">
+                        <li><span class="font-bold">Person:</span> <span class="text-green-500">teacher, Mary</span></li>
+                        <li><span class="font-bold">Place:</span> <span class="text-green-500">city, Paris</span></li>
+                        <li><span class="font-bold">Thing:</span> <span class="text-green-500">table, book</span></li>
+                        <li><span class="font-bold">Idea:</span> <span class="text-green-500">freedom, happiness</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Verb -->
+            <div id="verb-card" class="part-of-speech-card" data-color="#ef4444">
+                <div class="flex items-center">
+                    <span class="card-icon text-red-500">🏃</span>
+                    <h3 class="text-2xl text-red-600">Verb</h3>
+                </div>
+                <div class="card-content">
+                    <p class="text-gray-600">A word that describes an action, state, or occurrence.</p>
+                    <p class="font-semibold mt-2">Examples:</p>
+                    <ul class="list-disc list-inside text-gray-700">
+                        <li><span class="font-bold">Action:</span> <span class="text-red-500">run, eat, sing</span></li>
+                        <li><span class="font-bold">State of Being:</span> <span class="text-red-500">is, am, are, was</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Adjective -->
+            <div id="adjective-card" class="part-of-speech-card" data-color="#3b82f6">
+                <div class="flex items-center">
+                    <span class="card-icon text-blue-500">✨</span>
+                    <h3 class="text-2xl text-blue-600">Adjective</h3>
+                </div>
+                <div class="card-content">
+                    <p class="text-gray-600">A word that describes or modifies a noun or pronoun.</p>
+                    <p class="font-semibold mt-2">Examples:</p>
+                    <ul class="list-disc list-inside text-gray-700">
+                        <li><span class="text-blue-500">tall</span> building</li>
+                        <li><span class="text-blue-500">red</span> car</li>
+                        <li><span class="text-blue-500">happy</span> child</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Adverb -->
+            <div id="adverb-card" class="part-of-speech-card" data-color="#f59e0b">
+                <div class="flex items-center">
+                    <span class="card-icon text-amber-500">💨</span>
+                    <h3 class="text-2xl text-amber-600">Adverb</h3>
+                </div>
+                <div class="card-content">
+                    <p class="text-gray-600">A word that describes or modifies a verb, adjective, or another adverb. Often ends in -ly.</p>
+                    <p class="font-semibold mt-2">Examples:</p>
+                    <ul class="list-disc list-inside text-gray-700">
+                        <li>ran <span class="text-amber-500">quickly</span></li>
+                        <li><span class="text-amber-500">very</span> happy</li>
+                        <li>sings <span class="text-amber-500">loudly</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Pronoun -->
+            <div id="pronoun-card" class="part-of-speech-card" data-color="#a855f7">
+                <div class="flex items-center">
+                    <span class="card-icon text-purple-500">🙋</span>
+                    <h3 class="text-2xl text-purple-600">Pronoun</h3>
+                </div>
+                <div class="card-content">
+                    <p class="text-gray-600">A word that takes the place of a noun.</p>
+                    <p class="font-semibold mt-2">Examples:</p>
+                    <ul class="list-disc list-inside text-gray-700">
+                        <li><span class="text-purple-500">He</span>, <span class="text-purple-500">she</span>, <span class="text-purple-500">it</span></li>
+                        <li><span class="text-purple-500">They</span>, <span class="text-purple-500">we</span></li>
+                        <li><span class="text-purple-500">You</span>, <span class="text-purple-500">I</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Conjunction -->
+            <div id="conjunction-card" class="part-of-speech-card" data-color="#14b8a6">
+                <div class="flex items-center">
+                    <span class="card-icon text-teal-500">🔗</span>
+                    <h3 class="text-2xl text-teal-600">Conjunction</h3>
+                </div>
+                <div class="card-content">
+                    <p class="text-gray-600">A word that connects words, phrases, or clauses.</p>
+                    <p class="font-semibold mt-2">Examples:</p>
+                    <ul class="list-disc list-inside text-gray-700">
+                        <li><span class="text-teal-500">and</span>, <span class="text-teal-500">but</span>, <span class="text-teal-500">or</span></li>
+                        <li><span class="text-teal-500">for</span>, <span class="text-teal-500">so</span>, <span class="text-teal-500">yet</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Preposition -->
+            <div id="preposition-card" class="part-of-speech-card" data-color="#f97316">
+                <div class="flex items-center">
+                    <span class="card-icon text-orange-500">📍</span>
+                    <h3 class="text-2xl text-orange-600">Preposition</h3>
+                </div>
+                <div class="card-content">
+                    <p class="text-gray-600">A word that shows the relationship of a noun or pronoun to another word in the sentence.</p>
+                    <p class="font-semibold mt-2">Examples:</p>
+                    <ul class="list-disc list-inside text-gray-700">
+                        <li><span class="text-orange-500">in</span> the box</li>
+                        <li><span class="text-orange-500">on</span> the table</li>
+                        <li><span class="text-orange-500">under</span> the bridge</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Interjection -->
+            <div id="interjection-card" class="part-of-speech-card" data-color="#eab308">
+                <div class="flex items-center">
+                    <span class="card-icon text-yellow-500">😲</span>
+                    <h3 class="text-2xl text-yellow-600">Interjection</h3>
+                </div>
+                <div class="card-content">
+                    <p class="text-gray-600">A word or phrase that expresses a strong emotion.</p>
+                    <p class="font-semibold mt-2">Examples:</p>
+                    <ul class="list-disc list-inside text-gray-700">
+                        <li><span class="text-yellow-500">Wow!</span></li>
+                        <li><span class="text-yellow-500">Ouch!</span></li>
+                        <li><span class="text-yellow-500">Oh no!</span></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Video Section -->
+        <section class="flex flex-col items-center">
+            <h2 class="text-3xl text-center text-indigo-600 mb-4">Learn More: Watch This Video! 📽️</h2>
+            <div class="w-full max-w-2xl aspect-video rounded-xl shadow-lg overflow-hidden">
+                <iframe
+                    class="w-full h-full"
+                    src="https://www.youtube.com/embed/0l69KEx7GQo?start=10"
+                    title="YouTube video player"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen
+                ></iframe>
+            </div>
+        </section>
+
+        <!-- Quiz Section -->
+        <section class="card bg-white p-8 rounded-2xl shadow-md mt-8">
+            <h2 class="text-3xl text-center text-indigo-600 mb-6">Quiz Time! 🧠</h2>
+            <div class="space-y-6">
+                <!-- Question 1 -->
+                <div id="quiz-q1-container">
+                    <p class="font-semibold text-lg mb-2">1. In the sentence "The cat sat on the mat," what part of speech is "cat"?</p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <button class="quiz-option" data-answer="adjective">Adjective</button>
+                        <button class="quiz-option" data-answer="noun">Noun</button>
+                        <button class="quiz-option" data-answer="verb">Verb</button>
+                        <button class="quiz-option" data-answer="adverb">Adverb</button>
+                    </div>
+                    <div id="quiz-feedback-1" class="quiz-feedback"></div>
+                </div>
+
+                <!-- Question 2 -->
+                <div id="quiz-q2-container">
+                    <p class="font-semibold text-lg mb-2">2. In the sentence "She runs quickly," what part of speech is "quickly"?</p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <button class="quiz-option" data-answer="verb">Verb</button>
+                        <button class="quiz-option" data-answer="adverb">Adverb</button>
+                        <button class="quiz-option" data-answer="pronoun">Pronoun</button>
+                        <button class="quiz-option" data-answer="noun">Noun</button>
+                    </div>
+                    <div id="quiz-feedback-2" class="quiz-feedback"></div>
+                </div>
+
+                <!-- Question 3 -->
+                <div id="quiz-q3-container">
+                    <p class="font-semibold text-lg mb-2">3. The words "and," "but," and "or" are examples of which part of speech?</p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <button class="quiz-option" data-answer="preposition">Preposition</button>
+                        <button class="quiz-option" data-answer="interjection">Interjection</button>
+                        <button class="quiz-option" data-answer="conjunction">Conjunction</button>
+                        <button class="quiz-option" data-answer="pronoun">Pronoun</button>
+                    </div>
+                    <div id="quiz-feedback-3" class="quiz-feedback"></div>
+                </div>
+                
+                <!-- Question 4 -->
+                <div id="quiz-q4-container">
+                    <p class="font-semibold text-lg mb-2">4. In which sentence is "nail" used as a verb?</p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <button class="quiz-option" data-answer="noun1">He hammered a nail into the wood.</button>
+                        <button class="quiz-option" data-answer="noun2">She painted her nails a bright red.</button>
+                        <button class="quiz-option" data-answer="verb">Nail the boards together.</button>
+                        <button class="quiz-option" data-answer="noun3">He broke a nail while gardening.</button>
+                    </div>
+                    <div id="quiz-feedback-4" class="quiz-feedback"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="text-center text-gray-700 text-sm mt-8">
+            <p>Keep practicing, and you'll be a grammar pro in no time! 🚀</p>
+        </footer>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Interactive Cards Logic
+            const cards = document.querySelectorAll('.part-of-speech-card');
+            cards.forEach(card => {
+                card.addEventListener('click', () => {
+                    // Toggle active class on the clicked card
+                    card.classList.toggle('active');
+                    const content = card.querySelector('.card-content');
+                    content.classList.toggle('active');
+                });
+            });
+
+            // Quiz Logic
+            const quizData = {
+                'quiz-q1-container': 'noun',
+                'quiz-q2-container': 'adverb',
+                'quiz-q3-container': 'conjunction',
+                'quiz-q4-container': 'verb'
+            };
+
+            Object.keys(quizData).forEach(containerId => {
+                const container = document.getElementById(containerId);
+                const buttons = container.querySelectorAll('.quiz-option');
+                const feedbackBox = container.querySelector('.quiz-feedback');
+                const correctAnswer = quizData[containerId];
+
+                buttons.forEach(button => {
+                    button.addEventListener('click', () => {
+                        const selectedAnswer = button.dataset.answer;
+
+                        // Reset states for all buttons in this question
+                        buttons.forEach(btn => {
+                            btn.classList.remove('selected', 'correct', 'incorrect');
+                        });
+
+                        // Set selected state on the clicked button
+                        button.classList.add('selected');
+
+                        // Provide immediate feedback
+                        feedbackBox.style.display = 'block';
+                        if (selectedAnswer === correctAnswer) {
+                            feedbackBox.textContent = "Correct! 🎉";
+                            feedbackBox.classList.remove('incorrect');
+                            feedbackBox.classList.add('correct');
+                            button.classList.add('correct');
+                        } else {
+                            feedbackBox.textContent = "Oops! That's not quite right. Try again. 🤔";
+                            feedbackBox.classList.remove('correct');
+                            feedbackBox.classList.add('incorrect');
+                            button.classList.add('incorrect');
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>

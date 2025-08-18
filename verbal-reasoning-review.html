@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verbal Reasoning: The Mind Maze Challenge!</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Mind Maze (Bright Orange, Teal, Lime Green, Deep Blue, Light Grey, White) -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+        }
+        h1, h2, h3 {
+            font-family: 'Fredoka One', cursive;
+        }
+        .bg-bright-orange { background-color: #F97316; } /* Tailwind orange-500 */
+        .text-bright-orange { color: #F97316; }
+        .bg-teal { background-color: #2DD4BF; } /* Tailwind teal-400 */
+        .text-teal { color: #0D9488; } /* Tailwind teal-700 */
+        .bg-lime-green { background-color: #BEF264; } /* Tailwind lime-300 */
+        .text-lime-green { color: #4D7C0F; } /* Tailwind lime-800 */
+        .bg-deep-blue { background-color: #1E40AF; } /* Tailwind blue-800 */
+        .text-deep-blue { color: #1E40AF; }
+        .bg-light-grey { background-color: #F3F4F6; } /* Tailwind gray-100 */
+        .text-dark-grey { color: #374151; } /* Tailwind gray-700 */
+
+        /* New yellow color for better contrast on deep blue */
+        .text-lesson-yellow { color: #FCD34D; } /* Tailwind yellow-300 */
+
+
+        .transition-all {
+            transition: all 0.3s ease-in-out;
+        }
+        .clickable-card {
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .clickable-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        }
+        .hidden-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out;
+        }
+        .visible-content {
+            max-height: 300px; /* Adjust as needed for content */
+            transition: max-height 0.5s ease-in;
+        }
+        .reveal-btn {
+            background-color: #F97316; /* bright-orange */
+            color: white;
+            padding: 10px 20px;
+            border-radius: 9999px;
+            font-weight: bold;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: all 0.2s ease-in-out;
+        }
+        .reveal-btn:hover {
+            background-color: #EA580C; /* orange-600 */
+            transform: translateY(-2px);
+        }
+        .check-btn {
+            background-color: #0D9488; /* teal-700 */
+            color: white;
+            padding: 8px 16px;
+            border-radius: 0.5rem;
+            font-weight: bold;
+            transition: all 0.2s ease-in-out;
+        }
+        .check-btn:hover {
+            background-color: #0F766E; /* teal-800 */
+            transform: translateY(-1px);
+        }
+        .feedback-text {
+            font-weight: bold;
+            margin-top: 8px;
+        }
+        .correct { color: #16A34A; } /* green-700 */
+        .incorrect { color: #DC2626; } /* red-600 */
+        .input-field {
+            border: 2px solid #D1D5DB; /* gray-300 */
+            border-radius: 0.5rem;
+            padding: 8px 12px;
+            width: 100%;
+            max-width: 250px;
+            font-size: 1rem;
+        }
+        .odd-one-out-option {
+            padding: 12px 20px;
+            background-color: #fff;
+            color: #374151; /* gray-700 */
+            border-radius: 0.75rem;
+            font-weight: bold;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: all 0.2s ease-in-out;
+            text-align: center;
+        }
+        .odd-one-out-option:hover {
+            background-color: #E5E7EB; /* gray-200 */
+            transform: translateY(-2px);
+        }
+        .odd-one-out-option.selected {
+            border: 2px solid #1E40AF; /* deep-blue */
+            background-color: #DBEAFE; /* blue-100 */
+        }
+    </style>
+</head>
+<body class="bg-light-grey text-dark-grey">
+
+    <div class="container mx-auto p-4 md:p-8 max-w-4xl">
+
+        <!-- Header -->
+        <header class="text-center p-6 bg-bright-orange text-white rounded-2xl shadow-lg mb-10">
+            <h1 class="text-4xl md:text-5xl">Verbal Reasoning: The Mind Maze Challenge! 🧠</h1>
+            <p class="text-lg md:text-xl mt-2">Subject: Verbal Reasoning</p>
+            <p class="text-md mt-1">Teacher: Ndudi Rita Enemuwe</p>
+        </header>
+
+        <!-- Enquiry Question -->
+        <section id="enquiry-question" class="mb-10 p-6 bg-lime-green rounded-2xl shadow-lg text-center">
+            <h2 class="text-3xl mb-4 text-text-lime-green">Enquiry Question 🤔</h2>
+            <p class="text-lg text-gray-800 mb-6 font-semibold">
+                If 'STOP' becomes 'POTS' and 'READ' becomes 'DARE', what does 'WOLF' become?
+            </p>
+            <button id="reveal-answer-btn" class="reveal-btn">Reveal Answer</button>
+            <p id="enquiry-answer" class="hidden-content text-xl font-bold text-deep-blue mt-4">
+                Answer: FLOW
+                <br><span class="text-sm font-normal text-gray-700">(Hint: The letters are reversed!)</span>
+            </p>
+        </section>
+
+        <!-- Learning Objectives -->
+        <section id="learning-objectives" class="mb-10 p-6 bg-deep-blue text-white rounded-2xl shadow-lg">
+            <h2 class="text-3xl text-center mb-6 text-lesson-yellow">By the end of this lesson, you should be able to:</h2>
+            <ul class="list-disc list-inside space-y-3 text-lg">
+                <li>Identify and understand various letter patterns and transformations.</li>
+                <li>Distinguish relationships between words in analogies.</li>
+                <li>Rearrange jumbled words to form grammatically correct sentences.</li>
+                <li>Identify the "odd one out" in a group and explain the reasoning.</li>
+                <li>Apply verbal reasoning skills to solve problems effectively.</li>
+            </ul>
+        </section>
+
+        <!-- Core Concepts & Examples -->
+        <section id="core-concepts" class="mb-10 p-6 bg-white rounded-2xl shadow-lg">
+            <h2 class="text-3xl text-center mb-6 text-text-teal">Unlocking Verbal Reasoning Concepts 🔑</h2>
+            <p class="text-center text-lg text-gray-700 mb-6">
+                Let's explore different types of verbal reasoning. Click on each section to understand the rules!
+            </p>
+
+            <!-- Concept 1: Analogies -->
+            <div class="concept-card clickable-card bg-light-grey p-5 rounded-xl shadow-md mb-6">
+                <h3 class="text-2xl font-bold text-text-teal text-center mb-2">1. Analogy Ace Challenge 🎯</h3>
+                <p class="text-center text-gray-600">Find the relationship between the first pair of words and apply it to the second pair.</p>
+                <div class="hidden-content mt-4">
+                    <p class="text-md text-gray-800 font-semibold mb-2">Example:</p>
+                    <p class="text-lg text-gray-700 mb-2">FINGER is to HAND as TOE is to ____?</p>
+                    <p class="text-md text-gray-600 italic">Rule: A finger is a part of a hand. So, a toe is a part of a foot.</p>
+                    <p class="text-xl font-bold text-deep-blue mt-2">Answer: FOOT</p>
+                </div>
+            </div>
+
+            <!-- Concept 2: Sentence Scramble -->
+            <div class="concept-card clickable-card bg-light-grey p-5 rounded-xl shadow-md mb-6">
+                <h3 class="text-2xl font-bold text-text-teal text-center mb-2">2. Sentence Scramble Safari 🦁</h3>
+                <p class="text-center text-gray-600">Rearrange the jumbled words to form a correct and meaningful sentence.</p>
+                <div class="hidden-content mt-4">
+                    <p class="text-md text-gray-800 font-semibold mb-2">Example:</p>
+                    <p class="text-lg text-gray-700 mb-2">'ran fast dog The'</p>
+                    <p class="text-md text-gray-600 italic">Rule: Look for the capital letter to start, and think about subject-verb-object order.</p>
+                    <p class="text-xl font-bold text-deep-blue mt-2">Answer: The dog ran fast.</p>
+                </div>
+            </div>
+
+            <!-- Concept 3: Odd One Out -->
+            <div class="concept-card clickable-card bg-light-grey p-5 rounded-xl shadow-md">
+                <h3 class="text-2xl font-bold text-text-teal text-center mb-2">3. Odd One Out ✖️</h3>
+                <p class="text-center text-gray-600">Identify the word or item that does not belong with the others in the group.</p>
+                <div class="hidden-content mt-4">
+                    <p class="text-md text-gray-800 font-semibold mb-2">Example:</p>
+                    <p class="text-lg text-gray-700 mb-2">BLUE – RED – CIRCLE – YELLOW</p>
+                    <p class="text-md text-gray-600 italic">Rule: Find the common category or pattern among most items, then identify the one that breaks it.</p>
+                    <p class="text-xl font-bold text-deep-blue mt-2">Answer: CIRCLE</p>
+                    <p class="text-sm text-gray-700 mt-1">(Reason: Blue, Red, and Yellow are colors. Circle is a shape.)</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Challenges -->
+        <section id="interactive-challenges" class="mb-10 p-6 bg-teal rounded-2xl shadow-lg">
+            <h2 class="text-3xl text-center mb-6 text-white">Your Turn! Interactive Challenges! 🚀</h2>
+
+            <!-- Challenge 1: Analogy Ace -->
+            <div class="bg-white p-6 rounded-xl shadow-md mb-8">
+                <h3 class="text-2xl font-bold text-text-teal mb-4">Analogy Ace Challenge 1:</h3>
+                <p class="text-lg text-gray-800 mb-4">HOT is to COLD as UP is to ____?</p>
+                <div class="flex flex-col md:flex-row gap-4 items-center">
+                    <input type="text" id="analogy-answer" class="input-field" placeholder="Type your answer">
+                    <button id="check-analogy-btn" class="check-btn">Check Answer</button>
+                </div>
+                <p id="analogy-feedback" class="feedback-text"></p>
+            </div>
+
+            <!-- Challenge 2: Sentence Scramble -->
+            <div class="bg-white p-6 rounded-xl shadow-md mb-8">
+                <h3 class="text-2xl font-bold text-text-teal mb-4">Sentence Scramble Safari 1:</h3>
+                <p class="text-lg text-gray-800 mb-4">Rearrange: 'book a read I everyday'</p>
+                <div class="flex flex-col md:flex-row gap-4 items-center">
+                    <input type="text" id="scramble-answer" class="input-field max-w-full" placeholder="Type the correct sentence">
+                    <button id="check-scramble-btn" class="check-btn">Check Sentence</button>
+                </div>
+                <p id="scramble-feedback" class="feedback-text"></p>
+            </div>
+
+            <!-- Challenge 3: Odd One Out -->
+            <div class="bg-white p-6 rounded-xl shadow-md">
+                <h3 class="text-2xl font-bold text-text-teal mb-4">Odd One Out Challenge 1:</h3>
+                <p class="text-lg text-gray-800 mb-4">Which word does not belong?</p>
+                <div id="odd-one-out-options" class="grid grid-cols-2 gap-4 mb-4">
+                    <button class="odd-one-out-option" data-value="Apple">Apple</button>
+                    <button class="odd-one-out-option" data-value="Banana">Banana</button>
+                    <button class="odd-one-out-option" data-value="Carrot">Carrot</button>
+                    <button class="odd-one-out-option" data-value="Orange">Orange</button>
+                </div>
+                <button id="check-odd-one-out-btn" class="check-btn">Check Answer</button>
+                <p id="odd-one-out-feedback" class="feedback-text"></p>
+                <p id="odd-one-out-reason" class="hidden-content text-sm text-gray-700 mt-2">
+                    Reason: Carrot is a vegetable, while Apple, Banana, and Orange are fruits.
+                </p>
+            </div>
+        </section>
+
+        <!-- Plenary / Recap -->
+        <section id="plenary" class="mb-10 p-6 bg-lime-green rounded-2xl shadow-lg text-center">
+            <h2 class="text-3xl mb-4 text-text-lime-green">Plenary: Let's Recap! ✅</h2>
+            <p class="text-lg text-gray-800 mb-4">
+                What was the most important thing you learned about verbal reasoning today?
+            </p>
+            <p class="text-md text-gray-700 italic">
+                (Think about how recognizing patterns, relationships, and word order helps you solve problems!)
+            </p>
+            <div class="mt-6">
+                <h3 class="text-2xl font-bold text-text-lime-green mb-2">Key Takeaways:</h3>
+                <ul class="list-disc list-inside text-lg text-gray-700 inline-block text-left">
+                    <li>Verbal reasoning is about understanding words and their relationships.</li>
+                    <li>Look for patterns in letters, sounds, and meanings.</li>
+                    <li>Practice helps you become a "Mind Maze" master!</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="mt-10 p-6 bg-deep-blue text-white rounded-2xl shadow-lg text-center">
+            <h2 class="text-2xl mb-4">Keep Your Mind Sharp! 💡</h2>
+            <p class="text-lg">Verbal Reasoning helps you think clearly and solve problems every day!</p>
+        </footer>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Enquiry Question Reveal
+            const revealAnswerBtn = document.getElementById('reveal-answer-btn');
+            const enquiryAnswer = document.getElementById('enquiry-answer');
+            revealAnswerBtn.addEventListener('click', () => {
+                enquiryAnswer.classList.toggle('hidden-content');
+                enquiryAnswer.classList.toggle('visible-content');
+                if (enquiryAnswer.classList.contains('visible-content')) {
+                    revealAnswerBtn.textContent = 'Hide Answer';
+                } else {
+                    revealAnswerBtn.textContent = 'Reveal Answer';
+                }
+            });
+
+            // Core Concepts Reveal
+            const conceptCards = document.querySelectorAll('.concept-card');
+            conceptCards.forEach(card => {
+                card.addEventListener('click', () => {
+                    const content = card.querySelector('.hidden-content');
+                    if (content.classList.contains('visible-content')) {
+                        content.classList.remove('visible-content');
+                        content.classList.add('hidden-content');
+                    } else {
+                        // Optional: Close other open concept cards
+                        document.querySelectorAll('.concept-card .visible-content').forEach(openContent => {
+                            openContent.classList.remove('visible-content');
+                            openContent.classList.add('hidden-content');
+                        });
+                        content.classList.remove('hidden-content');
+                        content.classList.add('visible-content');
+                    }
+                });
+            });
+
+            // Analogy Ace Challenge
+            const analogyAnswerInput = document.getElementById('analogy-answer');
+            const checkAnalogyBtn = document.getElementById('check-analogy-btn');
+            const analogyFeedback = document.getElementById('analogy-feedback');
+            checkAnalogyBtn.addEventListener('click', () => {
+                const answer = analogyAnswerInput.value.trim().toLowerCase();
+                if (answer === 'down') {
+                    analogyFeedback.textContent = 'Correct! 🎉';
+                    analogyFeedback.className = 'feedback-text correct';
+                } else {
+                    analogyFeedback.textContent = 'Not quite. Think about opposites!';
+                    analogyFeedback.className = 'feedback-text incorrect';
+                }
+            });
+
+            // Sentence Scramble Safari
+            const scrambleAnswerInput = document.getElementById('scramble-answer');
+            const checkScrambleBtn = document.getElementById('check-scramble-btn');
+            const scrambleFeedback = document.getElementById('scramble-feedback');
+            checkScrambleBtn.addEventListener('click', () => {
+                const answer = scrambleAnswerInput.value.trim().toLowerCase().replace(/\s+/g, ' '); // Normalize spaces
+                const correctAnswer = 'i read a book everyday';
+                if (answer === correctAnswer) {
+                    scrambleFeedback.textContent = 'Excellent! 🎉';
+                    scrambleFeedback.className = 'feedback-text correct';
+                } else {
+                    scrambleFeedback.textContent = 'Try again! Remember the correct word order.';
+                    scrambleFeedback.className = 'feedback-text incorrect';
+                }
+            });
+
+            // Odd One Out
+            const oddOneOutOptions = document.querySelectorAll('.odd-one-out-option');
+            const checkOddOneOutBtn = document.getElementById('check-odd-one-out-btn');
+            const oddOneOutFeedback = document.getElementById('odd-one-out-feedback');
+            const oddOneOutReason = document.getElementById('odd-one-out-reason');
+            let selectedOddOneOut = null;
+
+            oddOneOutOptions.forEach(option => {
+                option.addEventListener('click', () => {
+                    oddOneOutOptions.forEach(btn => btn.classList.remove('selected')); // Deselect others
+                    option.classList.add('selected');
+                    selectedOddOneOut = option.dataset.value;
+                    oddOneOutFeedback.textContent = ''; // Clear feedback on new selection
+                    oddOneOutReason.classList.remove('visible-content');
+                    oddOneOutReason.classList.add('hidden-content');
+                });
+            });
+
+            checkOddOneOutBtn.addEventListener('click', () => {
+                if (selectedOddOneOut === null) {
+                    oddOneOutFeedback.textContent = 'Please select an option!';
+                    oddOneOutFeedback.className = 'feedback-text incorrect';
+                    return;
+                }
+                if (selectedOddOneOut === 'Carrot') {
+                    oddOneOutFeedback.textContent = 'Correct! 🎉';
+                    oddOneOutFeedback.className = 'feedback-text correct';
+                    oddOneOutReason.classList.remove('hidden-content');
+                    oddOneOutReason.classList.add('visible-content');
+                } else {
+                    oddOneOutFeedback.textContent = 'Not quite. Think about categories!';
+                    oddOneOutFeedback.className = 'feedback-text incorrect';
+                    oddOneOutReason.classList.remove('visible-content');
+                    oddOneOutReason.classList.add('hidden-content');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

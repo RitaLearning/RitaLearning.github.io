@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Correct Pronoun Usage</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Font - Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Define a subtle animation for the header text */
+        @keyframes pulse-glow {
+            0%, 100% {
+                transform: scale(1);
+                text-shadow: 0 0 5px rgba(255, 255, 255, 0.4);
+            }
+            50% {
+                transform: scale(1.02);
+                text-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 0 0 25px rgba(255, 255, 255, 0.6);
+            }
+        }
+
+        .animated-text {
+            animation: pulse-glow 3s infinite ease-in-out;
+            color: #fff;
+        }
+
+        /* Basic container styles */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #1a202c; /* Dark background */
+            color: #e2e8f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 2rem;
+            box-sizing: border-box;
+            user-select: none;
+        }
+
+        /* Slide container */
+        .slide-container {
+            position: relative;
+            width: 100%;
+            max-width: 900px;
+            height: auto;
+            min-height: 500px;
+            background-color: #2d3748;
+            border-radius: 1.5rem;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5), 0 0 10px rgba(0, 0, 0, 0.25);
+            padding: 2.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        /* Individual slide styles */
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2.5rem;
+            opacity: 0;
+            transition: opacity 0.6s ease-in-out;
+        }
+        
+        /* Specific padding for quiz slide to push content down */
+        .quiz-slide {
+            padding-top: 2rem;
+            justify-content: flex-start;
+        }
+
+        .slide.active {
+            opacity: 1;
+            z-index: 10;
+        }
+
+        /* Navigation button styles */
+        .nav-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(74, 85, 104, 0.6);
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            padding: 1rem 1.5rem;
+            font-size: 2rem;
+            font-weight: bold;
+            border-radius: 9999px;
+            transition: background-color 0.3s, transform 0.3s;
+            z-index: 20;
+        }
+
+        .nav-button:hover {
+            background-color: rgba(74, 85, 104, 0.9);
+            transform: translateY(-50%) scale(1.05);
+        }
+
+        .prev-button {
+            left: 1rem;
+        }
+
+        .next-button {
+            right: 1rem;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .slide-container {
+                padding: 1.5rem;
+            }
+            .nav-button {
+                padding: 0.75rem 1rem;
+                font-size: 1.5rem;
+            }
+            .prev-button { left: 0.5rem; }
+            .next-button { right: 0.5rem; }
+        }
+
+        .examples-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+            text-align: left;
+            width: 100%;
+            max-width: 600px;
+        }
+        @media (min-width: 640px) {
+            .examples-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .quiz-container {
+            text-align: left;
+            width: 100%;
+            max-width: 700px;
+        }
+        .quiz-container ol {
+            list-style: none;
+            padding: 0;
+            counter-reset: question-counter;
+        }
+        .quiz-container li {
+            counter-increment: question-counter;
+            margin-bottom: 1rem;
+            font-size: 1.125rem;
+            line-height: 1.75rem;
+            position: relative;
+            padding-left: 2rem;
+        }
+        .quiz-container li:before {
+            content: counter(question-counter) ".";
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+            color: #48bb78; /* Green for numbering */
+        }
+        .answer-key {
+            display: none;
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background-color: #4a5568;
+            border-radius: 0.75rem;
+            color: #e2e8f0;
+        }
+        .answer-key ol {
+            list-style-type: decimal;
+            padding-left: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="slide-container">
+        <!-- Previous Button -->
+        <button class="nav-button prev-button">&#8249;</button>
+
+        <!-- Slides -->
+        <div class="slide active">
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold mb-4 animated-text">Correct Pronoun Usage</h1>
+            <p class="text-md sm:text-lg mb-8">Ndudi Rita Enemuwe</p>
+            <p class="text-lg sm:text-xl lg:text-2xl leading-relaxed max-w-2xl">
+                A <strong>pronoun</strong> is a word that replaces a noun, or a group of words acting as a noun, to avoid repetition. For example, instead of saying "John went to the store, and John bought bread," you can say, "John went to the store, and <strong>he</strong> bought bread." Pronouns must be used correctly to make sentences clear and easy to understand.
+            </p>
+        </div>
+
+        <div class="slide">
+            <h2 class="text-3xl sm:text-4xl font-bold mb-6">Learning Objectives</h2>
+            <p class="text-lg sm:text-xl leading-relaxed max-w-2xl">
+                By the end of this lesson, you will be able to:
+            </p>
+            <ul class="text-left text-lg sm:text-xl leading-relaxed max-w-2xl mt-4 space-y-2">
+                <li>&bull; Understand what a pronoun is and why we use them.</li>
+                <li>&bull; Differentiate between subject and object pronouns.</li>
+                <li>&bull; Correctly match a pronoun to its antecedent.</li>
+                <li>&bull; Use possessive and reflexive pronouns correctly.</li>
+                <li>&bull; Identify and correct common pronoun usage errors.</li>
+            </ul>
+        </div>
+
+        <div class="slide">
+            <h2 class="text-3xl sm:text-4xl font-bold mb-6">Rule #1: Pronoun-Antecedent Agreement</h2>
+            <p class="text-lg sm:text-xl leading-relaxed max-w-2xl">
+                A pronoun must agree with its <strong>antecedent</strong> (the noun it replaces) in both <strong>number</strong> (singular/plural) and <strong>gender</strong>.
+            </p>
+            <div class="examples-grid mt-6">
+                <div class="bg-gray-700 rounded-xl p-4">
+                    <h3 class="font-bold text-xl mb-2">Number Agreement</h3>
+                    <p class="text-gray-400">Correct:</p>
+                    <p>The student loves <span class="font-bold text-green-400">their</span> books. (singular antecedent, plural pronoun for non-binary or unknown gender)</p>
+                    <p class="text-gray-400">Incorrect:</p>
+                    <p>The students love <span class="font-bold text-red-400">his</span> books.</p>
+                </div>
+                <div class="bg-gray-700 rounded-xl p-4">
+                    <h3 class="font-bold text-xl mb-2">Gender Agreement</h3>
+                    <p class="text-gray-400">Correct:</p>
+                    <p>My sister said <span class="font-bold text-green-400">she</span> would come. </p>
+                    <p class="text-gray-400">Incorrect:</p>
+                    <p>My sister said <span class="font-bold text-red-400">he</span> would come.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <h2 class="text-3xl sm:text-4xl font-bold mb-6">Rule #2: Subject vs. Object Pronouns</h2>
+            <p class="text-lg sm:text-xl leading-relaxed max-w-2xl mb-6">
+                Let's dive deeper into the proper use of subject and object pronouns. Remember that the choice depends on the pronoun's role in the sentence.
+            </p>
+            <div class="examples-grid">
+                <div class="bg-gray-700 rounded-xl p-4">
+                    <h3 class="font-bold text-xl mb-2">Subject</h3>
+                    <p><span class="font-bold text-green-400">She</span> and I went to the store.</p>
+                    <p class="text-gray-400">Incorrect:</p>
+                    <p><span class="font-bold text-red-400">Her</span> and me went to the store.</p>
+                </div>
+                <div class="bg-gray-700 rounded-xl p-4">
+                    <h3 class="font-bold text-xl mb-2">Object</h3>
+                    <p>The dog followed <span class="font-bold text-green-400">him</span>.</p>
+                    <p>The gift is for <span class="font-bold text-green-400">us</span>.</p>
+                    <p class="text-gray-400">Incorrect:</p>
+                    <p>The dog followed <span class="font-bold text-red-400">he</span>.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <h2 class="text-3xl sm:text-4xl font-bold mb-6">More on Subject Pronouns</h2>
+            <p class="text-lg sm:text-xl leading-relaxed max-w-2xl mb-6">
+                A subject pronoun is used after an <strong>auxiliary verb</strong>, or a verb used to help another verb, especially forms of the verb "to be" (is, am, are, was, were).
+            </p>
+            <div class="bg-gray-700 rounded-xl p-4 mt-6 w-full max-w-2xl">
+                <p>It was <span class="font-bold text-green-400">he</span> who knew the right answer.</p>
+                <p class="text-gray-400">(Here, "he" is the subject of the clause "who knew the right answer.")</p>
+            </div>
+        </div>
+
+        <div class="slide">
+            <h2 class="text-3xl sm:text-4xl font-bold mb-6">More on Object Pronouns (Part 1)</h2>
+            <div class="w-full text-left space-y-4 lg:px-16">
+                <div class="bg-gray-700 rounded-xl p-4">
+                    <h3 class="font-bold text-xl mb-2">After Prepositions</h3>
+                    <p>Use an object pronoun after prepositions like 'between', 'for', 'with', etc.</p>
+                    <p class="mt-2 text-green-400 font-bold">Example: </p>
+                    <p class="pl-4">It is a secret between Jane and <span class="font-bold text-green-400">him</span>.</p>
+                </div>
+                <div class="bg-gray-700 rounded-xl p-4">
+                    <h3 class="font-bold text-xl mb-2">After 'let'</h3>
+                    <p>Use an object pronoun after the verb 'let'.</p>
+                    <p class="mt-2 text-green-400 font-bold">Example: </p>
+                    <p class="pl-4">Let you and <span class="font-bold text-green-400">me</span> go to the market.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <h2 class="text-3xl sm:text-4xl font-bold mb-6">More on Object Pronouns (Part 2)</h2>
+            <div class="w-full text-left space-y-4 lg:px-16">
+                <div class="bg-gray-700 rounded-xl p-4">
+                    <h3 class="font-bold text-xl mb-2">After Main Verbs</h3>
+                    <p>Use an object pronoun after a main verb.</p>
+                    <p class="mt-2 text-green-400 font-bold">Example: </p>
+                    <p class="pl-4">I saw <span class="font-bold text-green-400">him</span> yesterday.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <h2 class="text-3xl sm:text-4xl font-bold mb-6">Rule #3: Possessive Pronouns</h2>
+            <p class="text-lg sm:text-xl leading-relaxed max-w-2xl mb-6">
+                These pronouns show ownership. Remember to use the correct form, as some are stand-alone and some are used before a noun.
+            </p>
+            <div class="examples-grid">
+                <div class="bg-gray-700 rounded-xl p-4">
+                    <h3 class="font-bold text-xl mb-2">Used with a Noun</h3>
+                    <p><span class="font-bold text-green-400">Her</span> book is on the table.</p>
+                    <p><span class="font-bold text-green-400">Their</span> car is new.</p>
+                </div>
+                <div class="bg-gray-700 rounded-xl p-4">
+                    <h3 class="font-bold text-xl mb-2">Used Alone</h3>
+                    <p>That book is <span class="font-bold text-green-400">hers</span>.</p>
+                    <p>The car is <span class="font-bold text-green-400">theirs</span>.</p>
+                </div>
+            </div>
+            <div class="bg-gray-700 rounded-xl p-4 mt-4 w-full max-w-2xl">
+                <p class="font-bold text-xl mb-2">A special case:</p>
+                <p>The dog wagged <span class="font-bold text-green-400">its</span> tail. (No apostrophe!)</p>
+                <p class="text-gray-400">Incorrect:</p>
+                <p>The dog wagged <span class="font-bold text-red-400">it's</span> tail. ('It's' means 'it is')</p>
+            </div>
+        </div>
+
+        <div class="slide">
+            <h2 class="text-3xl sm:text-4xl font-bold mb-6">Rule #4: Reflexive Pronouns</h2>
+            <p class="text-lg sm:text-xl leading-relaxed max-w-2xl">
+                Use a reflexive pronoun (<strong>myself, yourself, himself, herself, itself, ourselves, yourselves, themselves</strong>) when the subject and the object of the sentence are the same.
+            </p>
+            <div class="examples-grid mt-6">
+                <div class="bg-gray-700 rounded-xl p-4">
+                    <h3 class="font-bold text-xl mb-2">Correct Usage</h3>
+                    <p>He taught <span class="font-bold text-green-400">himself</span> to play guitar.</p>
+                    <p>I saw <span class="font-bold text-green-400">myself</span> in the mirror.</p>
+                </div>
+                <div class="bg-gray-700 rounded-xl p-4">
+                    <h3 class="font-bold text-xl mb-2">Incorrect Usage</h3>
+                    <p>They gave the prize to John and <span class="font-bold text-red-400">myself</span>.</p>
+                    <p class="text-gray-400">Correct: "They gave the prize to John and <strong>me</strong>."</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <h2 class="text-3xl sm:text-4xl font-bold mb-6">Rule #5: Pronouns in Comparisons</h2>
+            <p class="text-lg sm:text-xl leading-relaxed max-w-2xl">
+                When a pronoun follows <strong>than</strong> or <strong>as</strong> in a comparison, choose the pronoun that would work if the rest of the sentence were included.
+            </p>
+            <div class="bg-gray-700 rounded-xl p-4 mt-6 w-full max-w-2xl">
+                <p class="mb-4">He is taller than <span class="font-bold text-green-400">I</span>. (Correct, because it means "He is taller than <strong>I am</strong>.")</p>
+                <p class="mb-4">The news surprised him more than <span class="font-bold text-green-400">me</span>. (Correct, because it means "The news surprised him more than <strong>it surprised me</strong>.")</p>
+            </div>
+        </div>
+
+        <div class="slide">
+            <h2 class="text-3xl sm:text-4xl font-bold mb-6">Summary of Rules</h2>
+            <p class="text-lg sm:text-xl leading-relaxed max-w-2xl mb-6">
+                Here's a quick recap of the most important rules.
+            </p>
+            <ul class="text-left text-lg sm:text-xl leading-relaxed max-w-2xl mt-4 space-y-4">
+                <li>&bull; <strong>Agreement:</strong> A pronoun must agree with its noun in number and gender.</li>
+                <li>&bull; <strong>Subject vs. Object:</strong> Use a subject pronoun (I, he) for the subject of a sentence and an object pronoun (me, him) for the object.</li>
+                <li>&bull; <strong>Special Cases:</strong> Use subject pronouns after "to be" verbs, and object pronouns after prepositions and "let."</li>
+                <li>&bull; <strong>Possessives:</strong> Use the correct form to show ownership (e.g., her vs. hers, its vs. it's).</li>
+                <li>&bull; <strong>Reflexives:</strong> Use reflexive pronouns (myself) when the subject and object are the same person or thing.</li>
+            </ul>
+        </div>
+
+        <!-- NEW QUIZ SLIDE -->
+        <div class="slide quiz-slide">
+            <h2 class="text-3xl sm:text-4xl font-bold mb-2">Pronoun Quiz: Test Yourself!</h2>
+            <p class="text-lg sm:text-xl leading-relaxed max-w-2xl">
+                Fill in the blanks with the correct pronouns.
+            </p>
+            <div class="quiz-container mt-6">
+                <ol>
+                    <li>The dog wagged _____ tail happily. [it's / its]</li>
+                    <li>Between you and _____, the secret is safe. [I / me]</li>
+                    <li>My sister and _____ went to the concert. [I / me]</li>
+                    <li>The cat saw _____ in the mirror. [itself / it's]</li>
+                    <li>He is a better dancer than _____. [I / me]</li>
+                    <li>Please give the books to John and _____. [I / me]</li>
+                    <li>That car is not ours; it must be _____. [theirs / their]</li>
+                    <li>The teacher praised a student, and a smile appeared on _____ face. [her / their]</li>
+                </ol>
+                <button id="show-answers" class="mt-6 bg-gray-600 hover:bg-gray-500 text-white font-bold py-2 px-6 rounded-full transition-colors duration-300">
+                    Reveal Answers
+                </button>
+                <div id="answer-key" class="answer-key">
+                    <h3 class="font-bold text-xl mb-2">Answer Key</h3>
+                    <ol>
+                        <li>its</li>
+                        <li>me</li>
+                        <li>I</li>
+                        <li>itself</li>
+                        <li>I</li>
+                        <li>me</li>
+                        <li>theirs</li>
+                        <li>their</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <!-- Next Button -->
+        <button class="nav-button next-button">&#8250;</button>
+    </div>
+
+    <script>
+        // JavaScript for the slideshow functionality
+        const slides = document.querySelectorAll('.slide');
+        const nextButton = document.querySelector('.next-button');
+        const prevButton = document.querySelector('.prev-button');
+        const showAnswersButton = document.getElementById('show-answers');
+        const answerKey = document.getElementById('answer-key');
+        let currentSlide = 0;
+
+        const showSlide = (index) => {
+            slides.forEach(slide => slide.classList.remove('active'));
+            slides[index].classList.add('active');
+        };
+
+        nextButton.addEventListener('click', () => {
+            currentSlide++;
+            if (currentSlide >= slides.length) {
+                currentSlide = 0;
+            }
+            showSlide(currentSlide);
+        });
+
+        prevButton.addEventListener('click', () => {
+            currentSlide--;
+            if (currentSlide < 0) {
+                currentSlide = slides.length - 1;
+            }
+            showSlide(currentSlide);
+        });
+
+        showAnswersButton.addEventListener('click', () => {
+            if (answerKey.style.display === 'block') {
+                answerKey.style.display = 'none';
+                showAnswersButton.textContent = 'Reveal Answers';
+            } else {
+                answerKey.style.display = 'block';
+                showAnswersButton.textContent = 'Hide Answers';
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            showSlide(currentSlide);
+        });
+    </script>
+
+</body>
+</html>

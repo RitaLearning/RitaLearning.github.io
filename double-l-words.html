@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spelling Rule: Double 'L'</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Font - Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Define a subtle animation for the header text */
+        @keyframes pulse-glow {
+            0%, 100% {
+                transform: scale(1);
+                text-shadow: 0 0 5px rgba(255, 255, 255, 0.4);
+            }
+            50% {
+                transform: scale(1.02);
+                text-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 0 0 25px rgba(255, 255, 255, 0.6);
+            }
+        }
+
+        .animated-text {
+            animation: pulse-glow 3s infinite ease-in-out;
+            color: #fff;
+        }
+
+        /* Basic container styles */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #1a202c; /* Dark background */
+            color: #e2e8f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 2rem;
+            box-sizing: border-box;
+            user-select: none;
+        }
+
+        /* Slide container */
+        .slide-container {
+            position: relative;
+            width: 100%;
+            max-width: 900px;
+            height: auto;
+            min-height: 500px;
+            background-color: #2d3748;
+            border-radius: 1.5rem;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5), 0 0 10px rgba(0, 0, 0, 0.25);
+            padding: 2.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        /* Individual slide styles */
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2.5rem;
+            opacity: 0;
+            transition: opacity 0.6s ease-in-out;
+        }
+        
+        .slide.active {
+            opacity: 1;
+            z-index: 10;
+        }
+
+        /* Navigation button styles */
+        .nav-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(74, 85, 104, 0.6);
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            padding: 1rem 1.5rem;
+            font-size: 2rem;
+            font-weight: bold;
+            border-radius: 9999px;
+            transition: background-color 0.3s, transform 0.3s;
+            z-index: 20;
+        }
+
+        .nav-button:hover {
+            background-color: rgba(74, 85, 104, 0.9);
+            transform: translateY(-50%) scale(1.05);
+        }
+
+        .prev-button {
+            left: 1rem;
+        }
+
+        .next-button {
+            right: 1rem;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .slide-container {
+                padding: 1.5rem;
+            }
+            .nav-button {
+                padding: 0.75rem 1rem;
+                font-size: 1.5rem;
+            }
+            .prev-button { left: 0.5rem; }
+            .next-button { right: 0.5rem; }
+        }
+
+        .examples-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+            text-align: left;
+            width: 100%;
+            max-width: 600px;
+        }
+        @media (min-width: 640px) {
+            .examples-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="slide-container">
+        <!-- Previous Button -->
+        <button class="nav-button prev-button">&#8249;</button>
+
+        <!-- Slides -->
+        <div class="slide active">
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold mb-4 animated-text">The Double 'L' Rule</h1>
+            <p class="text-md sm:text-lg">A guide to consonant doubling in English</p>
+            <p class="text-md sm:text-lg mb-8">Ndudi Rita Enemuwe</p>
+            <p class="text-lg sm:text-xl lg:text-2xl leading-relaxed max-w-2xl">
+                The <strong>double consonant 'L' rule</strong> helps us know when to write a single 'L' or a double 'L' at the end of a word. While it can seem tricky, a few simple guidelines make it much easier to remember.
+            </p>
+        </div>
+
+        <div class="slide">
+            <h2 class="text-3xl sm:text-4xl font-bold mb-6">Learning Objectives</h2>
+            <p class="text-lg sm:text-xl leading-relaxed max-w-2xl">
+                By the end of this presentation, you will be able to:
+            </p>
+            <ul class="text-left text-lg sm:text-xl leading-relaxed max-w-2xl mt-4 space-y-2">
+                <li>&bull; Understand the core rule for doubling 'L' in one-syllable words.</li>
+                <li>&bull; Identify the key exceptions to the rule.</li>
+                <li>&bull; Correctly spell common words that follow the rule.</li>
+                <li>&bull; Find the meanings of common words that follow the rule.</li>
+                <li>&bull; Construct grammatically correct sentences using these words.</li>
+                <li>&bull; Apply the rule to new words and examples.</li>
+            </ul>
+        </div>
+
+        <div class="slide">
+            <h2 class="text-3xl sm:text-4xl font-bold mb-6">The Basic Rule</h2>
+            <p class="text-lg sm:text-xl leading-relaxed max-w-2xl">
+                In most <strong>one-syllable</strong> words that end with an <strong>-L</strong> sound, you will <strong>double the 'L'</strong> if it is immediately preceded by a <strong>single short vowel</strong>.
+            </p>
+            <ul class="text-left text-lg sm:text-xl leading-relaxed max-w-2xl mt-6 space-y-4">
+                <li class="p-2 bg-gray-700 rounded-lg">Word ends with <strong>vowel + L</strong></li>
+                <li class="p-2 bg-gray-700 rounded-lg">It is a <strong>one-syllable</strong> word</li>
+                <li class="p-2 bg-gray-700 rounded-lg">The vowel has a <strong>short sound</strong></li>
+            </ul>
+        </div>
+
+        <div class="slide">
+            <h2 class="text-3xl sm:text-4xl font-bold mb-6">Words That Follow the Rule</h2>
+            <div class="examples-grid mt-6">
+                <div class="bg-gray-700 rounded-xl p-4">
+                    <h3 class="font-bold text-xl mb-2">Short 'A' sound</h3>
+                    <p>c<span class="font-bold text-green-400">all</span></p>
+                    <p>st<span class="font-bold text-green-400">all</span></p>
+                </div>
+                <div class="bg-gray-700 rounded-xl p-4">
+                    <h3 class="font-bold text-xl mb-2">Short 'E' sound</h3>
+                    <p>dw<span class="font-bold text-green-400">ell</span></p>
+                    <p>comp<span class="font-bold text-green-400">el</span></p>
+                </div>
+                <div class="bg-gray-700 rounded-xl p-4">
+                    <h3 class="font-bold text-xl mb-2">Short 'I' sound</h3>
+                    <p>thr<span class="font-bold text-green-400">ill</span></p>
+                    <p>dist<span class="font-bold text-green-400">ill</span></p>
+                </div>
+                <div class="bg-gray-700 rounded-xl p-4">
+                    <h3 class="font-bold text-xl mb-2">Short 'O' sound</h3>
+                    <p>p<span class="font-bold text-green-400">oll</span></p>
+                    <p>str<span class="font-bold text-green-400">oll</span></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <h2 class="text-3xl sm:text-4xl font-bold mb-6">Words That Break the Rule</h2>
+            <p class="text-lg sm:text-xl leading-relaxed max-w-2xl">
+                This rule has some important exceptions. You <strong>don't double the 'L'</strong> if:
+            </p>
+            <div class="examples-grid mt-6">
+                <div class="bg-gray-700 rounded-xl p-4">
+                    <h3 class="font-bold text-xl mb-2">Two vowels before 'L'</h3>
+                    <p>av<span class="font-bold text-green-400">ail</span></p>
+                    <p>conc<span class="font-bold text-green-400">eal</span></p>
+                </div>
+                <div class="bg-gray-700 rounded-xl p-4">
+                    <h3 class="font-bold text-xl mb-2">More than one syllable</h3>
+                    <p>prop<span class="font-bold text-green-400">el</span></p>
+                    <p>reb<span class="font-bold text-green-400">el</span></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <h2 class="text-3xl sm:text-4xl font-bold mb-6">Examples in Sentences</h2>
+            <p class="text-lg sm:text-xl leading-relaxed max-w-2xl mb-6">
+                Let's see these words used in full sentences.
+            </p>
+            <div class="w-full text-left space-y-4 lg:px-16">
+                <div class="bg-gray-700 rounded-xl p-4">
+                    <p class="text-lg"><strong class="text-green-400">Compel:</strong> The new evidence may <strong>compel</strong> the jury to change its verdict.</p>
+                </div>
+                <div class="bg-gray-700 rounded-xl p-4">
+                    <p class="text-lg"><strong class="text-green-400">Distill:</strong> The goal is to <strong>distill</strong> the complex report into a single, understandable summary.</p>
+                </div>
+                <div class="bg-gray-700 rounded-xl p-4">
+                    <p class="text-lg"><strong class="text-green-400">Conceal:</strong> A good strategy is to <strong>conceal</strong> your intentions from your opponents.</p>
+                </div>
+                <div class="bg-gray-700 rounded-xl p-4">
+                    <p class="text-lg"><strong class="text-green-400">Propel:</strong> The new research will <strong>propel</strong> the company's progress forward.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Next Button -->
+        <button class="nav-button next-button">&#8250;</button>
+    </div>
+
+    <script>
+        // JavaScript for the slideshow functionality
+        const slides = document.querySelectorAll('.slide');
+        const nextButton = document.querySelector('.next-button');
+        const prevButton = document.querySelector('.prev-button');
+        let currentSlide = 0;
+
+        const showSlide = (index) => {
+            slides.forEach(slide => slide.classList.remove('active'));
+            slides[index].classList.add('active');
+        };
+
+        nextButton.addEventListener('click', () => {
+            currentSlide++;
+            if (currentSlide >= slides.length) {
+                currentSlide = 0;
+            }
+            showSlide(currentSlide);
+        });
+
+        prevButton.addEventListener('click', () => {
+            currentSlide--;
+            if (currentSlide < 0) {
+                currentSlide = slides.length - 1;
+            }
+            showSlide(currentSlide);
+        });
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            showSlide(currentSlide);
+        });
+    </script>
+
+</body>
+</html>

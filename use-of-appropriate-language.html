@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creative Writing: The Power of Language</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Font - Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Define a subtle animation for the header text */
+        @keyframes fade-in-up {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animated-fade-in {
+            animation: fade-in-up 1s ease-out;
+        }
+
+        /* Basic container styles */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #1a202c; /* Dark background */
+            color: #e2e8f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 2rem;
+            box-sizing: border-box;
+            user-select: none;
+        }
+
+        /* Slide container */
+        .slide-container {
+            position: relative;
+            width: 100%;
+            max-width: 900px;
+            height: auto;
+            min-height: 500px;
+            background-color: #2d3748;
+            border-radius: 1.5rem;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5), 0 0 10px rgba(0, 0, 0, 0.25);
+            padding: 2.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        /* Individual slide styles */
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2.5rem;
+            opacity: 0;
+            transition: opacity 0.6s ease-in-out;
+        }
+        
+        .slide.active {
+            opacity: 1;
+            z-index: 10;
+        }
+
+        /* Navigation button styles */
+        .nav-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(66, 153, 225, 0.6); /* Blueish transparent */
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            padding: 1rem 1.5rem;
+            font-size: 2rem;
+            font-weight: bold;
+            border-radius: 9999px;
+            transition: background-color 0.3s, transform 0.3s;
+            z-index: 20;
+        }
+
+        .nav-button:hover {
+            background-color: rgba(66, 153, 225, 0.9);
+            transform: translateY(-50%) scale(1.05);
+        }
+
+        .prev-button {
+            left: 1rem;
+        }
+
+        .next-button {
+            right: 1rem;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .slide-container {
+                padding: 1.5rem;
+            }
+            .nav-button {
+                padding: 0.75rem 1rem;
+                font-size: 1.5rem;
+            }
+            .prev-button { left: 0.5rem; }
+            .next-button { right: 0.5rem; }
+        }
+
+        .examples-list {
+            text-align: left;
+            width: 100%;
+            max-width: 700px;
+            margin-top: 2rem;
+        }
+
+        .quiz-container {
+            text-align: left;
+            width: 100%;
+            max-width: 700px;
+        }
+        .quiz-container ol {
+            list-style: none;
+            padding: 0;
+            counter-reset: question-counter;
+        }
+        .quiz-container li {
+            counter-increment: question-counter;
+            margin-bottom: 1.5rem;
+            font-size: 1.125rem;
+            line-height: 1.75rem;
+            position: relative;
+            padding-left: 2rem;
+        }
+        .quiz-container li:before {
+            content: counter(question-counter) ".";
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+            color: #63b3ed; /* Blue for numbering */
+        }
+        .quiz-input {
+            width: 4rem;
+            text-align: center;
+            text-transform: uppercase;
+        }
+        .quiz-feedback {
+            display: inline-block;
+            margin-left: 1rem;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="slide-container">
+        <!-- Previous Button -->
+        <button class="nav-button prev-button">&#8249;</button>
+
+        <!-- Slides -->
+        <div class="slide active">
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold mb-4 animated-fade-in">Creative Writing</h1>
+            <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold mb-4">The Power of Language and Vocabulary</h2>
+            <p class="text-md sm:text-lg mb-8">By Ndudi Rita Enemuwe</p>
+            <p class="text-lg sm:text-xl lg:text-2xl leading-relaxed max-w-2xl animated-fade-in">
+                Learn how to bring your stories to life by choosing the perfect words.
+            </p>
+        </div>
+
+        <div class="slide">
+            <h2 class="text-3xl sm:text-4xl font-bold mb-6">Learning Objectives</h2>
+            <p class="text-lg sm:text-xl leading-relaxed max-w-2xl">
+                By the end of this presentation, you will be able to:
+            </p>
+            <ul class="text-left text-lg sm:text-xl leading-relaxed max-w-2xl mt-4 space-y-2">
+                <li>&bull; Differentiate between generic and specific vocabulary.</li>
+                <li>&bull; Use adjectives and adverbs effectively to "show, not tell."</li>
+                <li>&bull; Employ connectives to create smooth transitions.</li>
+                <li>&bull; Write more descriptive and engaging prose.</li>
+            </ul>
+        </div>
+
+        <div class="slide">
+            <h2 class="text-3xl sm:text-4xl font-bold mb-6">Showing, Not Telling</h2>
+            <p class="text-lg sm:text-xl leading-relaxed max-w-2xl mb-6">
+                Instead of simply stating a fact, a great writer uses descriptive language to paint a picture in the reader's mind.
+            </p>
+            <div class="w-full flex flex-col items-center">
+                <div class="bg-gray-700 p-6 rounded-xl mb-4 max-w-lg w-full">
+                    <h3 class="text-xl sm:text-2xl font-bold text-red-400 mb-2">Telling</h3>
+                    <p class="text-lg sm:text-xl">The character was sad.</p>
+                </div>
+                <div class="bg-gray-700 p-6 rounded-xl max-w-lg w-full">
+                    <h3 class="text-xl sm:text-2xl font-bold text-blue-400 mb-2">Showing</h3>
+                    <p class="text-lg sm:text-xl">Tears welled in her eyes, a single, <strong class="text-blue-200">salty</strong> drop tracing a path down her <strong class="text-blue-200">cold</strong> cheek.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <h2 class="text-3xl sm:text-4xl font-bold mb-6">The Power of Adjectives</h2>
+            <p class="text-lg sm:text-xl leading-relaxed max-w-2xl mb-6">
+                Adjectives are words that describe nouns. They add detail and color to your writing, making your descriptions more vivid.
+            </p>
+            <ul class="examples-list space-y-4">
+                <li class="p-4 bg-gray-700 rounded-xl">
+                    <strong class="text-blue-400">Generic:</strong> The dog barked.
+                    <p class="text-sm mt-2 opacity-80">
+                        <strong class="text-blue-200">Specific:</strong> The <strong class="text-blue-200">ferocious</strong> dog barked with a <strong class="text-blue-200">deep</strong>, <strong class="text-blue-200">rumbling</strong> growl.
+                    </p>
+                </li>
+                <li class="p-4 bg-gray-700 rounded-xl">
+                    <strong class="text-blue-400">Generic:</strong> The house was big.
+                    <p class="text-sm mt-2 opacity-80">
+                        <strong class="text-blue-200">Specific:</strong> The <strong class="text-blue-200">sprawling, gothic</strong> house stood on a <strong class="text-blue-200">lonely</strong> hill.
+                    </p>
+                </li>
+            </ul>
+        </div>
+
+        <div class="slide">
+            <h2 class="text-3xl sm:text-4xl font-bold mb-6">The Use of Adverbs</h2>
+            <p class="text-lg sm:text-xl leading-relaxed max-w-2xl mb-6">
+                Adverbs describe verbs, adjectives, or other adverbs. They tell you *how*, *when*, *where*, or *to what extent* an action occurs.
+            </p>
+            <p class="text-xl sm:text-2xl text-red-400 font-bold mb-4">
+                Be careful not to overuse adverbs!
+            </p>
+            <ul class="examples-list space-y-4">
+                <li class="p-4 bg-gray-700 rounded-xl">
+                    <strong class="text-blue-400">Better:</strong> He ran <strong class="text-blue-200">quickly</strong>.
+                    <p class="text-sm mt-2 opacity-80">
+                        <strong class="text-blue-200">Even Better:</strong> He <strong class="text-blue-200">sprinted</strong>. (The verb itself implies the speed)
+                    </p>
+                </li>
+                <li class="p-4 bg-gray-700 rounded-xl">
+                    <strong class="text-blue-400">Better:</strong> She spoke <strong class="text-blue-200">softly</strong>.
+                    <p class="text-sm mt-2 opacity-80">
+                        <strong class="text-blue-200">Even Better:</strong> She <strong class="text-blue-200">whispered</strong>. (The verb itself implies the manner)
+                    </p>
+                </li>
+            </ul>
+        </div>
+
+        <div class="slide">
+            <h2 class="text-3xl sm:text-4xl font-bold mb-6">Connectives (Transitions)</h2>
+            <p class="text-lg sm:text-xl leading-relaxed max-w-2xl mb-6">
+                Connectives are words or phrases that link ideas together and create a smooth flow between sentences and paragraphs.
+            </p>
+            <div class="bg-gray-700 p-6 rounded-xl max-w-lg w-full">
+                <h3 class="text-xl sm:text-2xl font-bold text-blue-400 mb-2">Examples of Connectives</h3>
+                <ul class="list-disc list-inside text-left text-lg space-y-1">
+                    <li><strong class="text-blue-200">Adding Information:</strong> moreover, furthermore, in addition</li>
+                    <li><strong class="text-blue-200">Showing Contrast:</strong> however, nevertheless, on the other hand</li>
+                    <li><strong class="text-blue-200">Indicating Cause/Effect:</strong> therefore, consequently, as a result</li>
+                    <li><strong class="text-blue-200">Sequencing:</strong> first, then, next, finally</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="slide quiz-slide">
+            <h2 class="text-3xl sm:text-4xl font-bold mb-4">Activity 1: Describe It!</h2>
+            <p class="text-lg sm:text-xl leading-relaxed max-w-2xl">
+                Rewrite the following sentences using more specific adjectives and adverbs to make them more descriptive.
+            </p>
+            <div class="quiz-container mt-6">
+                <ol>
+                    <li>
+                        The man walked to the store.
+                        <p class="text-sm text-gray-400">
+                            Think about what kind of man, and how he walked.
+                        </p>
+                    </li>
+                    <li>
+                        The girl spoke.
+                        <p class="text-sm text-gray-400">
+                            How did she speak? What was her voice like?
+                        </p>
+                    </li>
+                    <li>
+                        The forest was nice.
+                        <p class="text-sm text-gray-400">
+                            Describe the forest's atmosphere and appearance.
+                        </p>
+                    </li>
+                </ol>
+                <div class="w-full text-center mt-6">
+                    <p class="text-sm text-gray-400">
+                        (You can write your answers in a notebook or on a piece of paper.)
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <h2 class="text-3xl sm:text-4xl font-bold mb-6">Final Challenge</h2>
+            <p class="text-lg sm:text-xl leading-relaxed max-w-2xl mb-6">
+                Combine everything you've learned to create a short paragraph based on this simple sentence:
+            </p>
+            <div class="bg-gray-700 p-6 rounded-xl max-w-lg w-full mb-6">
+                <p class="text-xl sm:text-2xl font-bold">
+                    The car drove down the street.
+                </p>
+            </div>
+            <p class="text-lg sm:text-xl leading-relaxed max-w-2xl">
+                Use vivid adjectives, carefully chosen adverbs, and a connective to make it an engaging piece of writing.
+            </p>
+        </div>
+        
+        <div class="slide">
+            <h2 class="text-3xl sm:text-4xl font-bold mb-6">Now, Go Write!</h2>
+            <p class="text-lg sm:text-xl leading-relaxed max-w-2xl">
+                Remember, every word you choose has the power to shape your story. Practice makes perfect.
+            </p>
+        </div>
+
+        <!-- Next Button -->
+        <button class="nav-button next-button">&#8250;</button>
+    </div>
+
+    <script>
+        // JavaScript for the slideshow functionality
+        const slides = document.querySelectorAll('.slide');
+        const nextButton = document.querySelector('.next-button');
+        const prevButton = document.querySelector('.prev-button');
+        
+        let currentSlide = 0;
+
+        const showSlide = (index) => {
+            slides.forEach(slide => slide.classList.remove('active'));
+            slides[index].classList.add('active');
+        };
+
+        nextButton.addEventListener('click', () => {
+            currentSlide++;
+            if (currentSlide >= slides.length) {
+                currentSlide = 0;
+            }
+            showSlide(currentSlide);
+        });
+
+        prevButton.addEventListener('click', () => {
+            currentSlide--;
+            if (currentSlide < 0) {
+                currentSlide = slides.length - 1;
+            }
+            showSlide(currentSlide);
+        });
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            showSlide(currentSlide);
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verbal Reasoning: Letter Series</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Font - Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Define a subtle animation for the header text */
+        @keyframes pulse-glow {
+            0%, 100% {
+                transform: scale(1);
+                text-shadow: 0 0 5px rgba(255, 255, 255, 0.4);
+            }
+            50% {
+                transform: scale(1.02);
+                text-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 0 0 25px rgba(255, 255, 255, 0.6);
+            }
+        }
+
+        .animated-text {
+            animation: pulse-glow 3s infinite ease-in-out;
+            color: #fff;
+        }
+
+        /* Basic container styles */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #1a202c; /* Dark background */
+            color: #e2e8f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 2rem;
+            box-sizing: border-box;
+            user-select: none;
+        }
+
+        /* Slide container */
+        .slide-container {
+            position: relative;
+            width: 100%;
+            max-width: 900px;
+            height: auto;
+            min-height: 500px;
+            background-color: #2d3748;
+            border-radius: 1.5rem;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5), 0 0 10px rgba(0, 0, 0, 0.25);
+            padding: 2.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        /* Individual slide styles */
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2.5rem;
+            opacity: 0;
+            transition: opacity 0.6s ease-in-out;
+        }
+        
+        .slide.active {
+            opacity: 1;
+            z-index: 10;
+        }
+
+        /* Navigation button styles */
+        .nav-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(74, 85, 104, 0.6);
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            padding: 1rem 1.5rem;
+            font-size: 2rem;
+            font-weight: bold;
+            border-radius: 9999px;
+            transition: background-color 0.3s, transform 0.3s;
+            z-index: 20;
+        }
+
+        .nav-button:hover {
+            background-color: rgba(74, 85, 104, 0.9);
+            transform: translateY(-50%) scale(1.05);
+        }
+
+        .prev-button {
+            left: 1rem;
+        }
+
+        .next-button {
+            right: 1rem;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .slide-container {
+                padding: 1.5rem;
+            }
+            .nav-button {
+                padding: 0.75rem 1rem;
+                font-size: 1.5rem;
+            }
+            .prev-button { left: 0.5rem; }
+            .next-button { right: 0.5rem; }
+        }
+
+        .examples-list {
+            text-align: left;
+            width: 100%;
+            max-width: 700px;
+            margin-top: 2rem;
+        }
+
+        .quiz-container {
+            text-align: left;
+            width: 100%;
+            max-width: 700px;
+        }
+        .quiz-container ol {
+            list-style: none;
+            padding: 0;
+            counter-reset: question-counter;
+        }
+        .quiz-container li {
+            counter-increment: question-counter;
+            margin-bottom: 1.5rem;
+            font-size: 1.125rem;
+            line-height: 1.75rem;
+            position: relative;
+            padding-left: 2rem;
+        }
+        .quiz-container li:before {
+            content: counter(question-counter) ".";
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+            color: #48bb78; /* Green for numbering */
+        }
+        .quiz-input {
+            width: 4rem;
+            text-align: center;
+            text-transform: uppercase;
+        }
+        .quiz-feedback {
+            display: inline-block;
+            margin-left: 1rem;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="slide-container">
+        <!-- Previous Button -->
+        <button class="nav-button prev-button">&#8249;</button>
+
+        <!-- Slides -->
+        <div class="slide active">
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold mb-4 animated-text">Verbal Reasoning</h1>
+            <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold mb-4">Letter Series</h2>
+            <p class="text-md sm:text-lg mb-8">Ndudi Rita Enemuwe</p>
+            <p class="text-lg sm:text-xl lg:text-2xl leading-relaxed max-w-2xl">
+                A letter series is a sequence of letters following a specific pattern or rule. Your job is to find the missing term in the series.
+            </p>
+        </div>
+
+        <div class="slide">
+            <h2 class="text-3xl sm:text-4xl font-bold mb-6">Learning Objectives</h2>
+            <p class="text-lg sm:text-xl leading-relaxed max-w-2xl">
+                By the end of this presentation, you will be able to:
+            </p>
+            <ul class="text-left text-lg sm:text-xl leading-relaxed max-w-2xl mt-4 space-y-2">
+                <li>&bull; Understand the concept of letter series.</li>
+                <li>&bull; Identify common patterns in a series.</li>
+                <li>&bull; Apply different reasoning methods to solve problems.</li>
+                <li>&bull; Confidently solve various letter series questions.</li>
+            </ul>
+        </div>
+
+        <div class="slide">
+            <h2 class="text-3xl sm:text-4xl font-bold mb-6">Common Patterns - Part 1</h2>
+            <p class="text-lg sm:text-xl leading-relaxed max-w-2xl">
+                Most letter series problems are based on one of these simple rules:
+            </p>
+            <ul class="examples-list space-y-4">
+                <li class="p-4 bg-gray-700 rounded-xl">
+                    <strong class="text-green-400">Alphabetical Order:</strong> The series follows the standard A-Z order, either forward or backward.
+                    <p class="text-sm mt-2 opacity-80">Example: A, B, C, D, ?</p>
+                </li>
+                <li class="p-4 bg-gray-700 rounded-xl">
+                    <strong class="text-green-400">Skipping Letters:</strong> The series skips a fixed number of letters between each term.
+                    <p class="text-sm mt-2 opacity-80">Example: A, C, E, G, ? (skipping one letter each time)</p>
+                </li>
+                <li class="p-4 bg-gray-700 rounded-xl">
+                    <strong class="text-green-400">Positional Value:</strong> The pattern is based on the letters' position in the alphabet (A=1, B=2, C=3, etc.).
+                    <p class="text-sm mt-2 opacity-80">Example: B, D, F, H, ? (positions 2, 4, 6, 8)</p>
+                </li>
+            </ul>
+        </div>
+
+        <div class="slide">
+            <h2 class="text-3xl sm:text-4xl font-bold mb-6">Common Patterns - Part 2</h2>
+            <p class="text-lg sm:text-xl leading-relaxed max-w-2xl">
+                Here are a few more complex patterns to look out for:
+            </p>
+            <ul class="examples-list space-y-4">
+                <li class="p-4 bg-gray-700 rounded-xl">
+                    <strong class="text-green-400">Reversed Pairs:</strong> The series pairs letters from the beginning of the alphabet with their corresponding letters from the end.
+                    <p class="text-sm mt-2 opacity-80">Example: AZ, BY, CX, ?</p>
+                </li>
+                <li class="p-4 bg-gray-700 rounded-xl">
+                    <strong class="text-green-400">Alternating Series:</strong> Two or more independent series are combined into one.
+                    <p class="text-sm mt-2 opacity-80">Example: A, C, B, D, C, E, ?</p>
+                </li>
+            </ul>
+        </div>
+
+        <div class="slide">
+            <h2 class="text-3xl sm:text-4xl font-bold mb-6">Example Problem 1</h2>
+            <p class="text-2xl sm:text-3xl font-mono tracking-widest bg-gray-700 p-4 rounded-lg mb-6">
+                A, C, E, G, ?
+            </p>
+            <p class="text-lg sm:text-xl leading-relaxed max-w-2xl mb-6">
+                The pattern is to <strong>skip one letter</strong> each time.
+            </p>
+            <p class="text-lg sm:text-xl leading-relaxed max-w-2xl text-left">
+                <strong>A</strong> -> B (skipped) -> <strong>C</strong> -> D (skipped) -> <strong>E</strong> -> F (skipped) -> <strong>G</strong> -> H (skipped) -> <strong>I</strong>
+            </p>
+            <p class="text-2xl sm:text-3xl mt-6">
+                The answer is <strong class="text-green-400">I</strong>.
+            </p>
+        </div>
+
+        <div class="slide">
+            <h2 class="text-3xl sm:text-4xl font-bold mb-6">Example Problem 2</h2>
+            <p class="text-2xl sm:text-3xl font-mono tracking-widest bg-gray-700 p-4 rounded-lg mb-6">
+                AZ, BY, CX, ?
+            </p>
+            <p class="text-lg sm:text-xl leading-relaxed max-w-2xl mb-6">
+                The pattern uses <strong>reversed pairs</strong>. The first letter moves forward alphabetically, and the second letter moves backward.
+            </p>
+            <ul class="text-left text-lg sm:text-xl leading-relaxed max-w-2xl mt-4 space-y-2">
+                <li>&bull; The first letter of each pair is A, B, C... so the next one is <strong>D</strong>.</li>
+                <li>&bull; The second letter is Z, Y, X... so the next one is <strong>W</strong>.</li>
+            </ul>
+            <p class="text-2xl sm:text-3xl mt-6">
+                The answer is <strong class="text-green-400">DW</strong>.
+            </p>
+        </div>
+
+        <div class="slide quiz-slide">
+            <h2 class="text-3xl sm:text-4xl font-bold mb-4">Practice Quiz</h2>
+            <p class="text-lg sm:text-xl leading-relaxed max-w-2xl">
+                Find the next letter(s) in each series.
+            </p>
+            <div class="quiz-container mt-6">
+                <ol>
+                    <li>
+                        B, D, F, H, 
+                        <input type="text" class="quiz-input text-black rounded-md" data-answer="J" maxlength="1">
+                        <span class="quiz-feedback" id="feedback-1"></span>
+                    </li>
+                    <li>
+                        Z, X, V, T, 
+                        <input type="text" class="quiz-input text-black rounded-md" data-answer="R" maxlength="1">
+                        <span class="quiz-feedback" id="feedback-2"></span>
+                    </li>
+                    <li>
+                        A, B, D, G, 
+                        <input type="text" class="quiz-input text-black rounded-md" data-answer="K" maxlength="1">
+                        <span class="quiz-feedback" id="feedback-3"></span>
+                    </li>
+                    <li>
+                        AZ, BY, CX, DW, 
+                        <input type="text" class="quiz-input text-black rounded-md" data-answer="EV" maxlength="2">
+                        <span class="quiz-feedback" id="feedback-4"></span>
+                    </li>
+                    <li>
+                        A, C, B, D, C, E, 
+                        <input type="text" class="quiz-input text-black rounded-md" data-answer="D" maxlength="1">
+                        <span class="quiz-feedback" id="feedback-5"></span>
+                    </li>
+                </ol>
+                <button id="check-answers" class="mt-6 bg-gray-600 hover:bg-gray-500 text-white font-bold py-2 px-6 rounded-full transition-colors duration-300">
+                    Check Answers
+                </button>
+            </div>
+        </div>
+        
+        <div class="slide">
+            <h2 class="text-3xl sm:text-4xl font-bold mb-6">You've Got This!</h2>
+            <p class="text-lg sm:text-xl leading-relaxed max-w-2xl">
+                Your journey to verbal reasoning mastery begins now. Keep practicing and you'll become a pro!
+            </p>
+        </div>
+
+        <!-- Next Button -->
+        <button class="nav-button next-button">&#8250;</button>
+    </div>
+
+    <script>
+        // JavaScript for the slideshow functionality and quiz
+        const slides = document.querySelectorAll('.slide');
+        const nextButton = document.querySelector('.next-button');
+        const prevButton = document.querySelector('.prev-button');
+        const checkAnswersButton = document.getElementById('check-answers');
+        
+        let currentSlide = 0;
+
+        const showSlide = (index) => {
+            slides.forEach(slide => slide.classList.remove('active'));
+            slides[index].classList.add('active');
+        };
+
+        nextButton.addEventListener('click', () => {
+            currentSlide++;
+            if (currentSlide >= slides.length) {
+                currentSlide = 0;
+            }
+            showSlide(currentSlide);
+        });
+
+        prevButton.addEventListener('click', () => {
+            currentSlide--;
+            if (currentSlide < 0) {
+                currentSlide = slides.length - 1;
+            }
+            showSlide(currentSlide);
+        });
+
+        checkAnswersButton.addEventListener('click', () => {
+            const quizInputs = document.querySelectorAll('.quiz-container input');
+            let allCorrect = true;
+            quizInputs.forEach((input, index) => {
+                const userAnswer = input.value.toUpperCase().trim();
+                const correctAnswer = input.dataset.answer;
+                const feedbackSpan = document.getElementById(`feedback-${index + 1}`);
+
+                if (userAnswer === correctAnswer) {
+                    feedbackSpan.textContent = "Correct!";
+                    feedbackSpan.style.color = "#48bb78"; /* Green */
+                    input.style.backgroundColor = '#48bb78';
+                } else {
+                    feedbackSpan.textContent = `Incorrect. The answer is ${correctAnswer}.`;
+                    feedbackSpan.style.color = "#f56565"; /* Red */
+                    allCorrect = false;
+                    input.style.backgroundColor = '#f56565';
+                }
+            });
+        });
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            showSlide(currentSlide);
+        });
+    </script>
+
+</body>
+</html>

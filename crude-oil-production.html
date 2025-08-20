@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crude Oil Production</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0b0c10;
+            color: #c5c6c7;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            line-height: 1.6;
+        }
+        h1, h2 {
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+        }
+        h1 {
+            color: #66fcf1;
+        }
+        h2 {
+            color: #45a29e;
+        }
+    </style>
+</head>
+<body class="p-6 md:p-12">
+
+    <!-- Header Section -->
+    <header class="mb-10 text-center">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight">Crude Oil Production</h1>
+        <p class="text-lg text-white mt-2">Ndudi Rita Enemuwe</p>
+    </header>
+
+    <!-- Learning Objectives Section -->
+    <section class="max-w-4xl mx-auto p-6 bg-[#1f2833] rounded-2xl shadow-lg mb-12">
+        <h2 class="text-3xl font-bold mb-4">Learning Objectives</h2>
+        <p>By the end of this lesson, you will be able to:</p>
+        <ul class="list-disc list-inside space-y-2 pl-4">
+            <li>Define what crude oil is and how it was formed.</li>
+            <li>Explain where crude oil is found.</li>
+            <li>Describe the process of extracting crude oil from the ground.</li>
+            <li>List some of the products that are made from crude oil.</li>
+            <li>Understand why crude oil is an important resource.</li>
+        </ul>
+    </section>
+
+    <!-- Main Content Area -->
+    <main class="max-w-4xl mx-auto space-y-12">
+
+        <!-- Introduction Section -->
+        <section class="p-6 bg-[#1f2833] rounded-2xl shadow-lg">
+            <h2 class="text-3xl font-bold mb-4">Introduction</h2>
+            <p>
+                Have you ever wondered where the gasoline for cars comes from, or the plastic in your toys? It all starts with something called crude oil. Crude oil is a thick, dark liquid found deep under the ground and the ocean. It's often called "black gold" because it's so valuable! Let's learn how we find it and what we do with it.
+            </p>
+        </section>
+        
+        <!-- Video Section -->
+        <section class="p-6 bg-[#1f2833] rounded-2xl shadow-lg">
+            <h2 class="text-3xl font-bold mb-4">Watch a Video</h2>
+            <div class="relative w-full overflow-hidden rounded-xl" style="padding-top: 56.25%;">
+                <iframe 
+                    class="absolute inset-0 w-full h-full"
+                    src="https://www.youtube.com/embed/bNQKJAXBYeQ" 
+                    title="YouTube video player" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </section>
+
+        <!-- What is Crude Oil Section -->
+        <section class="p-6 bg-[#1f2833] rounded-2xl shadow-lg">
+            <h2 class="text-3xl font-bold mb-4">What is Crude Oil?</h2>
+            <p>
+                Crude oil is a fossil fuel. This means it was formed over millions of years from the remains of tiny plants and animals that lived in the sea. When these creatures died, they sank to the bottom of the ocean. Over time, they were covered by layers of sand and mud. The heat and pressure from these layers turned them into the crude oil we use today.
+            </p>
+        </section>
+
+        <!-- Where is it Found Section -->
+        <section class="p-6 bg-[#1f2833] rounded-2xl shadow-lg">
+            <h2 class="text-3xl font-bold mb-4">Where is Crude Oil Found?</h2>
+            <p>
+                Crude oil is not everywhere. It's found in specific underground rock formations, called reservoirs. These can be on land or under the seabed. Scientists use special tools to search for these places. This process is called <strong>exploration</strong>. Once they find a good spot, they know it's time to start drilling!
+            </p>
+        </section>
+
+        <!-- How it is Extracted Section -->
+        <section class="p-6 bg-[#1f2833] rounded-2xl shadow-lg">
+            <h2 class="text-3xl font-bold mb-4">How is Crude Oil Extracted?</h2>
+            <p>
+                To get the crude oil out, a machine called a drill rig is used to drill a deep hole into the ground, all the way down to the rock reservoir. Sometimes, the oil is under so much pressure that it comes out on its own. Other times, we need to pump it out using a machine that looks a bit like a seesaw. This is the <strong>drilling</strong> and <strong>extraction</strong> part of the process.
+            </p>
+        </section>
+
+        <!-- What Happens Next Section -->
+        <section class="p-6 bg-[#1f2833] rounded-2xl shadow-lg">
+            <h2 class="text-3xl font-bold mb-4">What Happens Next?</h2>
+            <p>
+                After the oil is pumped out of the ground, it's sent to a special factory called a refinery. Here, the crude oil is heated up and separated into different parts. Think of it like a giant kitchen where they separate the oil into different ingredients, like gasoline, diesel, and even things used to make plastics and other materials. This is called <strong>refining</strong>.
+            </p>
+        </section>
+        
+        <!-- Ask an Expert Section with Interactive Chat -->
+        <section class="p-6 bg-[#1f2833] rounded-2xl shadow-lg">
+            <h2 class="text-3xl font-bold mb-4">Ask an Expert</h2>
+            <p>
+                Do you have any questions about crude oil? Type your question below and an expert will help you find the answer!
+            </p>
+            <div class="mt-4">
+                <textarea id="question-input" rows="3" class="w-full p-4 rounded-xl bg-[#0b0c10] text-white border border-[#45a29e] focus:outline-none focus:ring-2 focus:ring-[#66fcf1]" placeholder="Type your question here..."></textarea>
+                <button id="ask-button" class="mt-4 px-6 py-3 bg-[#45a29e] text-white font-bold rounded-full shadow-lg hover:bg-[#66fcf1] transition-colors duration-300">
+                    Ask
+                </button>
+            </div>
+            <div id="response-container" class="mt-6 p-4 rounded-xl bg-[#0b0c10] text-white border border-[#45a29e] min-h-[5rem] flex items-center justify-center text-center">
+                <p id="response-text" class="text-sm italic">The expert's response will appear here.</p>
+                <div id="loading-spinner" class="hidden animate-spin rounded-full h-8 w-8 border-b-2 border-white"></div>
+            </div>
+        </section>
+
+        <!-- What is it Used For Section -->
+        <section class="p-6 bg-[#1f2833] rounded-2xl shadow-lg">
+            <h2 class="text-3xl font-bold mb-4">What is Crude Oil Used For?</h2>
+            <p>
+                Crude oil gives us many things we use every day! The most common are fuels for vehicles, like gasoline and jet fuel. But it also helps make thousands of other products, including:
+            </p>
+            <ul class="list-disc list-inside space-y-2 pl-4">
+                <li>Plastics for bottles, toys, and bags</li>
+                <li>Paints and dyes</li>
+                <li>Parts for computers and televisions</li>
+                <li>Some medicines and cosmetics</li>
+                <li>The asphalt used for roads</li>
+            </ul>
+        </section>
+        
+        <!-- Punchline -->
+        <p class="text-xl text-center italic mt-12 mb-6">From black gold to your everyday world!</p>
+
+    </main>
+    
+    <script>
+        const askButton = document.getElementById('ask-button');
+        const questionInput = document.getElementById('question-input');
+        const responseContainer = document.getElementById('response-container');
+        const responseText = document.getElementById('response-text');
+        const loadingSpinner = document.getElementById('loading-spinner');
+
+        askButton.addEventListener('click', async () => {
+            const userQuestion = questionInput.value.trim();
+            if (userQuestion === '') {
+                responseText.textContent = "Please type a question before clicking 'Ask'.";
+                return;
+            }
+
+            // Show loading state
+            responseText.textContent = '';
+            loadingSpinner.classList.remove('hidden');
+
+            const fullPrompt = `You are a friendly and knowledgeable expert explaining crude oil to a class 5 student. Answer the following question simply and clearly. If the question is off-topic, politely explain you can only answer questions about crude oil. Question: ${userQuestion}`;
+
+            let attempts = 0;
+            const maxAttempts = 5;
+            let success = false;
+
+            while (attempts < maxAttempts && !success) {
+                try {
+                    let chatHistory = [];
+                    chatHistory.push({ role: "user", parts: [{ text: fullPrompt }] });
+                    const payload = { contents: chatHistory };
+                    const apiKey = "" 
+                    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+                    
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+                    
+                    if (!response.ok) {
+                        throw new Error(`API error: ${response.status} ${response.statusText}`);
+                    }
+                    
+                    const result = await response.json();
+                    
+                    if (result.candidates && result.candidates.length > 0 &&
+                        result.candidates[0].content && result.candidates[0].content.parts &&
+                        result.candidates[0].content.parts.length > 0) {
+                        const text = result.candidates[0].content.parts[0].text;
+                        responseText.textContent = text;
+                        success = true;
+                    } else {
+                        throw new Error("Invalid response format from API.");
+                    }
+                } catch (error) {
+                    attempts++;
+                    if (attempts < maxAttempts) {
+                        await new Promise(res => setTimeout(res, Math.pow(2, attempts) * 1000));
+                    } else {
+                        responseText.textContent = "Sorry, I couldn't get a response. Please try again later!";
+                    }
+                } finally {
+                    if (success || attempts === maxAttempts) {
+                        loadingSpinner.classList.add('hidden');
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

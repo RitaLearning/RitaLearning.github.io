@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pronoun Power! 💪</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chewy&family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(to bottom right, #fefce8, #fffbeb); /* Light yellow gradient */
+            color: #333;
+        }
+        h1, h2, h3 {
+            font-family: 'Chewy', cursive;
+            color: #ef4444; /* Red for headings */
+        }
+        .header-bg {
+            background: linear-gradient(135deg, #f97316 0%, #ea580c 100%); /* Orange gradient */
+            border: 2px solid #fbbf24; /* Amber border */
+        }
+        .section-card {
+            background-color: #ffffff;
+            border-radius: 1.5rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s ease-in-out;
+        }
+        .section-card:hover {
+            transform: translateY(-5px);
+        }
+        .accent-color-1 { color: #f97316; } /* Orange */
+        .accent-color-2 { color: #22c55e; } /* Green */
+        .accent-color-3 { color: #3b82f6; } /* Blue */
+        .accent-color-4 { color: #8b5cf6; } /* Purple */
+        .accent-color-5 { color: #ec4899; } /* Pink */
+
+        .interactive-button {
+            background-color: #f97316; /* Orange */
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .interactive-button:hover {
+            background-color: #ea580c; /* Darker orange */
+            transform: translateY(-1px);
+        }
+        .interactive-input {
+            border: 2px solid #fbbf24; /* Amber border */
+            border-radius: 0.5rem;
+            padding: 0.75rem;
+            width: 100%;
+            font-size: 1rem;
+            color: #333;
+            background-color: #fff;
+        }
+        .loading-spinner {
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-top: 4px solid #fff;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            animation: spin 1s linear infinite;
+            display: inline-block;
+            vertical-align: middle;
+            margin-left: 8px;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .output-box {
+            background-color: #fff7ed; /* Light orange background */
+            border: 1px solid #fed7aa; /* Light orange border */
+            border-radius: 0.5rem;
+            padding: 1rem;
+            min-height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #c2410c; /* Dark orange text */
+            font-weight: 600;
+            margin-top: 1rem;
+            white-space: pre-wrap; /* Preserve whitespace and wrap text */
+            word-wrap: break-word; /* Break long words */
+        }
+        
+        .image-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 1rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Mini-activity specific styles */
+        .mini-activity-box {
+            background-color: #fef3c7; /* Light yellow */
+            border-radius: 0.75rem;
+            padding: 1rem;
+            margin-top: 1rem;
+            text-align: center;
+            border: 1px dashed #fbbf24;
+        }
+        .mini-activity-question {
+            font-weight: 600;
+            color: #d97706; /* Orange-600 */
+            margin-bottom: 0.75rem;
+        }
+        .mini-activity-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-in-out;
+            color: #78350f; /* Orange-900 */
+            font-style: italic;
+        }
+        .mini-activity-answer.active {
+            max-height: 100px; /* Adjust as needed */
+            padding-top: 0.5rem;
+            border-top: 1px dashed #fcd34d;
+        }
+
+        /* Quiz specific styles */
+        .quiz-question-card {
+            background-color: #fff;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .quiz-question-card p {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #ef4444; /* Red */
+        }
+        .quiz-options label {
+            display: block;
+            margin-bottom: 0.75rem;
+            cursor: pointer;
+            font-size: 1rem;
+            color: #333;
+            transition: color 0.2s ease;
+        }
+        .quiz-options label:hover {
+            color: #f97316; /* Orange on hover */
+        }
+        .quiz-options input[type="radio"] {
+            margin-right: 0.5rem;
+            accent-color: #f97316; /* Orange accent for radio buttons */
+        }
+        .quiz-feedback {
+            margin-top: 1rem;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            text-align: center;
+            min-height: 40px;
+        }
+        .quiz-feedback.correct {
+            background-color: #d4edda; /* Light green */
+            color: #155724; /* Dark green text */
+            border: 1px solid #c3e6cb;
+        }
+        .quiz-feedback.incorrect {
+            background-color: #f8d7da; /* Light red */
+            color: #721c24; /* Dark red text */
+            border: 1px solid #f5c6cb;
+        }
+        .correct-answer-highlight {
+            background-color: #e6ffed; /* Very light green */
+            border-radius: 0.25rem;
+            padding: 0.25rem 0.5rem;
+        }
+
+        /* Passage/Poem analysis specific styles */
+        .analysis-textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #fbbf24;
+            border-radius: 0.5rem;
+            margin-top: 1rem;
+            min-height: 100px;
+            resize: vertical;
+            font-size: 1rem;
+            color: #333;
+            background-color: #fff;
+        }
+        .analysis-button-group {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 1rem;
+        }
+        .analysis-feedback {
+            background-color: #fff7ed;
+            border: 1px solid #fed7aa;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            min-height: 50px;
+            margin-top: 1rem;
+            text-align: left;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            color: #c2410c;
+            font-weight: 600;
+        }
+        .analysis-feedback.correct {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .analysis-feedback.incorrect {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <div class="container mx-auto p-4 md:p-8 max-w-4xl">
+
+        <!-- Header -->
+        <header class="text-center p-8 rounded-2xl header-bg text-white mb-10">
+            <h1 class="text-4xl md:text-5xl mb-2 text-white">Pronoun Power! 💪</h1>
+            <p class="text-xl md:text-2xl font-light text-gray-100">Making Your Sentences Stronger!</p>
+            <p class="text-md mt-1 text-gray-200">Teacher: <strong class="text-xl">Ndudi Rita Enemuwe</strong></p>
+        </header>
+
+        <!-- Introduction -->
+        <section class="mb-10 p-6 section-card text-center">
+            <h2 class="text-3xl mb-4 accent-color-1">What's a Pronoun? 🤔</h2>
+            <p class="text-lg text-gray-700">
+                Pronouns are little words that take the place of a noun. Today, we're going to learn about two special kinds of pronouns: those that show who something belongs to, and those that point back to the person doing the action!
+            </p>
+        </section>
+
+        <!-- Learning Objectives Section -->
+        <section class="mb-10 p-6 section-card">
+            <h2 class="text-3xl text-center mb-6 accent-color-2">Learning Objectives 🎯</h2>
+            <ul class="list-disc pl-6 text-gray-700 space-y-2">
+                <li>Define and identify <strong>Possessive Pronouns</strong>.</li>
+                <li>Define and identify <strong>Reflexive Pronouns</strong>.</li>
+                <li>Explain the key difference between these two types of pronouns.</li>
+                <li>Practice using possessive and reflexive pronouns correctly in sentences.</li>
+            </ul>
+        </section>
+
+        <!-- Possessive Pronouns Section -->
+        <section class="mb-10 p-6 section-card">
+            <h2 class="text-3xl text-center mb-6 accent-color-3">Possessive Pronouns 🙋‍♀️</h2>
+            <p class="text-lg text-gray-700 mb-4">
+                <strong>Possessive Pronouns</strong> show ownership or possession. They tell us who something belongs to!
+            </p>
+            <div class="italic mb-4 text-left text-gray-600">
+                <p>"Is this book <strong>yours</strong>?"</p>
+                <p>"That jacket is <strong>mine</strong>!"</p>
+                <p>"The blue car is <strong>theirs</strong>."</p>
+                <p>"Is that umbrella <strong>hers</strong>?"</p>
+            </div>
+            <p class="text-lg text-gray-700 mb-4">
+                The main possessive pronouns are: <strong>mine, yours, his, hers, its, ours, theirs.</strong>
+            </p>
+
+            <div class="mini-activity-box">
+                <p class="mini-activity-question">Fill in the blank: "We found our lost puppy. It is finally ____!"</p>
+                <div class="flex flex-col md:flex-row items-center justify-center gap-4">
+                    <input type="text" id="possessiveInput" class="interactive-input" placeholder="Type your answer here">
+                    <button id="possessiveCheckBtn" class="interactive-button">Check Answer</button>
+                </div>
+                <div id="possessiveFeedback" class="quiz-feedback hidden"></div>
+            </div>
+        </section>
+
+        <!-- Reflexive Pronouns Section -->
+        <section class="mb-10 p-6 section-card">
+            <h2 class="text-3xl text-center mb-6 accent-color-4">Reflexive Pronouns 😌</h2>
+            <p class="text-lg text-gray-700 mb-4">
+                <strong>Reflexive Pronouns</strong> are used when the subject of a sentence is also the object. It's like the action "reflects" back on the person doing it!
+            </p>
+            <div class="italic mb-4 text-left text-gray-600">
+                <p>"He taught <strong>himself</strong> to play guitar."</p>
+                <p>"I made this cake <strong>myself</strong>."</p>
+                <p>"The cat cleaned <strong>itself</strong>."</p>
+                <p>"We prepared <strong>ourselves</strong> for the test."</p>
+            </div>
+            <p class="text-lg text-gray-700 mb-4">
+                The main reflexive pronouns are: <strong>myself, yourself, himself, herself, itself, ourselves, yourselves, themselves.</strong> They all end in -self or -selves.
+            </p>
+
+            <div class="mini-activity-box">
+                <p class="mini-activity-question">Complete the sentence: "Be careful not to cut _______ with that knife."</p>
+                <div class="flex flex-col md:flex-row items-center justify-center gap-4">
+                    <input type="text" id="reflexiveInput" class="interactive-input" placeholder="Type your answer here">
+                    <button id="reflexiveCheckBtn" class="interactive-button">Check Answer</button>
+                </div>
+                <div id="reflexiveFeedback" class="quiz-feedback hidden"></div>
+            </div>
+        </section>
+        
+        <!-- Video Section -->
+        <section class="mb-10 p-6 section-card text-center">
+            <h2 class="text-3xl mb-4 accent-color-4">Watch and Learn More! 🎥</h2>
+            <p class="text-lg text-gray-700">
+                Here's a fun video to help you remember the difference between possessive and reflexive pronouns.
+            </p>
+            <div class="mt-6 mb-4 rounded-xl overflow-hidden shadow-lg">
+                <iframe 
+                    width="100%" 
+                    height="315" 
+                    src="https://www.youtube.com/embed/h_GnSOIfWf4" 
+                    title="YouTube video player" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </section>
+
+        <!-- Interactive Question Section -->
+        <section class="mb-10 p-6 section-card text-center">
+            <h2 class="text-3xl mb-4 accent-color-4">Ask the Grammar Guru! 💬</h2>
+            <p class="text-lg text-gray-700 mb-4">Have a question about pronouns? Ask me anything!</p>
+            <div class="flex flex-col md:flex-row items-center justify-center gap-4 mb-4">
+                <input type="text" id="grammarQuestionInput" class="interactive-input" placeholder="e.g., What's the difference between its and it's?">
+                <button id="askGrammarQuestionBtn" class="interactive-button flex items-center justify-center">
+                    Ask Question <span id="grammarSpinner" class="hidden loading-spinner"></span>
+                </button>
+            </div>
+            <div id="grammarQuestionOutput" class="output-box">
+                Your answer from the Grammar Guru will appear here!
+            </div>
+        </section>
+
+        <!-- Quiz Time! -->
+        <section class="mb-10 p-6 section-card">
+            <h2 class="text-3xl text-center mb-6 accent-color-5">Quiz Time! Test Your Knowledge! 🧠</h2>
+            <div class="space-y-6">
+                <!-- Question 1 -->
+                <div class="quiz-question-card" id="quiz-q1">
+                    <p>1. Which pronoun should you use to show that a toy belongs to you?</p>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q1" value="A"> A. Itself</label>
+                        <label><input type="radio" name="q1" value="B"> B. Mine</label>
+                        <label><input type="radio" name="q1" value="C"> C. You</label>
+                        <label><input type="radio" name="q1" value="D"> D. Her</label>
+                    </div>
+                    <button class="interactive-button quiz-check-btn" data-question="q1">Check Answer</button>
+                    <div class="quiz-feedback" id="feedback-q1"></div>
+                </div>
+
+                <!-- Question 2 -->
+                <div class="quiz-question-card" id="quiz-q2">
+                    <p>2. Complete the sentence: "He cut the paper _________ with scissors."</p>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q2" value="A"> A. himself</label>
+                        <label><input type="radio" name="q2" value="B"> B. himself's</label>
+                        <label><input type="radio" name="q2" value="C"> C. his</label>
+                        <label><input type="radio" name="q2" value="D"> D. he</label>
+                    </div>
+                    <button class="interactive-button quiz-check-btn" data-question="q2">Check Answer</button>
+                    <div class="quiz-feedback" id="feedback-q2"></div>
+                </div>
+
+                <!-- Question 3 -->
+                <div class="quiz-question-card" id="quiz-q3">
+                    <p>3. Is "them" a reflexive pronoun?</p>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q3" value="A"> A. Yes</label>
+                        <label><input type="radio" name="q3" value="B"> B. No</label>
+                    </div>
+                    <button class="interactive-button quiz-check-btn" data-question="q3">Check Answer</button>
+                    <div class="quiz-feedback" id="feedback-q3"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Conclusion -->
+        <section class="mb-10 p-6 section-card text-center">
+            <h2 class="text-3xl mb-4 accent-color-5">You're a Language Wizard! ✨</h2>
+            <p class="text-lg text-gray-700">
+                You've taken the first steps to understanding how pronouns make our language clearer and more powerful! Keep practicing and you'll become a pronoun expert!
+            </p>
+        </section>
+
+        <!-- Footer -->
+        <footer class="mt-10 p-6 text-center text-gray-500 text-sm">
+            <p>&copy; 2025 Pronoun Power. All rights reserved.</p>
+        </footer>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Mini-activity functionality
+            const miniActivityAnswers = {
+                possessive: "ours",
+                reflexive: "yourself"
+            };
+
+            const possessiveCheckBtn = document.getElementById('possessiveCheckBtn');
+            const possessiveInput = document.getElementById('possessiveInput');
+            const possessiveFeedback = document.getElementById('possessiveFeedback');
+
+            possessiveCheckBtn.addEventListener('click', () => {
+                const answer = possessiveInput.value.trim().toLowerCase();
+                const feedbackElement = possessiveFeedback;
+                feedbackElement.classList.remove('hidden', 'correct', 'incorrect');
+
+                if (answer === miniActivityAnswers.possessive) {
+                    feedbackElement.textContent = "Correct! Great job!";
+                    feedbackElement.classList.add('correct');
+                } else {
+                    feedbackElement.textContent = `Sorry, that's not quite right. The correct answer is "${miniActivityAnswers.possessive}".`;
+                    feedbackElement.classList.add('incorrect');
+                }
+            });
+
+            const reflexiveCheckBtn = document.getElementById('reflexiveCheckBtn');
+            const reflexiveInput = document.getElementById('reflexiveInput');
+            const reflexiveFeedback = document.getElementById('reflexiveFeedback');
+
+            reflexiveCheckBtn.addEventListener('click', () => {
+                const answer = reflexiveInput.value.trim().toLowerCase();
+                const feedbackElement = reflexiveFeedback;
+                feedbackElement.classList.remove('hidden', 'correct', 'incorrect');
+
+                if (answer === miniActivityAnswers.reflexive) {
+                    feedbackElement.textContent = "Correct! Well done!";
+                    feedbackElement.classList.add('correct');
+                } else {
+                    feedbackElement.textContent = `Sorry, that's not quite right. The correct answer is "${miniActivityAnswers.reflexive}".`;
+                    feedbackElement.classList.add('incorrect');
+                }
+            });
+
+            // Quiz functionality
+            const quizAnswers = {
+                q1: 'B', // Mine
+                q2: 'A', // himself
+                q3: 'B'  // No, the reflexive is "themselves"
+            };
+
+            document.querySelectorAll('.quiz-check-btn').forEach(button => {
+                button.addEventListener('click', (event) => {
+                    const questionId = event.target.dataset.question;
+                    const selectedOption = document.querySelector(`input[name="${questionId}"]:checked`);
+                    const feedbackElement = document.getElementById(`feedback-${questionId}`);
+                    const optionsContainer = document.querySelector(`#quiz-${questionId} .quiz-options`);
+
+                    // Clear previous feedback and highlights
+                    feedbackElement.textContent = '';
+                    feedbackElement.className = 'quiz-feedback';
+                    optionsContainer.querySelectorAll('label').forEach(label => {
+                        label.classList.remove('correct-answer-highlight');
+                    });
+
+                    if (!selectedOption) {
+                        feedbackElement.textContent = "Please select an answer!";
+                        feedbackElement.classList.add('incorrect');
+                        return;
+                    }
+
+                    const correctAnswer = quizAnswers[questionId];
+                    if (selectedOption.value === correctAnswer) {
+                        feedbackElement.textContent = "Correct! Well done! 🎉";
+                        feedbackElement.classList.add('correct');
+                    } else {
+                        feedbackElement.textContent = "Oops! That's not quite right. Review the sections above and try again!";
+                        feedbackElement.classList.add('incorrect');
+                    }
+
+                    // Highlight the correct answer
+                    optionsContainer.querySelectorAll(`input[name="${questionId}"]`).forEach(input => {
+                        if (input.value === correctAnswer) {
+                            input.parentElement.classList.add('correct-answer-highlight');
+                        }
+                    });
+                });
+            });
+
+            // Ask the Grammar Guru (LLM Feature)
+            const grammarQuestionInput = document.getElementById('grammarQuestionInput');
+            const askGrammarQuestionBtn = document.getElementById('askGrammarQuestionBtn');
+            const grammarQuestionOutput = document.getElementById('grammarQuestionOutput');
+            const grammarSpinner = document.getElementById('grammarSpinner');
+
+            askGrammarQuestionBtn.addEventListener('click', async () => {
+                const question = grammarQuestionInput.value.trim();
+                if (!question) {
+                    grammarQuestionOutput.textContent = "Please ask a question about pronouns or grammar.";
+                    grammarQuestionOutput.style.borderColor = '#ef4444';
+                    grammarQuestionOutput.style.color = '#dc2626';
+                    return;
+                }
+
+                grammarQuestionOutput.textContent = '';
+                grammarQuestionOutput.style.borderColor = '#fed7aa';
+                grammarQuestionOutput.style.color = '#c2410c';
+                grammarSpinner.classList.remove('hidden');
+                askGrammarQuestionBtn.disabled = true;
+
+                try {
+                    const prompt = `Answer the following question about grammar for a primary school student. Keep the answer concise, simple, and easy to understand. Please use <strong> HTML tags for any bold text in your response.
+                    Question: "${question}"`;
+                    
+                    let chatHistory = [];
+                    chatHistory.push({ role: "user", parts: [{ text: prompt }] });
+                    const payload = { contents: chatHistory };
+                    const apiKey = "AIzaSyDqdwlzMf0HXP1cJ19Y5K4-awb_sp177pY";
+                    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+
+                    const result = await response.json();
+                    if (result.candidates && result.candidates.length > 0 &&
+                        result.candidates[0].content && result.candidates[0].content.parts &&
+                        result.candidates[0].content.parts.length > 0) {
+                        grammarQuestionOutput.innerHTML = result.candidates[0].content.parts[0].text;
+                    } else {
+                        grammarQuestionOutput.textContent = "Sorry, I couldn't find an answer to that. Please try another question!";
+                        grammarQuestionOutput.style.borderColor = '#ef4444';
+                        grammarQuestionOutput.style.color = '#dc2626';
+                    }
+                } catch (error) {
+                    console.error("Error asking grammar question:", error);
+                    grammarQuestionOutput.textContent = "An error occurred while answering your question. Please try again.";
+                    grammarQuestionOutput.style.borderColor = '#ef4444';
+                    grammarQuestionOutput.style.color = '#dc2626';
+                } finally {
+                    grammarSpinner.classList.add('hidden');
+                    askGrammarQuestionBtn.disabled = false;
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Birds' Wings Comprehension Classwork</title>
+    <title>Soaring High: The Amazing World of Birds' Wings!</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,26 +12,206 @@
         body {
             font-family: 'Inter', sans-serif;
             line-height: 1.6;
-            background: linear-gradient(to bottom right, #f8f8f8, #e0f0f8); /* Light grey to light blue */
+            background: linear-gradient(to bottom right, #e0f7fa, #b2ebf2); /* Light Cyan to Medium Cyan */
             color: #333;
         }
         h1, h2, h3 {
             font-family: 'Fredoka One', cursive;
         }
-        .bg-header-green { background-color: #4CAF50; } /* Green from the image */
-        .text-header-green { color: #4CAF50; }
+        /* Custom Colours for Birds' Wings theme */
+        .bg-header-blue { background-color: #00838F; } /* Dark Cyan */
+        .text-header-blue { color: #00838F; }
+        .bg-section-green { background-color: #00ACC1; } /* Medium Cyan */
+        .text-section-green { color: #00ACC1; }
+        .bg-element-yellow { background-color: #4DD0E1; } /* Light Cyan */
+        .text-element-yellow { color: #4DD0E1; }
+        .text-header-title-yellow { color: #FFEB3B; } /* Amber Yellow */
+        .bg-process-purple { background-color: #26C6DA; } /* Turquoise */
+        .text-process-purple { color: #26C6DA; }
+        .bg-tip-red { background-color: #006064; } /* Even Darker Cyan */
+        .text-tip-red { color: #006064; }
+        .bg-white-card { background-color: #FFFFFF; }
         .text-dark-gray { color: #333333; }
+
         .shadow-lg-custom {
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
         }
-        .question-card {
-            background-color: #FFFFFF;
-            border-radius: 1rem;
+
+        .interactive-card {
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+        }
+        .interactive-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 25px -5px rgba(0,0,0,0.15);
+        }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out; /* Slower transition for content */
+        }
+        .accordion-content.active {
+            max-height: 500px; /* Sufficient height for content, adjust if needed */
+            transition: max-height 0.5s ease-in;
+        }
+        .reveal-button {
+            background-color: #00838F; /* Dark Cyan */
+            color: white;
+            padding: 8px 15px;
+            border-radius: 9999px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+        .reveal-button:hover {
+            background-color: #005A61; /* Even Darker Cyan */
+        }
+
+        /* Styles for the interactive tips (reused for features) */
+        .tip-card-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-in-out; /* Smooth transition for tips */
+        }
+        .tip-card-content.active {
+            max-height: 150px; /* Adjust based on tip content length */
+            padding-top: 8px;
+            border-top: 1px solid #E5E7EB;
+        }
+        .tip-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem; /* Consistent padding */
+        }
+        .tip-card-header span {
+            transition: transform 0.3s ease;
+        }
+        .tip-card-header span.rotate-180 {
+            transform: rotate(180deg);
+        }
+
+        /* Styles for LLM features */
+        .llm-input-area {
+            background-color: #e0f7fa; /* Very light cyan background */
             padding: 1.5rem;
-            margin-bottom: 1.5rem;
+            border-radius: 1rem;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
-        .question-number {
+        .llm-output-area {
+            background-color: #b2ebf2; /* Lighter cyan output */
+            padding: 1rem;
+            border-radius: 0.75rem;
+            min-height: 40px; /* Adjusted min-height */
+            border: 1px solid #4dd0e1;
+            text-align: left;
+            white-space: pre-wrap; /* Preserve whitespace and wrap text */
+            word-wrap: break-word; /* Break long words */
+        }
+        .llm-button {
+            background-color: #00ACC1; /* Medium Cyan button */
+            color: white;
+            padding: 10px 20px;
+            border-radius: 9999px;
+            font-weight: bold;
+            transition: all 0.2s ease-in-out;
+        }
+        .llm-button:hover {
+            background-color: #00838F; /* Darker Medium Cyan */
+            transform: translateY(-2px);
+        }
+        .loading-spinner {
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-top: 4px solid #fff;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            animation: spin 1s linear infinite;
+            display: inline-block;
+            vertical-align: middle;
+            margin-left: 8px;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Quiz Time Specific Styles */
+        .quiz-card {
+            background-color: #fff;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 1rem;
+        }
+        .quiz-card .question {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #00838F; /* Dark Cyan */
+            margin-bottom: 0.75rem;
+        }
+        .quiz-card .answer {
+            font-size: 1.125rem;
+            color: #006064; /* Even Darker Cyan */
+            margin-top: 0.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-in-out;
+        }
+        .quiz-card .answer.active {
+            max-height: 100px; /* Adjust as needed */
+            padding-top: 0.5rem;
+            border-top: 1px dashed #4dd0e1;
+        }
+        .quiz-card .reveal-button {
+            margin-top: 1rem;
+        }
+
+        /* Glossary Specific Styles */
+        .glossary-list {
+            list-style: none;
+            padding: 0;
+        }
+        .glossary-list dt {
+            font-weight: bold;
+            color: #00838F; /* Dark Cyan */
+            margin-top: 0.75rem;
+        }
+        .glossary-list dd {
+            margin-left: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #FFFFFF; /* WHITE for visibility */
+        }
+
+        /* Reading Passages Section */
+        .reading-passage-card {
+            background-color: #fff;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+        .reading-passage-card h3 {
+            font-family: 'Fredoka One', cursive;
+            color: #00838F; /* Dark Cyan */
+            font-size: 1.75rem; /* text-3xl */
+            margin-bottom: 0.75rem;
+            text-align: center;
+        }
+        .reading-passage-card .author {
+            font-style: italic;
+            color: #6B7280; /* Gray-500 */
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        .reading-passage-card p {
+            margin-bottom: 1rem;
+            color: #4B5563; /* Gray-700 */
+        }
+
+        /* Classwork Specific Styles */
+        .classwork-header-green { background-color: #4CAF50; } /* Green from the image */
+        .classwork-question-number {
             font-family: 'Fredoka One', cursive;
             font-size: 2.5rem; /* Large number */
             color: #EF4444; /* Red from the image */
@@ -39,14 +219,14 @@
             margin-right: 0.75rem;
             vertical-align: middle;
         }
-        .question-text {
+        .classwork-question-text {
             font-size: 1.25rem;
             font-weight: 600;
             color: #333333;
             display: inline-block;
             vertical-align: middle;
         }
-        textarea {
+        .classwork-textarea {
             width: 100%;
             padding: 0.75rem;
             border: 1px solid #D1D5DB;
@@ -57,13 +237,13 @@
             font-size: 1rem;
             color: #333;
         }
-        .button-group {
+        .classwork-button-group {
             display: flex;
             gap: 0.75rem;
             margin-top: 1rem;
             justify-content: flex-end; /* Align buttons to the right */
         }
-        .action-button {
+        .classwork-action-button {
             background-color: #4CAF50; /* Green */
             color: white;
             padding: 0.6rem 1.2rem;
@@ -71,10 +251,10 @@
             font-weight: bold;
             transition: background-color 0.3s ease;
         }
-        .action-button:hover {
+        .classwork-action-button:hover {
             background-color: #388E3C; /* Darker green */
         }
-        .hint-button {
+        .classwork-hint-button {
             background-color: #2196F3; /* Blue */
             color: white;
             padding: 0.6rem 1.2rem;
@@ -82,10 +262,10 @@
             font-weight: bold;
             transition: background-color 0.3s ease;
         }
-        .hint-button:hover {
+        .classwork-hint-button:hover {
             background-color: #1976D2; /* Darker blue */
         }
-        .feedback-area {
+        .classwork-feedback-area {
             margin-top: 1rem;
             padding: 0.75rem;
             border-radius: 0.5rem;
@@ -95,24 +275,9 @@
             white-space: pre-wrap;
             word-wrap: break-word;
         }
-        .feedback-area.correct { background-color: #D4EDDA; color: #155724; border: 1px solid #C3E6CB; }
-        .feedback-area.incorrect { background-color: #F8D7DA; color: #721C24; border: 1px solid #F5C6CB; }
-        .feedback-area.hint { background-color: #CCE5FF; color: #004085; border: 1px solid #B8DAFF; }
-        .loading-spinner {
-            border: 4px solid rgba(255, 255, 255, 0.3);
-            border-top: 4px solid #fff;
-            border-radius: 50%;
-            width: 20px;
-            height: 20px;
-            animation: spin 1s linear infinite;
-            display: inline-block;
-            vertical-align: middle;
-            margin-left: 8px;
-        }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
+        .classwork-feedback-area.correct { background-color: #D4EDDA; color: #155724; border: 1px solid #C3E6CB; }
+        .classwork-feedback-area.incorrect { background-color: #F8D7DA; color: #721C24; border: 1px solid #F5C6CB; }
+        .classwork-feedback-area.hint { background-color: #CCE5FF; color: #004085; border: 1px solid #B8DAFF; }
     </style>
 </head>
 <body class="text-dark-gray">
@@ -120,153 +285,309 @@
     <div class="container mx-auto p-4 md:p-8 max-w-4xl">
 
         <!-- Header -->
-        <header class="text-center p-6 bg-header-green text-white rounded-2xl shadow-lg-custom mb-10">
-            <h1 class="text-4xl md:text-5xl">Comprehension Classwork 📚</h1>
-            <p class="text-lg md:text-xl mt-2 text-gray-100">Birds' Wings: Discuss and Answer!</p>
+        <header class="text-center p-6 bg-header-blue text-white rounded-2xl shadow-lg-custom mb-10">
+            <h1 class="text-4xl md:text-5xl text-header-title-yellow">Soaring High! 🦅</h1>
+            <p class="text-lg md:text-xl mt-2 text-gray-100">The Amazing World of Birds' Wings!</p>
+            <p class="text-md mt-1 text-gray-200">Teacher: Ndudi Rita Enemuwe</p>
         </header>
 
-        <!-- Instructions -->
-        <section class="mb-8 p-6 bg-white-card rounded-2xl shadow-lg-custom">
-            <div class="flex items-center mb-4">
-                <span class="question-number text-red-500">A</span>
-                <p class="text-lg font-bold text-dark-gray">Discuss the answers to these questions.</p>
-            </div>
-            <p class="text-md text-gray-700">
-                Read the questions carefully and type your answers in the boxes below. Use the "Check My Answer" button to see if you're on the right track, or "Get Hint" if you need a little help!
+        <!-- Introduction -->
+        <section class="mb-10 p-6 bg-white-card rounded-2xl shadow-lg-custom text-center">
+            <h2 class="text-3xl mb-4 text-header-blue">Why are Birds' Wings Amazing? 🐦</h2>
+            <p class="text-lg text-gray-800 mb-4">
+                Birds' wings are incredible! They are specially designed to help birds fly, whether it's soaring high in the sky, gliding for long distances, or twisting quickly through trees. Let's explore how these amazing "arms" work!
+            </p>
+            <p class="text-md text-gray-700 italic">
+                Every wing is a masterpiece of nature!
             </p>
         </section>
 
-        <!-- Question 1 -->
-        <div class="question-card">
-            <div class="flex items-start">
-                <span class="question-number">1</span>
-                <p class="question-text flex-grow">Which book gives information about the structure of birds' bodies?</p>
-            </div>
-            <textarea id="q1-answer" class="answer-input" placeholder="Type your answer here..."></textarea>
-            <div class="button-group">
-                <button class="hint-button" data-question="1">Get Hint <span id="q1-hint-spinner" class="hidden loading-spinner"></span></button>
-                <button class="action-button" data-question="1">Check My Answer <span id="q1-check-spinner" class="hidden loading-spinner"></span></button>
-            </div>
-            <div id="q1-feedback" class="feedback-area"></div>
-        </div>
+        <!-- Learning Objectives Section -->
+        <section class="mb-10 p-6 bg-element-yellow rounded-2xl shadow-lg-custom">
+            <h2 class="text-3xl mb-4 text-tip-red text-center">Learning Goals for Today! 🎯</h2>
+            <ul class="list-disc pl-6 text-tip-red">
+                <li>Read and understand information about birds' wings from different texts.</li>
+                <li>Identify key facts about bird anatomy and flight from the passages.</li>
+                <li>Compare and contrast different types of bird wings based on their flight styles.</li>
+                <li>Answer comprehension questions using details from the provided extracts.</li>
+                <li>Understand new vocabulary related to birds and flight from the glossary.</li>
+            </ul>
+        </section>
 
-        <!-- Question 2 -->
-        <div class="question-card">
-            <div class="flex items-start">
-                <span class="question-number">2</span>
-                <p class="question-text flex-grow">Which book gives information about different types of birds' wings?</p>
-            </div>
-            <textarea id="q2-answer" class="answer-input" placeholder="Type your answer here..."></textarea>
-            <div class="button-group">
-                <button class="hint-button" data-question="2">Get Hint <span id="q2-hint-spinner" class="hidden loading-spinner"></span></button>
-                <button class="action-button" data-question="2">Check My Answer <span id="q2-check-spinner" class="hidden loading-spinner"></span></button>
-            </div>
-            <div id="q2-feedback" class="feedback-area"></div>
-        </div>
+        <!-- Your Reading Passages! -->
+        <section class="mb-10 p-6 bg-process-purple text-white rounded-2xl shadow-lg-custom">
+            <h2 class="text-3xl text-center mb-6 text-header-title-yellow">Your Reading Passages! 📖</h2>
+            <p class="text-lg text-gray-100 mb-6 text-center">Read these extracts carefully to learn about birds' wings.</p>
 
-        <!-- Question 3 -->
-        <div class="question-card">
-            <div class="flex items-start">
-                <span class="question-number">3</span>
-                <p class="question-text flex-grow">Which book gives information about birds' feathers?</p>
-            </div>
-            <textarea id="q3-answer" class="answer-input" placeholder="Type your answer here..."></textarea>
-            <div class="button-group">
-                <button class="hint-button" data-question="3">Get Hint <span id="q3-hint-spinner" class="hidden loading-spinner"></span></button>
-                <button class="action-button" data-question="3">Check My Answer <span id="q3-check-spinner" class="hidden loading-spinner"></span></button>
-            </div>
-            <div id="q3-feedback" class="feedback-area"></div>
-        </div>
+            <div class="space-y-6">
+                <!-- Extract 1: From How Birds Fly -->
+                <div class="reading-passage-card">
+                    <h3>From How Birds Fly</h3>
+                    <p class="author">By Harry Span</p>
+                    <p>
+                        A bird's wing is a very complicated arm made up of <strong>bones</strong> covered with a layer of <strong>feathers</strong>. The basic structure of all birds' wings is the same. The shape and size varies, depending on the way each type of bird lives, feeds and flies. The wings need to be strong enough to support the bird's weight in flight. The feathers have to be self-smoothing and tough enough to cope with knocks and bumps. They have to be renewable so that if one is lost it can be replaced.
+                    </p>
+                </div>
 
-        <!-- Question 4 -->
-        <div class="question-card">
-            <div class="flex items-start">
-                <span class="question-number">4</span>
-                <p class="question-text flex-grow">Give an example of a bird that:</p>
-            </div>
-            <div class="ml-12 mt-4">
-                <p class="text-lg font-semibold mb-2">a flies very fast</p>
-                <textarea id="q4a-answer" class="answer-input" placeholder="Type your answer here..."></textarea>
-                <div class="button-group">
-                    <button class="hint-button" data-question="4a">Get Hint <span id="q4a-hint-spinner" class="hidden loading-spinner"></span></button>
-                    <button class="action-button" data-question="4a">Check My Answer <span id="q4a-check-spinner" class="hidden loading-spinner"></span></button>
+                <!-- Extract 2: From The World of Birds -->
+                <div class="reading-passage-card">
+                    <h3>From The World of Birds</h3>
+                    <p class="author">By Rosemary Burke</p>
+                    <p>
+                        The bodies of birds are specially built to be of <strong>minimum weight</strong>. "They have a skull that is the lightest of all creatures; their bones are hollow yet strong; and they have no teeth or heavy jaws." However, they have a large, immensely strong heart and very powerful chest muscles that account for half their total body weight.
+                    </p>
                 </div>
-                <div id="q4a-feedback" class="feedback-area"></div>
-            </div>
-            <div class="ml-12 mt-4">
-                <p class="text-lg font-semibold mb-2">b glides</p>
-                <textarea id="q4b-answer" class="answer-input" placeholder="Type your answer here..."></textarea>
-                <div class="button-group">
-                    <button class="hint-button" data-question="4b">Get Hint <span id="q4b-hint-spinner" class="hidden loading-spinner"></span></button>
-                    <button class="action-button" data-question="4b">Check My Answer <span id="q4b-check-spinner" class="hidden loading-spinner"></span></button>
+
+                <!-- Extract 3: From A Bird Watcher's Guide -->
+                <div class="reading-passage-card">
+                    <h3>From A Bird Watcher's Guide</h3>
+                    <p class="author">By Sam Tiller</p>
+                    <p>
+                        How a bird flies, and the shape and size of its wings, can help you to identify it. Some birds fly quite slowly, whereas others have to fly very quickly, like the <strong>peregrine falcon</strong>. This bird can reach speeds of nearly 300 kilometres per hour as it pursues its prey. (That's about the speed of the fastest express train!)
+                    </p>
+                    <p>
+                        <strong>Long wings</strong> are best for gliding. Most gulls have long, narrow wings and can glide for hundreds of kilometres. This <strong>albatross</strong> glides so well, it can even sleep while flying.
+                    </p>
+                    <p>
+                        <strong>Short wings</strong> allow a bird to twist and turn quickly. Woodland and garden birds, like sparrows, starlings and this kingfisher, have short wings because they need to rapidly change direction as they fly among the boughs of trees.
+                    </p>
+                    <p>
+                        This eagle, like many other <strong>birds of prey</strong>, has <strong>broad, large wings</strong> for soaring high above the ground. It makes use of <strong>thermals</strong> (currents of warm air) to lift it high into the sky and then it scans the ground below for its prey.
+                    </p>
                 </div>
-                <div id="q4b-feedback" class="feedback-area"></div>
             </div>
-            <div class="ml-12 mt-4">
-                <p class="text-lg font-semibold mb-2">c twist and turns</p>
-                <textarea id="q4c-answer" class="answer-input" placeholder="Type your answer here..."></textarea>
-                <div class="button-group">
-                    <button class="hint-button" data-question="4c">Get Hint <span id="q4c-hint-spinner" class="hidden loading-spinner"></span></button>
-                    <button class="action-button" data-question="4c">Check My Answer <span id="q4c-check-spinner" class="hidden loading-spinner"></span></button>
+        </section>
+
+        <!-- Glossary Section -->
+        <section class="mb-10 p-6 bg-section-green text-white rounded-2xl shadow-lg-custom">
+            <h2 class="text-3xl text-center mb-6 text-header-title-yellow">Glossary: Birdy Words to Know 📖</h2>
+            <dl class="glossary-list">
+                <dt><strong>Peregrine Falcon:</strong></dt>
+                <dd>The world's fastest bird of prey.</dd>
+                <dt><strong>Albatross:</strong></dt>
+                <dd>A very large seabird with a wingspan of over 3 metres, known for gliding.</dd>
+                <dt><strong>Birds of Prey:</strong></dt>
+                <dd>Birds that hunt other animals for food (e.g., eagles, falcons).</dd>
+                <dt><strong>Thermals:</strong></dt>
+                <dd>Currents of warm air that birds of prey use to lift high into the sky.</dd>
+                <dt><strong>Minimum Weight:</strong></dt>
+                <dd>The least possible weight, meaning birds are built to be very light.</dd>
+                <dt><strong>Renewable:</strong></dt>
+                <dd>Able to be replaced naturally or easily (like feathers).</dd>
+            </dl>
+        </section>
+
+        <!-- Quiz Time! -->
+        <section class="mb-10 p-6 bg-process-purple text-white rounded-2xl shadow-lg-custom">
+            <h2 class="text-3xl text-center mb-6 text-header-title-yellow">Quiz Time! Test Your Comprehension! 🤔</h2>
+            <p class="text-lg text-gray-100 mb-6 text-center">Answer these questions based on the passages you just read!</p>
+
+            <div class="space-y-4">
+                <!-- Quiz 1 -->
+                <div class="quiz-card">
+                    <p class="question">1. According to "How Birds Fly," what two main parts make up a bird's wing?</p>
+                    <button class="reveal-button quiz-reveal-btn">Show Answer</button>
+                    <p class="answer">Bones and feathers.</p>
                 </div>
-                <div id="q4c-feedback" class="feedback-area"></div>
+                <!-- Quiz 2 -->
+                <div class="quiz-card">
+                    <p class="question">2. From "The World of Birds," what is special about a bird's bones that helps it fly?</p>
+                    <button class="reveal-button quiz-reveal-btn">Show Answer</button>
+                    <p class="answer">Their bones are hollow yet strong, helping them to be of minimum weight.</p>
+                </div>
+                <!-- Quiz 3 -->
+                <div class="quiz-card">
+                    <p class="question">3. Which type of wings (long, short, or broad/large) is best for a bird that needs to twist and turn quickly among trees, according to "A Bird Watcher's Guide"?</p>
+                    <button class="reveal-button quiz-reveal-btn">Show Answer</button>
+                    <p class="answer">Short wings.</p>
+                </div>
+                <!-- Quiz 4 -->
+                <div class="quiz-card">
+                    <p class="question">4. What is the fastest bird of prey mentioned in "A Bird Watcher's Guide," and approximately how fast can it fly?</p>
+                    <button class="reveal-button quiz-reveal-btn">Show Answer</button>
+                    <p class="answer">The peregrine falcon, which can reach nearly 300 kilometres per hour.</p>
+                </div>
+                <!-- Quiz 5 -->
+                <div class="quiz-card">
+                    <p class="question">5. What are "thermals" and how do birds of prey use them?</p>
+                    <button class="reveal-button quiz-reveal-btn">Show Answer</button>
+                    <p class="answer">Thermals are currents of warm air, and birds of prey use them to lift high into the sky for soaring.</p>
+                </div>
             </div>
-        </div>
+        </section>
+
+        <!-- Classwork Section -->
+        <section class="mb-10 p-6 bg-white-card rounded-2xl shadow-lg-custom">
+            <header class="text-center p-4 bg-classwork-header-green text-white rounded-t-xl mb-6">
+                <h2 class="text-3xl font-bold">Classwork 📝</h2>
+                <p class="text-lg mt-1">Answer these questions based on the passages!</p>
+            </header>
+
+            <div class="px-4">
+                <!-- Question 1 -->
+                <div class="question-card">
+                    <div class="flex items-start">
+                        <span class="classwork-question-number">1</span>
+                        <p class="classwork-question-text flex-grow">Which book gives information about the <strong>structure of birds' bodies</strong>?</p>
+                    </div>
+                    <textarea id="q1-answer" class="classwork-textarea" placeholder="Type your answer here..."></textarea>
+                    <div class="classwork-button-group">
+                        <button class="classwork-hint-button" data-question="q1">Get Hint <span id="q1-hint-spinner" class="hidden loading-spinner"></span></button>
+                        <button class="classwork-action-button" data-question="q1">Check My Answer <span id="q1-check-spinner" class="hidden loading-spinner"></span></button>
+                    </div>
+                    <div id="q1-feedback" class="classwork-feedback-area"></div>
+                </div>
+
+                <!-- Question 2 -->
+                <div class="question-card">
+                    <div class="flex items-start">
+                        <span class="classwork-question-number">2</span>
+                        <p class="classwork-question-text flex-grow">Which book gives information about <strong>different types of birds' wings</strong>?</p>
+                    </div>
+                    <textarea id="q2-answer" class="classwork-textarea" placeholder="Type your answer here..."></textarea>
+                    <div class="classwork-button-group">
+                        <button class="classwork-hint-button" data-question="q2">Get Hint <span id="q2-hint-spinner" class="hidden loading-spinner"></span></button>
+                        <button class="classwork-action-button" data-question="q2">Check My Answer <span id="q2-check-spinner" class="hidden loading-spinner"></span></button>
+                    </div>
+                    <div id="q2-feedback" class="classwork-feedback-area"></div>
+                </div>
+
+                <!-- Question 3 -->
+                <div class="question-card">
+                    <div class="flex items-start">
+                        <span class="classwork-question-number">3</span>
+                        <p class="classwork-question-text flex-grow">Which book gives information about <strong>birds' feathers</strong>?</p>
+                    </div>
+                    <textarea id="q3-answer" class="classwork-textarea" placeholder="Type your answer here..."></textarea>
+                    <div class="classwork-button-group">
+                        <button class="classwork-hint-button" data-question="q3">Get Hint <span id="q3-hint-spinner" class="hidden loading-spinner"></span></button>
+                        <button class="classwork-action-button" data-question="q3">Check My Answer <span id="q3-check-spinner" class="hidden loading-spinner"></span></button>
+                    </div>
+                    <div id="q3-feedback" class="classwork-feedback-area"></div>
+                </div>
+
+                <!-- Question 4 -->
+                <div class="question-card">
+                    <div class="flex items-start">
+                        <span class="classwork-question-number">4</span>
+                        <p class="classwork-question-text flex-grow">Give an example of a bird that:</p>
+                    </div>
+                    <div class="ml-12 mt-4">
+                        <p class="text-lg font-semibold mb-2">a <strong>flies very fast</strong></p>
+                        <textarea id="q4a-answer" class="classwork-textarea" placeholder="Type your answer here..."></textarea>
+                        <div class="classwork-button-group">
+                            <button class="classwork-hint-button" data-question="q4a">Get Hint <span id="q4a-hint-spinner" class="hidden loading-spinner"></span></button>
+                            <button class="classwork-action-button" data-question="q4a">Check My Answer <span id="q4a-check-spinner" class="hidden loading-spinner"></span></button>
+                        </div>
+                        <div id="q4a-feedback" class="classwork-feedback-area"></div>
+                    </div>
+                    <div class="ml-12 mt-4">
+                        <p class="text-lg font-semibold mb-2">b <strong>glides</strong></p>
+                        <textarea id="q4b-answer" class="classwork-textarea" placeholder="Type your answer here..."></textarea>
+                        <div class="classwork-button-group">
+                            <button class="classwork-hint-button" data-question="q4b">Get Hint <span id="q4b-hint-spinner" class="hidden loading-spinner"></span></button>
+                            <button class="classwork-action-button" data-question="q4b">Check My Answer <span id="q4b-check-spinner" class="hidden loading-spinner"></span></button>
+                        </div>
+                        <div id="q4b-feedback" class="classwork-feedback-area"></div>
+                    </div>
+                    <div class="ml-12 mt-4">
+                        <p class="text-lg font-semibold mb-2">c <strong>twist and turns</strong></p>
+                        <textarea id="q4c-answer" class="classwork-textarea" placeholder="Type your answer here..."></textarea>
+                        <div class="classwork-button-group">
+                            <button class="classwork-hint-button" data-question="q4c">Get Hint <span id="q4c-hint-spinner" class="hidden loading-spinner"></span></button>
+                            <button class="classwork-action-button" data-question="q4c">Check My Answer <span id="q4c-check-spinner" class="hidden loading-spinner"></span></button>
+                        </div>
+                        <div id="q4c-feedback" class="classwork-feedback-area"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ask a Bird Expert (LLM Feature) -->
+        <section class="mb-10 p-6 bg-element-yellow rounded-2xl shadow-lg-custom text-center">
+            <h2 class="text-3xl mb-4 text-tip-red">🦉 Ask a Bird Expert 🦉</h2>
+            <p class="text-lg text-gray-800 mb-4">Have a question about birds? Ask me anything!</p>
+            <div class="llm-input-area mb-4">
+                <textarea id="birdQuestionInput" class="w-full p-3 rounded-lg border border-gray-300 mb-2 min-h-[80px] text-gray-800" placeholder="e.g., How do hummingbirds fly so fast?"></textarea>
+                <button id="askBirdQuestionBtn" class="llm-button">Ask Question <span id="birdSpinner" class="hidden loading-spinner"></span></button>
+            </div>
+            <div id="birdQuestionOutput" class="llm-output-area text-gray-800"></div>
+        </section>
+
+        <!-- Conclusion -->
+        <section class="mb-10 p-6 bg-header-blue text-white rounded-2xl shadow-lg-custom text-center">
+            <h2 class="text-3xl mb-4 text-header-title-yellow">You're a Bird Flight Expert! 🎉</h2>
+            <p class="text-lg text-gray-100">
+                You've read and understood so much about the incredible design and flight of birds' wings. Keep observing the birds around you and marvel at their amazing superpowers!
+            </p>
+        </section>
 
         <!-- Footer -->
-        <footer class="mt-10 p-6 bg-header-green text-white rounded-2xl shadow-lg-custom text-center">
-            <p class="text-md text-gray-300">Keep up the great work! ✨</p>
+        <footer class="mt-10 p-6 bg-tip-red text-white rounded-2xl shadow-lg-custom text-center">
+            <p class="text-md text-gray-300">Fly High with Knowledge! 🚀</p>
         </footer>
 
     </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Function to handle AI interaction for checking answers and getting hints
+            // Function to handle quiz reveal buttons (for the main quiz section)
+            document.querySelectorAll('.quiz-reveal-btn').forEach(button => {
+                button.addEventListener('click', () => {
+                    const answer = button.nextElementSibling; // The answer paragraph is the next sibling
+                    if (answer) {
+                        answer.classList.toggle('active');
+                    }
+                });
+            });
+
+            // Function to handle AI interaction for checking answers and getting hints for classwork
             async function handleAIInteraction(type, questionId, answerText = '') {
+                console.log(`handleAIInteraction called for ${questionId}, type: ${type}`);
                 const feedbackElement = document.getElementById(`${questionId}-feedback`);
                 const spinnerElement = document.getElementById(`${questionId}-${type}-spinner`);
-                const actionButton = document.querySelector(`button[data-question="${questionId.replace(/[a-c]/, '')}"][class*="action-button"]`);
-                const hintButton = document.querySelector(`button[data-question="${questionId.replace(/[a-c]/, '')}"][class*="hint-button"]`);
+                const actionButton = document.querySelector(`button[data-question="${questionId}"][class*="classwork-action-button"]`);
+                const hintButton = document.querySelector(`button[data-question="${questionId}"][class*="classwork-hint-button"]`);
                 
                 // Disable buttons and show spinner
                 if (actionButton) actionButton.disabled = true;
                 if (hintButton) hintButton.disabled = true;
                 if (spinnerElement) spinnerElement.classList.remove('hidden');
                 feedbackElement.textContent = ''; // Clear previous feedback
+                feedbackElement.className = 'classwork-feedback-area'; // Reset class
 
                 let prompt = '';
-                let expectedAnswer = ''; // This would ideally come from a structured data source
+                let expectedAnswerKeywords = []; // Use keywords for flexible matching
 
                 // Define expected answers and prompts based on questionId
                 switch (questionId) {
                     case 'q1':
-                        prompt = `The question is "Which book gives information about the structure of birds' bodies?". The correct answer is "How Birds Fly". Evaluate the user's answer: "${answerText}". Is it correct? If not, provide a polite correction. If correct, give positive reinforcement.`;
-                        expectedAnswer = "How Birds Fly";
+                        prompt = `The question is "Which book gives information about the structure of birds' bodies?". The correct answer is "The World of Birds by Rosemary Burke". Evaluate the user's answer: "${answerText}". Is it correct or close enough? If not, provide a polite correction based on the correct answer. If correct, give positive reinforcement. Please use <strong> tags for any bold text.`;
+                        expectedAnswerKeywords = ["world of birds by rosemary burke"];
                         break;
                     case 'q2':
-                        prompt = `The question is "Which book gives information about different types of birds' wings?". The correct answer is "A Bird Watcher's Guide". Evaluate the user's answer: "${answerText}". Is it correct? If not, provide a polite correction. If correct, give positive reinforcement.`;
-                        expectedAnswer = "A Bird Watcher's Guide";
+                        prompt = `The question is "Which book gives information about different types of birds' wings?". The correct answer is "A Bird Watcher’s Guide by Sam Tiller". Evaluate the user's answer: "${answerText}". Is it correct or close enough? If not, provide a polite correction based on the correct answer. If correct, give positive reinforcement. Please use <strong> tags for any bold text.`;
+                        expectedAnswerKeywords = ["bird watcher’s guide by sam tiller"];
                         break;
                     case 'q3':
-                        prompt = `The question is "Which book gives information about birds' feathers?". The correct answer is "How Birds Fly". Evaluate the user's answer: "${answerText}". Is it correct? If not, provide a polite correction. If correct, give positive reinforcement.`;
-                        expectedAnswer = "How Birds Fly";
+                        prompt = `The question is "Which book gives information about birds' feathers?". The correct answer is "How Birds Fly by Harry Span". Evaluate the user's answer: "${answerText}". Is it correct or close enough? If not, provide a polite correction based on the correct answer. If correct, give positive reinforcement. Please use <strong> tags for any bold text.`;
+                        expectedAnswerKeywords = ["how birds fly by harry span"];
                         break;
                     case 'q4a':
-                        prompt = `The question is "Give an example of a bird that flies very fast?". The correct answer is "peregrine falcon". Evaluate the user's answer: "${answerText}". Is it correct? If not, provide a polite correction. If correct, give positive reinforcement.`;
-                        expectedAnswer = "peregrine falcon";
+                        prompt = `The question is "Give an example of a bird that flies very fast?". The correct answer is "An example of a bird that flies very fast is the peregrine falcon". Evaluate the user's answer: "${answerText}". Is it correct or close enough? If not, provide a polite correction based on the correct answer. If correct, give positive reinforcement. Please use <strong> tags for any bold text.`;
+                        expectedAnswerKeywords = ["peregrine falcon"];
                         break;
                     case 'q4b':
-                        prompt = `The question is "Give an example of a bird that glides?". The correct answers include "gulls" or "albatross". Evaluate the user's answer: "${answerText}". Is it correct? If not, provide a polite correction. If correct, give positive reinforcement.`;
-                        expectedAnswer = ["gulls", "albatross"]; // Multiple possible answers
+                        prompt = `The question is "Give an example of a bird that glides?". The correct answer is "An example of a bird that glides is the gull/albatross". Evaluate the user's answer: "${answerText}". Is it correct or close enough? If not, provide a polite correction based on the correct answer. If correct, give positive reinforcement. Please use <strong> tags for any bold text.`;
+                        expectedAnswerKeywords = ["gull", "albatross"];
                         break;
                     case 'q4c':
-                        prompt = `The question is "Give an example of a bird that twist and turns?". The correct answers include "sparrows", "starlings", or "kingfisher". Evaluate the user's answer: "${answerText}". Is it correct? If not, provide a polite correction. If correct, give positive reinforcement.`;
-                        expectedAnswer = ["sparrows", "starlings", "kingfisher"]; // Multiple possible answers
+                        prompt = `The question is "Give an example of a bird that twists and turns?". The correct answer is "An example of a bird that twists and turns is the sparrow/starling/kingfisher". Evaluate the user's answer: "${answerText}". Is it correct or close enough? If not, provide a polite correction based on the correct answer. If correct, give positive reinforcement. Please use <strong> tags for any bold text.`;
+                        expectedAnswerKeywords = ["sparrow", "starling", "kingfisher"];
                         break;
                     default:
                         feedbackElement.textContent = "Error: Question not found.";
-                        feedbackElement.className = 'feedback-area incorrect';
+                        feedbackElement.className = 'classwork-feedback-area incorrect';
                         if (spinnerElement) spinnerElement.classList.add('hidden');
                         if (actionButton) actionButton.disabled = false;
                         if (hintButton) hintButton.disabled = false;
@@ -274,14 +595,125 @@
                 }
 
                 if (type === 'hint') {
-                    prompt = `For the question "${questionId.toUpperCase().replace('Q', 'Question ')}: ${document.querySelector(`#${questionId}-answer`).previousElementSibling.textContent.trim()}", provide a helpful hint for a primary school pupil without giving the direct answer.`;
+                    // For hints, craft a specific prompt that guides without revealing the answer
+                    let hintPrompt = '';
+                    switch (questionId) {
+                        case 'q1': hintPrompt = "Think about which passage describes the overall build of a bird's body, not just its wings or feathers."; break;
+                        case 'q2': hintPrompt = "Look for the passage that talks about different wing shapes and what kind of flying they are good for."; break;
+                        case 'q3': hintPrompt = "Which passage specifically mentions what covers a bird's bones and how it helps?"; break;
+                        case 'q4a': hintPrompt = "In the 'Bird Watcher's Guide' passage, which bird is described as being incredibly fast?"; break;
+                        case 'q4b': hintPrompt = "The 'Bird Watcher's Guide' mentions birds with 'long wings' that can travel great distances without flapping. What are some examples?"; break;
+                        case 'q4c': hintPrompt = "What kind of wings help birds move quickly through tight spaces like trees? Look for examples in the 'Bird Watcher's Guide'."; break;
+                    }
+                    prompt = `Provide a helpful hint for a primary school pupil for the question: "${document.querySelector(`#${questionId}-answer`).closest('.question-card').querySelector('.classwork-question-text').textContent.trim()}". Hint: ${hintPrompt}. Please use <strong> tags for any bold text.`;
                 }
 
                 try {
+                    console.log('Sending prompt to AI:', prompt);
                     let chatHistory = [];
                     chatHistory.push({ role: "user", parts: [{ text: prompt }] });
                     const payload = { contents: chatHistory };
-                    const apiKey = "AIzaSyAHwWr8DyJtt3vFtimhENE0x3FnIUX8DGc"; // Canvas will provide this at runtime
+                    const apiKey = ""; // Canvas will provide this at runtime
+                    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+
+                    const result = await response.json();
+                    console.log('AI response received:', result);
+
+                    if (result.candidates && result.candidates.length > 0 &&
+                        result.candidates[0].content && result.candidates[0].content.parts &&
+                        result.candidates[0].content.parts.length > 0) {
+                        const aiResponse = result.candidates[0].content.parts[0].text;
+
+                        if (type === 'check') {
+                            let isCorrect = false;
+                            const lowerCaseAnswer = answerText.toLowerCase();
+                            // Check if the user's answer contains any of the expected keywords
+                            isCorrect = expectedAnswerKeywords.some(keyword => lowerCaseAnswer.includes(keyword.toLowerCase()));
+
+                            if (isCorrect) {
+                                feedbackElement.textContent = "Great job! That's correct! 🎉";
+                                feedbackElement.className = 'classwork-feedback-area correct';
+                            } else {
+                                feedbackElement.innerHTML = aiResponse; // Use innerHTML to render strong tags
+                                feedbackElement.className = 'classwork-feedback-area incorrect';
+                            }
+                        } else if (type === 'hint') {
+                            feedbackElement.innerHTML = `Hint: ${aiResponse}`; // Use innerHTML to render strong tags
+                            feedbackElement.className = 'classwork-feedback-area hint';
+                        }
+                    } else {
+                        feedbackElement.textContent = "Sorry, I couldn't process that. Please try again.";
+                        feedbackElement.className = 'classwork-feedback-area incorrect';
+                    }
+                } catch (error) {
+                    console.error(`Error during AI ${type} for ${questionId}:`, error);
+                    feedbackElement.textContent = `An error occurred. Please try again.`;
+                    feedbackElement.className = 'classwork-feedback-area incorrect';
+                } finally {
+                    // Re-enable buttons and hide spinner
+                    if (spinnerElement) spinnerElement.classList.add('hidden');
+                    if (actionButton) actionButton.disabled = false;
+                    if (hintButton) hintButton.disabled = false;
+                }
+            }
+
+            // Event Listeners for Check My Answer buttons (Classwork section)
+            document.querySelectorAll('.classwork-action-button').forEach(button => {
+                button.addEventListener('click', (event) => {
+                    console.log('Check My Answer button clicked');
+                    const questionId = event.target.dataset.question;
+                    const answerInput = document.getElementById(`${questionId}-answer`);
+                    if (answerInput) {
+                        handleAIInteraction('check', questionId, answerInput.value);
+                    } else {
+                        console.error(`Answer input not found for questionId: ${questionId}`);
+                    }
+                });
+            });
+
+            // Event Listeners for Get Hint buttons (Classwork section)
+            document.querySelectorAll('.classwork-hint-button').forEach(button => {
+                button.addEventListener('click', (event) => {
+                    console.log('Get Hint button clicked');
+                    const questionId = event.target.dataset.question;
+                    handleAIInteraction('hint', questionId);
+                });
+            });
+
+            // Event Listener for Ask a Bird Expert (LLM Feature)
+            const birdQuestionInput = document.getElementById('birdQuestionInput');
+            const askBirdQuestionBtn = document.getElementById('askBirdQuestionBtn');
+            const birdQuestionOutput = document.getElementById('birdQuestionOutput');
+            const birdSpinner = document.getElementById('birdSpinner');
+
+            askBirdQuestionBtn.addEventListener('click', async () => {
+                console.log('Ask Bird Question button clicked');
+                const question = birdQuestionInput.value.trim();
+                if (!question) {
+                    birdQuestionOutput.textContent = "Please ask a question about birds.";
+                    birdQuestionOutput.style.color = '#DC2626'; // Red
+                    return;
+                }
+
+                birdQuestionOutput.textContent = ''; // Clear previous output
+                birdQuestionOutput.style.color = '#333'; // Reset color
+                birdSpinner.classList.remove('hidden');
+                askBirdQuestionBtn.disabled = true;
+
+                try {
+                    const prompt = `Answer the following question about birds in simple English for a primary school pupil. Keep the answer concise and easy to understand. Please use <strong> HTML tags for any bold text in your response.
+                    Question: "${question}"`;
+                    
+                    let chatHistory = [];
+                    chatHistory.push({ role: "user", parts: [{ text: prompt }] });
+                    const payload = { contents: chatHistory };
+                    const apiKey = ""; // Canvas will provide this at runtime
                     const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
 
                     const response = await fetch(apiUrl, {
@@ -294,62 +726,19 @@
                     if (result.candidates && result.candidates.length > 0 &&
                         result.candidates[0].content && result.candidates[0].content.parts &&
                         result.candidates[0].content.parts.length > 0) {
-                        const aiResponse = result.candidates[0].content.parts[0].text;
-
-                        if (type === 'check') {
-                            // Simple keyword check for correctness (can be improved with more robust NLP)
-                            let isCorrect = false;
-                            const lowerCaseAnswer = answerText.toLowerCase();
-                            if (Array.isArray(expectedAnswer)) {
-                                isCorrect = expectedAnswer.some(ans => lowerCaseAnswer.includes(ans.toLowerCase()));
-                            } else {
-                                isCorrect = lowerCaseAnswer.includes(expectedAnswer.toLowerCase());
-                            }
-
-                            if (isCorrect) {
-                                feedbackElement.textContent = "Great job! That's correct! 🎉";
-                                feedbackElement.className = 'feedback-area correct';
-                            } else {
-                                feedbackElement.textContent = aiResponse; // Use AI's correction
-                                feedbackElement.className = 'feedback-area incorrect';
-                            }
-                        } else if (type === 'hint') {
-                            feedbackElement.textContent = `Hint: ${aiResponse}`;
-                            feedbackElement.className = 'feedback-area hint';
-                        }
+                        birdQuestionOutput.innerHTML = result.candidates[0].content.parts[0].text; // Use innerHTML
                     } else {
-                        feedbackElement.textContent = "Sorry, I couldn't process that. Please try again.";
-                        feedbackElement.className = 'feedback-area incorrect';
+                        birdQuestionOutput.textContent = "Failed to get a response from the AI. Please try again.";
+                        birdQuestionOutput.style.color = '#DC2626';
                     }
                 } catch (error) {
-                    console.error(`Error during AI ${type} for ${questionId}:`, error);
-                    feedbackElement.textContent = `An error occurred. Please try again.`;
-                    feedbackElement.className = 'feedback-area incorrect';
+                    console.error("Error asking bird question:", error);
+                    birdQuestionOutput.textContent = "An error occurred while answering your question. Please try again.";
+                    birdQuestionOutput.style.color = '#DC2626';
                 } finally {
-                    // Re-enable buttons and hide spinner
-                    if (spinnerElement) spinnerElement.classList.add('hidden');
-                    if (actionButton) actionButton.disabled = false;
-                    if (hintButton) hintButton.disabled = false;
+                    birdSpinner.classList.add('hidden');
+                    askBirdQuestionBtn.disabled = false;
                 }
-            }
-
-            // Event Listeners for Check My Answer buttons
-            document.querySelectorAll('.action-button').forEach(button => {
-                button.addEventListener('click', (event) => {
-                    const questionId = event.target.dataset.question;
-                    const answerInput = document.getElementById(`${questionId}-answer`);
-                    if (answerInput) {
-                        handleAIInteraction('check', questionId, answerInput.value);
-                    }
-                });
-            });
-
-            // Event Listeners for Get Hint buttons
-            document.querySelectorAll('.hint-button').forEach(button => {
-                button.addEventListener('click', (event) => {
-                    const questionId = event.target.dataset.question;
-                    handleAIInteraction('hint', questionId);
-                });
             });
         });
     </script>

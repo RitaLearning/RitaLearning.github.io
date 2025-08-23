@@ -486,7 +486,7 @@
             // IMPORTANT: To run this feature on a local webpage (outside of this platform),
             // you must get your own API key from Google AI Studio (https://aistudio.google.com/app/apikey)
             // and paste it between the quotes below.
-            const LOCAL_API_KEY = "AIzaSyDqdwlzMf0HXP1cJ19Y5K4-awb_sp177pY"; //
+            const LOCAL_API_KEY = "AIzaSyAHwWr8DyJtt3vFtimhENE0x3FnIUX8DGc"; // <--- PASTE YOUR KEY HERE FOR LOCAL USE
 
             const spaceQuestionInput = document.getElementById('spaceQuestionInput');
             const askSpaceQuestionBtn = document.getElementById('askSpaceQuestionBtn');
@@ -504,7 +504,7 @@
 
                 // This allows the feature to work in the Canvas environment (which provides a key automatically)
                 // and also work locally if a user provides their own key.
-                const apiKey = "AIzaSyAHwWr8DyJtt3vFtimhENE0x3FnIUX8DGc";
+                const apiKey = LOCAL_API_KEY || "AIzaSyAHwWr8DyJtt3vFtimhENE0x3FnIUX8DGc";
 
                 // If running locally without a key, provide a helpful message.
                 const isLocal = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1" || window.location.protocol === "file:";
@@ -569,5 +569,3 @@
     </script>
 </body>
 </html>
-
-

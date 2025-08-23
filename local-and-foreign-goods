@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local & Foreign Goods 🌍</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chewy&family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(to bottom right, #fefce8, #fffbeb); /* Light yellow gradient */
+            color: #333;
+        }
+        h1, h2, h3 {
+            font-family: 'Chewy', cursive;
+            color: #ef4444; /* Red for headings */
+        }
+        .header-bg {
+            background: linear-gradient(135deg, #f97316 0%, #ea580c 100%); /* Orange gradient */
+            border: 2px solid #fbbf24; /* Amber border */
+        }
+        .section-card {
+            background-color: #ffffff;
+            border-radius: 1.5rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s ease-in-out;
+        }
+        .section-card:hover {
+            transform: translateY(-5px);
+        }
+        .accent-color-1 { color: #f97316; } /* Orange */
+        .accent-color-2 { color: #22c55e; } /* Green */
+        .accent-color-3 { color: #3b82f6; } /* Blue */
+        .accent-color-4 { color: #8b5cf6; } /* Purple */
+        .accent-color-5 { color: #ec4899; } /* Pink */
+        .interactive-button {
+            background-color: #f97316; /* Orange */
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .interactive-button:hover {
+            background-color: #ea580c; /* Darker orange */
+            transform: translateY(-1px);
+        }
+        .interactive-input {
+            border: 2px solid #fbbf24; /* Amber border */
+            border-radius: 0.5rem;
+            padding: 0.75rem;
+            width: 100%;
+            font-size: 1rem;
+            color: #333;
+            background-color: #fff;
+        }
+        .output-box {
+            background-color: #fff7ed; /* Light orange background */
+            border: 1px solid #fed7aa; /* Light orange border */
+            border-radius: 0.5rem;
+            padding: 1rem;
+            min-height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #c2410c; /* Dark orange text */
+            font-weight: 600;
+            margin-top: 1rem;
+            white-space: pre-wrap; /* Preserve whitespace and wrap text */
+            word-wrap: break-word; /* Break long words */
+        }
+        .mini-activity-box {
+            background-color: #fef3c7; /* Light yellow */
+            border-radius: 0.75rem;
+            padding: 1rem;
+            margin-top: 1rem;
+            text-align: center;
+            border: 1px dashed #fbbf24;
+        }
+        .mini-activity-question {
+            font-weight: 600;
+            color: #d97706; /* Orange-600 */
+            margin-bottom: 0.75rem;
+        }
+        .quiz-question-card {
+            background-color: #fff;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .quiz-question-card p {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #ef4444; /* Red */
+        }
+        .quiz-options label {
+            display: block;
+            margin-bottom: 0.75rem;
+            cursor: pointer;
+            font-size: 1rem;
+            color: #333;
+            transition: color 0.2s ease;
+        }
+        .quiz-options label:hover {
+            color: #f97316; /* Orange on hover */
+        }
+        .quiz-options input[type="radio"] {
+            margin-right: 0.5rem;
+            accent-color: #f97316; /* Orange accent for radio buttons */
+        }
+        .quiz-feedback {
+            margin-top: 1rem;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            text-align: center;
+            min-height: 40px;
+        }
+        .quiz-feedback.correct {
+            background-color: #d4edda; /* Light green */
+            color: #155724; /* Dark green text */
+            border: 1px solid #c3e6cb;
+        }
+        .quiz-feedback.incorrect {
+            background-color: #f8d7da; /* Light red */
+            color: #721c24; /* Dark red text */
+            border: 1px solid #f5c6cb;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <div class="container mx-auto p-4 md:p-8 max-w-4xl">
+
+        <!-- Header -->
+        <header class="text-center p-8 rounded-2xl header-bg text-white mb-10">
+            <h1 class="text-4xl md:text-5xl mb-2 text-white">Local and Foreign Goods 🛍️📦</h1>
+            <p class="text-xl md:text-2xl font-light text-gray-100">Let's learn where our goods come from!</p>
+            <p class="text-md mt-1 text-gray-200">Teacher: <strong class="text-xl">Ndudi Rita Enemuwe</strong></p>
+        </header>
+
+        <!-- Introduction -->
+        <section class="mb-10 p-6 section-card text-center">
+            <h2 class="text-3xl mb-4 accent-color-1">What are Goods? 🤔</h2>
+            <p class="text-lg text-gray-700">
+                Goods are all the things that are made to be sold or used. They can be items you can touch, like a pencil or a bag of rice, or even services that people provide, like a car wash! In our world, these goods come from all over the place. Some are made right here in our country, Nigeria, and some are made far, far away. Knowing the difference helps us understand how our economy works!
+            </p>
+        </section>
+
+        <!-- Enquiry Questions Section -->
+        <section class="mb-10 p-6 section-card">
+            <h2 class="text-3xl text-center mb-6 accent-color-1">Enquiry Questions ❓</h2>
+            <div class="text-lg text-gray-700 space-y-4">
+                <p><strong>1. What are some things made in Nigeria that you really like?</strong></p>
+                <p><strong>2. How do the prices of products affect your choices when shopping?</strong></p>
+            </div>
+        </section>
+
+        <!-- Learning Objectives Section -->
+        <section class="mb-10 p-6 section-card">
+            <h2 class="text-3xl text-center mb-6 accent-color-2">Learning Objectives 🎯</h2>
+            <ul class="list-disc pl-6 text-gray-700 space-y-2">
+                <li>Define and identify <strong>Local Goods</strong> and <strong>Foreign Goods</strong>.</li>
+                <li>Give several examples of both local and foreign goods.</li>
+                <li>Explain the importance and benefits of buying local goods.</li>
+                <li>Understand the concepts of Imports and Exports.</li>
+            </ul>
+        </section>
+
+        <!-- Local Goods Section -->
+        <section class="mb-10 p-6 section-card">
+            <h2 class="text-3xl text-center mb-6 accent-color-3">Local Goods 🇳🇬</h2>
+            <p class="text-lg text-gray-700 mb-4">
+                <strong>Local Goods</strong> are things that are made, grown, or produced right here in Nigeria! They are sometimes called "Made-in-Nigeria" goods. These are the items we find at our local markets, made by our own people.
+            </p>
+            <p class="text-lg text-gray-700 mb-4 font-semibold italic">
+                Think about some of our delicious local products:
+            </p>
+            <ul class="list-disc pl-6 text-gray-700 space-y-2 mb-4">
+                <li>Staple foods like pounded yam, garri, and fufu.</li>
+                <li>Fresh fruits and vegetables like mangoes, pineapples, and tomatoes.</li>
+                <li>Traditional crafts and arts, such as pottery from Abuja or leather goods from Kano.</li>
+                <li>Beautiful fabrics like Ankara and Adire, and clothes made from them.</li>
+                <li>Oil products from our own refineries and local industries.</li>
+            </ul>
+            <p class="text-lg text-gray-700 mb-4">
+                When we buy local goods, we help our families, friends, and neighbors who make and sell them. It helps create more jobs and keeps money circulating within our country, which makes our economy stronger!
+            </p>
+        </section>
+
+        <!-- Foreign Goods Section -->
+        <section class="mb-10 p-6 section-card">
+            <h2 class="text-3xl text-center mb-6 accent-color-4">Foreign Goods 🌍</h2>
+            <p class="text-lg text-gray-700 mb-4">
+                <strong>Foreign Goods</strong> are things that are made, grown, or produced in other countries and then brought into Nigeria. This process is called <strong>Importation</strong>.
+            </p>
+            <p class="text-lg text-gray-700 mb-4 font-semibold italic">
+                Think about some of the things we import:
+            </p>
+            <ul class="list-disc pl-6 text-gray-700 space-y-2 mb-4">
+                <li>Electronic gadgets like mobile phones, laptops, and televisions.</li>
+                <li>Cars and motorcycles from countries like Japan, Germany, and the USA.</li>
+                <li>Some types of food, like biscuits, chocolates, and tinned fish.</li>
+                <li>Machinery and equipment used in factories and farms.</li>
+            </ul>
+            <p class="text-lg text-gray-700 mb-4">
+                Foreign goods are important because they give us things we might not be able to make here in Nigeria, or things that other countries make better. They give us a wider variety of things to choose from.
+            </p>
+            <p class="text-lg text-gray-700 mb-4">
+                Just as we import goods, Nigeria also sells its local goods to other countries. This is called <strong>Exportation</strong>. For example, Nigeria exports crude oil, cocoa, and cashew nuts to other countries. This also helps our economy!
+            </p>
+        </section>
+        
+        <!-- Importance of Buying Local Goods -->
+        <section class="mb-10 p-6 section-card">
+            <h2 class="text-3xl text-center mb-6 accent-color-5">Importance of Buying Local Goods</h2>
+            <p class="text-lg text-gray-700 mb-4">
+                Buying local goods means purchasing products that are made in Nigeria. It is important for us as Nigerians to support the things produced by our farmers, craftsmen, and industries.
+            </p>
+            <p class="text-lg text-gray-700 mb-4">
+                One reason we should buy local goods in Nigeria is that <strong>it helps our economy to grow</strong>. When we buy Nigerian-made clothes, food, and shoes, the money stays in our country. This helps local businesses like rice farmers in Kebbi, cloth makers in Aba, and leather workers in Kano to grow stronger.
+            </p>
+            <p class="text-lg text-gray-700 mb-4">
+                Another reason is that buying local goods <strong>provides jobs for Nigerians</strong>. Farmers, factory workers, and traders can earn a living when we support what they produce. It also helps the government to save money by reducing the importation of foreign goods like rice and tomatoes.
+            </p>
+            <p class="text-lg text-gray-700 mb-4">
+                Lastly, <strong>Nigerian goods are often fresher and cheaper</strong>. For example, buying locally grown yam, rice, and beans is better than buying imported ones. It also helps us to be proud of our culture, such as wearing Ankara and Adire instead of always wearing foreign clothes.
+            </p>
+            <p class="text-lg text-gray-700">
+                <strong>In conclusion, buying local goods in Nigeria is very important for the growth of our nation. It supports our economy, provides jobs, and helps us value what we produce.</strong> As good citizens, we should all try to buy “Made in Nigeria” goods whenever we can.
+            </p>
+        </section>
+
+        <!-- Quiz Time! -->
+        <section class="mb-10 p-6 section-card">
+            <h2 class="text-3xl text-center mb-6 accent-color-5">Quiz Time! Test Your Knowledge! 🧠</h2>
+            <div class="space-y-6">
+                <!-- Question 1 -->
+                <div class="quiz-question-card" id="quiz-q1">
+                    <p>1. Which of these is most likely a local good?</p>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q1" value="A"> A. A car made in Japan</label>
+                        <label><input type="radio" name="q1" value="B"> B. A bottle of palm oil from a Nigerian market</label>
+                        <label><input type="radio" name="q1" value="C"> C. A mobile phone from China</label>
+                        <label><input type="radio" name="q1" value="D"> D. A doll from the USA</label>
+                    </div>
+                    <button class="interactive-button quiz-check-btn" data-question="q1">Check Answer</button>
+                    <div class="quiz-feedback" id="feedback-q1"></div>
+                </div>
+
+                <!-- Question 2 -->
+                <div class="quiz-question-card" id="quiz-q2">
+                    <p>2. What do we call goods that are produced in another country and sold in Nigeria?</p>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q2" value="A"> A. Local goods</label>
+                        <label><input type="radio" name="q2" value="B"> B. Domestic goods</label>
+                        <label><input type="radio" name="q2" value="C"> C. Foreign goods</label>
+                        <label><input type="radio" name="q2" value="D"> D. Imported goods</label>
+                    </div>
+                    <button class="interactive-button quiz-check-btn" data-question="q2">Check Answer</button>
+                    <div class="quiz-feedback" id="feedback-q2"></div>
+                </div>
+
+                <!-- Question 3 -->
+                <div class="quiz-question-card" id="quiz-q3">
+                    <p>3. Why is it good to buy local goods?</p>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q3" value="A"> A. It helps other countries' economies.</label>
+                        <label><input type="radio" name="q3" value="B"> B. It helps Nigeria's economy grow by creating jobs.</label>
+                        <label><input type="radio" name="q3" value="C"> C. They are always more expensive and better quality.</label>
+                        <label><input type="radio" name="q3" value="D"> D. They are easy to find everywhere.</label>
+                    </div>
+                    <button class="interactive-button quiz-check-btn" data-question="q3">Check Answer</button>
+                    <div class="quiz-feedback" id="feedback-q3"></div>
+                </div>
+                
+                <!-- Question 4 -->
+                <div class="quiz-question-card" id="quiz-q4">
+                    <p>4. The process of bringing goods into Nigeria from another country is called:</p>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q4" value="A"> A. Exportation</label>
+                        <label><input type="radio" name="q4" value="B"> B. Production</label>
+                        <label><input type="radio" name="q4" value="C"> C. Importation</label>
+                        <label><input type="radio" name="q4" value="D"> D. Trade</label>
+                    </div>
+                    <button class="interactive-button quiz-check-btn" data-question="q4">Check Answer</button>
+                    <div class="quiz-feedback" id="feedback-q4"></div>
+                </div>
+
+                <!-- Question 5 -->
+                <div class="quiz-question-card" id="quiz-q5">
+                    <p>5. Which of these is an example of a Nigerian export?</p>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q5" value="A"> A. A smartphone from the USA</label>
+                        <label><input type="radio" name="q5" value="B"> B. A bottle of palm oil sold in Europe</label>
+                        <label><input type="radio" name="q5" value="C"> C. A car from Japan</label>
+                        <label><input type="radio" name="q5" value="D"> D. A designer handbag from Italy</label>
+                    </div>
+                    <button class="interactive-button quiz-check-btn" data-question="q5">Check Answer</button>
+                    <div class="quiz-feedback" id="feedback-q5"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Conclusion -->
+        <section class="mb-10 p-6 section-card text-center">
+            <h2 class="text-3xl mb-4 accent-color-5">You're a Smart Pupil! ✨</h2>
+            <p class="text-lg text-gray-700">
+                You now know the difference between local and foreign goods and why both are important. Keep an eye out for where the goods around you are from!
+            </p>
+        </section>
+
+        <!-- Footer -->
+        <footer class="mt-10 p-6 text-center text-gray-500 text-sm">
+            <p>&copy; 2025 Social Studies Nigeria. All rights reserved.</p>
+        </footer>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Quiz functionality
+            const quizAnswers = {
+                q1: 'B',
+                q2: 'D',
+                q3: 'B',
+                q4: 'C',
+                q5: 'B'
+            };
+
+            document.querySelectorAll('.quiz-check-btn').forEach(button => {
+                button.addEventListener('click', (event) => {
+                    const questionId = event.target.dataset.question;
+                    const selectedOption = document.querySelector(`input[name="${questionId}"]:checked`);
+                    const feedbackElement = document.getElementById(`feedback-${questionId}`);
+
+                    // Clear previous feedback
+                    feedbackElement.textContent = '';
+                    feedbackElement.className = 'quiz-feedback';
+
+                    if (!selectedOption) {
+                        feedbackElement.textContent = "Please select an answer!";
+                        feedbackElement.classList.add('incorrect');
+                        return;
+                    }
+
+                    const correctAnswer = quizAnswers[questionId];
+                    if (selectedOption.value === correctAnswer) {
+                        feedbackElement.textContent = "Correct! Well done! �";
+                        feedbackElement.classList.add('correct');
+                    } else {
+                        feedbackElement.textContent = "Oops! That's not quite right. Review the sections above and try again!";
+                        feedbackElement.classList.add('incorrect');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+�

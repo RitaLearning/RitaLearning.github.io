@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Solar System</title>
+  <style>
+    :root{
+      --fg:#111; --bg:#fff; --muted:#666; --border:#eaeaea; --soft:#f9f9f9;
+    }
+    *{box-sizing:border-box}
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,"Helvetica Neue",Arial,"Noto Sans","Apple Color Emoji","Segoe UI Emoji";
+         line-height:1.7;margin:0;background:var(--bg);color:var(--fg)}
+    main{max-width:980px;margin:0 auto;padding:2rem 1.25rem}
+    h1{font-size:2rem;margin:.25rem 0}
+    h2{font-size:1.35rem;margin:1.5rem 0 .5rem}
+    h3{font-size:1.1rem;margin:1rem 0 .25rem}
+    p{margin:.5rem 0}
+    ul,ol{padding-left:1.2rem}
+    table{width:100%;border-collapse:collapse;margin:1rem 0}
+    th,td{border:1px solid var(--border);padding:.6rem;text-align:left;vertical-align:top}
+    th{background:var(--soft)}
+    .lead{color:var(--muted);margin-bottom:1rem}
+    .card{background:var(--soft);border:1px solid var(--border);border-radius:10px;padding:1rem}
+    .summary{background:#fafafa;border:1px solid var(--border);border-radius:10px;padding:1rem}
+    .list-tight li{margin:.25rem 0}
+    .muted{color:var(--muted)}
+    .grid{display:grid;gap:1rem}
+    @media (min-width:800px){ .grid-2{grid-template-columns:1fr 1fr} }
+    .note{font-size:.95rem;color:#333}
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>The Solar System</h1>
+      <p class="lead">A clear, structured note covering meaning, the Sun, planets, dwarf planets, moons, small bodies, importance, and a concise summary.</p>
+    </header>
+
+    <h2>1. Meaning of the Solar System</h2>
+    <p>The <strong>Solar System</strong> is the collection of the <strong>Sun</strong>, <strong>eight planets</strong>, their <strong>moons</strong>, and many smaller objects such as <em>asteroids</em>, <em>meteoroids</em>, and <em>comets</em> that move around the Sun. The word “solar” comes from <em>Sol</em>, meaning <strong>Sun</strong>. The Solar System is held together by the Sun’s gravitational pull.</p>
+
+    <h2>2. The Sun</h2>
+    <ul class="list-tight">
+      <li>The Sun is a <strong>star</strong> and the <strong>center</strong> of the Solar System.</li>
+      <li>It provides <strong>light and heat</strong>, making life on Earth possible.</li>
+      <li>Mainly made of <strong>hydrogen</strong> and <strong>helium</strong>.</li>
+      <li>It is so large that over <strong>one million Earths</strong> could fit inside it (by volume).</li>
+    </ul>
+
+    <h2>3. The Planets</h2>
+    <p>The eight planets are grouped into inner rocky planets and outer gas/ice giants.</p>
+
+    <div class="grid grid-2">
+      <section class="card">
+        <h3>(a) Inner Planets (Rocky)</h3>
+        <ol class="list-tight">
+          <li><strong>Mercury</strong> – Closest to the Sun; very hot in the day, very cold at night.</li>
+          <li><strong>Venus</strong> – Hottest planet due to thick atmosphere; bright in the sky.</li>
+          <li><strong>Earth</strong> – Our home; has liquid water and life-supporting air.</li>
+          <li><strong>Mars</strong> – The “Red Planet”; dusty deserts and signs of ancient water.</li>
+        </ol>
+      </section>
+      <section class="card">
+        <h3>(b) Outer Planets (Gas/Ice Giants)</h3>
+        <ol start="5" class="list-tight">
+          <li><strong>Jupiter</strong> – Largest planet; has a <em>Great Red Spot</em> (a giant storm).</li>
+          <li><strong>Saturn</strong> – Famous for its beautiful <strong>rings</strong> of ice and rock.</li>
+          <li><strong>Uranus</strong> – Rotates on its side; blue-green colour from methane gas.</li>
+          <li><strong>Neptune</strong> – Farthest planet; very cold; strongest winds.</li>
+        </ol>
+      </section>
+    </div>
+
+    <h3>Planet Quick Comparison</h3>
+    <table>
+      <thead>
+        <tr><th>Planet</th><th>Type</th><th>Key Feature</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Mercury</td><td>Rocky</td><td>Closest to the Sun; extreme temperatures</td></tr>
+        <tr><td>Venus</td><td>Rocky</td><td>Hottest surface; thick clouds</td></tr>
+        <tr><td>Earth</td><td>Rocky</td><td>Liquid water and life</td></tr>
+        <tr><td>Mars</td><td>Rocky</td><td>Red surface; ancient water signs</td></tr>
+        <tr><td>Jupiter</td><td>Gas Giant</td><td>Largest planet; Great Red Spot</td></tr>
+        <tr><td>Saturn</td><td>Gas Giant</td><td>Distinct ring system</td></tr>
+        <tr><td>Uranus</td><td>Ice Giant</td><td>Axis tilted on its side</td></tr>
+        <tr><td>Neptune</td><td>Ice Giant</td><td>Strongest winds; farthest</td></tr>
+      </tbody>
+    </table>
+
+    <h2>4. Dwarf Planets</h2>
+    <p>Dwarf planets are smaller bodies that orbit the Sun and are roughly spherical, but they have not cleared other objects from their orbits.</p>
+    <ul class="list-tight">
+      <li><strong>Pluto</strong> – The best known dwarf planet (once considered the ninth planet).</li>
+      <li><strong>Ceres</strong> – Located in the Asteroid Belt.</li>
+      <li><strong>Haumea</strong>, <strong>Makemake</strong>, and <strong>Eris</strong> – Found in the distant Kuiper Belt.</li>
+    </ul>
+
+    <h2>5. Moons</h2>
+    <ul class="list-tight">
+      <li>Moons are <strong>natural satellites</strong> that orbit planets.</li>
+      <li>Earth has <strong>one moon</strong>.</li>
+      <li>Jupiter and Saturn each have <strong>many dozens of moons</strong>.</li>
+      <li>Some moons (e.g., Jupiter’s <em>Europa</em>) may have <strong>subsurface oceans</strong>.</li>
+    </ul>
+
+    <h2>6. Other Bodies in the Solar System</h2>
+    <ul class="list-tight">
+      <li><strong>Asteroids</strong> – Rocky objects, mostly in the <strong>Asteroid Belt</strong> between Mars and Jupiter.</li>
+      <li><strong>Comets</strong> – Icy bodies that develop glowing tails when near the Sun.</li>
+      <li><strong>Meteoroids</strong> – Small rocks in space; when they enter Earth’s atmosphere they become <em>meteors</em> (shooting stars), and if they reach the ground they are <em>meteorites</em>.</li>
+    </ul>
+
+    <h2>7. Importance of the Solar System</h2>
+    <ul class="list-tight">
+      <li>The Sun provides <strong>energy</strong> for life on Earth.</li>
+      <li>Studying planets and moons helps us understand <strong>how worlds form</strong>.</li>
+      <li>Asteroids and comets preserve clues about the <strong>early Solar System</strong>.</li>
+      <li>Exploration inspires technology, science learning, and possible <strong>future space travel</strong>.</li>
+    </ul>
+
+    <h2>8. Summary</h2>
+    <div class="summary">
+      <ul class="list-tight">
+        <li>The Solar System includes the Sun, eight planets, dwarf planets, moons, asteroids, comets, and meteoroids.</li>
+        <li>The Sun’s gravity holds everything together and provides light and heat.</li>
+        <li>Planets are grouped into inner rocky planets and outer gas/ice giants; Earth is unique for supporting life.</li>
+      </ul>
+    </div>
+
+    <section class="note">
+      <p><strong>Teacher Tip:</strong> Ask pupils to remember the order of planets with a mnemonic like: <em>“My Very Eager Mother Just Served Us Noodles.”</em></p>
+    </section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Trans-Saharan Trade — Detailed & Interactive Note</title>
+  <style>
+    :root{
+      --bg:#fffdf6; --card:#ffffff; --accent:#0b5fff; --muted:#555; --accent-2:#ff8a00;
+      --success:#2a9d8f; --danger:#e63946; --shadow: 0 6px 18px rgba(11,95,255,0.08);
+      --radius:12px; --maxw:1000px;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+    body{background:linear-gradient(180deg,#f7fbff, var(--bg)); margin:0; padding:32px; display:flex; justify-content:center;}
+    .wrap{width:100%; max-width:var(--maxw);}
+    header{display:flex;align-items:center;gap:16px;margin-bottom:18px}
+    header .logo{width:64px;height:64px;border-radius:14px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:20px;box-shadow:var(--shadow)}
+    header h1{margin:0;font-size:20px}
+    .meta{color:var(--muted); font-size:13px}
+
+    .grid{display:grid;grid-template-columns:1fr 320px;gap:18px}
+    .card{background:var(--card);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow)}
+
+    .section-title{display:flex;align-items:center;justify-content:space-between}
+    .section-title h2{margin:0;font-size:16px}
+    .badge{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:white;padding:6px 10px;border-radius:999px;font-weight:600;font-size:13px}
+
+    dl{margin:10px 0 0 0}
+    dt{font-weight:700;margin-top:12px}
+    dd{margin:6px 0 14px;color:var(--muted)}
+
+    .routes{display:flex;flex-wrap:wrap;gap:8px}
+    .route{background:#f1f8ff;color:#073b8c;padding:8px 10px;border-radius:8px;font-weight:600}
+
+    .list{margin:10px 0;padding-left:18px}
+
+    /* accordion */
+    .accordion{margin-top:12px}
+    .acc-item{border-radius:10px; overflow:hidden;border:1px solid rgba(11,95,255,0.08); margin-bottom:10px}
+    .acc-head{display:flex;justify-content:space-between;align-items:center;padding:12px 14px;cursor:pointer;background:linear-gradient(180deg, rgba(11,95,255,0.03), transparent)}
+    .acc-head h3{margin:0;font-size:14px}
+    .acc-body{padding:12px 14px;border-top:1px solid rgba(0,0,0,0.04);display:none;background:linear-gradient(180deg,#fff, #fbfdff)}
+
+    /* interactive quiz */
+    .quiz{margin-top:12px}
+    .q{margin-bottom:14px}
+    .q p{margin:6px 0}
+    .options button{display:block;margin:6px 0;padding:8px 10px;border-radius:8px;border:1px solid rgba(0,0,0,0.06);background:white;cursor:pointer;text-align:left}
+    .options button.correct{border-color:var(--success);background:linear-gradient(90deg, rgba(42,157,143,0.08), #fff)}
+    .options button.wrong{border-color:var(--danger);background:linear-gradient(90deg, rgba(230,57,70,0.06), #fff)}
+
+    /* sidebar */
+    .sidebar h3{margin-top:0}
+    .toc{list-style:none;padding:0;margin:8px 0}
+    .toc li{margin:8px 0}
+    .small{font-size:13px;color:var(--muted)}
+
+    footer{margin-top:18px;color:var(--muted);font-size:13px}
+
+    /* responsive */
+    @media (max-width:980px){
+      .grid{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="logo">TS</div>
+      <div>
+        <h1>Trans‑Saharan Trade — Detailed & Interactive Note</h1>
+        <div class="meta">Comprehensive lesson note — suitable for Primary/Lower Secondary classroom use</div>
+      </div>
+      <div style="margin-left:auto" class="badge">Detailed</div>
+    </header>
+
+    <div class="grid">
+      <main class="card">
+        <div class="section-title">
+          <h2>Overview</h2>
+          <div class="small">Use the table of contents on the right to jump to sections</div>
+        </div>
+
+        <p><strong>Trans‑Saharan trade</strong> refers to long‑distance trade across the Sahara Desert linking North Africa with West and Central Africa. It developed from the early medieval period (c. 7th century AD) and reached its height between the 8th and 16th centuries.</p>
+
+        <div class="accordion" id="accordion">
+          <div class="acc-item">
+            <div class="acc-head" data-target="bg">
+              <h3>Historical background</h3>
+              <div class="small">Important milestones</div>
+            </div>
+            <div class="acc-body" id="bg">
+              <p>The trade intensified after the introduction of the <em>camel</em> (often called the "ship of the desert") which made desert crossing feasible and efficient. Islamic expansion and the growth of North African trading centres also helped link sub‑Saharan kingdoms with Mediterranean and Middle Eastern markets.</p>
+              <dl>
+                <dt>Key dates</dt>
+                <dd>Early development: 3rd–7th centuries (camels introduced c. 3rd century); Major expansion: 8th–16th centuries; Decline from the 15th century onwards with the growth of Atlantic trade.</dd>
+                <dt>Major actors</dt>
+                <dd>West African states (Ghana, Mali, Songhai, Hausa city‑states), North African merchants, Berber nomads, and later European coastal traders.</dd>
+              </dl>
+            </div>
+          </div>
+
+          <div class="acc-item">
+            <div class="acc-head" data-target="routes">
+              <h3>Main routes & trading towns</h3>
+              <div class="small">Where caravans passed</div>
+            </div>
+            <div class="acc-body" id="routes">
+              <p>Main routes linked Mediterranean ports and oases in North Africa with major West African centres. Caravans followed established tracks where water and salt sources existed.</p>
+              <div class="routes">
+                <span class="route">Sijilmasa</span>
+                <span class="route">Taghaza (salt)</span>
+                <span class="route">Timbuktu</span>
+                <span class="route">Gao</span>
+                <span class="route">Kano</span>
+                <span class="route">Katsina</span>
+              </div>
+              <p class="small">Caravans often stopped at oases and fortified towns — these became centres of trade and learning.</p>
+            </div>
+          </div>
+
+          <div class="acc-item">
+            <div class="acc-head" data-target="goods">
+              <h3>Goods traded</h3>
+              <div class="small">What moved across the desert</div>
+            </div>
+            <div class="acc-body" id="goods">
+              <p><strong>From West Africa to North Africa:</strong></p>
+              <ul class="list">
+                <li><strong>Gold</strong> — the most valuable commodity; key to the wealth of empires such as Ghana and Mali.</li>
+                <li><strong>Ivory</strong></li>
+                <li><strong>Kola nuts</strong> — used as stimulants and in social custom.</li>
+                <li><strong>Slaves</strong> — an important and tragic part of the trade.</li>
+                <li><strong>Ostrich feathers</strong></li>
+              </ul>
+
+              <p><strong>From North Africa to West Africa:</strong></p>
+              <ul class="list">
+                <li><strong>Salt</strong> — essential for preservation and diet; often carried from desert salt mines.</li>
+                <li><strong>Cloth & textiles</strong></li>
+                <li><strong>Horses</strong> — important for warfare and prestige.</li>
+                <li><strong>Copper</strong></li>
+                <li><strong>Books & manuscripts</strong> — especially after the spread of Islam.</li>
+                <li><strong>Weapons</strong></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="acc-item">
+            <div class="acc-head" data-target="methods">
+              <h3>Methods & organisation of trade</h3>
+              <div class="small">Caravans, currency, and markets</div>
+            </div>
+            <div class="acc-body" id="methods">
+              <p>Large camel caravans carried goods across long distances. Trade began with barter; over time currencies like cowrie shells and gold dust were used. Major trading towns evolved markets and systems of credit for merchants.</p>
+              <dl>
+                <dt>Caravan organisation</dt>
+                <dd>Led by experienced guides; caravans included traders, camel drivers, and guards. Sizes ranged from small groups to caravans of several thousand camels.</dd>
+                <dt>Currency</dt>
+                <dd>Gold dust and cowries were common. Barter remained important for some exchanges.</dd>
+              </dl>
+            </div>
+          </div>
+
+          <div class="acc-item">
+            <div class="acc-head" data-target="effects">
+              <h3>Effects of the trade</h3>
+              <div class="small">Economic, social & cultural impact</div>
+            </div>
+            <div class="acc-body" id="effects">
+              <p><strong>Positive effects</strong></p>
+              <ul>
+                <li><strong>Economic growth:</strong> Kingdoms accumulated wealth and power.</li>
+                <li><strong>Spread of Islam:</strong> Islam spread through trade, influencing law, education, and administration.</li>
+                <li><strong>Urban development:</strong> Cities like Timbuktu became prosperous and centres of learning.</li>
+                <li><strong>Cultural exchange:</strong> Ideas, language, and technologies moved between regions.</li>
+                <li><strong>Education:</strong> Arabic scholarship and literacy increased.</li>
+              </ul>
+
+              <p><strong>Negative effects</strong></p>
+              <ul>
+                <li><strong>Slave trade:</strong> Many people were captured and sold, causing lasting harm.</li>
+                <li><strong>Warfare:</strong> Rivalries over control of routes sometimes led to conflict.</li>
+                <li><strong>Dependence:</strong> Some states became vulnerable to shifts in trade patterns.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="acc-item">
+            <div class="acc-head" data-target="decline">
+              <h3>Decline of Trans‑Saharan trade</h3>
+              <div class="small">Why it lost importance</div>
+            </div>
+            <div class="acc-body" id="decline">
+              <p>From the 15th century, the discovery of Atlantic sea routes by Europeans shifted trade away from inland routes. Coupled with the fall of major West African empires and insecurity on routes, Trans‑Saharan trade declined in importance.</p>
+            </div>
+          </div>
+
+          <div class="acc-item">
+            <div class="acc-head" data-target="fun">
+              <h3>Fun facts</h3>
+              <div class="small">Quick memorable points</div>
+            </div>
+            <div class="acc-body" id="fun">
+              <ul>
+                <li>Camels were known as the "ship of the desert".</li>
+                <li>Timbuktu was famed for its wealth and scholarship. In medieval Europe it became almost legendary.</li>
+                <li>Some caravans could carry thousands of camels when trading on a large scale.</li>
+                <li>West African gold backed much of the regional economy for centuries.</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Classroom quiz -->
+        <div class="section-title" style="margin-top:10px"><h2>Short interactive quiz</h2><div class="small">Check understanding — immediate feedback</div></div>
+        <div class="card quiz" id="quiz">
+          <div class="q" data-answer="salt">
+            <p><strong>1.</strong> Which commodity from North Africa was especially important for preserving food and maintaining health?</p>
+            <div class="options">
+              <button data-value="gold">Gold</button>
+              <button data-value="salt">Salt</button>
+              <button data-value="cloth">Cloth</button>
+              <button data-value="ivory">Ivory</button>
+            </div>
+          </div>
+
+          <div class="q" data-answer="camel">
+            <p><strong>2.</strong> What animal made long desert journeys feasible and earned the nickname "ship of the desert"?</p>
+            <div class="options">
+              <button data-value="camel">Camel</button>
+              <button data-value="horse">Horse</button>
+              <button data-value="ox">Ox</button>
+              <button data-value="donkey">Donkey</button>
+            </div>
+          </div>
+
+          <div class="q" data-answer="timbuktu">
+            <p><strong>3.</strong> Which West African city became a famous centre of learning and trade?</p>
+            <div class="options">
+              <button data-value="kano">Kano</button>
+              <button data-value="timbuktu">Timbuktu</button>
+              <button data-value="gaoz">Gao</button>
+              <button data-value="sijilmasa">Sijilmasa</button>
+            </div>
+          </div>
+
+          <div style="margin-top:8px">
+            <button id="checkAll" style="padding:8px 12px;border-radius:8px;border:none;background:linear-gradient(90deg,var(--accent),var(--accent-2));color:white;cursor:pointer">Check answers</button>
+            <div id="score" class="small" style="margin-top:8px"></div>
+          </div>
+        </div>
+
+        <footer>
+          <strong>Teaching tips:</strong> Use the accordion items as slide prompts. Allow pupils to role‑play caravan traders and create maps showing routes. Discuss the human cost of the slave trade sensitively and age‑appropriately.
+        </footer>
+      </main>
+
+      <aside class="sidebar card">
+        <h3>Contents / Quick links</h3>
+        <ul class="toc">
+          <li><a href="#" data-jump="bg">Historical background</a></li>
+          <li><a href="#" data-jump="routes">Main routes & towns</a></li>
+          <li><a href="#" data-jump="goods">Goods traded</a></li>
+          <li><a href="#" data-jump="methods">Methods & organisation</a></li>
+          <li><a href="#" data-jump="effects">Effects</a></li>
+          <li><a href="#" data-jump="decline">Decline</a></li>
+          <li><a href="#" data-jump="fun">Fun facts</a></li>
+        </ul>
+
+        <div style="margin-top:12px">
+          <h3>Quick facts</h3>
+          <p class="small"><strong>Peak period:</strong> 8th–16th centuries<br><strong>Main transport:</strong> Camel caravans<br><strong>Major exports:</strong> Gold, salt, slaves</p>
+        </div>
+
+        <div style="margin-top:12px">
+          <h3>Classroom activity ideas</h3>
+          <ol>
+            <li>Map exercise: trace the routes and mark trading towns.</li>
+            <li>Role play: merchants, guides, and town leaders negotiating prices.</li>
+            <li>Short research: pick one trading town and report on its role.</li>
+          </ol>
+        </div>
+
+        <div style="margin-top:12px">
+          <h3>Printable summary</h3>
+          <button id="printBtn" style="padding:8px 10px;border-radius:8px;border:none;background:#073b8c;color:white;cursor:pointer">Print summary</button>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <script>
+    // Accordion behaviour
+    document.querySelectorAll('.acc-head').forEach(h => h.addEventListener('click', ()=>{
+      const id = h.dataset.target;
+      const body = document.getElementById(id);
+      const isOpen = body.style.display === 'block';
+      document.querySelectorAll('.acc-body').forEach(b=>b.style.display='none');
+      if(!isOpen) body.style.display='block';
+    }));
+
+    // Table of contents jump
+    document.querySelectorAll('[data-jump]').forEach(a=>{
+      a.addEventListener('click', e => {
+        e.preventDefault();
+        const id = a.dataset.jump;
+        const el = document.getElementById(id);
+        if(el){ el.style.display='block'; el.scrollIntoView({behavior:'smooth', block:'center'}); }
+      });
+    });
+
+    // Quiz logic
+    const questions = Array.from(document.querySelectorAll('.q'));
+    document.getElementById('checkAll').addEventListener('click', ()=>{
+      let correct=0;
+      questions.forEach(q => {
+        const answer = q.dataset.answer;
+        const buttons = Array.from(q.querySelectorAll('button'));
+        buttons.forEach(btn=>{
+          btn.classList.remove('correct','wrong');
+          btn.disabled = true;
+          if(btn.dataset.value === answer){ btn.classList.add('correct'); correct++; }
+          else if(btn.classList.contains('selected')){ btn.classList.add('wrong'); }
+        });
+      });
+      document.getElementById('score').textContent = `Score: ${correct} / ${questions.length}`;
+    });
+
+    // Single-select behaviour
+    document.querySelectorAll('.options').forEach(group => {
+      group.addEventListener('click', e => {
+        if(e.target.tagName !== 'BUTTON') return;
+        const buttons = Array.from(group.querySelectorAll('button'));
+        buttons.forEach(b=>b.classList.remove('selected'));
+        e.target.classList.add('selected');
+      });
+    });
+
+    // Print summary
+    document.getElementById('printBtn').addEventListener('click', ()=>{
+      const summaryWindow = window.open('', '_blank');
+      const html = `<!doctype html><html><head><meta charset="utf-8"><title>Trans‑Saharan Trade — Summary</title><style>body{font-family:Arial,Helvetica,sans-serif;padding:20px;color:#111}h1{color:#073b8c}ul{}</style></head><body><h1>Trans‑Saharan Trade — Summary</h1><h3>Overview</h3><p>Trade linking North Africa and West Africa (8th–16th centuries). Main goods: gold, salt, ivory, cloth, horses, slaves.</p><h3>Key points</h3><ul><li>Transport: camel caravans</li><li>Important towns: Timbuktu, Gao, Kano, Sijilmasa</li><li>Effects: wealth, spread of Islam, growth of learning centres; negatives included the slave trade.</li></ul></body></html>`;
+      summaryWindow.document.write(html);
+      summaryWindow.document.close();
+      summaryWindow.print();
+    });
+
+    // Allow pressing Enter on quiz buttons to check
+    document.addEventListener('keydown', e => { if(e.key === 'Enter') document.getElementById('checkAll').click(); });
+  </script>
+</body>
+</html>

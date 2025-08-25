@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Trans-Atlantic Trade — Interactive Note</title>
+  <style>
+    :root{
+      --bg:#f7fbff; --card:#ffffff; --accent:#0b6efd; --muted:#6b7280; --glass: rgba(11,110,253,0.08);
+      --accent-2:#ff6b6b; --accent-3:#ffd166; --accent-4:#7bd389;
+      --radius:14px; --pad:18px;
+      font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    }
+    body{background:linear-gradient(180deg,var(--bg),#eef6ff);margin:0;color:#0f1724}
+    .container{max-width:980px;margin:36px auto;padding:20px}
+    header{display:flex;gap:18px;align-items:center}
+    .logo{width:78px;height:78px;border-radius:12px;background:var(--glass);display:flex;align-items:center;justify-content:center;color:var(--accent);font-weight:700;font-size:18px}
+    h1{margin:0;font-size:28px}
+    p.lead{color:var(--muted);margin-top:6px}
+
+    .card{background:var(--card);border-radius:var(--radius);box-shadow:0 6px 18px rgba(8,20,40,0.06);padding:var(--pad);margin-top:18px}
+    nav.toc{display:flex;gap:12px;flex-wrap:wrap;margin-top:12px}
+    .chip{background:var(--glass);padding:8px 12px;border-radius:999px;color:var(--accent);font-weight:600;cursor:pointer}
+
+    .controls{display:flex;gap:10px;align-items:center;margin-top:14px}
+    .btn{border:0;padding:10px 14px;border-radius:10px;cursor:pointer;font-weight:600}
+    .btn.primary{background:var(--accent);color:white}
+    .btn.ghost{background:transparent;border:1px solid rgba(15,23,36,0.06)}
+
+    .search{margin-left:auto;display:flex;gap:8px;align-items:center}
+    input[type=search]{padding:10px 12px;border-radius:10px;border:1px solid #e6eefb;min-width:260px}
+
+    .section{margin-top:18px}
+    .section h2{display:flex;justify-content:space-between;align-items:center;margin:0}
+    .toggle{background:transparent;border:0;color:var(--muted);font-weight:600;cursor:pointer}
+
+    .content{padding:12px 4px;color:#111827;line-height:1.6}
+    ul{margin:8px 0 8px 20px}
+    ol{margin:8px 0 8px 20px}
+    .highlight{background:linear-gradient(90deg,var(--accent-3),transparent);padding:4px 8px;border-radius:8px}
+
+    /* small responsive */
+    @media (max-width:600px){.container{padding:12px}.logo{display:none}.search input{min-width:140px}}
+
+    /* collapsible animation */
+    .collapsible{overflow:hidden;transition:height 280ms ease}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="logo">T-AT</div>
+      <div>
+        <h1>Trans-Atlantic Trade (Triangular Trade)</h1>
+        <p class="lead">A detailed and classroom-ready note covering the routes, features, effects and abolition of the Trans-Atlantic Trade.</p>
+      </div>
+    </header>
+
+    <div class="card">
+      <div class="toc">
+        <div class="chip" data-scroll-to="intro">Introduction</div>
+        <div class="chip" data-scroll-to="legs">Three Legs</div>
+        <div class="chip" data-scroll-to="reasons">Reasons</div>
+        <div class="chip" data-scroll-to="features">Features</div>
+        <div class="chip" data-scroll-to="effects">Effects</div>
+        <div class="chip" data-scroll-to="abolition">Abolition</div>
+        <div class="chip" data-scroll-to="conclusion">Conclusion</div>
+      </div>
+
+      <div class="controls">
+        <button class="btn primary" id="toggleAll">Collapse All</button>
+        <button class="btn ghost" id="printBtn">Print / Save as PDF</button>
+        <div class="search">
+          <input type="search" id="search" placeholder="Search note (e.g., Middle Passage)">
+        </div>
+      </div>
+
+      <!-- Sections -->
+      <section id="intro" class="section">
+
+        <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/Triangle_trade2.png" 
+       alt="Trans-Atlantic Trade Route">
+
+        <h2>Introduction <button class="toggle" data-target="intro-c">Hide</button></h2>
+        <div id="intro-c" class="content collapsible">
+          <p>The <strong>Trans-Atlantic Trade</strong>, also called the <em>Triangular Trade</em>, was a major trade system across the Atlantic from the 15th to the 19th centuries connecting <strong>Europe</strong>, <strong>Africa</strong> and the <strong>Americas</strong> (including the Caribbean). It is most infamous for the <strong>transatlantic slave trade</strong> that forcibly removed millions of Africans to the Americas.</p>
+          <p>The trade routes formed a triangular shape between the three regions and grew as European colonialism and plantation economies expanded.</p>
+        </div>
+      </section>
+
+      <section id="legs" class="section">
+        <h2>The Three Legs of the Trade <button class="toggle" data-target="legs-c">Hide</button></h2>
+        <div id="legs-c" class="content collapsible">
+          <h3>1. First Leg (Europe to Africa)</h3>
+          <ul>
+            <li>European merchants carried <strong>manufactured goods</strong> such as guns and ammunition, textiles, alcohol (rum, gin, brandy), beads, mirrors and iron bars.</li>
+            <li>These goods were exchanged for <strong>enslaved Africans</strong>, often through African chiefs and middlemen.</li>
+          </ul>
+
+          <h3>2. Second Leg (Africa to the Americas — The Middle Passage)</h3>
+          <ul>
+            <li>Called the <em>Middle Passage</em>, this leg was the most brutal: enslaved Africans were packed into ships and transported in inhumane conditions.</li>
+            <li>Overcrowding, disease, starvation and abuse were common; many captured Africans died before arrival.</li>
+          </ul>
+
+          <h3>3. Third Leg (Americas to Europe)</h3>
+          <ul>
+            <li>In the Americas enslaved people worked on plantations producing sugar, cotton, coffee, tobacco and cocoa.</li>
+            <li>These raw materials were shipped to Europe, completing the triangular route.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="reasons" class="section">
+        <h2>Reasons for the Trade <button class="toggle" data-target="reasons-c">Hide</button></h2>
+        <div id="reasons-c" class="content collapsible">
+          <ul>
+            <li>High demand for cheap labour in the Americas (plantation economy).</li>
+            <li>European industrial growth and need for raw materials.</li>
+            <li>Profit motive among European merchants and some African intermediaries.</li>
+            <li>Expansion of European colonies in the Americas.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="features" class="section">
+        <h2>Features of the Trade <button class="toggle" data-target="features-c">Hide</button></h2>
+        <div id="features-c" class="content collapsible">
+          <ul>
+            <li>Triangular route connecting Europe, Africa and the Americas.</li>
+            <li>Highly profitable for European traders and investors.</li>
+            <li>Involved the forceful removal and enslavement of Africans.</li>
+            <li>Operated over several centuries (15th–19th centuries).</li>
+            <li>Boosted growth of port cities such as Liverpool, Bristol and Nantes.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="effects" class="section">
+        <h2>Effects of the Trans-Atlantic Trade <button class="toggle" data-target="effects-c">Hide</button></h2>
+        <div id="effects-c" class="content collapsible">
+          <h3>On Africa</h3>
+          <ul>
+            <li><strong>Depopulation:</strong> Millions of young and able Africans were taken away.</li>
+            <li><strong>Wars and instability:</strong> Increased conflict as chiefs participated in capturing people for the trade.</li>
+            <li><strong>Loss of cultural heritage:</strong> Families and communities were torn apart.</li>
+            <li><strong>Introduction of firearms:</strong> Which increased violence and insecurity.</li>
+            <li><strong>Economic disruption:</strong> Traditional industries and farming declined.</li>
+          </ul>
+
+          <h3>On the Americas</h3>
+          <ul>
+            <li>Growth of plantation economies producing sugar, cotton, tobacco and other cash crops.</li>
+            <li>Development of racial discrimination and a social order built on slavery.</li>
+            <li>Creation of large African-descended populations across the Caribbean and the Americas.</li>
+            <li>Great wealth for some European settlers but immense suffering for enslaved people.</li>
+          </ul>
+
+          <h3>On Europe</h3>
+          <ul>
+            <li>Large profits for European traders, planters and investors.</li>
+            <li>Growth of industries like textiles, shipbuilding and sugar refining.</li>
+            <li>Rise of powerful port cities and accumulation of capital that helped fuel the Industrial Revolution.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="abolition" class="section">
+        <h2>Abolition of the Trans-Atlantic Slave Trade <button class="toggle" data-target="abolition-c">Hide</button></h2>
+        <div id="abolition-c" class="content collapsible">
+          <p>The trade continued into the late 18th and early 19th centuries when opposition increased for several reasons:</p>
+          <ul>
+            <li><strong>Humanitarian movements:</strong> Missionaries, abolitionists and writers condemned the cruelty.</li>
+            <li><strong>Slave revolts:</strong> Rebellions such as the Haitian Revolution (1791–1804) weakened the slave system.</li>
+            <li><strong>Economic shifts:</strong> Industrialisation changed labour needs and economic logic.</li>
+            <li><strong>Legislation:</strong> Britain banned the slave trade in 1807; the United States banned the importation of slaves in 1808. Other countries followed throughout the 19th century.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="conclusion" class="section">
+        <h2>Conclusion <button class="toggle" data-target="conclusion-c">Hide</button></h2>
+        <div id="conclusion-c" class="content collapsible">
+          <p>The Trans-Atlantic Trade remains one of the darkest chapters of human history. While it enriched Europe and helped shape modern economies, it devastated African societies and caused suffering on an enormous scale. The legacy of the trade includes systemic racial inequalities and deep cultural scars. Its history is a powerful reminder of the need to defend human rights, dignity and justice.</p>
+        </div>
+      </section>
+
+      <footer style="margin-top:18px;color:var(--muted);font-size:14px">Note: This classroom-friendly note is designed for Primary/Junior secondary lessons. You can edit headings or collapse sections to use during lessons.</footer>
+    </div>
+  </div>
+
+  <script>
+    // utility to toggle collapsible height
+    function setHeight(el, open){
+      if(open){
+        el.style.height = el.scrollHeight + 'px';
+      }else{
+        el.style.height = '0px';
+      }
+    }
+
+    // initialize
+    document.querySelectorAll('.collapsible').forEach(c=>{
+      c.style.height = c.scrollHeight + 'px';
+    });
+
+    document.querySelectorAll('.toggle').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        const id = btn.dataset.target;
+        const el = document.getElementById(id);
+        const isOpen = el.style.height && el.style.height !== '0px';
+        setHeight(el, !isOpen);
+        btn.textContent = isOpen ? 'Show' : 'Hide';
+      })
+    });
+
+    document.getElementById('toggleAll').addEventListener('click', e=>{
+      const btn = e.currentTarget;
+      const anyOpen = Array.from(document.querySelectorAll('.collapsible')).some(c=>c.style.height && c.style.height !== '0px');
+      document.querySelectorAll('.collapsible').forEach(c=> setHeight(c, !anyOpen));
+      btn.textContent = anyOpen ? 'Expand All' : 'Collapse All';
+    });
+
+    document.getElementById('printBtn').addEventListener('click', ()=> window.print());
+
+    // TOC chips
+    document.querySelectorAll('.chip').forEach(ch=>{
+      ch.addEventListener('click', ()=>{
+        const t = ch.dataset.scrollTo;
+        document.getElementById(t).scrollIntoView({behavior:'smooth',block:'start'});
+      })
+    });
+
+    // simple search
+    const search = document.getElementById('search');
+    search.addEventListener('input', ()=>{
+      const q = search.value.trim().toLowerCase();
+      document.querySelectorAll('.card .section').forEach(section=>{
+        const text = section.textContent.toLowerCase();
+        const visible = !q || text.indexOf(q) > -1;
+        section.style.display = visible ? '' : 'none';
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Temperature Zones of the World</title>
+  <style>
+    :root{
+      --bg:#f8fafc; /* light slate-50 */
+      --card:#ffffff;
+      --text:#0f172a; /* slate-900 */
+      --muted:#475569; /* slate-600 */
+      --brand:#0ea5e9; /* sky-500 */
+      --brand-2:#22c55e; /* green-500 */
+      --brand-3:#f59e0b; /* amber-500 */
+      --brand-4:#ef4444; /* red-500 */
+      --ring:rgba(14,165,233,.3);
+    }
+    [data-theme="dark"]{
+      --bg:#0b1220;
+      --card:#0f172a;
+      --text:#e5e7eb;
+      --muted:#94a3b8;
+      --ring:rgba(59,130,246,.35);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Inter,Arial,sans-serif;
+      background:var(--bg);color:var(--text);line-height:1.6;
+    }
+    .container{max-width:1100px;margin:auto;padding:24px}
+    header{
+      position:sticky;top:0;z-index:50;background:linear-gradient(180deg,rgba(255,255,255,.8),rgba(255,255,255,0));backdrop-filter:saturate(180%) blur(10px);
+      border-bottom:1px solid rgba(100,116,139,.15)
+    }
+    .toolbar{display:flex;gap:10px;align-items:center;justify-content:space-between;padding:10px 24px}
+    .title{display:flex;gap:12px;align-items:center}
+    .badge{padding:.25rem .6rem;border-radius:999px;font-size:.8rem;background:linear-gradient(90deg,var(--brand),var(--brand-2));color:white}
+    h1{margin:.2rem 0;font-size:clamp(1.4rem,2.4vw+1rem,2.2rem)}
+    .actions{display:flex;gap:8px}
+    button, .chip{
+      border:0; padding:.6rem .9rem; border-radius:14px; cursor:pointer; font-weight:600; color:#0b1324;
+      background:#e2e8f0; transition:.25s transform, .25s box-shadow;
+    }
+    .chip{background:rgba(14,165,233,.12); color:var(--brand);}
+    button:hover{transform:translateY(-1px); box-shadow:0 8px 24px rgba(2,6,23,.12)}
+    .primary{background:linear-gradient(90deg,var(--brand),var(--brand-2)); color:white}
+
+    .hero{margin-top:18px;border-radius:24px; padding:24px; background:
+      radial-gradient(1200px 300px at 50% -50%, rgba(14,165,233,.25), transparent 60%),
+      linear-gradient(135deg, rgba(34,197,94,.15), rgba(14,165,233,.15));
+      border:1px solid rgba(2,6,23,.08)
+    }
+    .hero p{max-width:70ch}
+
+    .grid{display:grid; gap:18px}
+    @media(min-width:900px){.grid{grid-template-columns:1.1fr .9fr}}
+
+    .card{background:var(--card); border:1px solid rgba(2,6,23,.08); border-radius:22px; padding:18px; box-shadow:0 10px 30px rgba(2,6,23,.06)}
+    .card h2{margin-top:0}
+
+    .accordion{display:grid; gap:12px}
+    .acc-item{border:1px solid rgba(2,6,23,.08); border-radius:16px; background:var(--card)}
+    .acc-btn{width:100%; text-align:left; padding:14px 16px; background:transparent; color:var(--text); font-weight:700; display:flex; align-items:center; justify-content:space-between}
+    .acc-content{max-height:0; overflow:hidden; transition:max-height .35s ease}
+    .acc-item.open .acc-content{max-height:600px}
+    .acc-item.open .acc-btn{box-shadow:inset 0 0 0 2px var(--ring); border-radius:16px}
+
+    .pill{display:inline-block; padding:.25rem .6rem; border-radius:999px; font-size:.75rem; font-weight:700; text-transform:uppercase; letter-spacing:.04em}
+    .torrid{background:rgba(239,68,68,.12); color:#b91c1c}
+    .temperate{background:rgba(245,158,11,.12); color:#92400e}
+    .frigid{background:rgba(59,130,246,.14); color:#1e3a8a}
+
+    .map{
+      aspect-ratio: 16/9; border-radius:18px; border:1px dashed rgba(2,6,23,.2); position:relative; overflow:hidden; background:linear-gradient(#064e3b,#10b981 25%, #22c55e 26%, #f59e0b 42%, #f59e0b 58%, #22c55e 74%, #10b981 75%, #064e3b);
+    }
+    .lat{position:absolute; left:8px; font-weight:800; font-size:.9rem; padding:.2rem .5rem; border-radius:10px; background:rgba(255,255,255,.7); color:#111827}
+    .lat.eq{top:50%; transform:translateY(-50%)}
+    .lat.cancer{top:26%}
+    .lat.capricorn{top:74%}
+    .lat.arctic{top:8%}
+    .lat.antarctic{top:92%}
+
+    table{width:100%; border-collapse:collapse; border-radius:14px; overflow:hidden}
+    th,td{padding:12px 10px; border-bottom:1px solid rgba(2,6,23,.08)}
+    th{background:rgba(14,165,233,.1); text-align:left}
+    tr:hover td{background:rgba(2,6,23,.03)}
+
+    .facts{display:grid; gap:12px}
+    .fact{padding:14px; border-radius:16px; background:linear-gradient(90deg, rgba(14,165,233,.1), rgba(34,197,94,.1)); border:1px solid rgba(2,6,23,.08)}
+
+    .kicker{color:var(--muted); font-weight:700; text-transform:uppercase; letter-spacing:.08em}
+    .muted{color:var(--muted)}
+
+    .controls{display:flex; gap:10px; flex-wrap:wrap}
+    .range{display:flex; align-items:center; gap:8px; padding:.4rem .6rem; border-radius:12px; background:rgba(2,6,23,.05)}
+
+    .foot{margin-top:26px; font-size:.9rem; color:var(--muted)}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="toolbar">
+      <div class="title">
+        <span class="badge">Geography • Primary 5</span>
+        <h1>🌍 Temperature Zones of the World</h1>
+      </div>
+      <div class="actions">
+        <button class="chip" id="themeBtn" title="Toggle dark mode">🌗 Theme</button>
+        <button class="chip" id="printBtn" title="Print or Save as PDF">🖨️ Print</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero card">
+
+      <img src=" https://www.shutterstock.com/shutterstock/photos/1083890678/display_1500/stock-vector-the-planet-earth-climate-zones-depending-on-angle-of-sun-rays-and-major-latitudes-infographic-1083890678.jpg " 
+       alt="Temperature Zones of the World">
+
+      <p class="kicker">Overview</p>
+      <p>
+        The Earth is divided into different regions based on climate and temperature. These regions are known as <strong>Temperature Zones</strong>. They are caused by the way the Earth receives sunlight due to its <strong>spherical shape</strong> and <strong>tilt of the axis</strong>.
+      </p>
+      <p>
+        Because sunlight does not fall equally on all parts of the Earth, some regions are very hot, some are moderately warm, and others are very cold.
+      </p>
+      <div class="controls" aria-label="Learning controls">
+        <span class="range">A↔a <input id="fs" type="range" min="90" max="115" value="100" /> <span id="fsVal" class="muted">100%</span></span>
+        <button class="primary" id="revealAll">Expand All</button>
+        <button id="collapseAll">Collapse All</button>
+      </div>
+    </section>
+
+    <section class="grid">
+      <article class="card">
+        <h2>🔹 Major Temperature Zones</h2>
+        <div class="accordion" id="zones">
+          <!-- Torrid -->
+          <div class="acc-item open" data-color="torrid">
+            <button class="acc-btn"><span><span class="pill torrid">Torrid (Tropical) Zone</span></span><span>▼</span></button>
+            <div class="acc-content">
+              <div style="padding:0 16px 14px">
+                <p><strong>Location:</strong> Found between the <em>Tropic of Cancer (23½° N)</em> and the <em>Tropic of Capricorn (23½° S)</em>.</p>
+                <p><strong>Climate:</strong></p>
+                <ul>
+                  <li>Hottest zone on Earth.</li>
+                  <li>Receives <strong>direct rays of the sun</strong> throughout the year.</li>
+                  <li>Has little seasonal change—mostly hot and humid.</li>
+                </ul>
+                <p><strong>Vegetation:</strong></p>
+                <ul>
+                  <li>Dense <strong>rainforests</strong> like the Amazon and Congo Basin.</li>
+                  <li>Grasslands (Savannas) in some areas.</li>
+                </ul>
+                <p><strong>Examples of countries:</strong> Nigeria, Brazil, India, Indonesia, Kenya.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Temperate -->
+          <div class="acc-item" data-color="temperate">
+            <button class="acc-btn"><span><span class="pill temperate">Temperate Zones</span></span><span>▼</span></button>
+            <div class="acc-content">
+              <div style="padding:0 16px 14px">
+                <p>These lie between the <strong>Tropics</strong> and the <strong>Polar Circles</strong>.</p>
+                <ul>
+                  <li><strong>Northern Temperate Zone:</strong> Between the Tropic of Cancer (23½° N) and the Arctic Circle (66½° N).</li>
+                  <li><strong>Southern Temperate Zone:</strong> Between the Tropic of Capricorn (23½° S) and the Antarctic Circle (66½° S).</li>
+                </ul>
+                <p><strong>Climate:</strong></p>
+                <ul>
+                  <li>Neither very hot nor very cold.</li>
+                  <li>Receives <strong>moderate sunlight</strong>.</li>
+                  <li>Has <strong>four distinct seasons</strong>: spring, summer, autumn, and winter.</li>
+                </ul>
+                <p><strong>Vegetation:</strong> Mixed forests, grasslands, farmlands.</p>
+                <p><strong>Examples of countries:</strong> United States, United Kingdom, Germany, Argentina, Australia, China.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Frigid -->
+          <div class="acc-item" data-color="frigid">
+            <button class="acc-btn"><span><span class="pill frigid">Frigid (Polar) Zones</span></span><span>▼</span></button>
+            <div class="acc-content">
+              <div style="padding:0 16px 14px">
+                <p><strong>Location:</strong> Between the <em>Arctic Circle and the North Pole (90° N)</em> in the north, and between the <em>Antarctic Circle and the South Pole (90° S)</em> in the south.</p>
+                <p><strong>Climate:</strong></p>
+                <ul>
+                  <li>Coldest regions of the Earth.</li>
+                  <li>Receive <strong>slanting rays of the sun</strong>, resulting in very little heat.</li>
+                  <li>Long, harsh winters and very short summers.</li>
+                </ul>
+                <p><strong>Vegetation:</strong> Mostly <strong>tundra vegetation</strong> (mosses, lichens). Permanently frozen land (permafrost).</p>
+                <p><strong>Examples of countries/regions:</strong> Greenland, Iceland, Northern Canada, Siberia, Antarctica.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <aside class="card">
+        <h2>🗺️ Visual Guide</h2>
+        <p class="muted">A simple banded map showing latitude lines and where each zone sits.</p>
+        <div class="map" aria-label="Temperature zone bands">
+          <span class="lat arctic">Arctic Circle (66½° N)</span>
+          <span class="lat cancer">Tropic of Cancer (23½° N)</span>
+          <span class="lat eq">Equator (0°)</span>
+          <span class="lat capricorn">Tropic of Capricorn (23½° S)</span>
+          <span class="lat antarctic">Antarctic Circle (66½° S)</span>
+        </div>
+        <p style="margin-top:10px">
+          <span class="pill torrid">Torrid</span>
+          <span class="pill temperate">Temperate</span>
+          <span class="pill frigid">Frigid</span>
+        </p>
+      </aside>
+    </section>
+
+    <section class="card" style="margin-top:18px">
+      <h2>🌞 Why Do These Zones Exist?</h2>
+      <ol>
+        <li><strong>Spherical Shape of the Earth</strong> – Causes unequal heating.</li>
+        <li><strong>Tilt of the Earth’s Axis (23½°)</strong> – Causes seasonal variations in sunlight.</li>
+        <li><strong>Rotation and Revolution of the Earth</strong> – Distributes sunlight differently at different times of the year.</li>
+      </ol>
+    </section>
+
+    <section class="card" style="margin-top:18px">
+      <h2>🌿 Summary of the Zones</h2>
+      <div class="table-wrap">
+        <table aria-label="Summary table of temperature zones">
+          <thead>
+            <tr>
+              <th>Zone</th>
+              <th>Latitudes</th>
+              <th>Climate</th>
+              <th>Examples</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="pill torrid">Torrid Zone</span></td>
+              <td>23½° N – 23½° S</td>
+              <td>Hot all year round</td>
+              <td>Brazil, Nigeria, India</td>
+            </tr>
+            <tr>
+              <td><span class="pill temperate">Temperate Zone</span></td>
+              <td>23½° – 66½° (North &amp; South of Equator)</td>
+              <td>Moderate, 4 seasons</td>
+              <td>USA, UK, China, Australia</td>
+            </tr>
+            <tr>
+              <td><span class="pill frigid">Frigid Zone</span></td>
+              <td>66½° N – 90° N &amp; 66½° S – 90° S</td>
+              <td>Extremely cold</td>
+              <td>Antarctica, Greenland, Siberia</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="card" style="margin-top:18px">
+      <h2>🌟 Fun Facts</h2>
+      <div class="facts">
+        <div class="fact">The <strong>Equator</strong> runs through the middle of the Torrid Zone, making it the warmest region.</div>
+        <div class="fact">The <strong>Temperate Zone</strong> is where most of the world’s population lives due to its favourable climate.</div>
+        <div class="fact">The <strong>Frigid Zone</strong> experiences months of complete darkness (Polar Night) and months of continuous daylight (Midnight Sun).</div>
+        <div class="fact">Penguins are only found in the <strong>Southern Hemisphere Frigid Zone</strong> (Antarctica), while Polar Bears are only in the <strong>Northern Hemisphere Frigid Zone</strong> (Arctic).</div>
+      </div>
+    </section>
+
+    <p class="foot">Tip: Use the <strong>Theme</strong> button to switch between light/dark mode. Use <strong>Print</strong> to save or share as PDF for your pupils.</p>
+  </main>
+
+  <script>
+    // Theme toggle
+    const themeBtn = document.getElementById('themeBtn');
+    themeBtn.addEventListener('click', ()=>{
+      const cur = document.documentElement.getAttribute('data-theme');
+      document.documentElement.setAttribute('data-theme', cur === 'dark' ? 'light' : 'dark');
+    });
+
+    // Print
+    document.getElementById('printBtn').addEventListener('click', ()=>window.print());
+
+    // Font size control
+    const fs = document.getElementById('fs');
+    const fsVal = document.getElementById('fsVal');
+    fs.addEventListener('input', ()=>{
+      const v = fs.value; fsVal.textContent = v + '%';
+      document.body.style.fontSize = v+'%';
+    });
+
+    // Accordion logic
+    const items = Array.from(document.querySelectorAll('.acc-item'));
+    document.getElementById('zones').addEventListener('click', (e)=>{
+      const btn = e.target.closest('.acc-btn');
+      if(!btn) return;
+      const item = btn.parentElement;
+      item.classList.toggle('open');
+    });
+
+    // Expand/Collapse all
+    document.getElementById('revealAll').addEventListener('click', ()=>{
+      items.forEach(i=>i.classList.add('open'));
+    });
+    document.getElementById('collapseAll').addEventListener('click', ()=>{
+      items.forEach(i=>i.classList.remove('open'));
+    });
+  </script>
+</body>
+</html>

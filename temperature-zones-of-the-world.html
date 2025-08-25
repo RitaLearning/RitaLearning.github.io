@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature Zones of the World 🌎</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chewy&family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(to bottom right, #e0f2fe, #f0f9ff); /* Light blue gradient */
+            color: #333;
+        }
+        h1, h2, h3 {
+            font-family: 'Chewy', cursive;
+            color: #1e40af; /* Dark blue for headings */
+        }
+        .header-bg {
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); /* Blue gradient */
+            border: 2px solid #60a5fa; /* Light blue border */
+        }
+        .section-card {
+            background-color: #ffffff;
+            border-radius: 1.5rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s ease-in-out;
+        }
+        .section-card:hover {
+            transform: translateY(-5px);
+        }
+        .accent-color-1 { color: #f97316; } /* Orange */
+        .accent-color-2 { color: #22c55e; } /* Green */
+        .accent-color-3 { color: #dc2626; } /* Red */
+        .accent-color-4 { color: #8b5cf6; } /* Purple */
+        .accent-color-5 { color: #ec4899; } /* Pink */
+        .interactive-button {
+            background-color: #3b82f6; /* Blue */
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .interactive-button:hover {
+            background-color: #2563eb; /* Darker blue */
+            transform: translateY(-1px);
+        }
+        .interactive-input {
+            border: 2px solid #60a5fa; /* Light blue border */
+            border-radius: 0.5rem;
+            padding: 0.75rem;
+            width: 100%;
+            font-size: 1rem;
+            color: #333;
+            background-color: #fff;
+        }
+        .output-box {
+            background-color: #eff6ff; /* Light blue background */
+            border: 1px solid #93c5fd; /* Light blue border */
+            border-radius: 0.5rem;
+            padding: 1rem;
+            min-height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #1d4ed8; /* Dark blue text */
+            font-weight: 600;
+            margin-top: 1rem;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        .quiz-question-card {
+            background-color: #fff;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .quiz-question-card p {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #1e40af; /* Dark blue */
+        }
+        .quiz-options label {
+            display: block;
+            margin-bottom: 0.75rem;
+            cursor: pointer;
+            font-size: 1rem;
+            color: #333;
+            transition: color 0.2s ease;
+        }
+        .quiz-options label:hover {
+            color: #3b82f6; /* Blue on hover */
+        }
+        .quiz-options input[type="radio"] {
+            margin-right: 0.5rem;
+            accent-color: #3b82f6; /* Blue accent for radio buttons */
+        }
+        .quiz-feedback {
+            margin-top: 1rem;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            text-align: center;
+            min-height: 40px;
+        }
+        .quiz-feedback.correct {
+            background-color: #d4edda; /* Light green */
+            color: #155724; /* Dark green text */
+            border: 1px solid #c3e6cb;
+        }
+        .quiz-feedback.incorrect {
+            background-color: #f8d7da; /* Light red */
+            color: #721c24; /* Dark red text */
+            border: 1px solid #f5c6cb;
+        }
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 1.5rem;
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <div class="container mx-auto p-4 md:p-8 max-w-4xl">
+
+        <!-- Header -->
+        <header class="text-center p-8 rounded-2xl header-bg text-white mb-10">
+            <h1 class="text-4xl md:text-5xl mb-2 text-white">Temperature Zones of the World 🌡️</h1>
+            <p class="text-xl md:text-2xl font-light text-gray-100">Why are some places hot and others cold?</p>
+            <p class="text-md mt-1 text-gray-200">Teacher: <strong class="text-xl">Ndudi Rita Enemuwe</strong></p>
+        </header>
+
+        <!-- Introduction -->
+        <section class="mb-10 p-6 section-card text-center">
+            <h2 class="text-3xl mb-4 accent-color-1">What are Temperature Zones? 🤔</h2>
+            <p class="text-lg text-gray-700">
+                The Earth is a giant sphere, and the Sun's rays don't hit every part of it the same way. This is why some places are very hot all year, while others have cold winters and others are cold all the time! We can divide the Earth into three main temperature zones based on how much sunlight they receive. Let's explore these fascinating zones!
+            </p>
+        </section>
+
+        <!-- Learning Objectives Section -->
+        <section class="mb-10 p-6 section-card">
+            <h2 class="text-3xl text-center mb-6 accent-color-2">Learning Objectives 🎯</h2>
+            <ul class="list-disc pl-6 text-gray-700 space-y-2">
+                <li>Define the three major temperature zones: Torrid, Temperate, and Frigid.</li>
+                <li>Describe the climate and seasons of each zone.</li>
+                <li>Give examples of countries and continents found in each zone.</li>
+                <li>Understand the relationship between latitude and temperature.</li>
+            </ul>
+        </section>
+
+        <!-- Torrid Zone -->
+        <section class="mb-10 p-6 section-card">
+            <h2 class="text-3xl text-center mb-6 accent-color-3">The Torrid Zone 🔥</h2>
+            <p class="text-lg text-gray-700 mb-4">
+                The <strong>Torrid Zone</strong> (also known as the Tropical Zone) is the hottest zone on Earth! It is located between the Tropic of Cancer (23.5°N) and the Tropic of Capricorn (23.5°S). The Sun's rays hit this area directly, making it very hot and humid all year.
+            </p>
+            <p class="text-lg text-gray-700 mb-4 font-semibold italic">
+                Countries in the Torrid Zone often experience:
+            </p>
+            <ul class="list-disc pl-6 text-gray-700 space-y-2 mb-4">
+                <li>Hot and humid weather with no distinct winter.</li>
+                <li>High rainfall and tropical forests.</li>
+                <li>This zone includes countries like Nigeria, Brazil, and Indonesia.</li>
+            </ul>
+        </section>
+
+        <!-- Temperate Zone -->
+        <section class="mb-10 p-6 section-card">
+            <h2 class="text-3xl text-center mb-6 accent-color-4">The Temperate Zone 🍂</h2>
+            <p class="text-lg text-gray-700 mb-4">
+                The <strong>Temperate Zone</strong> has four distinct seasons: spring, summer, autumn, and winter. This is because the Sun's rays hit these regions at an angle, which changes throughout the year. The Northern Temperate Zone is located between the Tropic of Cancer and the Arctic Circle, while the Southern Temperate Zone is between the Tropic of Capricorn and the Antarctic Circle.
+            </p>
+            <p class="text-lg text-gray-700 mb-4 font-semibold italic">
+                Life in the Temperate Zone often involves:
+            </p>
+            <ul class="list-disc pl-6 text-gray-700 space-y-2 mb-4">
+                <li>Warm summers and cool or cold winters.</li>
+                <li>Beautiful changes in nature with each season.</li>
+                <li>This zone includes countries like the United States, most of Europe, and Argentina.</li>
+            </ul>
+        </section>
+
+        <!-- Frigid Zone -->
+        <section class="mb-10 p-6 section-card">
+            <h2 class="text-3xl text-center mb-6 accent-color-5">The Frigid Zone ❄️</h2>
+            <p class="text-lg text-gray-700 mb-4">
+                The <strong>Frigid Zone</strong> (also known as the Polar Zone) is the coldest part of the world! It is located from the Arctic Circle to the North Pole and from the Antarctic Circle to the South Pole. Here, the Sun's rays hit at a very low angle, or not at all for parts of the year, leading to extremely cold conditions.
+            </p>
+            <p class="text-lg text-gray-700 mb-4 font-semibold italic">
+                Characteristics of the Frigid Zone include:
+            </p>
+            <ul class="list-disc pl-6 text-gray-700 space-y-2 mb-4">
+                <li>Winters with very long nights and freezing temperatures.</li>
+                <li>Summers with long daylight hours but still very cold.</li>
+                <li>This zone includes countries like parts of Canada, Russia, and the entire continent of Antarctica.</li>
+            </ul>
+        </section>
+        
+        <!-- Video Section -->
+        <section class="mb-10 p-6 section-card">
+            <h2 class="text-3xl text-center mb-6 accent-color-2">Watch and Learn! 🎬</h2>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/Kp7ZhvJXrMc?t=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </section>
+        
+        <!-- Quiz Time! -->
+        <section class="mb-10 p-6 section-card">
+            <h2 class="text-3xl text-center mb-6 accent-color-5">Quiz Time! Test Your Knowledge! 🧠</h2>
+            <div class="space-y-6">
+                <!-- Question 1 -->
+                <div class="quiz-question-card" id="quiz-q1">
+                    <p>1. Which temperature zone is known for having four distinct seasons?</p>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q1" value="A"> A. Torrid Zone</label>
+                        <label><input type="radio" name="q1" value="B"> B. Temperate Zone</label>
+                        <label><input type="radio" name="q1" value="C"> C. Frigid Zone</label>
+                    </div>
+                    <button class="interactive-button quiz-check-btn" data-question="q1">Check Answer</button>
+                    <div class="quiz-feedback" id="feedback-q1"></div>
+                </div>
+
+                <!-- Question 2 -->
+                <div class="quiz-question-card" id="quiz-q2">
+                    <p>2. Where is the Torrid Zone located?</p>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q2" value="A"> A. Around the North and South Poles</label>
+                        <label><input type="radio" name="q2" value="B"> B. Between the Arctic Circle and the Tropic of Cancer</label>
+                        <label><input type="radio" name="q2" value="C"> C. Between the Tropic of Cancer and the Tropic of Capricorn</label>
+                    </div>
+                    <button class="interactive-button quiz-check-btn" data-question="q2">Check Answer</button>
+                    <div class="quiz-feedback" id="feedback-q2"></div>
+                </div>
+
+                <!-- Question 3 -->
+                <div class="quiz-question-card" id="quiz-q3">
+                    <p>3. Why is the Frigid Zone so cold?</p>
+                    <div class="quiz-options">
+                        <label><input type="radio" name="q3" value="A"> A. It has a lot of rainfall.</label>
+                        <label><input type="radio" name="q3" value="B"> B. The sun's rays hit at a low angle.</label>
+                        <label><input type="radio" name="q3" value="C"> C. The sun's rays hit it directly.</label>
+                    </div>
+                    <button class="interactive-button quiz-check-btn" data-question="q3">Check Answer</button>
+                    <div class="quiz-feedback" id="feedback-q3"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Conclusion -->
+        <section class="mb-10 p-6 section-card text-center">
+            <h2 class="text-3xl mb-4 accent-color-5">You're a Climate Expert! ✨</h2>
+            <p class="text-lg text-gray-700">
+                You now know how the Earth's tilt and the Sun's rays create different temperature zones. You can now tell if a place is hot, cold, or in-between just by its location!
+            </p>
+        </section>
+
+        <!-- Footer -->
+        <footer class="mt-10 p-6 text-center text-gray-500 text-sm">
+            <p>&copy; 2025 Social Studies Nigeria. All rights reserved.</p>
+        </footer>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Quiz functionality
+            const quizAnswers = {
+                q1: 'B',
+                q2: 'C',
+                q3: 'B'
+            };
+
+            document.querySelectorAll('.quiz-check-btn').forEach(button => {
+                button.addEventListener('click', (event) => {
+                    const questionId = event.target.dataset.question;
+                    const selectedOption = document.querySelector(`input[name="${questionId}"]:checked`);
+                    const feedbackElement = document.getElementById(`feedback-${questionId}`);
+
+                    // Clear previous feedback
+                    feedbackElement.textContent = '';
+                    feedbackElement.className = 'quiz-feedback';
+
+                    if (!selectedOption) {
+                        feedbackElement.textContent = "Please select an answer!";
+                        feedbackElement.classList.add('incorrect');
+                        return;
+                    }
+
+                    const correctAnswer = quizAnswers[questionId];
+                    if (selectedOption.value === correctAnswer) {
+                        feedbackElement.textContent = "Correct! Well done! 🎉";
+                        feedbackElement.classList.add('correct');
+                    } else {
+                        feedbackElement.textContent = "Oops! That's not quite right. Review the sections above and try again!";
+                        feedbackElement.classList.add('incorrect');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

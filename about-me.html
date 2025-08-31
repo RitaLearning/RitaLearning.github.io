@@ -63,5 +63,23 @@
         </div>
     </div>
 
+<div id="footer-placeholder"></div>
+
+<footer>
+  <p>&copy; <span id="year"></span> Ndudi Rita Enemuwe. All rights reserved.</p>
+</footer>
+
+<script>
+  document.getElementById("year").innerHTML = new Date().getFullYear();
+</script>
+
+<script>
+  // This listens for the 'contextmenu' event on the entire document
+  document.addEventListener('contextmenu', function(event) {
+    // This method prevents the default browser behavior, which is showing the right-click menu
+    event.preventDefault();
+  });
+</script>
+    
 </body>
 </html>

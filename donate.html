@@ -1,0 +1,32 @@
+<div style="max-width: 500px; margin: 30px auto; padding: 20px; border: 2px solid #02a95c; border-radius: 10px; font-family: Arial, sans-serif; text-align: center; background-color: #f9f9f9; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+  <h2 style="color: #02a95c;">Donate to Support Our Mission</h2>
+  <p style="font-size: 16px; color: #333;">
+    Your support helps us continue our work and make a positive impact.<br>
+    Every donation goes toward providing free educational resources.
+  </p>
+  <div style="margin-top: 15px; padding: 15px; background-color: #fff; border: 1px dashed #02a95c; border-radius: 8px;">
+    <p style="font-size: 18px; font-weight: bold; margin: 5px 0;">Zenith Bank</p>
+    <p id="account-number" style="font-size: 20px; margin: 5px 0; color: #000;">2080342139</p>
+    <p style="font-size: 16px; margin: 5px 0; color: #555;">Account Name: <b>Ndudi Rita Enemuwe</b></p>
+    <button onclick="copyAccountNumber()" 
+            style="margin-top: 10px; padding: 10px 20px; background-color: #02a95c; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 14px;">
+      Copy Account Number
+    </button>
+    <p id="copy-message" style="color: green; font-size: 14px; margin-top: 8px; display: none;">✅ Account number copied!</p>
+  </div>
+  <p style="margin-top: 15px; font-size: 14px; color: #666;">
+    Kindly use the account details above to make your donation.
+  </p>
+</div>
+
+<script>
+  function copyAccountNumber() {
+    var accountNumber = document.getElementById("account-number").innerText;
+    navigator.clipboard.writeText(accountNumber).then(function() {
+      document.getElementById("copy-message").style.display = "block";
+      setTimeout(function() {
+        document.getElementById("copy-message").style.display = "none";
+      }, 2000);
+    });
+  }
+</script>

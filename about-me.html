@@ -88,6 +88,28 @@
         margin-left: 20px; /* Adds space between the list items */
     }
 </style>
-       
+
+<footer>
+    <div class="footer-content">
+        <p>&copy; <span id="year"></span> Ndudi Rita Enemuwe. All rights reserved.</p>
+        <ul class="footer-links">
+            <li><a href="about-me.html">About Me</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </div>
+</footer>
+
+<script>
+    document.getElementById("year").innerHTML = new Date().getFullYear();
+</script>
+
+<script>
+  // This listens for the 'contextmenu' event on the entire document
+  document.addEventListener('contextmenu', function(event) {
+    // This method prevents the default browser behavior, which is showing the right-click menu
+    event.preventDefault();
+  });
+</script>
+    
 </body>
 </html>

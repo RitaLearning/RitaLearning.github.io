@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🕵️ Code Cracker Challenge! 🧠</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background-color: #f0f8ff; /* Light Sky Blue */
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .container {
+            background-color: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            margin: 20px auto;
+            max-width: 900px;
+        }
+
+        h1 {
+            color: #ff6347; /* Tomato Red */
+            font-size: 2.5em;
+            margin-bottom: 5px;
+            text-shadow: 2px 2px #ffe4b5; /* Moccasin for pop */
+        }
+
+        h2 {
+            color: #4682b4; /* Steel Blue */
+            font-size: 1.8em;
+            border-bottom: 3px solid #ffdb58; /* Mustard Yellow Divider */
+            padding-bottom: 10px;
+            margin-top: 25px;
+        }
+
+        .puzzle-box, .solution-box {
+            background-color: #e6e6fa; /* Lavender */
+            border: 5px dashed #ffa07a; /* Light Salmon Border */
+            padding: 15px;
+            margin: 20px 0;
+            text-align: left;
+            border-radius: 15px;
+        }
+
+        .puzzle-box p {
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+
+        .code-line {
+            background-color: #fffacd; /* Lemon Chiffon */
+            padding: 8px;
+            margin: 8px 0;
+            border-left: 5px solid #3cb371; /* Medium Sea Green accent */
+            font-weight: bold;
+            display: block;
+            border-radius: 5px;
+        }
+
+        .step {
+            background-color: #add8e6; /* Light Blue */
+            padding: 10px;
+            margin: 15px 0;
+            border-radius: 10px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            position: relative;
+        }
+
+        .step:hover {
+            background-color: #87cefa; /* Light Sky Blue */
+        }
+
+        .explanation {
+            background-color: #ffffff;
+            border: 2px solid #8fbc8f; /* Dark Sea Green */
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 5px;
+            display: none; /* Hidden by default */
+            font-style: italic;
+        }
+
+        .key-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        .key-table th, .key-table td {
+            border: 2px solid #4682b4;
+            padding: 10px;
+            text-align: center;
+            font-size: 1.1em;
+        }
+
+        .key-table th {
+            background-color: #ffb6c1; /* Light Pink */
+            color: #8b0000; /* Dark Red */
+        }
+
+        .key-table td:first-child {
+            background-color: #f5fffa; /* Mint Cream */
+            font-weight: bold;
+        }
+
+        .highlight-word {
+            color: #8a2be2; /* Blue Violet */
+            font-weight: <strong>bold</strong>;
+        }
+
+        .highlight-code {
+            color: #d2691e; /* Chocolate */
+            font-weight: <strong>bold</strong>;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>🕵️ Code Cracker Challenge! 🧠</h1>
+        <p>Welcome, Junior Decoder! Use your super-spy logic to break the code!</p>
+        <p>Teacher: <strong>Ndudi Rita Enemuwe</strong></p>
+        <hr>
+
+        <h2>🔒 The Secret Code Statements</h2>
+
+        <div class="puzzle-box">
+            <p>Here are the four secret statements:</p>
+            <span class="code-line">1. "Travel from the rural area" is coded as "ta ha ma fa na"</span>
+            <span class="code-line">2. "From change the country" is coded as "ga ra ta fa"</span>
+            <span class="code-line">3. "Country change travel rural" is coded as "ha ga ra ma"</span>
+            <span class="code-line">4. "Area connects country" is coded as "la ra na"</span>
+        </div>
+        
+        <hr>
+
+        <h2>🔓 Your Decoding Steps (Click to Reveal!)</h2>
+        <p>Let's solve this puzzle step-by-step by comparing the sentences!</p>
+
+        <div class="solution-box">
+
+            <div class="step" onclick="toggleExplanation('exp1')">
+                STEP 1: Find the code for <strong>"country"</strong>!
+            </div>
+            <div class="explanation" id="exp1">
+                <p>Compare Statement 2 and Statement 3. Both have <strong>"country"</strong> and <strong>"change"</strong>.</p>
+                <p>The codes they share are <strong>"ga"</strong> and <strong>"ra"</strong>.</p>
+                <p>Now look at Statement 4: "<span class="highlight-word">Area connects <strong>country</strong></span>" is coded as "<span class="highlight-code">la <strong>ra</strong> na</span>".</p>
+                <p>Statement 4 only shares <strong>"country"</strong> with Statement 2 and 3.</p>
+                <p>The code that appears in all three (2, 3, and 4) is <strong>"ra"</strong>.</p>
+                <p>👉 So, <strong>"country"</strong> is <strong>"ra"</strong>.</p>
+            </div>
+
+            <div class="step" onclick="toggleExplanation('exp2')">
+                STEP 2: Find the code for <strong>"change"</strong>!
+            </div>
+            <div class="explanation" id="exp2">
+                <p>Go back to Statement 2 and 3:</p>
+                <ul>
+                    <li>3: "Country <span class="highlight-word">change</span> travel rural" is coded as "ha <span class="highlight-code">ga</span> ra ma"</li>
+                    <li>We know "country" is "ra".</li>
+                </ul>
+                <p>The shared code remaining (besides "ra") is <strong>"ga"</strong>.</p>
+                <p>👉 So, <strong>"change"</strong> is <strong>"ga"</strong>.</p>
+            </div>
+
+            <div class="step" onclick="toggleExplanation('exp3')">
+                STEP 3: Find the code for <strong>"area"</strong> and <strong>"connects"</strong>!
+            </div>
+            <div class="explanation" id="exp3">
+                <p>Look at Statement 4: "<strong>Area</strong> <span class="highlight-word">connects</span> <strong>country</strong>" is coded as "<strong>la</strong> <span class="highlight-code">ra</span> <strong>na</strong>".</p>
+                <ul>
+                    <li>We know "country" is "ra".</li>
+                </ul>
+                <p>The words left are "area" and "connects", and the codes are "la" and "na".</p>
+                <p>Now check Statement 1: "Travel from the rural <strong>area</strong>" is coded as "ta ha ma fa <span class="highlight-code">na</span>".</p>
+                <p>Since <strong>"na"</strong> is in Statement 1 and 4, and <strong>"area"</strong> is the only word they share from the remaining choices:</p>
+                <p>👉 So, <strong>"area"</strong> is <strong>"na"</strong> and <strong>"connects"</strong> is <strong>"la"</strong>.</p>
+            </div>
+
+            <div class="step" onclick="toggleExplanation('exp4')">
+                STEP 4: Find the codes for <strong>"from" / "the"</strong> and <strong>"travel" / "rural"</strong>!
+            </div>
+            <div class="explanation" id="exp4">
+                <p>From the remaining statements (1, 2, 3), we find the pairs:</p>
+                <ul>
+                    <li>Statement 1 & 2 share <strong>"from"</strong> and <strong>"the"</strong>. Their codes are <strong>"ta"</strong> and <strong>"fa"</strong>.</li>
+                    <li>Statement 1 & 3 share <strong>"travel"</strong> and <strong>"rural"</strong>. Their codes are <strong>"ha"</strong> and <strong>"ma"</strong>.</li>
+                </ul>
+                <p>We cannot tell which word maps to which code for these pairs without more information!</p>
+            </div>
+
+        </div>
+
+        <hr>
+
+        <h2>✨ Final Decoded Key</h2>
+        <table class="key-table">
+            <thead>
+                <tr>
+                    <th>Word</th>
+                    <th>Code</th>
+                    <th>Certainty</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>country</strong></td>
+                    <td><span class="highlight-code">ra</span></td>
+                    <td><strong>100% (Solved!)</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>change</strong></td>
+                    <td><span class="highlight-code">ga</span></td>
+                    <td><strong>100% (Solved!)</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>area</strong></td>
+                    <td><span class="highlight-code">na</span></td>
+                    <td><strong>100% (Solved!)</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>connects</strong></td>
+                    <td><span class="highlight-code">la</span></td>
+                    <td><strong>100% (Solved!)</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>from / the</strong></td>
+                    <td><span class="highlight-code">ta / fa</span></td>
+                    <td><strong>Pair (Needs more info)</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>travel / rural</strong></td>
+                    <td><span class="highlight-code">ha / ma</span></td>
+                    <td><strong>Pair (Needs more info)</strong></td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <script>
+            function toggleExplanation(id) {
+                const element = document.getElementById(id);
+                if (element.style.display === "block") {
+                    element.style.display = "none";
+                } else {
+                    element.style.display = "block";
+                }
+            }
+        </script>
+    </div>
+
+</body>
+</html>

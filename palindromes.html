@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Awesome Palindromes Adventure! (P5 Verbal Aptitude)</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom styles for a fun, primary school look */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fef3c7; /* Light Yellow Background */
+        }
+        .section-card {
+            background-color: #ffffff;
+            border: 4px solid #f97316; /* Orange Border */
+            box-shadow: 10px 10px 0 #ea580c; /* Fun shadow effect */
+        }
+        .header-title {
+            text-shadow: 4px 4px 0 #0369a1; /* Blue text shadow */
+        }
+        .btn-check {
+            transition: transform 0.1s;
+        }
+        .btn-check:active {
+            transform: translateY(2px);
+            box-shadow: 0 0 0;
+        }
+    </style>
+</head>
+<body class="p-4 md:p-8 lg:p-12">
+
+    <!-- Header Section -->
+    <header class="text-center mb-12">
+        <h1 class="header-title text-5xl md:text-6xl lg:text-7xl font-extrabold text-red-500 uppercase">
+            Verbal Aptitude: Palindrome Power!
+        </h1>
+        <p class="text-xl md:text-2xl text-orange-600 font-semibold mt-2">
+            Words that read the same forwards and backwards! How cool is that?
+        </p>
+    </header>
+
+    <!-- Knowledge Harvest & Learning Objectives -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
+        
+        <!-- Knowledge Harvest -->
+        <div class="lg:col-span-1 section-card p-6 rounded-xl">
+            <h2 class="text-3xl font-bold text-teal-600 mb-4">
+                Knowledge Harvest 🧠
+            </h2>
+            <p class="text-gray-700 text-lg mb-4">
+                Can you name any words or phrases that read the same forwards and backwards? Think about it before you scroll down!
+            </p>
+            <p class="text-sm italic text-gray-500">
+                (This helps us revise what we learned before and get ready for the new lesson!)
+            </p>
+        </div>
+
+        <!-- Learning Objectives -->
+        <div class="lg:col-span-2 section-card p-6 rounded-xl">
+            <h2 class="text-3xl font-bold text-purple-600 mb-4">
+                Our Mission Today! 🚀
+            </h2>
+            <p class="text-lg text-gray-700 font-medium mb-3">By the end of this lesson, we will be able to:</p>
+            <ul class="list-none space-y-2 text-xl">
+                <li class="flex items-start">
+                    <span class="text-2xl text-purple-500 mr-3">⭐</span>
+                    <span class="text-gray-800">Define what a palindrome is.</span>
+                </li>
+                <li class="flex items-start">
+                    <span class="text-2xl text-purple-500 mr-3">⭐</span>
+                    <span class="text-gray-800">Identify palindromes from a list.</span>
+                </li>
+                <li class="flex items-start">
+                    <span class="text-2xl text-purple-500 mr-3">⭐</span>
+                    <span class="text-gray-800">Create our very own palindromes (words or short phrases)!</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Definition and Key Examples Section -->
+    <div class="section-card p-8 rounded-xl mb-12 bg-blue-100 border-blue-600 shadow-xl">
+        <h2 class="text-4xl font-extrabold text-blue-700 mb-4 text-center">
+            What Exactly IS a Palindrome?
+        </h2>
+        <p class="text-xl md:text-2xl text-gray-800 mb-6 text-center">
+            A palindrome is a word, phrase, number, or other sequence of characters which reads the same backward as forward.
+        </p>
+        <div class="bg-white p-5 rounded-lg border-2 border-blue-400">
+            <h3 class="text-2xl font-bold text-blue-600 mb-3">Awesome Examples! 🤩</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-lg">
+                <div>
+                    <p class="font-bold text-red-500">Simple Words:</p>
+                    <ul class="list-disc list-inside space-y-1 ml-4">
+                        <li>racecar</li>
+                        <li>madam</li>
+                        <li>deified</li>
+                    </ul>
+                </div>
+                <div>
+                    <p class="font-bold text-red-500">Super Phrases (Ignore spaces!):</p>
+                    <ul class="list-disc list-inside space-y-1 ml-4">
+                        <li>No lemon, no melon.</li>
+                        <li>Step not on pets.</li>
+                        <li>Sit on a potato pan, Otis.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Interactive Palindrome Checker -->
+    <div class="section-card p-8 rounded-xl mb-12 bg-green-100 border-green-600 shadow-xl">
+        <h2 class="text-4xl font-extrabold text-green-700 mb-6 text-center">
+            Activity Time: Palindrome Checker! 🕵️‍♀️
+        </h2>
+        
+        <label for="input-text" class="block text-xl font-semibold text-gray-700 mb-2">
+            Type a word or phrase to see if it's a Palindrome:
+        </label>
+        <div class="flex flex-col sm:flex-row gap-4">
+            <input type="text" id="input-text" placeholder="Try 'level' or 'A man, a plan, a canal: Panama'" 
+                   class="flex-grow p-3 border-4 border-green-400 rounded-lg focus:outline-none focus:ring-4 focus:ring-green-500 text-lg">
+            
+            <button id="check-btn" 
+                    class="btn-check bg-pink-500 hover:bg-pink-600 text-white font-bold py-3 px-6 rounded-lg transition duration-150 ease-in-out shadow-lg shadow-pink-300">
+                Check Now!
+            </button>
+        </div>
+
+        <div id="result-message" class="mt-6 p-4 rounded-lg text-center font-bold text-2xl hidden">
+            <!-- Results will appear here -->
+        </div>
+    </div>
+
+    <!-- Group Activities and Summary -->
+    <div class="section-card p-8 rounded-xl mb-12 bg-purple-100 border-purple-600 shadow-xl">
+        <h2 class="text-4xl font-extrabold text-purple-700 mb-6 text-center">
+            Group Challenges & Plenary! 
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Activities -->
+            <div>
+                <h3 class="text-3xl font-bold text-purple-600 mb-4 flex items-center">
+                    <span class="mr-2 text-4xl">🛠️</span> Our Tasks
+                </h3>
+                <ul class="list-disc space-y-3 text-lg ml-6 text-gray-800">
+                    <li><strong>Group Creation:</strong> Work with your friends to create your own new palindromes (words or short phrases).</li>
+                    <li><strong>Sentence Writers:</strong> Use five different palindromes in interesting sentences.</li>
+                    <li><strong>Discovery:</strong> Find additional examples of palindromes in books or online (like a scavenger hunt!).</li>
+                </ul>
+            </div>
+
+            <!-- Summary & Plenary -->
+            <div>
+                <h3 class="text-3xl font-bold text-purple-600 mb-4 flex items-center">
+                    <span class="mr-2 text-4xl">📝</span> Summary Time
+                </h3>
+                <p class="text-lg mb-4 text-gray-800">
+                    Let's discuss the patterns we found and why palindromes are so special in language. Can you summarise the whole lesson in your own words? The teacher will correct any misunderstandings!
+                </p>
+                <div class="bg-purple-200 p-3 rounded-md font-semibold text-purple-800">
+                    <p class="text-xl">🌟 Plenary: Questions and Answers 🌟</p>
+                    <p class="text-sm mt-1">Ready for a quick quiz?</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer / Resources -->
+    <footer class="text-center mt-12 text-gray-600 text-sm p-4 border-t-2 border-orange-300">
+        <p>&copy; 2025 Ndudi Rita Enemuwe. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // JavaScript for the Palindrome Checker Tool
+        const inputText = document.getElementById('input-text');
+        const checkBtn = document.getElementById('check-btn');
+        const resultMessage = document.getElementById('result-message');
+
+        /**
+         * Cleans a string by removing non-alphanumeric characters and converting to lowercase,
+         * which is necessary for checking complex phrase palindromes like "Madam, I'm Adam."
+         * @param {string} str The input string.
+         * @returns {string} The cleaned string.
+         */
+        function cleanString(str) {
+            // Remove all non-alphanumeric characters (including spaces and punctuation) and convert to lower case
+            return str.replace(/[^a-zA-Z0-9]/g, '').toLowerCase();
+        }
+
+        /**
+         * Checks if a string is a palindrome.
+         * @param {string} text The text to check.
+         * @returns {boolean} True if it is a palindrome, false otherwise.
+         */
+        function isPalindrome(text) {
+            const cleaned = cleanString(text);
+            const reversed = cleaned.split('').reverse().join('');
+            return cleaned === reversed;
+        }
+
+        // Event Listener for the check button
+        checkBtn.addEventListener('click', () => {
+            const text = inputText.value.trim();
+            
+            // 1. Clear previous result
+            resultMessage.classList.add('hidden');
+            resultMessage.innerHTML = '';
+
+            if (text === '') {
+                // Show a gentle error message if the input is empty
+                resultMessage.innerHTML = 'Please enter a word or phrase to check!';
+                resultMessage.classList.remove('hidden', 'bg-red-200', 'text-red-800', 'bg-green-200', 'text-green-800');
+                resultMessage.classList.add('bg-yellow-200', 'text-yellow-800');
+                return;
+            }
+
+            // 2. Perform the check
+            const isPali = isPalindrome(text);
+
+            // 3. Display the result
+            if (isPali) {
+                resultMessage.innerHTML = `🎉 YES! "${text}" is an AMAZING Palindrome! 🎉`;
+                resultMessage.classList.remove('bg-red-200', 'text-red-800');
+                resultMessage.classList.add('bg-green-200', 'text-green-800');
+            } else {
+                resultMessage.innerHTML = `❌ Nope! "${text}" is not a Palindrome. Try again! 🧐`;
+                resultMessage.classList.remove('bg-green-200', 'text-green-800');
+                resultMessage.classList.add('bg-red-200', 'text-red-800');
+            }
+            
+            // Show the message
+            resultMessage.classList.remove('hidden');
+        });
+
+    </script>
+</body>
+</html>

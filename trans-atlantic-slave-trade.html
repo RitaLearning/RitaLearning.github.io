@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Difficult Journey: Learning About the Transatlantic Slave Trade</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Configure Tailwind for a nice, readable font -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        'primary-blue': '#2c3e50', // Deep, serious blue
+                        'accent-yellow': '#f39c12', // Bright accent
+                        'soft-gray': '#ecf0f1', // Light background
+                        'ocean-blue': '#3498db', // For the water/journey theme
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom styles for visual appeal and accessibility */
+        .card {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            border-left: 8px solid theme('colors.accent-yellow');
+        }
+        .section-icon {
+            font-size: 3rem;
+            line-height: 1;
+        }
+    </style>
+</head>
+<body class="bg-soft-gray font-sans text-primary-blue min-h-screen">
+
+    <!-- Header Section -->
+    <header class="bg-primary-blue text-white py-6 shadow-lg">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight">
+                🚢 A Difficult Journey: The Transatlantic Slave Trade
+            </h1>
+            <p class="mt-2 text-xl font-light">Learning about a sad but important time in history.</p>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="container mx-auto px-4 py-12 space-y-12">
+
+        <!-- Introduction Section -->
+        <section class="card bg-white p-8 rounded-xl">
+            <h2 class="text-3xl font-bold mb-4 flex items-center">
+                <span class="section-icon mr-4">🌍</span> What Was It?
+            </h2>
+            <p class="text-lg leading-relaxed">
+                The Transatlantic Slave Trade was a time in history when millions of people, mostly from West and Central Africa, were kidnapped from their homes, taken across the Atlantic Ocean on ships, and forced into a life of slavery in the Americas (like North and South America and the Caribbean). This trade lasted for about 400 years and was a terrible injustice that caused immense suffering.
+            </p>
+            <p class="text-lg leading-relaxed mt-4 font-semibold text-accent-yellow">
+                It is important to remember that these people were doctors, farmers, artists, and parents—they were strong people who deserved to be free.
+            </p>
+        </section>
+
+        <!-- The Triangular Route Section -->
+        <section class="bg-ocean-blue text-white p-8 rounded-xl shadow-lg">
+            <h2 class="text-3xl font-bold mb-6 flex items-center">
+                <span class="section-icon mr-4">🔺</span> The Three-Cornered Journey (The Triangle)
+            </h2>
+            <div class="grid md:grid-cols-3 gap-6 text-center">
+                
+                <div class="bg-white text-primary-blue p-6 rounded-lg shadow-md transition duration-300 hover:scale-[1.03]">
+                    <span class="text-5xl block mb-2">📦</span>
+                    <h3 class="text-xl font-semibold mb-2">First Stop: Europe</h3>
+                    <p>Ships left Europe with goods like cloth, guns, and metal tools.</p>
+                </div>
+
+                <div class="bg-white text-primary-blue p-6 rounded-lg shadow-md transition duration-300 hover:scale-[1.03]">
+                    <span class="text-5xl block mb-2">🔗</span>
+                    <h3 class="text-xl font-semibold mb-2">Second Stop: Africa</h3>
+                    <p>The goods were exchanged for people who were then captured and forced onto the ships.</p>
+                </div>
+
+                <div class="bg-white text-primary-blue p-6 rounded-lg shadow-md transition duration-300 hover:scale-[1.03]">
+                    <span class="text-5xl block mb-2">🌱</span>
+                    <h3 class="text-xl font-semibold mb-2">Third Stop: The Americas</h3>
+                    <p>The enslaved people were taken to the Americas to be forced to work on plantations (large farms).</p>
+                </div>
+
+            </div>
+            <p class="mt-6 text-lg font-light">This path from Europe to Africa to the Americas and back to Europe made a giant triangle across the ocean.</p>
+        </section>
+
+        <!-- Video Section 1: Triangular Trade -->
+        <section class="p-4 rounded-xl shadow-lg bg-white border-2 border-accent-yellow">
+            <h2 class="text-2xl font-bold mb-4 flex items-center text-primary-blue">
+                <span class="mr-3 text-3xl">▶️</span> Watch: The Triangular Trade Route Explained
+            </h2>
+            <!-- Responsive video container (16:9 aspect ratio) -->
+            <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%;">
+                <iframe 
+                    src="https://www.youtube.com/embed/jz6mB8k6kek" 
+                    title="YouTube video player - The Triangular Trade" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen 
+                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+                </iframe>
+            </div>
+        </section>
+
+        <!-- Video Section 2: Middle Passage (NEWLY ADDED) -->
+        <section class="p-4 rounded-xl shadow-lg bg-white border-2 border-accent-yellow">
+            <h2 class="text-2xl font-bold mb-4 flex items-center text-primary-blue">
+                <span class="mr-3 text-3xl">▶️</span> Watch: The Middle Passage Explained
+            </h2>
+            <!-- Responsive video container (16:9 aspect ratio) -->
+            <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%;">
+                <iframe 
+                    src="https://www.youtube.com/embed/3NXC4Q_4JVg" 
+                    title="YouTube video player - The Middle Passage" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen 
+                    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+                </iframe>
+            </div>
+        </section>
+
+        <!-- The Middle Passage Section -->
+        <section class="card bg-white p-8 rounded-xl">
+            <h2 class="text-3xl font-bold mb-4 flex items-center">
+                <span class="section-icon mr-4">🌊</span> The Middle Passage
+            </h2>
+            <p class="text-lg leading-relaxed">
+                The journey across the Atlantic Ocean from Africa to the Americas was called the Middle Passage. This was the hardest part. The people were crammed onto ships, treated cruelly, and had very little food or water. Many became sick.
+            </p>
+            <p class="text-lg leading-relaxed mt-4">
+                Despite the terrible conditions, these people showed incredible strength and resilience. They held onto their culture, their stories, and their hope for freedom.
+            </p>
+        </section>
+
+        <!-- Legacy and Freedom Section -->
+        <section class="bg-emerald-500 text-white p-8 rounded-xl shadow-lg">
+            <h2 class="text-3xl font-bold mb-4 flex items-center">
+                <span class="section-icon mr-4">🕊️</span> Strength and the Fight for Freedom
+            </h2>
+            <p class="text-lg leading-relaxed">
+                The injustice of slavery lasted for many years. Enslaved people and their descendants constantly resisted and fought for their freedom and human rights. Brave people stood up and fought to end slavery.
+            </p>
+            <p class="text-lg leading-relaxed mt-4 font-bold">
+                Today, we study this history so we never forget the people who suffered, the people who were strong, and the importance of treating everyone with respect and kindness, no matter where they come from.
+            </p>
+        </section>
+        
+        <!-- Summary of the Trade and Reasons Section -->
+        <section class="bg-red-700 text-white p-8 rounded-xl shadow-lg">
+            <h2 class="text-3xl font-bold mb-4 flex items-center">
+                <span class="section-icon mr-4">🗓️</span> A Historical Summary and Reasons
+            </h2>
+
+            <div class="space-y-4">
+                <p class="text-lg leading-relaxed">
+                    Between the 15th and 19th centuries, the Europeans took large numbers of enslaved people from West Africa to Europe and the Americas. This is known as the **Trans-Atlantic trade**. This trade was also known as the **triangular trade** because of the three-cornered route taken by the merchant ships: from Europe to West Africa to the Americas and back again to Europe.
+                </p>
+
+                <h3 class="text-2xl font-semibold mt-6 mb-3 border-b border-red-500 pb-2">Reasons for the Slave Trade</h3>
+                <p class="text-lg leading-relaxed mb-4">
+                    The Europeans used several cruel and unjust reasons to justify this trade:
+                </p>
+                <ul class="list-disc list-inside text-lg space-y-2 ml-4">
+                    <li>The Europeans did not want to work on large, difficult plantations.</li>
+                    <li>They thought that because of the heat and tropical diseases in North America and the West Indies, only Africans would be able to survive the harsh working conditions.</li>
+                    <li>At first, Spain and Portugal traded slaves. Later, other Europeans joined in the terrible trade, including the first known English participant, John Hawkins, in 1562.</li>
+                </ul>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-primary-blue text-soft-gray py-6 mt-12">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-sm">&copy; Ndudi Rita Enemuwe. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

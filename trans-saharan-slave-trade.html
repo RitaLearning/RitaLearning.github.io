@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Great Desert Road: Trans-Saharan Trade</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Configure Tailwind for a desert/gold theme -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        'desert-blue': '#1c3a4a',   // Deep, serious blue (Desert Night)
+                        'sahara-gold': '#daa520',   // Bright gold accent
+                        'sand-dune': '#f7f3e8',     // Light, sandy background
+                        'sunset-red': '#d35400',    // Deep red/orange for major sections
+                        'camel-tan': '#b8860b',     // Darker gold/tan
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom styles for visual appeal and accessibility */
+        .card {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            border-left: 8px solid theme('colors.sahara-gold');
+        }
+        .section-icon {
+            font-size: 3rem;
+            line-height: 1;
+        }
+    </style>
+</head>
+<body class="bg-sand-dune font-sans text-desert-blue min-h-screen">
+
+    <!-- Header Section -->
+    <header class="bg-desert-blue text-white py-6 shadow-lg">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight">
+                🐪 The Great Desert Road: Trans-Saharan Trade
+            </h1>
+            <p class="mt-2 text-xl font-light">Journeys that connected the world across the sand.</p>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="container mx-auto px-4 py-12 space-y-12">
+
+        <!-- Introduction Section -->
+        <section class="card bg-white p-8 rounded-xl">
+            <h2 class="text-3xl font-bold mb-4 flex items-center">
+                <span class="section-icon mr-4">🗺️</span> What Was This Trade?
+            </h2>
+            <p class="text-lg leading-relaxed">
+                The <strong>Trans-Saharan Trade</strong> was a huge network of trade routes that crossed the vast Sahara Desert in Africa. "Trans-Saharan" just means "across the Sahara." For thousands of years, people loaded up goods and traveled in caravans to connect two very different parts of the continent: North Africa and West Africa.
+            </p>
+            <p class="text-lg leading-relaxed mt-4 font-semibold text-sahara-gold">
+                This trade was like a superhighway of its time, helping powerful kingdoms grow rich and allowing people to share ideas and culture.
+            </p>
+        </section>
+
+        <!-- The Journey Section -->
+        <section class="bg-sunset-red text-white p-8 rounded-xl shadow-lg">
+            <h2 class="text-3xl font-bold mb-6 flex items-center">
+                <span class="section-icon mr-4">🐫</span> The Ship of the Desert
+            </h2>
+            <div class="grid md:grid-cols-2 gap-6 items-center">
+                <div>
+                    <p class="text-lg leading-relaxed mb-4">
+                        Crossing the world's largest hot desert was incredibly difficult and dangerous. The travelers relied on the <strong>camel</strong>! Camels are often called the "ships of the desert" because they can travel long distances without water and carry heavy loads.
+                    </p>
+                    <p class="text-lg leading-relaxed">
+                        Merchants and traders formed large groups called <strong>caravans</strong> to protect themselves from sandstorms and bandits. These caravans could have thousands of camels and travel for months.
+                    </p>
+                </div>
+                <!-- Image placeholder for the camels/caravan -->
+                <div class="text-center">
+                    
+                </div>
+            </div>
+        </section>
+
+        <!-- What Was Traded? Section -->
+        <section class="card bg-white p-8 rounded-xl">
+            <h2 class="text-3xl font-bold mb-4 flex items-center">
+                <span class="section-icon mr-4">💰</span> Gold and Salt: The Perfect Pair
+            </h2>
+            <p class="text-lg leading-relaxed mb-4">
+                Two things were more important than anything else in this trade: <strong>Gold</strong> and <strong>Salt</strong>.
+            </p>
+            <div class="grid md:grid-cols-2 gap-6 text-center">
+                
+                <div class="bg-yellow-100 text-desert-blue p-6 rounded-lg shadow-md transition duration-300 hover:scale-[1.03]">
+                    <span class="text-5xl block mb-2">✨</span>
+                    <h3 class="text-xl font-semibold mb-2">From West Africa: Gold</h3>
+                    <p>West Africa had a huge supply of gold (often from regions like Ghana and Mali). North African and European markets desperately wanted it to make coins and jewelry.</p>
+                </div>
+
+                <div class="bg-gray-200 text-desert-blue p-6 rounded-lg shadow-md transition duration-300 hover:scale-[1.03]">
+                    <span class="text-5xl block mb-2">🧂</span>
+                    <h3 class="text-xl font-semibold mb-2">From North Africa: Salt</h3>
+                    <p>Salt was incredibly valuable in West Africa! People needed it to stay healthy and preserve food, but it was rare in the rainforest areas. North Africa had large salt mines.</p>
+                </div>
+            </div>
+            
+            <p class="text-lg leading-relaxed mt-6">
+                Other important items traded included <strong>textiles (cloth)</strong>, <strong>slaves</strong>, <strong>horses</strong>, and <strong>books</strong> (spreading new ideas like Islam).
+            </p>
+        </section>
+
+        <!-- Impact Section -->
+        <section class="bg-sahara-gold text-desert-blue p-8 rounded-xl shadow-lg">
+            <h2 class="text-3xl font-bold mb-4 flex items-center">
+                <span class="section-icon mr-4">👑</span> Empires of Wealth and Knowledge
+            </h2>
+            <p class="text-lg leading-relaxed">
+                The money and goods from the Trans-Saharan Trade led to the rise of some of the greatest empires in West African history, including:
+            </p>
+            <ul class="list-disc list-inside text-lg space-y-2 ml-4 mt-4 font-semibold">
+                <li><strong>Ghana Empire:</strong> Controlled the gold and salt routes early on.</li>
+                <li><strong>Mali Empire:</strong> Famous for its incredible wealth, especially under the great ruler <strong>Mansa Musa</strong>.</li>
+                <li><strong>Songhai Empire:</strong> Took over the trade routes after Mali and built massive centers for learning.</li>
+            </ul>
+            <p class="text-lg leading-relaxed mt-4 font-bold">
+                Cities like <strong>Timbuktu</strong> became world-famous centers of trade, scholarship, and culture thanks to these desert roads.
+            </p>
+        </section>
+        
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-desert-blue text-sand-dune py-6 mt-12">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-sm">Learning about history's great connections.</p>
+            <p class="text-sm mt-1">&copy; 2025 Ndudi Rita Enemuwe. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

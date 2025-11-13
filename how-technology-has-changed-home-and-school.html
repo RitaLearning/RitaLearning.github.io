@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Time Traveler: Home and School</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom font import for a cleaner look */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8; /* Very light blue/grey background */
+        }
+        .card-old {
+            background-color: #fecaca; /* Light Red */
+            border: 4px solid #ef4444; /* Red border */
+            transform: rotate(-1deg);
+        }
+        .card-new {
+            background-color: #d1fae5; /* Light Green */
+            border: 4px solid #10b981; /* Green border */
+            transform: rotate(1deg);
+        }
+        .tab-button {
+            transition: all 0.3s;
+        }
+        .active-tab {
+            background-color: #3b82f6 !important;
+            color: white !important;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body class="p-4 sm:p-8">
+
+    <div class="max-w-4xl mx-auto">
+        <!-- Header Section -->
+        <header class="text-center mb-8 p-6 bg-yellow-400 rounded-3xl shadow-2xl border-b-8 border-yellow-600">
+            <h1 class="text-4xl sm:text-5xl font-extrabold text-blue-900 mb-2">
+                🚀 Tech Time Traveler! 🚀
+            </h1>
+            <p class="text-xl sm:text-2xl font-bold text-blue-800">
+                How did life change? (Past vs. Present)
+            </p>
+        </header>
+
+        <!-- Tab Controls -->
+        <div class="flex justify-center mb-6 space-x-4">
+            <button id="tab-school" onclick="showSection('school')" class="tab-button active-tab px-6 py-3 rounded-full text-lg font-bold bg-blue-500 text-white hover:bg-blue-600">
+                🏫 At School
+            </button>
+            <button id="tab-home" onclick="showSection('home')" class="tab-button px-6 py-3 rounded-full text-lg font-bold bg-white text-blue-700 hover:bg-blue-100 shadow-lg">
+                🏠 At Home
+            </button>
+        </div>
+
+        <!-- Content Sections -->
+        <div id="school-content" class="content-section">
+            <h2 class="text-3xl font-bold text-blue-800 mb-6 text-center">Learning Yesterday & Today</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Past Technology - School -->
+                <div class="card-old p-6 rounded-3xl shadow-xl transition duration-300 hover:shadow-2xl">
+                    <h3 class="text-2xl font-black text-red-700 mb-4 flex items-center">
+                        🕰️ The Past Classroom
+                    </h3>
+                    <ul class="space-y-4 text-gray-800 text-lg">
+                        <li class="flex items-start">
+                            <span class="text-red-500 mr-3 text-2xl">✏️</span>
+                            <div><strong>Chalkboards:</strong> Teachers wrote with chalk. If you sneezed, chalk dust went everywhere!</div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-red-500 mr-3 text-2xl">📚</span>
+                            <div><strong>Heavy Textbooks:</strong> You had to carry all your books home every day in your bag.</div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-red-500 mr-3 text-2xl">📝</span>
+                            <div><strong>Library Research:</strong> For projects, you had to visit the physical library and look through large, dusty books.</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Present Technology - School -->
+                <div class="card-new p-6 rounded-3xl shadow-xl transition duration-300 hover:shadow-2xl">
+                    <h3 class="text-2xl font-black text-green-700 mb-4 flex items-center">
+                        💻 The Present Classroom
+                    </h3>
+                    <ul class="space-y-4 text-gray-800 text-lg">
+                        <li class="flex items-start">
+                            <span class="text-green-500 mr-3 text-2xl">💡</span>
+                            <div><strong>Interactive Whiteboards:</strong> Touch the screen to write, draw, and play videos instantly!</div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-green-500 mr-3 text-2xl">📱</span>
+                            <div><strong>Laptops & Tablets:</strong> Your textbook, notebook, and calculator are all in one light device.</div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-green-500 mr-3 text-2xl">🌐</span>
+                            <div><strong>Internet & AI:</strong> You can research any topic with a click and even use tools to help you write.</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div id="home-content" class="content-section hidden">
+            <h2 class="text-3xl font-bold text-blue-800 mb-6 text-center">Life at Home Yesterday & Today</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Past Technology - Home -->
+                <div class="card-old p-6 rounded-3xl shadow-xl transition duration-300 hover:shadow-2xl">
+                    <h3 class="text-2xl font-black text-red-700 mb-4 flex items-center">
+                        ☎️ The Past Home
+                    </h3>
+                    <ul class="space-y-4 text-gray-800 text-lg">
+                        <li class="flex items-start">
+                            <span class="text-red-500 mr-3 text-2xl">📞</span>
+                            <div><strong>Fixed Telephones:</strong> The phone was stuck on the wall. If you wanted to talk, you had to wait for everyone else to finish!</div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-red-500 mr-3 text-2xl">📻</span>
+                            <div><strong>Radio & Cassettes:</strong> To listen to music, you needed to wait for a song to play on the radio or use a tape.</div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-red-500 mr-3 text-2xl">📺</span>
+                            <div><strong>Scheduled TV:</strong> You had to watch shows when they were broadcast. If you missed it, too bad!</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Present Technology - Home -->
+                <div class="card-new p-6 rounded-3xl shadow-xl transition duration-300 hover:shadow-2xl">
+                    <h3 class="text-2xl font-black text-green-700 mb-4 flex items-center">
+                        🤳 The Present Home
+                    </h3>
+                    <ul class="space-y-4 text-gray-800 text-lg">
+                        <li class="flex items-start">
+                            <span class="text-green-500 mr-3 text-2xl">🌎</span>
+                            <div><strong>Smartphones:</strong> You can talk, text, video call, and access the internet from anywhere in the world.</div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-green-500 mr-3 text-2xl">🎧</span>
+                            <div><strong>Streaming Services:</strong> Listen to millions of songs and podcasts instantly, whenever you want.</div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-green-500 mr-3 text-2xl">🎬</span>
+                            <div><strong>On-Demand Shows:</strong> Watch any movie or TV show, at any time, on any device.</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Interactive Challenge Section -->
+        <div class="mt-10 p-6 bg-blue-200 rounded-3xl shadow-inner border-t-4 border-blue-500 text-center">
+            <h2 class="text-3xl font-bold text-blue-900 mb-4">Time Traveler Challenge!</h2>
+            <p class="text-xl text-gray-700 mb-6">
+                <strong>Question:</strong> What old classroom technology was a primitive version of today's slide projector, using light and glass plates?
+            </p>
+            <button id="quiz-button" onclick="revealAnswer()" class="px-8 py-4 bg-purple-600 text-white text-xl font-extrabold rounded-full shadow-lg hover:bg-purple-700 transition duration-300 transform hover:scale-105">
+                Click to Reveal the Answer! 🤫
+            </button>
+            <p id="quiz-answer" class="mt-4 text-2xl font-bold text-blue-900 hidden p-3 bg-white rounded-lg border-2 border-purple-600">
+                It was the <strong>Magic Lantern</strong>! (It was used in schools as far back as the 1680s!)
+            </p>
+        </div>
+
+        <footer class="text-center mt-8 text-gray-500 text-sm">
+            <p>&copy; 2025 Ndudi Rita Enemuwe. All Rights Reserved.</p>
+        </footer>
+
+    </div>
+
+    <script>
+        // Set up the section switching logic
+        function showSection(sectionId) {
+            const sections = ['school-content', 'home-content'];
+            const buttons = ['tab-school', 'tab-home'];
+
+            // Hide all sections and remove active class from all buttons
+            sections.forEach(id => document.getElementById(id).classList.add('hidden'));
+            buttons.forEach(id => document.getElementById(id).classList.remove('active-tab', 'bg-blue-500', 'text-white'));
+            buttons.forEach(id => document.getElementById(id).classList.add('bg-white', 'text-blue-700', 'shadow-lg'));
+
+
+            // Show the requested section and activate the button
+            // FIX: Append '-content' to sectionId to target the correct div element.
+            const contentId = sectionId + '-content';
+            const contentElement = document.getElementById(contentId);
+            if (contentElement) {
+                contentElement.classList.remove('hidden');
+            } else {
+                console.error('Content element not found for ID:', contentId);
+            }
+            
+            const activeTabId = 'tab-' + sectionId;
+            const tabElement = document.getElementById(activeTabId);
+
+            if (tabElement) {
+                tabElement.classList.add('active-tab', 'bg-blue-500', 'text-white');
+                tabElement.classList.remove('bg-white', 'text-blue-700', 'shadow-lg');
+            } else {
+                console.error('Tab element not found for ID:', activeTabId);
+            }
+        }
+
+        // Set up the quiz answer reveal
+        function revealAnswer() {
+            const answer = document.getElementById('quiz-answer');
+            const button = document.getElementById('quiz-button');
+            if (answer && button) {
+                if (answer.classList.contains('hidden')) {
+                    answer.classList.remove('hidden');
+                    button.textContent = 'Hide the Answer!';
+                } else {
+                    answer.classList.add('hidden');
+                    button.textContent = 'Click to Reveal the Answer! 🤫';
+                }
+            } else {
+                console.error('Quiz elements not found.');
+            }
+        }
+
+        // Initialize to show the school section first
+        document.addEventListener('DOMContentLoaded', () => {
+             // We don't need to call showSection here because the initial HTML sets 'school-content' as visible
+             // and 'tab-school' as active-tab by default.
+        });
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌎 Temperature Zones Explorer</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f9ff; /* Light Sky Blue background */
+        }
+        .zone-card {
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            cursor: default;
+        }
+        .zone-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        .tropical-bg { background-color: #ffb86c; } /* Warm Orange */
+        .temperate-bg { background-color: #8be9fd; } /* Cyan Blue */
+        .frigid-bg { background-color: #bd93f9; } /* Purple */
+    </style>
+</head>
+<body class="p-4 sm:p-8">
+
+    <header class="text-center mb-10 p-6 bg-white shadow-xl rounded-2xl border-b-4 border-indigo-500">
+        <h1 class="text-4xl sm:text-5xl font-extrabold text-indigo-700">
+            🌍 The Earth's Great Zones: Where Life Thrives!
+        </h1>
+        <p class="mt-2 text-xl text-gray-600">
+            Let's explore the Tropical, Temperate, and Frigid Zones!
+        </p>
+    </header>
+
+    <!-- Knowledge Harvest Questions Section -->
+    <section class="mb-12">
+        <h2 class="text-3xl font-bold text-gray-800 mb-6 border-l-4 border-yellow-500 pl-4">
+            🌟 Knowledge Harvest
+        </h2>
+        
+        <div class="grid md:grid-cols-2 gap-6">
+            <!-- Question 1: How do animals and plants survive? -->
+            <div class="p-6 bg-white rounded-xl shadow-lg border-2 border-yellow-300">
+                <h3 class="text-2xl font-semibold text-gray-700 mb-3">
+                    Question 1: Survival Secrets 🤫
+                </h3>
+                <p class="text-lg text-gray-600">
+                    How do animals and plants survive in different temperature zones? (Find the answers in the Zone Cards below!)
+                </p>
+            </div>
+            
+            <!-- Question 2: Prediction Challenge -->
+            <div class="p-6 bg-white rounded-xl shadow-lg border-2 border-yellow-300">
+                <h3 class="text-2xl font-semibold text-gray-700 mb-3">
+                    Question 2: Prediction Challenge! 🔮
+                </h3>
+                <p class="text-lg text-gray-600">
+                    Predict what might happen if a place in the temperate zone suddenly became tropical. (Scroll down for the answer!)
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Image Tag for Context -->
+    <div class="my-8 text-center">
+        <p class="text-lg text-gray-600 mb-4">First, let's see where these zones are located on the map:</p>
+        <!-- Image of world map showing tropical temperate and frigid zones -->
+        [Image of world map showing tropical temperate and frigid zones]
+        <p class="text-sm text-gray-500 mt-2">The Earth's tilt and sunlight determine these zones!</p>
+    </div>
+
+    <!-- The Three Temperature Zones Section -->
+    <section class="mb-12">
+        <h2 class="text-3xl font-bold text-gray-800 mb-6 border-l-4 border-green-500 pl-4">
+            🔍 The Three Temperature Zones
+        </h2>
+        
+        <div class="grid lg:grid-cols-3 gap-8">
+            
+            <!-- 1. TROPICAL ZONE (TORRID) -->
+            <div class="zone-card p-6 rounded-2xl shadow-xl text-white tropical-bg">
+                <h3 class="text-3xl font-extrabold mb-3">🌴 Tropical Zone</h3>
+                <p class="text-lg mb-4 opacity-90">
+                    <span class="font-bold">Location:</span> Near the Equator (between the Tropic of Cancer and the Tropic of Capricorn).
+                </p>
+
+                <h4 class="text-xl font-semibold mb-2 border-b border-white pb-1">🔥 Temperature & Seasons</h4>
+                <p class="text-base mb-4">
+                    Always hot! There are generally only two seasons: wet (rainy) and dry. The sun is intense all year.
+                </p>
+
+                <h4 class="text-xl font-semibold mb-2 border-b border-white pb-1">🌿 Survival Secrets (Adaptations)</h4>
+                <ul class="list-disc ml-5 space-y-2 text-base">
+                    <li><span class="font-bold">Plants:</span> Tall trees with broad leaves (like rainforests) to catch sunlight and shed water easily.</li>
+                    <li><span class="font-bold">Animals:</span> Bright colours for camouflage or warning (e.g., parrots, poison dart frogs). Many are active at night (nocturnal) to avoid the intense daytime heat.</li>
+                    <li><span class="font-bold">Examples:</span> Brazil, Congo, Indonesia.</li>
+                </ul>
+
+                <h4 class="text-xl font-semibold mb-2 mt-4 border-b border-white pb-1">🧑 Human Activities & Way of Life</h4>
+                <ul class="list-disc ml-5 space-y-2 text-base">
+                    <li><span class="font-bold">Clothing:</span> Lightweight, light-colored clothes to reflect heat and allow air flow.</li>
+                    <li><span class="font-bold">Housing:</span> Open designs, large windows, and often built on stilts to manage heat and floods.</li>
+                    <li><span class="font-bold">Food & Work:</span> Focus on crops that love heat and rain (rice, bananas, sugar cane). Fishing and tourism are also major jobs.</li>
+                </ul>
+            </div>
+
+            <!-- 2. TEMPERATE ZONE -->
+            <div class="zone-card p-6 rounded-2xl shadow-xl text-gray-800 temperate-bg">
+                <h3 class="text-3xl font-extrabold mb-3">🍂 Temperate Zone</h3>
+                <p class="text-lg mb-4 opacity-90">
+                    <span class="font-bold">Location:</span> Between the Tropical and Frigid Zones (in both the North and South Hemispheres).
+                </p>
+
+                <h4 class="text-xl font-semibold mb-2 border-b border-gray-800 pb-1">☀️ Temperature & Seasons</h4>
+                <p class="text-base mb-4">
+                    Has four distinct seasons: Spring, Summer, Autumn, and Winter. Temperatures are generally mild, with hot summers and cold (but not freezing) winters.
+                </p>
+
+                <h4 class="text-xl font-semibold mb-2 border-b border-gray-800 pb-1">🌲 Survival Secrets (Adaptations)</h4>
+                <ul class="list-disc ml-5 space-y-2 text-base">
+                    <li><span class="font-bold">Plants:</span> Deciduous trees that shed their leaves in Autumn to conserve water and survive the cold winter.</li>
+                    <li><span class="font-bold">Animals:</span> Many animals hibernate (sleep all winter) or migrate (travel to warmer places) to avoid the cold and lack of food. Others grow thick coats.</li>
+                    <li><span class="font-bold">Examples:</span> USA, UK, parts of China, Argentina.</li>
+                </ul>
+
+                <h4 class="text-xl font-semibold mb-2 mt-4 border-b border-gray-800 pb-1">🧑 Human Activities & Way of Life</h4>
+                <ul class="list-disc ml-5 space-y-2 text-base">
+                    <li><span class="font-bold">Clothing:</span> Layers! Light clothes in summer and heavy coats, hats, and gloves in winter.</li>
+                    <li><span class="font-bold">Housing:</span> Strong, well-insulated homes with heating systems to survive the cold winters.</li>
+                    <li><span class="font-bold">Food & Work:</span> Very varied farming (wheat, corn, apples) due to rich soil and changing seasons. Many jobs in industry and technology.</li>
+                </ul>
+            </div>
+
+            <!-- 3. FRIGID ZONE (POLAR) -->
+            <div class="zone-card p-6 rounded-2xl shadow-xl text-white frigid-bg">
+                <h3 class="text-3xl font-extrabold mb-3">❄️ Frigid Zone</h3>
+                <p class="text-lg mb-4 opacity-90">
+                    <span class="font-bold">Location:</span> Near the North and South Poles (above the Arctic Circle and below the Antarctic Circle).
+                </p>
+
+                <h4 class="text-xl font-semibold mb-2 border-b border-white pb-1">🧊 Temperature & Seasons</h4>
+                <p class="text-base mb-4">
+                    Extremely cold all year round! Has very long periods of darkness (Polar Night) and very long periods of daylight (Midnight Sun).
+                </p>
+
+                <h4 class="text-xl font-semibold mb-2 border-b border-white pb-1">🏔️ Survival Secrets (Adaptations)</h4>
+                <ul class="list-disc ml-5 space-y-2 text-base">
+                    <li><span class="font-bold">Plants:</span> Very short mosses, lichens, and grasses that grow fast during the short summer. Soil is often permanently frozen (permafrost).</li>
+                    <li><span class="font-bold">Animals:</span> Thick fur, layers of fat (blubber), and white colour for camouflage (e.g., Polar bears, Arctic foxes, Seals).</li>
+                    <li><span class="font-bold">Examples:</span> Antarctica, Greenland, Northern Canada.</li>
+                </ul>
+
+                <h4 class="text-xl font-semibold mb-2 mt-4 border-b border-white pb-1">🧑 Human Activities & Way of Life</h4>
+                <ul class="list-disc ml-5 space-y-2 text-base">
+                    <li><span class="font-bold">Clothing:</span> Extremely thick, layered, and insulated clothing (often made of animal fur or modern synthetic materials).</li>
+                    <li><span class="font-bold">Housing:</span> Compact, heavily insulated homes to keep heat in. Traditional homes like igloos used snow for insulation.</li>
+                    <li><span class="font-bold">Food & Work:</span> Diet is high in protein and fat (fish, marine mammals) for energy. Main jobs are traditional hunting/fishing, or modern research and resource extraction.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Prediction Answer Section -->
+    <section class="mb-12 p-8 bg-pink-100 rounded-2xl shadow-inner border-t-8 border-pink-500">
+        <h2 class="text-3xl font-bold text-pink-700 mb-4">
+            🔮 What If? The Temperate Zone Goes Tropical!
+        </h2>
+        <h3 class="text-xl font-semibold text-gray-800 mb-3">
+            Prediction Answer for Question 2:
+        </h3>
+        <p class="text-lg text-gray-700 leading-relaxed">
+            If a place in the temperate zone suddenly became tropical (always hot with wet/dry seasons), life would change dramatically!
+        </p>
+        <ul class="list-disc ml-6 mt-4 space-y-3 text-lg text-gray-700">
+            <li><span class="font-bold">Deciduous Trees:</span> They would struggle! Without a cold winter, they wouldn't need to drop their leaves, but the intense heat and new rain patterns would favor broad-leafed evergreen trees instead.</li>
+            <li><span class="font-bold">Hibernating Animals:</span> Animals that hibernate (like bears or squirrels) would have no reason to sleep all winter. They would either die out, move north, or evolve to stay active all year.</li>
+            <li><span class="font-bold">Human Life:</span> People would change their clothing (lighter fabrics), housing (to allow more airflow and keep cool), and farming (growing tropical crops like bananas or rice instead of wheat or apples).</li>
+        </ul>
+        <p class="mt-4 text-base italic text-pink-600">
+            It would be a massive challenge, and only the plants and animals that could quickly adapt to heat and humidity would survive!
+        </p>
+    </section>
+
+    <!-- Interactive Quiz / Zone Challenge -->
+    <section class="mb-12 p-8 bg-indigo-100 rounded-2xl shadow-xl">
+        <h2 class="text-3xl font-bold text-indigo-700 mb-6 text-center">
+            🏆 Zone Challenge Quiz!
+        </h2>
+        <div id="quiz-container" class="max-w-xl mx-auto">
+            <p id="quiz-clue" class="text-2xl font-semibold text-gray-700 mb-6 text-center">
+                I have four seasons and mild weather—what am I?
+            </p>
+            <div class="flex justify-center space-x-4">
+                <button onclick="checkAnswer('Tropical')" class="quiz-btn tropical-bg text-white px-6 py-3 rounded-xl font-bold shadow-md hover:shadow-lg transition-all">Tropical</button>
+                <button onclick="checkAnswer('Temperate')" class="quiz-btn temperate-bg text-gray-800 px-6 py-3 rounded-xl font-bold shadow-md hover:shadow-lg transition-all">Temperate</button>
+                <button onclick="checkAnswer('Frigid')" class="quiz-btn frigid-bg text-white px-6 py-3 rounded-xl font-bold shadow-md hover:shadow-lg transition-all">Frigid</button>
+            </div>
+            <p id="quiz-feedback" class="text-center text-xl mt-6 font-bold h-6"></p>
+        </div>
+    </section>
+
+    <footer class="text-center mt-10 p-4 bg-white rounded-xl shadow-md text-gray-600">
+        <p>Lesson Summary: The Earth's tilt creates these temperature zones, and all life forms adapt in amazing ways to survive them!</p>
+    </footer>
+
+    <script>
+        const clues = [
+            { clue: "I have four seasons and mild weather—what am I?", answer: "Temperate" },
+            { clue: "Animals here have blubber and white fur. What zone is this?", answer: "Frigid" },
+            { clue: "I am always hot and close to the Equator. What am I?", answer: "Tropical" },
+            { clue: "My plants shed their leaves in autumn. What zone am I?", answer: "Temperate" },
+            { clue: "I have a 'Midnight Sun' and permafrost. What am I?", answer: "Frigid" }
+        ];
+        let currentClueIndex = 0;
+
+        const quizClue = document.getElementById('quiz-clue');
+        const quizFeedback = document.getElementById('quiz-feedback');
+        const quizButtons = document.querySelectorAll('.quiz-btn');
+
+        // Function to show custom message instead of alert()
+        function showMessage(message, isCorrect) {
+            quizFeedback.textContent = message;
+            quizFeedback.style.color = isCorrect ? '#10b981' : '#ef4444'; // Green or Red
+            
+            // Re-enable buttons after a short delay and load next question
+            setTimeout(() => {
+                quizFeedback.textContent = '';
+                loadNextClue();
+            }, 2000);
+        }
+
+        function checkAnswer(selectedZone) {
+            const currentAnswer = clues[currentClueIndex].answer;
+            if (selectedZone === currentAnswer) {
+                showMessage('✅ Correct! Well done!', true);
+            } else {
+                showMessage(`❌ Oops! That was the ${currentAnswer} Zone. Keep trying!`, false);
+            }
+        }
+
+        function loadNextClue() {
+            currentClueIndex = (currentClueIndex + 1) % clues.length;
+            quizClue.textContent = clues[currentClueIndex].clue;
+        }
+
+        // Initialize quiz
+        window.onload = loadNextClue;
+
+    </script>
+
+</body>
+</html>

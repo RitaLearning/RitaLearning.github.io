@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unforgettable Celebrations - Creative Writing</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;500;700&family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: #FFF5F5;
+            overflow-x: hidden;
+        }
+        h1, h2, h3, h4, button {
+            font-family: 'Fredoka', sans-serif;
+        }
+        
+        /* Custom Animations */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .float-anim { animation: float 3s ease-in-out infinite; }
+        
+        @keyframes wiggle {
+            0%, 100% { transform: rotate(-3deg); }
+            50% { transform: rotate(3deg); }
+        }
+        .wiggle-hover:hover { animation: wiggle 0.5s ease-in-out infinite; }
+
+        @keyframes pop {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        .pop-click:active { animation: pop 0.2s ease-in-out; }
+
+        /* Confetti Particle Styles */
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            pointer-events: none;
+            z-index: 9999;
+            animation: fall linear forwards;
+        }
+        @keyframes fall {
+            to { transform: translateY(100vh) rotate(720deg); }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #fff;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #FFD166;
+            border-radius: 10px;
+        }
+        
+        .paper-shadow {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05), 5px 5px 0px 0px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body class="text-black">
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50 border-b-4 border-yellow-300">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <i data-lucide="pen-tool" class="text-pink-500 w-8 h-8"></i>
+                <span class="text-2xl font-bold text-pink-500 tracking-wide">StorySpark</span>
+            </div>
+            <div class="hidden md:flex space-x-6 font-bold text-lg">
+                <a href="#mission" class="text-black hover:text-purple-500 transition">Mission</a>
+                <a href="#blueprint" class="text-black hover:text-orange-500 transition">Blueprint</a>
+                <a href="#senses" class="text-black hover:text-blue-500 transition">5 Senses</a>
+                <a href="#plenary" class="text-black hover:text-green-500 transition">Review</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="relative pt-20 pb-16 overflow-hidden bg-gradient-to-b from-yellow-50 to-white">
+        <!-- Background Blobs -->
+        <div class="absolute top-10 left-10 w-32 h-32 bg-purple-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
+        <div class="absolute top-10 right-10 w-32 h-32 bg-yellow-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
+        <div class="absolute -bottom-8 left-20 w-32 h-32 bg-pink-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000"></div>
+
+        <div class="container mx-auto px-6 text-center relative z-10">
+            <span class="inline-block bg-orange-100 text-orange-600 px-4 py-2 rounded-full font-bold text-sm mb-4 tracking-wider shadow-sm border border-orange-200">LESSON 1: DESCRIPTIVE WRITING</span>
+            <h1 class="text-5xl md:text-7xl font-bold text-black mb-6 leading-tight">
+                Write an essay titled <br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 float-anim inline-block">Unforgettable Celebration!</span>
+            </h1>
+            <p class="text-xl text-black mb-8 max-w-2xl mx-auto font-medium">
+                Unforgettable Celebrations are special family or school events that remain in our memory because they make us happy.
+            </p>
+            <button onclick="scrollToSection('mission')" class="bg-gradient-to-r from-pink-500 to-purple-500 text-white font-bold py-4 px-10 rounded-full shadow-lg transform transition hover:scale-105 hover:shadow-2xl pop-click text-xl border-b-4 border-purple-700">
+                Start Your Mission 🚀
+            </button>
+        </div>
+    </section>
+
+    <!-- Mission Control & Enquiry -->
+    <section id="mission" class="py-16 bg-white border-t-4 border-dashed border-gray-200">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-10 items-start">
+                <!-- Enquiry Questions -->
+                <div class="bg-blue-50 rounded-3xl p-8 border-l-8 border-blue-400 paper-shadow transform rotate-1">
+                    <h2 class="text-2xl font-bold text-blue-600 mb-4 flex items-center gap-2">
+                        <i data-lucide="help-circle" class="w-8 h-8"></i> Enquiry Questions
+                    </h2>
+                    <p class="text-lg text-black font-medium mb-4">Let's brainstorm before we write:</p>
+                    <ul class="space-y-4">
+                        <li class="bg-white p-4 rounded-xl shadow-sm flex items-start gap-3">
+                            <span class="bg-blue-200 text-blue-700 font-bold rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0">1</span>
+                            <span class="text-black">What was your unforgettable celebration?</span>
+                        </li>
+                        <li class="bg-white p-4 rounded-xl shadow-sm flex items-start gap-3">
+                            <span class="bg-blue-200 text-blue-700 font-bold rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0">2</span>
+                            <span class="text-black">When and where did it take place?</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Learning Objectives -->
+                <div class="bg-green-50 rounded-3xl p-8 border-l-8 border-green-400 paper-shadow transform -rotate-1">
+                    <h2 class="text-2xl font-bold text-green-600 mb-4 flex items-center gap-2">
+                        <i data-lucide="target" class="w-8 h-8"></i> Your Mission
+                    </h2>
+                    <p class="text-lg text-black font-medium mb-4">By the end of this lesson, you should be able to:</p>
+                    <ul class="space-y-3">
+                        <li class="flex items-center gap-2 text-black">
+                            <i data-lucide="check-circle-2" class="text-green-500 w-6 h-6"></i> Choose your own topic.
+                        </li>
+                        <li class="flex items-center gap-2 text-black">
+                            <i data-lucide="check-circle-2" class="text-green-500 w-6 h-6"></i> Create a simple outline (Introduction, Description, Conclusion).
+                        </li>
+                        <li class="flex items-center gap-2 text-black">
+                            <i data-lucide="check-circle-2" class="text-green-500 w-6 h-6"></i> Write an essay about an unforgettable celebration using sensory details.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Blueprint: Magazine Article Structure -->
+    <section id="blueprint" class="py-16 bg-orange-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <span class="bg-orange-100 text-orange-600 px-4 py-1 rounded-full font-bold text-sm mb-2 shadow-sm">THE RECIPE</span>
+                <h2 class="text-3xl font-bold text-gray-800">Key Features of a Magazine Article</h2>
+                <p class="text-gray-600 mt-2">A good story needs a good skeleton!</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                <!-- Step 1 -->
+                <div class="bg-white p-6 rounded-2xl border-b-4 border-orange-400 text-center shadow-sm hover:-translate-y-2 transition duration-300">
+                    <div class="bg-orange-100 w-12 h-12 mx-auto rounded-full flex items-center justify-center mb-3 text-orange-600 font-bold text-xl">1</div>
+                    <h3 class="font-bold text-lg mb-2">Catchy Title</h3>
+                    <p class="text-sm text-gray-600">Grab the reader's attention instantly!</p>
+                </div>
+                <!-- Step 2 -->
+                <div class="bg-white p-6 rounded-2xl border-b-4 border-orange-400 text-center shadow-sm hover:-translate-y-2 transition duration-300">
+                    <div class="bg-orange-100 w-12 h-12 mx-auto rounded-full flex items-center justify-center mb-3 text-orange-600 font-bold text-xl">2</div>
+                    <h3 class="font-bold text-lg mb-2">Introduction</h3>
+                    <p class="text-sm text-gray-600">Set the scene: Who, What, When, Where?</p>
+                </div>
+                <!-- Step 3 -->
+                <div class="bg-white p-6 rounded-2xl border-b-4 border-orange-400 text-center shadow-sm hover:-translate-y-2 transition duration-300">
+                    <div class="bg-orange-100 w-12 h-12 mx-auto rounded-full flex items-center justify-center mb-3 text-orange-600 font-bold text-xl">3</div>
+                    <h3 class="font-bold text-lg mb-2">The Body</h3>
+                    <p class="text-sm text-gray-600">Describe the event and activities with details.</p>
+                </div>
+                <!-- Step 4 -->
+                <div class="bg-white p-6 rounded-2xl border-b-4 border-orange-400 text-center shadow-sm hover:-translate-y-2 transition duration-300">
+                    <div class="bg-orange-100 w-12 h-12 mx-auto rounded-full flex items-center justify-center mb-3 text-orange-600 font-bold text-xl">4</div>
+                    <h3 class="font-bold text-lg mb-2">Conclusion</h3>
+                    <p class="text-sm text-gray-600">Reflect on feelings and why it was special.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The 5 Senses Section (Existing) -->
+    <section id="senses" class="py-16 bg-white relative">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-blue-600 mb-4">The Secret Ingredients</h2>
+                <p class="text-lg text-black font-medium">To make a reader feel like they are at the party, use your 5 senses!</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
+                <!-- Sight -->
+                <div class="bg-red-50 p-6 rounded-3xl border-2 border-red-200 hover:border-red-400 transition cursor-pointer group text-center shadow-md hover:shadow-xl" onclick="playEffect(this, 'red')">
+                    <div class="bg-red-100 w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition">
+                        <i data-lucide="eye" class="text-red-600 w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-red-600 mb-2">Sight</h3>
+                    <p class="text-base text-black">Colorful balloons, sparkling candles, confetti floating in the air.</p>
+                </div>
+
+                <!-- Sound -->
+                <div class="bg-blue-50 p-6 rounded-3xl border-2 border-blue-200 hover:border-blue-400 transition cursor-pointer group text-center shadow-md hover:shadow-xl" onclick="playEffect(this, 'blue')">
+                    <div class="bg-blue-100 w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition">
+                        <i data-lucide="ear" class="text-blue-600 w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-blue-600 mb-2">Sound</h3>
+                    <p class="text-base text-black">Loud pop music, friends laughing, the "POP" of a balloon.</p>
+                </div>
+
+                <!-- Smell -->
+                <div class="bg-green-50 p-6 rounded-3xl border-2 border-green-200 hover:border-green-400 transition cursor-pointer group text-center shadow-md hover:shadow-xl" onclick="playEffect(this, 'green')">
+                    <div class="bg-green-100 w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition">
+                        <i data-lucide="wind" class="text-green-600 w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-green-600 mb-2">Smell</h3>
+                    <p class="text-base text-black">Sweet vanilla cake, cheesy pizza, fresh flowers.</p>
+                </div>
+
+                <!-- Taste -->
+                <div class="bg-yellow-50 p-6 rounded-3xl border-2 border-yellow-200 hover:border-yellow-400 transition cursor-pointer group text-center shadow-md hover:shadow-xl" onclick="playEffect(this, 'yellow')">
+                    <div class="bg-yellow-100 w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition">
+                        <i data-lucide="utensils" class="text-yellow-600 w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-yellow-600 mb-2">Taste</h3>
+                    <p class="text-base text-black">Sugary icing, fizzy lemonade, salty chips.</p>
+                </div>
+
+                <!-- Touch -->
+                <div class="bg-purple-50 p-6 rounded-3xl border-2 border-purple-200 hover:border-purple-400 transition cursor-pointer group text-center shadow-md hover:shadow-xl" onclick="playEffect(this, 'purple')">
+                    <div class="bg-purple-100 w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition">
+                        <i data-lucide="hand" class="text-purple-600 w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-purple-600 mb-2">Touch</h3>
+                    <p class="text-base text-black">Sticky fingers, smooth wrapping paper, warm hugs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Show Don't Tell Section (Existing) -->
+    <section class="py-16 bg-indigo-50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-indigo-700 mb-10">Show, Don't Tell!</h2>
+            
+            <div class="grid md:grid-cols-2 gap-8 items-center">
+                <!-- Boring -->
+                <div class="bg-white p-8 rounded-3xl shadow-lg opacity-70 scale-95 border-2 border-gray-200">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="bg-gray-200 p-2 rounded-full"><i data-lucide="frown" class="text-gray-600"></i></div>
+                        <h3 class="text-2xl font-bold text-black">Boring...</h3>
+                    </div>
+                    <p class="text-xl font-mono text-black">"The cake was good."</p>
+                </div>
+
+                <!-- Exciting -->
+                <div class="bg-white p-8 rounded-3xl shadow-2xl border-4 border-yellow-400 transform md:-rotate-2 relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 bg-yellow-400 text-white text-xs font-bold px-3 py-1 rounded-bl-lg">SUPER!</div>
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="bg-yellow-100 p-2 rounded-full"><i data-lucide="smile" class="text-yellow-600"></i></div>
+                        <h3 class="text-2xl font-bold text-indigo-700">Exciting!</h3>
+                    </div>
+                    <p class="text-xl font-medium text-black italic">"The creamy chocolate frosting melted on my tongue, tasting like sweet happiness!"</p>
+                    <div class="mt-4 flex gap-2">
+                         <span class="bg-indigo-100 text-indigo-800 text-xs px-2 py-1 rounded-md font-bold">Taste</span>
+                         <span class="bg-indigo-100 text-indigo-800 text-xs px-2 py-1 rounded-md font-bold">Emotion</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reading Corner: Example Story (Existing) -->
+    <section id="reading-corner" class="py-16 bg-yellow-50 relative overflow-hidden">
+        <!-- Decorative elements -->
+        <div class="absolute top-0 left-0 w-full h-4 bg-gradient-to-r from-yellow-300 to-orange-300"></div>
+        
+        <div class="container mx-auto px-6 max-w-3xl">
+            <div class="text-center mb-8">
+                <span class="inline-block bg-white text-orange-600 px-4 py-1 rounded-full font-bold text-sm mb-2 shadow-sm border border-orange-100">EXAMPLE STORY</span>
+                <h2 class="text-3xl font-bold text-orange-700 flex items-center justify-center gap-2">
+                    <i data-lucide="book-open" class="w-8 h-8"></i> Reading Corner
+                </h2>
+            </div>
+
+            <div class="bg-white p-8 md:p-12 rounded-xl shadow-xl border-t-8 border-orange-400 relative">
+                <!-- Paper texture effect -->
+                <div class="absolute top-4 right-4 text-orange-200 opacity-50">
+                    <i data-lucide="bookmark" class="w-12 h-12"></i>
+                </div>
+
+                <p class="text-center text-black text-sm mb-2 font-bold uppercase tracking-widest">Unforgettable Celebrations</p>
+                <h3 class="text-2xl md:text-3xl font-bold text-black mb-8 text-center font-serif">A Birthday to Remember Forever</h3>
+
+                <div class="prose prose-lg text-black leading-relaxed space-y-6 font-medium">
+                    <p>
+                        Last year, my family had one of the most unforgettable celebrations I have ever experienced. It was my grandmother’s 70th birthday, and everyone in the family came together to make the day special.
+                    </p>
+                    
+                    <p>
+                        The celebration took place at our house. We decorated the living room with <span class="bg-pink-100 text-pink-600 px-1 rounded font-medium">colourful balloons</span>, ribbons and bright lights. My siblings and I helped arrange the chairs and set the tables. We were excited because relatives we had not seen in a long time were coming.
+                    </p>
+
+                    <p>
+                        When the guests arrived, there was music, laughter and plenty of food. My mother cooked jollof rice, fried chicken and a large pot of soup. There was also a big <span class="bg-yellow-100 text-yellow-700 px-1 rounded font-medium">chocolate cake</span> with “Happy 70th Birthday” written on it. The food was so delicious that people kept going back for more.
+                    </p>
+
+                    <p>
+                        The best part of the celebration was when my grandmother cut her cake. Everyone clapped and sang for her. She smiled happily and thanked us for making her day memorable. After the cake cutting, we played games and took many pictures.
+                    </p>
+
+                    <p>
+                        The celebration ended in the evening, but the joy stayed with me. It was unforgettable because I felt close to my family, and I loved seeing my grandmother so <span class="bg-blue-100 text-blue-600 px-1 rounded font-medium">happy</span>. I hope we have more celebrations like this in the future.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Activity Zone: Plan & Draft (New) -->
+    <section id="activity" class="py-16 bg-white border-t border-gray-200">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">It's Your Turn to Write!</h2>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Step 1 -->
+                <div class="bg-purple-50 p-6 rounded-2xl border-l-4 border-purple-500">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="bg-purple-100 p-2 rounded-lg"><i data-lucide="map" class="text-purple-600"></i></div>
+                        <h3 class="text-xl font-bold text-purple-700">Step 1: Mind Map</h3>
+                    </div>
+                    <p class="text-black mb-4">Grab a piece of paper. Draw a circle in the middle with your event name. Draw lines out for:</p>
+                    <ul class="list-disc list-inside text-sm text-gray-700 space-y-1">
+                        <li>Sights (Colors, Decor)</li>
+                        <li>Sounds (Music, Laughter)</li>
+                        <li>Food & Tastes</li>
+                        <li>Feelings</li>
+                    </ul>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="bg-pink-50 p-6 rounded-2xl border-l-4 border-pink-500">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="bg-pink-100 p-2 rounded-lg"><i data-lucide="pencil" class="text-pink-600"></i></div>
+                        <h3 class="text-xl font-bold text-pink-700">Step 2: Draft</h3>
+                    </div>
+                    <p class="text-black mb-4">Write your essay using the outline:</p>
+                    <ul class="list-disc list-inside text-sm text-gray-700 space-y-1">
+                        <li><strong>Intro:</strong> Hook the reader!</li>
+                        <li><strong>Body:</strong> Describe the fun.</li>
+                        <li><strong>Conclusion:</strong> How did you feel?</li>
+                    </ul>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="bg-teal-50 p-6 rounded-2xl border-l-4 border-teal-500">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="bg-teal-100 p-2 rounded-lg"><i data-lucide="users" class="text-teal-600"></i></div>
+                        <h3 class="text-xl font-bold text-teal-700">Step 3: Peer Review</h3>
+                    </div>
+                    <p class="text-black mb-4">Swap with a partner! Check for:</p>
+                    <ul class="list-disc list-inside text-sm text-gray-700 space-y-1">
+                        <li>Neat handwriting?</li>
+                        <li>Capital letters & full stops?</li>
+                        <li>Interesting adjectives?</li>
+                        <li>Did they use paragraphs?</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Story Generator (Fun Warm Up) -->
+    <section id="generator" class="py-16 bg-gradient-to-r from-pink-400 via-purple-400 to-indigo-500 relative">
+        <div class="container mx-auto px-6 max-w-4xl">
+            <div class="text-white text-center mb-6">
+                <h3 class="text-xl font-bold opacity-90">Need Inspiration? Try the Generator!</h3>
+            </div>
+            <div class="bg-white rounded-3xl shadow-2xl overflow-hidden">
+                <div class="bg-yellow-300 p-4 text-center border-b-4 border-yellow-400">
+                    <h2 class="text-3xl font-bold text-yellow-900 flex items-center justify-center gap-2">
+                        <i data-lucide="sparkles"></i> The Party Story-Matic 3000
+                    </h2>
+                </div>
+                
+                <div class="p-8 grid md:grid-cols-2 gap-8">
+                    <!-- Inputs -->
+                    <div class="space-y-4">
+                        <h3 class="text-xl font-bold text-black mb-2">Add your ingredients:</h3>
+                        
+                        <div>
+                            <label class="block text-sm font-bold text-black mb-1">Celebration Type</label>
+                            <select id="occasion" class="w-full p-3 bg-gray-50 rounded-xl border-2 border-gray-200 focus:border-purple-500 focus:outline-none transition font-bold text-black">
+                                <option>Birthday Party</option>
+                                <option>Surprise Party</option>
+                                <option>School Dance</option>
+                                <option>New Year's Eve</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-bold text-black mb-1">Adjective (Describing Word)</label>
+                            <input type="text" id="adjective" placeholder="e.g., wild, sparkly, noisy" class="w-full p-3 bg-gray-50 rounded-xl border-2 border-gray-200 focus:border-purple-500 focus:outline-none transition text-black">
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-bold text-black mb-1">A Delicious Food</label>
+                            <input type="text" id="food" placeholder="e.g., chocolate fountain" class="w-full p-3 bg-gray-50 rounded-xl border-2 border-gray-200 focus:border-purple-500 focus:outline-none transition text-black">
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-bold text-black mb-1">A Loud Sound (Onomatopoeia)</label>
+                            <input type="text" id="sound" placeholder="e.g., BOOM, CRASH, WHOOSH" class="w-full p-3 bg-gray-50 rounded-xl border-2 border-gray-200 focus:border-purple-500 focus:outline-none transition text-black">
+                        </div>
+
+                        <button onclick="generateStory()" class="w-full bg-purple-600 text-white font-bold text-lg py-3 rounded-xl shadow-md hover:bg-purple-700 transform active:scale-95 transition flex items-center justify-center gap-2 mt-4">
+                            <i data-lucide="wand-2"></i> Write My Story!
+                        </button>
+                    </div>
+
+                    <!-- Output -->
+                    <div class="bg-gray-100 rounded-xl p-6 border-2 border-dashed border-gray-400 flex flex-col relative">
+                        <div class="absolute -top-3 -right-3 bg-blue-500 text-white px-3 py-1 rounded-lg text-xs font-bold shadow-md transform rotate-12">PREVIEW</div>
+                        <h3 class="text-lg font-bold text-black mb-4 uppercase tracking-wider">Your Masterpiece:</h3>
+                        
+                        <div id="storyOutput" class="flex-grow flex items-center justify-center text-black italic text-center font-medium">
+                            Fill in the blanks and click the magic button!
+                        </div>
+
+                        <div id="storyControls" class="hidden mt-4 pt-4 border-t border-gray-300 flex justify-between">
+                             <button onclick="copyStory()" class="text-sm font-bold text-black hover:text-blue-600 flex items-center gap-1"><i data-lucide="copy" class="w-4 h-4"></i> Copy</button>
+                             <button onclick="clearStory()" class="text-sm font-bold text-black hover:text-red-600 flex items-center gap-1"><i data-lucide="refresh-ccw" class="w-4 h-4"></i> Reset</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Plenary / Reflection -->
+    <section id="plenary" class="py-16 bg-gray-900 text-white">
+        <div class="container mx-auto px-6 text-center">
+            <div class="mb-8">
+                <h2 class="text-3xl font-bold mb-4">Lesson Complete! 🌟</h2>
+                <p class="text-xl text-gray-300 max-w-2xl mx-auto">
+                    Remember: Celebrations bring joy, strengthen relationships, and create lasting memories. 
+                    Writing about them helps us keep those memories forever!
+                </p>
+            </div>
+            
+            <div class="flex flex-col md:flex-row justify-center gap-6 mt-8">
+                <div class="bg-gray-800 p-6 rounded-xl border border-gray-700">
+                    <h4 class="font-bold text-pink-400 mb-2">Did you express your feelings?</h4>
+                    <p class="text-sm text-gray-400">Did you say how happy or excited you were?</p>
+                </div>
+                <div class="bg-gray-800 p-6 rounded-xl border border-gray-700">
+                    <h4 class="font-bold text-blue-400 mb-2">Did you describe the event?</h4>
+                    <p class="text-sm text-gray-400">Did you use sensory words?</p>
+                </div>
+            </div>
+
+            <div class="mt-12 border-t border-gray-800 pt-8">
+                <p class="font-bold text-lg">Any Questions?</p>
+                <p class="text-gray-400 text-sm mt-2">Raise your hand to ask your teacher!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black text-white py-8 text-center border-t border-gray-800">
+        <p class="font-bold text-lg mb-2">Keep Writing & Celebrating! 🎉</p>
+        <p class="text-gray-500 text-sm">Created for Young Authors</p>
+    </footer>
+
+    <!-- Confetti Canvas (Hidden, managed by JS) -->
+    <div id="confetti-container" class="fixed top-0 left-0 w-full h-full pointer-events-none z-50 overflow-hidden"></div>
+
+    <script>
+        // Initialize Icons
+        lucide.createIcons();
+
+        // Smooth Scroll
+        function scrollToSection(id) {
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Senses Interaction
+        function playEffect(element, color) {
+            // Visual bounce
+            element.classList.add('scale-95');
+            setTimeout(() => element.classList.remove('scale-95'), 150);
+            
+            // Little burst of confetti at the click location would be complex, 
+            // so let's just do a global confetti burst for fun.
+            fireConfetti(10);
+        }
+
+        // Story Generator Logic
+        function generateStory() {
+            const occasion = document.getElementById('occasion').value;
+            const adjective = document.getElementById('adjective').value.trim() || "colorful";
+            const food = document.getElementById('food').value.trim() || "pizza";
+            const sound = document.getElementById('sound').value.trim() || "BANG";
+
+            const outputDiv = document.getElementById('storyOutput');
+            const controls = document.getElementById('storyControls');
+
+            // 3 Variations of story templates
+            const stories = [
+                `I will never forget my <span class="text-purple-700 font-bold">${adjective}</span> ${occasion}. The room smelled like <span class="text-purple-700 font-bold">${food}</span> and everyone was dancing. Suddenly, the music stopped and we heard a loud <span class="text-red-600 font-bold text-xl">"${sound}!"</span> It was the best night ever.`,
+                
+                `The ${occasion} was totally <span class="text-purple-700 font-bold">${adjective}</span>. I stuffed my face with <span class="text-purple-700 font-bold">${food}</span> until my tummy hurt from laughing. Even the balloons seemed to whisper <span class="text-red-600 font-bold text-xl">"${sound}"</span> as they floated by.`,
+                
+                `Imagine a ${occasion} that is so <span class="text-purple-700 font-bold">${adjective}</span>, you can't believe your eyes. Mountains of <span class="text-purple-700 font-bold">${food}</span> were everywhere. Then, <span class="text-red-600 font-bold text-xl">${sound}!!!</span> The fireworks started!`
+            ];
+
+            const randomStory = stories[Math.floor(Math.random() * stories.length)];
+
+            outputDiv.innerHTML = `<p class="text-xl text-black leading-relaxed font-medium">${randomStory}</p>`;
+            outputDiv.classList.remove('italic', 'text-gray-400');
+            controls.classList.remove('hidden');
+
+            // Celebrate!
+            fireConfetti(100);
+        }
+
+        function clearStory() {
+            document.getElementById('adjective').value = '';
+            document.getElementById('food').value = '';
+            document.getElementById('sound').value = '';
+            document.getElementById('storyOutput').innerHTML = 'Fill in the blanks and click the magic button!';
+            document.getElementById('storyOutput').classList.add('italic', 'text-black');
+            document.getElementById('storyOutput').classList.remove('text-gray-400');
+            document.getElementById('storyControls').classList.add('hidden');
+        }
+
+        function copyStory() {
+            const text = document.getElementById('storyOutput').innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                alert("Story copied to clipboard! Now paste it in your homework.");
+            });
+        }
+
+        // Simple Confetti Engine
+        function fireConfetti(amount) {
+            const container = document.getElementById('confetti-container');
+            const colors = ['#FFD166', '#06D6A0', '#118AB2', '#EF476F', '#CD93D8'];
+
+            for (let i = 0; i < amount; i++) {
+                const confetto = document.createElement('div');
+                confetto.classList.add('confetti');
+                
+                // Random positioning
+                confetto.style.left = Math.random() * 100 + 'vw';
+                confetto.style.top = -10 + 'px';
+                
+                // Random color
+                confetto.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                
+                // Random size adjustments
+                const scale = Math.random() * 0.5 + 0.5;
+                confetto.style.transform = `scale(${scale})`;
+                
+                // Random Animation speed
+                confetto.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                
+                container.appendChild(confetto);
+
+                // Remove after animation
+                setTimeout(() => {
+                    confetto.remove();
+                }, 5000);
+            }
+        }
+    </script>
+</body>
+</html>
